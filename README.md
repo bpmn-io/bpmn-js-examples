@@ -5,9 +5,9 @@ This repository contains a number of examples that showcase how use and/or integ
 
 ## Basics
 
-* [simple-browserify](https://github.com/bpmn-io/bpmn-js-examples/) - an example showcasing how to load bpmn-js via npm and package it + the application code for the browser with [browserify](http://browserify.org).
+* [simple-commonjs](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-commonjs) - an example showcasing how to load bpmn-js via npm in a node-style application and package it and the application code for the browser with [browserify](http://browserify.org).
 
 
 ## License
 
-(unless noted otherwise) MIT
+MIT _(unless noted otherwise)_
