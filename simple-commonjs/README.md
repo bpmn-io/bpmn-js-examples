@@ -1,4 +1,4 @@
-# Integration of bpmn-js into node-style / browserify Applications
+# bpmn-js in CommonJS Applications
 
 [bpmn-js](https://github.com/bpmn-io/bpmn-js) is the BPMN 2.0 diagram modeling and rendering toolkit that powers [bpmn.io](http://bpmn.io).
 
@@ -10,7 +10,7 @@ It gets [bpmn-js via npm](https://www.npmjs.org/package/bpmn-js) and packages th
 
 This example uses bpmn-js to embed the [pizza collaboration](http://demo.bpmn.io/s/pizza-collaboration) diagram into a web application.
 
-![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/simple-browserify/docs/screenshot.png "Screenshot of the example application")
+![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/simple-commonjs/docs/screenshot.png "Screenshot of the example application")
 
 
 ## Usage Summary

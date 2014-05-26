@@ -1,8 +1,8 @@
 {
-  "name": "bpmn-js-example-browserify",
+  "name": "bpmn-js-example-commonjs",
   "version": "0.0.0",
-  "description": "An example how to use bpmn-js with npm/browserify",
-  "main": "lib/index.js",
+  "description": "An example how to use bpmn-js with CommonJS + npm + browserify",
+  "main": "app/app.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-js-examples"
