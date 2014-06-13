@@ -2,7 +2,7 @@
 
 [bpmn-js](https://github.com/bpmn-io/bpmn-js) is the BPMN 2.0 diagram modeling and rendering toolkit that powers [bpmn.io](http://bpmn.io).
 
-This example showcases how pull [bpmn-js](https://github.com/bpmn-io/bpmn-js) into a web application via [bower](http://bower.io].
+This example showcases how pull [bpmn-js](https://github.com/bpmn-io/bpmn-js) into a web application via [bower](http://bower.io).
 
 
 ## About
@@ -20,7 +20,7 @@ Install bpmn-js via [bower](http://bower.io)
 bower install --save bpmn-js
 ```
 
-Embed it and its dependencies into a website:
+Embed it and its dependencies into a website
 
 ```html
 <!-- viewer dependencies -->
