@@ -24,7 +24,7 @@ npm install --save bpmn-js
 Use it in your application
 
 ```javascript
-var BpmnViewer = require('bpmn-js/lib/Viewer');
+var BpmnViewer = require('bpmn-js');
 
 
 var viewer = new BpmnViewer({ container: '#canvas' });

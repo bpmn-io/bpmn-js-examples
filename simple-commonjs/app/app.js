@@ -12,7 +12,7 @@ var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboratio
 
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
-var BpmnViewer = require('bpmn-js/lib/Viewer');
+var BpmnViewer = require('bpmn-js');
 
 
 var viewer = new BpmnViewer({ container: '#canvas' });
