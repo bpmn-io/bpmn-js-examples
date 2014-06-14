@@ -36,8 +36,7 @@ module.exports = function(grunt) {
       },
       watch: {
         options: {
-          watch: true,
-          keepalive: true
+          watch: true
         },
         files: {
           '<%= config.dist %>/app.js': [ '<%= config.sources %>/**/*.js' ]
