@@ -37,7 +37,7 @@ Embed it and its dependencies into a website
 Use it in your application
 
 ```javascript
-var BpmnViewer = require('bpmn-js');
+var BpmnViewer = window.BpmnJS;
 
 
 var viewer = new BpmnViewer({ container: '#canvas' });

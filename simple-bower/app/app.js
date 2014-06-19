@@ -5,7 +5,7 @@
 
 // require the viewer, make sure you added the bpmn-js bower distribution
 // along with all its dependencies to the web site
-var BpmnViewer = require('bpmn-js');
+var BpmnViewer = window.BpmnJS;
 
 
 var viewer = new BpmnViewer({ container: '#canvas' });
