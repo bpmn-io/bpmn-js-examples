@@ -14,14 +14,10 @@ var $ = require('jquery');
 // Project init
 (function() {
   var BpmnViewer = require('bpmn-js');
-  var overlayModule = require('../../../diagram-js/lib/features/overlays');
 
-  //Important to explicitly load the Overlay service, as it's not a standard component of the viewer/modeler
-  var bpmnModules = BpmnViewer.prototype._modules.concat([ overlayModule ]);
   viewer = new BpmnViewer({ container: '#canvas',
     width: '100%',
-    height: '100%',
-    modules: bpmnModules
+    height: '100%'
   });
 })();
 
