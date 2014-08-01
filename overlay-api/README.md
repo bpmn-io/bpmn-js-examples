@@ -29,18 +29,6 @@ overlays.addOverlay(shape, {
 });
 ```
 
-## BPMN initialization
-
-The overlay service is an optional service and therefore it has to be loaded explicitly.
-
-```javascript
-var BpmnViewer = require('bpmn-js');
-var overlayModule = require('../../../diagram-js/lib/features/overlays');
-
-var bpmnModules = BpmnViewer.prototype._modules.concat([ overlayModule ]);
-viewer = new BpmnViewer({ container: '#canvas', modules: bpmnModules});
-```
-
 
 ## Setup
 
