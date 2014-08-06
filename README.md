@@ -11,6 +11,7 @@ This repository contains a number of examples that showcase how use [bpmn-js](ht
 
 ## Intermediate
 
+* [overlays](https://github.com/bpmn-io/bpmn-js-examples/tree/master/overlays) - attach overlays to BPMN 2.0 diagrams
 * [url-viewer](https://github.com/bpmn-io/bpmn-js-examples/tree/master/url-viewer) - a quick and dirty url viewer for BPMN 2.0 process diagrams created with the bower packaging of bpmn-js.
 * [modeler](https://github.com/bpmn-io/bpmn-js-examples/tree/master/modeler) - a simple BPMN 2.0 modeler. Gains more features as time passes by.
 
