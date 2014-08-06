@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      samples: {
+      app: {
         files: [ '<%= config.sources %>/**/*.*' ],
         tasks: [ 'copy:app' ]
       },
@@ -88,6 +88,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [ 'browserify:app', 'copy:app' ]);
 
   grunt.registerTask('auto-build', [
+    'copy:app',
     'browserify:watch',
     'connect:livereload',
     'watch'
