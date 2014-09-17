@@ -1,0 +1,138 @@
+/**
+ * outline styles
+ */
+.djs-outline {
+  fill: none;
+  visibility: hidden;
+}
+
+.djs-group.hover .djs-outline,
+.djs-group.selected .djs-outline {
+  visibility: visible;
+  stroke-dasharray: 2,4;
+}
+
+.djs-group.selected .djs-outline {
+  stroke: blue;
+  stroke-width: 1px;
+}
+
+.djs-group.hover .djs-outline {
+  stroke: red;
+  stroke-width: 1px;
+}
+
+.djs-group.connect-ok .djs-visual > :nth-child(1),
+.djs-group.drop-ok .djs-visual > :nth-child(1) {
+  fill: #90DD5F /* light-green */!important;
+}
+
+.djs-group.connect-not-ok .djs-visual > :nth-child(1),
+.djs-group.drop-not-ok .djs-visual > :nth-child(1) {
+  fill: #E56283 /* light-red */ !important;
+}
+
+/**
+ * drag styles
+ */
+.djs-dragger {
+  fill: white;
+  opacity: 0.8;
+  stroke: #333;
+}
+
+.djs-dragging {
+  opacity: 0.3;
+}
+
+.djs-shape.djs-dragging,
+.djs-connection.djs-dragging {
+  pointer-events: none !important;
+}
+
+.djs-dragging .djs-context-pad,
+.djs-dragging .djs-outline {
+  display: none !important;
+}
+
+/**
+ * no pointer events for visual
+ */
+.djs-visual,
+.djs-outline {
+  pointer-events: none;
+}
+
+/**
+ * all pointer events for hit shape
+ */
+.djs-shape .djs-hit {
+  pointer-events: all;
+}
+
+.djs-connection .djs-hit {
+  pointer-events: stroke;
+}
+
+/**
+ * shape / connection basic styles
+ */
+.djs-connection .djs-visual {
+  stroke-width: 2px;
+  fill: none;
+}
+
+.djs-cursor-grabbing {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+
+/**
+ * snapping
+ */
+.djs-snap-line {
+  stroke: rgba(255, 195, 66);
+  stroke: rgba(255, 195, 66, 0.75);
+  stroke-linecap: round;
+  stroke-width: 2px;
+  pointer-events: none;
+}
+
+
+/**
+ * context-pad
+ */
+.djs-overlay-context-pad {
+  width: 72px;
+}
+
+.djs-context-pad {
+  position: absolute;
+  display: none;
+  padding: 1px;
+}
+
+.djs-context-pad .entry {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  vertical-align: baseline;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 1px;
+  margin: 0 1px 1px 0;
+}
+
+.djs-context-pad .entry img {
+  margin-bottom: -4px;
+}
+
+.djs-context-pad .entry:hover {
+  background: rgb(255, 252, 176);
+}
+
+.djs-context-pad.open {
+  display: block;
+}
