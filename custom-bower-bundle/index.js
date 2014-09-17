@@ -1,10 +1,10 @@
 // get bpmn-js
-var BpmnViewer = require('bpmn-js/lib/viewer');
+var BpmnViewer = require('bpmn-js/lib/Viewer');
 
 // load additional modules
 var additionalModules = [
-  require('bpmn-js/lib/features/movecanvas'),
-  require('bpmn-js/lib/features/zoomscroll')
+  require('diagram-js/lib/navigation/movecanvas'),
+  require('diagram-js/lib/navigation/zoomscroll')
 ];
 
 // add additional (default!) modules to bpmn-js
