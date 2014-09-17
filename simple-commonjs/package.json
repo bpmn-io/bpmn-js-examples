@@ -35,6 +35,6 @@
     "brfs": "~1.0.0"
   },
   "dependencies": {
-    "bpmn-js": "~0.4.1"
+    "bpmn-js": "^0.5.1"
   }
 }
