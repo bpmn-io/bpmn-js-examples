@@ -1,0 +1,67 @@
+body, html {
+  font-family: sans-serif;
+}
+
+.comments-overlay {
+  background: #52B415;
+  color: white;
+  display: none;
+}
+
+.selected .comments-overlay,
+.comments-overlay.with-comments {
+  display: block;
+}
+
+.comments-overlay .edit {
+  margin: 2px 0 0 0;
+  padding-top: 2px;
+}
+
+.comments-overlay .edit textarea {
+  border: none;
+  margin: 0;
+}
+
+.comments-overlay .icon-comment:hover {
+  color: #EEE;
+}
+
+.comments-overlay .comment {
+  border-top-color: white;
+}
+
+.comments-overlay .icon-delete:before {
+  content: 'x';
+  color: white;
+}
+
+
+/** fonts **/
+
+@font-face {
+  font-family: 'bpmn-js-comments';
+  src: url('font/bpmn-js-comments.svg?2633928#bpmn-js-comments') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "bpmn-js-comments";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+
+  font-variant: normal;
+  text-transform: none;
+
+  line-height: 1em;
+}
+
+.icon-comment:before { content: '\e809'; }

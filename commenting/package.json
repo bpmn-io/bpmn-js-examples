@@ -1,0 +1,43 @@
+{
+  "name": "bpmn-js-example-commenting",
+  "version": "0.0.0",
+  "description": "A simple commenting app based on bpmn-js",
+  "main": "app/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+  },
+  "keywords": [
+    "bpmnjs-example"
+  ],
+  "author": {
+    "name": "Nico Rehwaldt",
+    "url": "https://github.com/Nikku"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "browser": {
+    "fs": false
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.5.0",
+    "grunt-contrib-connect": "^0.6.0",
+    "grunt-contrib-jshint": "^0.7.2",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-browserify": "^2.1.0",
+    "load-grunt-tasks": "^0.3.0",
+    "brfs": "^1.0.0"
+  },
+  "dependencies": {
+    "bpmn-js": "^0.5.1",
+    "diagram-js": "^0.5.1",
+    "bpmn-js-embedded-comments": "^0.0.1",
+    "jquery": "^2.1.0"
+  }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="diagram.css" />
+
+  <link rel="stylesheet" href="comments.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style type="text/css">
+    html, body, #canvas, #canvas > div {
+      height: 100%;
+    }
+
+    .toolbar {
+      position: fixed;
+      left: 10px;
+      bottom: 10px;
+      background: white;
+      border: solid 1px #999;
+      border-radius: 5px;
+      padding: 5px;
+    }
+  </style>
+
+  <!--
+    this is an example of how to use bpmn-js in a standalone application built with
+    CommonJS modules + browserify
+  -->
+
+  <title>npm/browserify example - bpmn-js-examples</title>
+</head>
+<body>
+
+  <h1>Pizza Collaboration Viewer</h1>
+
+  <div id="canvas"></div>
+
+  <div class="toolbar">
+    <a href data-download download="pizza-collaboration-annotated.bpmn">Download</a>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="bpmn-js-comments" horiz-adv-x="1000" >
+<font-face font-family="bpmn-js-comments" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="comment" unicode="&#xe809;" d="m409 797q162 0 276-114t114-276-114-277-276-114q-42 0-92 12l-187-125 1 229q-113 115-113 275 0 162 115 276t276 114z" horiz-adv-x="817" />
+</font>
+</defs>
+</svg>

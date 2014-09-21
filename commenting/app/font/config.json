@@ -1,0 +1,16 @@
+{
+  "name": "bpmn-js-comments",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "e34c1d65ed4ecd53aec3687f0e5b1cf0",
+      "css": "comment",
+      "code": 59401,
+      "src": "iconic"
+    }
+  ]
+}
