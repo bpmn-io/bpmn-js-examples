@@ -6,7 +6,8 @@
 <font id="bpmn-js-comments" horiz-adv-x="1000" >
 <font-face font-family="bpmn-js-comments" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
-<glyph glyph-name="comment" unicode="&#xe809;" d="m409 797q162 0 276-114t114-276-114-277-276-114q-42 0-92 12l-187-125 1 229q-113 115-113 275 0 162 115 276t276 114z" horiz-adv-x="817" />
+<glyph glyph-name="comment" unicode="&#xe800;" d="m700 700q42 0 71-29t29-71l0-350q0-40-29-70t-71-30l-200 0 0-150-200 150-200 0q-40 0-70 30t-30 70l0 350q0 42 30 71t70 29l600 0z" horiz-adv-x="800" />
+<glyph glyph-name="delete" unicode="&#xe802;" d="m452 194q18-18 18-43t-18-43q-18-16-43-16t-43 16l-132 152-132-152q-18-16-43-16t-43 16q-16 18-16 43t16 43l138 156-138 158q-16 18-16 43t16 43q18 16 43 16t43-16l132-152 132 152q18 16 43 16t43-16q18-18 18-43t-18-43l-138-158z" horiz-adv-x="470" />
 </font>
 </defs>
 </svg>

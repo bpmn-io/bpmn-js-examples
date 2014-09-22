@@ -7,10 +7,16 @@
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "e34c1d65ed4ecd53aec3687f0e5b1cf0",
+      "uid": "c709da589c923ba3c2ad48d9fc563e93",
+      "css": "delete",
+      "code": 59394,
+      "src": "entypo"
+    },
+    {
+      "uid": "16890362e811b4cb8de36282b071fe30",
       "css": "comment",
-      "code": 59401,
-      "src": "iconic"
+      "code": 59392,
+      "src": "entypo"
     }
   ]
 }
