@@ -12,18 +12,50 @@
   <link rel="stylesheet" href="style.css" />
 
   <style type="text/css">
-    html, body, #canvas, #canvas > div {
+    html, body {
       height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .header {
+      position: fixed;
+      left: 10px;
+      top: 10px;
+
+      border: solid 1px #999;
+      background: #EEE;
+      border-radius: 5px;
+      z-index: 100;
+    }
+
+    .header h1 {
+      margin: 10px;
+      padding: 0;
     }
 
     .toolbar {
       position: fixed;
       left: 10px;
       bottom: 10px;
-      background: white;
+    }
+
+    .toolbar .entry {
+      background: #EEE;
       border: solid 1px #999;
       border-radius: 5px;
       padding: 5px;
+      margin-right: 20px;
+
+      display: inline-block;
     }
   </style>
 
@@ -32,16 +64,26 @@
     CommonJS modules + browserify
   -->
 
-  <title>npm/browserify example - bpmn-js-examples</title>
+  <title>BPMN 2.0 comments</title>
 </head>
 <body>
 
-  <h1>Pizza Collaboration Viewer</h1>
+  <div class="header">
+    <h1>BPMN 2.0 comments</h1>
+  </div>
 
   <div id="canvas"></div>
 
   <div class="toolbar">
-    <a href data-download download="pizza-collaboration-annotated.bpmn">Download</a>
+
+    <div class="entry">
+      <a href data-download download="pizza-collaboration-annotated.bpmn">Download</a>
+    </div>
+
+    <div class="entry">
+      <input type="file" data-open-file value="open" />
+    </div>
+
   </div>
 
   <script src="./app.js"></script>

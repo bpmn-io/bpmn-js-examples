@@ -1,16 +1,6 @@
 'use strict';
 
-// we use fs + brfs to inline an example XML document.
-// exclude fs in package.json#browser + use the brfs transform
-// to generate a clean browserified bundle
-var fs = require('fs');
-
 var $ = require('jquery');
-
-
-// inlined in result file via brfs
-var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
-
 
 
 // require the viewer, make sure you added it to your project
@@ -30,16 +20,23 @@ var viewer = new BpmnViewer({
                ]
              });
 
-viewer.importXML(pizzaDiagram, function(err) {
 
-  if (!err) {
+function openDiagram(diagram) {
+
+  viewer.importXML(diagram, function(err) {
+    if (err) {
+
+      alert('could not import BPMN 2.0 XML, see console');
+      return console.log('could not import BPMN 2.0 XML', err);
+    }
+
     console.log('success!');
     viewer.get('canvas').zoom('fit-viewport');
-  } else {
-    console.log('something went wrong:', err);
-  }
-});
+  });
+}
 
+
+// file save handling
 
 var $download = $('[data-download]');
 
@@ -63,5 +60,50 @@ viewer.on('comments.updated', serialize);
 viewer.on('commandStack.changed', serialize);
 
 viewer.on('canvas.click', function() {
-  viewer.get('comments').hideAll();
+  viewer.get('comments').collapseAll();
 });
+
+
+// file open handling
+
+var $file = $('[data-open-file]');
+
+function readFile(file, done) {
+
+  if (!file) {
+    return done(new Error('no file chosen'));
+  }
+
+  var reader = new FileReader();
+
+  reader.onload = function(e) {
+    done(null, e.target.result);
+  };
+
+  reader.readAsText(file);
+}
+
+$file.on('change', function() {
+  readFile(this.files[0], function(err, xml) {
+
+    if (err) {
+      alert('could not read file, see console');
+      return console.error('could not read file', err);
+    }
+
+    openDiagram(xml);
+  });
+
+});
+
+
+
+// we use fs + brfs to inline an example XML document.
+// exclude fs in package.json#browser + use the brfs transform
+// to generate a clean browserified bundle
+var fs = require('fs');
+
+// inlined in result file via brfs
+var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration-annotated.bpmn', 'utf-8');
+
+openDiagram(pizzaDiagram);

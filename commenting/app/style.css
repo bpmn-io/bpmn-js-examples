@@ -4,6 +4,8 @@ body, html {
 
 .comments-overlay {
   background: #52B415;
+  font-size: 12px;
+
   color: white;
   display: none;
 }
