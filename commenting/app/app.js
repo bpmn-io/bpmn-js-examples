@@ -1,3 +1,5 @@
+/* global alert */
+
 'use strict';
 
 var $ = require('jquery');
