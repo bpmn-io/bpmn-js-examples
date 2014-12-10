@@ -23,6 +23,7 @@
   "debug": true,
   "strict": false,
   "globals": {
+    "alert": true,
     "console": true,
     "require": false,
     "module": false,
