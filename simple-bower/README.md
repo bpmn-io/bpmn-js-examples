@@ -53,6 +53,7 @@ viewer.importXML(pizzaDiagram, function(err) {
 });
 ```
 
+Make sure you serve the application via a web server (nginx, apache or for testing just `python -m SimpleHTTPServer 8080`) and ensure that the diagrams you want to access are either on the same server or [CORS](https://en.wikipedia.org/wiki/Cross-Origin_Resource_Sharing) is enabled.
 
 ## License
 
