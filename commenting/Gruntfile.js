@@ -2,9 +2,6 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-
-  console.log(require.resolve('bpmn-js-embedded-comments/assets/comments.css'));
-
   // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
