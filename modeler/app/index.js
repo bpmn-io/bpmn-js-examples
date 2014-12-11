@@ -7,7 +7,7 @@ var container = $('#js-drop-zone');
 
 var canvas = $('#js-canvas');
 
-var renderer = new BpmnModeler({ container: canvas, width: '100%', height: '100%' });
+var renderer = new BpmnModeler({ container: canvas });
 
 var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
 

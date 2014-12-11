@@ -14,9 +14,7 @@ var BpmnViewer = require('bpmn-js'),
     $ = require('jquery');
 
 var bpmnViewer = new BpmnViewer({
-  container: '#canvas',
-  width: '100%',
-  height: '100%'
+  container: '#canvas'
 });
 
 
