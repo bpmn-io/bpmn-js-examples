@@ -49,6 +49,12 @@ module.exports = function(grunt) {
       }
     },
     copy: {
+      diagram_js: {
+        files: [ {
+          src: require.resolve('diagram-js/assets/diagram-js.css'),
+          dest: '<%= config.dist %>/css/diagram-js.css'
+        } ]
+      },
       app: {
         files: [
           {

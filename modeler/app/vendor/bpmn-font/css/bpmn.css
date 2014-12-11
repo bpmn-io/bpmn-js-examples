@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'bpmn';
+  src: url('../font/bpmn.eot?41865498');
+  src: url('../font/bpmn.eot?41865498#iefix') format('embedded-opentype'),
+       url('../font/bpmn.woff?41865498') format('woff'),
+       url('../font/bpmn.ttf?41865498') format('truetype'),
+       url('../font/bpmn.svg?41865498#bpmn') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'bpmn';
+    src: url('../font/bpmn.svg?41865498#bpmn') format('svg');
+  }
+}
+*/
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "bpmn";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.icon-end-event:before { content: '\e800'; } /* '' */
+.icon-text-annotation:before { content: '\e801'; } /* '' */
+.icon-intermediate-event:before { content: '\e802'; } /* '' */
+.icon-trash:before { content: '\e803'; } /* '' */
+.icon-connection:before { content: '\e804'; } /* '' */
+.icon-start-event:before { content: '\e805'; } /* '' */
+.icon-gateway:before { content: '\e806'; } /* '' */
+.icon-task:before { content: '\e807'; } /* '' */
+.icon-subprocess-collapsed:before { content: '\e808'; } /* '' */
+.icon-subprocess-expanded:before { content: '\e809'; } /* '' */
