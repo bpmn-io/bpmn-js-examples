@@ -20,4 +20,4 @@ $.get('../resources/pizza-collaboration.bpmn', function(pizzaDiagram) {
       console.log('something went wrong:', err);
     }
   });
-});
+}, 'text');
