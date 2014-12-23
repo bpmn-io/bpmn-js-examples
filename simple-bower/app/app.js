@@ -11,7 +11,8 @@ var viewer = new BpmnViewer({ container: '#canvas' });
 
 $.get('../resources/pizza-collaboration.bpmn', function(pizzaDiagram) {
 
-  viewer.importXML(pizzaDiagram, function(err) {
+  var xmlText = new XMLSerializer().serializeToString(pizzaDiagram);
+  viewer.importXML(xmlText, function(err) {
 
     if (!err) {
       console.log('success!');
