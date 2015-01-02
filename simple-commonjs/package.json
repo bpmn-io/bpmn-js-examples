@@ -32,9 +32,9 @@
     "grunt-contrib-copy": "~0.5.0",
     "grunt-browserify": "~2.1.0",
     "load-grunt-tasks": "~0.3.0",
-    "brfs": "~1.0.0"
+    "brfs": "~1.2.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.6.0"
+    "bpmn-js": "^0.7.0"
   }
 }

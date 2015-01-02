@@ -8,6 +8,6 @@
     "grunt-browserify": "^2.1.2"
   },
   "dependencies": {
-    "bpmn-js": "^0.6.0"
+    "bpmn-js": "^0.7.0"
   }
 }
