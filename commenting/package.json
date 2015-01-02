@@ -35,9 +35,9 @@
     "brfs": "^1.0.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.6.0",
-    "diagram-js": "^0.6.0",
-    "bpmn-js-embedded-comments": "^0.2.0",
+    "bpmn-js": "^0.7.0",
+    "bpmn-js-embedded-comments": "^0.3.0",
+    "diagram-js": "^0.7.0",
     "jquery": "^2.1.0"
   }
 }
