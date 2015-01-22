@@ -35,7 +35,7 @@
     "brfs": "~1.2.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.7.0",
+    "bpmn-js": "^0.8.0",
     "jquery": "^2.1.1",
     "lodash": "^2.4.1"
   }

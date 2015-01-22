@@ -31,7 +31,7 @@ Embed it and its dependencies into a website
 <script src="bower_components/Snap.svg/dist/snap.svg.js"></script>
 
 <!-- viewer -->
-<script src="bower_components/bpmn-js/bpmn-viewer.js"></script>
+<script src="bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
 ```
 
 Use it in your application
