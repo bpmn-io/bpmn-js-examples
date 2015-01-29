@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>bpmn-js url viewer demo</title>
+
+  <style>
+    .console {
+      width: 100%;
+      min-height: 80px;
+      border: none;
+      padding: 0;
+    }
+
+    .console textarea {
+      width: 100%;
+      min-height: 80px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="../bower_components/bpmn-js/dist/assets/diagram-js.css">
+
+</head>
+<body>
+
+  <div class="header">
+    <h1>bpmn-js diagram interaction example</h1>
+    <p>
+      interact with the diagram using your mouse and see what happens,
+      click the end event for a special alert.
+    </p>
+  </div>
+
+  <hr>
+
+  <div class="canvas">
+    <h3>diagram</h3>
+    <div id="js-canvas"></div>
+  </div>
+
+  <hr>
+
+  <div class="console">
+    <h3>console</h3>
+    <textarea id="js-console"></textarea>
+  </div>
+
+  <!-- viewer dependencies -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+  <script src="../bower_components/lodash/dist/lodash.js"></script>
+  <script src="../bower_components/sax/lib/sax.js"></script>
+  <script src="../bower_components/Snap.svg/dist/snap.svg.js"></script>
+
+  <!-- viewer -->
+  <script src="../bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+
+  <!-- app -->
+  <script src="app.js"></script>
+</html>
