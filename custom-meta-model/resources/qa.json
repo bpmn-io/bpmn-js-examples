@@ -1,0 +1,61 @@
+{
+  "name": "QualityAssurance",
+  "uri": "http://some-company/schema/bpmn/qa",
+  "prefix": "qa",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "types": [
+    {
+      "name": "AnalyzedNode",
+      "extends": [
+        "bpmn:FlowNode"
+      ],
+      "properties": [
+        {
+          "name": "suitable",
+          "isAttr": true,
+          "type": "Float"
+        }
+      ]
+    },
+    {
+      "name": "AnalysisDetails",
+      "superClass": [ "Element" ],
+      "properties": [
+        {
+          "name": "lastChecked",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "nextCheck",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "comments",
+          "isMany": true,
+          "type": "Comment"
+        }
+      ]
+    },
+    {
+      "name": "Comment",
+      "properties": [
+        {
+          "name": "author",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
+          "name": "text",
+          "isBody": true,
+          "type": "String"
+        }
+      ]
+    }
+  ],
+  "emumerations": [],
+  "associations": []
+}
