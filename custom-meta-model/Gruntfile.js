@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= config.sources %>/',
+            cwd: '<%= config.sources %>',
             src: ['**/*.*', '!**/*.js'],
             dest: '<%= config.dist %>'
           }
@@ -91,6 +91,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [ 'browserify:app', 'copy' ]);
 
   grunt.registerTask('auto-build', [
+    'copy',
     'browserify:watch',
     'connect:livereload',
     'watch'

@@ -64,7 +64,7 @@ viewer.on('element.click', function(event) {
   } else {
 
     if (isNaN(score)) {
-      message = 'No suitability score yet, dblclick to assign one';
+      message = 'No suitability score yet, CTRL+Click to assign one';
     } else {
       message = 'Diagram element has a suitability score of ' + score;
     }
@@ -75,4 +75,18 @@ viewer.on('element.click', function(event) {
 
     window.alert(message);
   }
+});
+
+
+document.querySelector('#export-to-console').addEventListener('click', function(e) {
+
+  viewer.saveXML({ format: true }, function(err, xml) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(xml);
+    }
+  });
+
+  e.preventDefault();
 });
