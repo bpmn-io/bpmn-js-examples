@@ -12,7 +12,7 @@
   ],
   "author": {
     "name": "Nico Rehwaldt",
-    "url": "https://github.com/Nikku"
+    "url": "https://github.com/nikku"
   },
   "contributors": [
     {
@@ -32,8 +32,8 @@
     "load-grunt-tasks": "~0.3.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.8.0",
+    "bpmn-js": "^0.9.0",
     "jquery": "^2.1.1",
-    "lodash": "^2.4.1"
+    "lodash": "^3.0.0"
   }
 }
