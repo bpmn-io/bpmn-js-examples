@@ -22,16 +22,19 @@ module.exports = function(grunt) {
 
     browserify: {
       options: {
-        transform: [ 'brfs' ],
         browserifyOptions: {
-          builtins: [ 'fs' ],
-          commondir: false
+          // make sure we do not include browser shims unnecessarily
+          builtins: false,
+          insertGlobalVars: {
+            process: function () {
+                return 'undefined';
+            },
+            Buffer: function () {
+                return 'undefined';
+            }
+          }
         },
-        bundleOptions: {
-          detectGlobals: false,
-          insertGlobalVars: [],
-          debug: true
-        }
+        transform: [ 'brfs' ]
       },
       watch: {
         options: {

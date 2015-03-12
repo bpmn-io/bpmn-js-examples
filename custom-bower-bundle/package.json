@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "description": "Create custom bower bundles of bpmn-js",
   "devDependencies": {
-    "exposify": "https://github.com/Nikku/exposify/archive/v0.2.0-transform-arguments-0.tar.gz",
     "grunt": "^0.4.4",
-    "grunt-browserify": "^2.1.2"
+    "grunt-browserify": "^3.3.0"
   },
   "dependencies": {
     "bpmn-js": "^0.8.0"

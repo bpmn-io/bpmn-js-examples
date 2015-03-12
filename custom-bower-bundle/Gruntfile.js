@@ -13,28 +13,18 @@ module.exports = function(grunt) {
         },
         options: {
           browserifyOptions: {
-            builtins: false
-          },
-          bundleOptions: {
             standalone: 'BpmnJS',
-            detectGlobals: false,
-            insertGlobalVars: [],
-            debug: false
-          },
-          transform: [
-            // ensure you expose all your external libraries via their global prefix
-            // (jQuery -> window.$, ...)
-            [ 'exposify', {
-              global: true,
-              expose: {
-                sax: 'sax',
-                snapsvg: 'Snap',
-                lodash: '_',
-                jquery: '$',
-                'jquery-mousewheel': '$'
+            // make sure we do not include browser shims unnecessarily
+            builtins: false,
+            insertGlobalVars: {
+              process: function () {
+                  return 'undefined';
+              },
+              Buffer: function () {
+                  return 'undefined';
               }
-            } ]
-          ]
+            }
+          }
         }
       }
     }
