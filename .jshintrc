@@ -21,12 +21,9 @@
   "browser" : true,
   "node" : true,
   "debug": true,
-  "strict": false,
   "globals": {
     "alert": true,
     "console": true,
-    "require": false,
-    "module": false,
     "describe": false,
     "it": false,
     "jasmine": true,

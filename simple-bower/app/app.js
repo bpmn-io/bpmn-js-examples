@@ -9,15 +9,21 @@ var BpmnViewer = window.BpmnJS;
 
 var viewer = new BpmnViewer({ container: '#canvas' });
 
-$.get('../resources/pizza-collaboration.bpmn', function(pizzaDiagram) {
+var xhr = new XMLHttpRequest();
 
-  viewer.importXML(pizzaDiagram, function(err) {
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        viewer.importXML(xhr.response, function(err) {
 
-    if (!err) {
-      console.log('success!');
-      viewer.get('canvas').zoom('fit-viewport');
-    } else {
-      console.log('something went wrong:', err);
+          if (!err) {
+            console.log('success!');
+            viewer.get('canvas').zoom('fit-viewport');
+          } else {
+            console.log('something went wrong:', err);
+          }
+        });
     }
-  });
-}, 'text');
+};
+
+xhr.open('GET', '../resources/pizza-collaboration.bpmn', true);
+xhr.send(null);
