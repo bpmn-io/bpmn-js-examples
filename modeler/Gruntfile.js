@@ -2,6 +2,14 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
+  var path = require('path');
+
+  /**
+   * Resolve external project resource as file path
+   */
+  function resolvePath(project, file) {
+    return path.join(path.dirname(require.resolve(project)), file);
+  }
 
   // project configuration
   grunt.initConfig({
@@ -53,10 +61,22 @@ module.exports = function(grunt) {
     },
     copy: {
       diagram_js: {
-        files: [ {
-          src: require.resolve('diagram-js/assets/diagram-js.css'),
-          dest: '<%= config.dist %>/css/diagram-js.css'
-        } ]
+        files: [
+          {
+            src: resolvePath('diagram-js', 'assets/diagram-js.css'),
+            dest: '<%= config.dist %>/css/diagram-js.css'
+          }
+        ]
+      },
+      bpmn_js: {
+        files: [
+          {
+            expand: true,
+            cwd: resolvePath('bpmn-js', 'assets'),
+            src: ['**/*.*', '!**/*.js'],
+            dest: '<%= config.dist %>/vendor'
+          }
+        ]
       },
       app: {
         files: [
@@ -94,9 +114,10 @@ module.exports = function(grunt) {
 
   // tasks
 
-  grunt.registerTask('build', [ 'browserify:app', 'copy' ]);
+  grunt.registerTask('build', [ 'copy', 'browserify:app' ]);
 
   grunt.registerTask('auto-build', [
+    'copy',
     'browserify:watch',
     'connect:livereload',
     'watch'
