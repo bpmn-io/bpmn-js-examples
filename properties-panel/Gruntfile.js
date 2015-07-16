@@ -32,6 +32,8 @@ module.exports = function(grunt) {
     browserify: {
       options: {
         browserifyOptions: {
+          debug: true,
+          list: true,
           // make sure we do not include browser shims unnecessarily
           builtins: false,
           insertGlobalVars: {
@@ -59,6 +61,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     copy: {
       diagram_js: {
         files: [
@@ -89,12 +92,50 @@ module.exports = function(grunt) {
         ]
       }
     },
+
+    less: {
+      options: {
+        dumpLineNumbers: 'comments',
+        paths: [
+          'node_modules'
+        ]
+      },
+
+      styles: {
+        files: {
+          'dist/css/app.css': 'styles/app.less'
+        }
+      }
+    },
+
     watch: {
       samples: {
         files: [ '<%= config.sources %>/**/*.*' ],
         tasks: [ 'copy:app' ]
       },
+
+      less: {
+        files: [
+          'styles/**/*.less',
+          'node_modules/bpmn-js-properties-panel/styles/**/*.less'
+        ],
+        tasks: [
+          'less'
+        ]
+      },
+
+      connect: {
+        options: {
+          livereload: 9014
+        },
+        files: [
+          '<%= config.dist %>/**/*.css'
+          // '<%= config.dist %>/**/*.{html,js,css}'
+        ],
+        tasks: []
+      }
     },
+
     connect: {
       options: {
         port: 9013,
@@ -118,6 +159,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-build', [
     'copy',
+    'less',
     'browserify:watch',
     'connect:livereload',
     'watch'
