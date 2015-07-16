@@ -14,8 +14,12 @@ var container = $('#js-drop-zone');
 
 var canvas = $('#js-canvas');
 
+var propertiesPanelConfig = {
+  "config.propertiesPanel": ['value', { parent: $('#js-properties-panel') }]
+}
+
 var renderer = new BpmnModeler({ container: canvas,
-    additionalModules: [propertiesPanelModule, propertiesProviderModule],
+    additionalModules: [propertiesPanelModule, propertiesProviderModule, propertiesPanelConfig],
     moddleExtensions: {camunda: camundaModdlePackage}});
 
 var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
