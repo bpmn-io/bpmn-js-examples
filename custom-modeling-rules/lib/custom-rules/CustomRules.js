@@ -34,7 +34,7 @@ CustomRules.prototype.init = function() {
   this.addRule('shape.create', function(context) {
 
     var shape = context.shape,
-        target = context.parent;
+        target = context.target;
 
     // we check for a custom vendor:allowDrop attribute
     // to be present on the BPMN 2.0 xml of the target

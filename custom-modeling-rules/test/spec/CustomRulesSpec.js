@@ -45,7 +45,7 @@ describe('custom-rules', function() {
       // when
       var canCreate = rules.allowed('shape.create', {
         shape: newEventShape,
-        parent: targetElement
+        target: targetElement
       });
 
       // then
@@ -62,7 +62,7 @@ describe('custom-rules', function() {
       // when
       var canCreate = rules.allowed('shape.create', {
         shape: newEventShape,
-        parent: specialFlowElement
+        target: specialFlowElement
       });
 
       // then
@@ -80,7 +80,7 @@ describe('custom-rules', function() {
       // when
       var canCreate = rules.allowed('shape.create', {
         shape: newTaskShape,
-        parent: specialFlowElement
+        target: specialFlowElement
       });
 
       // then
