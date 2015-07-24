@@ -49,7 +49,7 @@ describe('custom-rules', function() {
       });
 
       // then
-      expect(canCreate).toBe(false);
+      expect(canCreate).to.be.false;
     }));
 
 
@@ -66,7 +66,7 @@ describe('custom-rules', function() {
       });
 
       // then
-      expect(canCreate).toBe(false);
+      expect(canCreate).to.be.false;
 
     }));
 
@@ -84,7 +84,7 @@ describe('custom-rules', function() {
       });
 
       // then
-      expect(canCreate).toBe(true);
+      expect(canCreate).to.be.true;
 
     }));
 

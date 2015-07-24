@@ -21,24 +21,27 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "chai": "^3.2.0",
     "grunt": "^0.4.4",
     "grunt-contrib-jshint": "^0.7.2",
     "grunt-karma": "^0.8.0",
-    "inherits": "^2.0.1",
-    "jasmine-test-container-support": "^0.1.2",
-    "karma": "^0.12.12",
+    "karma": "^0.12.0",
     "karma-browserify": "^4.0.0",
+    "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.2",
     "karma-firefox-launcher": "^0.1.3",
     "karma-ie-launcher": "^0.1.4",
-    "karma-jasmine": "https://github.com/Nikku/karma-jasmine/archive/jasmine-v2.0.0-latest-1.tar.gz",
+    "karma-mocha": "^0.2.0",
     "karma-phantomjs-launcher": "^0.1.2",
     "karma-safari-launcher": "^0.1.1",
     "load-grunt-tasks": "^0.3.0",
+    "mocha": "^2.2.5",
+    "mocha-test-container-support": "^0.1.0",
     "stringify": "^3.1.0",
     "time-grunt": "^0.3.2"
   },
   "dependencies": {
+    "inherits": "^2.0.1",
     "bpmn-js": "^0.10.0",
     "diagram-js": "^0.10.0"
   }
