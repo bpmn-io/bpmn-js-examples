@@ -50,7 +50,7 @@ modeling.updateProperties(sequenceFlowElement, {
 
 Both ways will eventually serialize the condition to XML.
 
-To learn more, check out [an example diagram](https://github.com/bpmn-io/bpmn-js-examples/blob/master/bpmn-properties/test/spec/diagram.bpmn) and the accompanying [test cases](https://github.com/bpmn-io/bpmn-js-examples/blob/bpmn-properties/test/spec/BpmnPropertiesSpec.js).
+To learn more, check out [an example diagram](https://github.com/bpmn-io/bpmn-js-examples/blob/master/bpmn-properties/test/spec/diagram.bpmn) and the accompanying [test cases](https://github.com/bpmn-io/bpmn-js-examples/blob/master/bpmn-properties/test/spec/BpmnPropertiesSpec.js).
 
 
 ## Building
