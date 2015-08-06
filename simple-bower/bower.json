@@ -2,11 +2,11 @@
   "name": "simple-bower",
   "version": "0.0.0",
   "authors": [
-    "Nico Rehwaldt <git_nikku@nixis.de>"
+    "Nico Rehwaldt <nico.rehwaldt@camunda.com>"
   ],
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bpmn-js": "^0.10.0"
+    "bpmn-js": "^0.11.0"
   }
 }

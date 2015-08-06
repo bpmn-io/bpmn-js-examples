@@ -32,9 +32,9 @@
     "load-grunt-tasks": "^0.3.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.10.0",
+    "bpmn-js": "^0.11.0",
     "bpmn-js-embedded-comments": "^0.4.0",
-    "diagram-js": "^0.10.0",
+    "diagram-js": "^0.11.0",
     "jquery": "^2.1.0"
   }
 }
