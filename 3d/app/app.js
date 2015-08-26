@@ -116,8 +116,10 @@ viewer.importXML(pizzaDiagram, function(err) {
       geomType = 'gateway';
     }
     else if (type.indexOf('Event') > -1) {
-      shape = new THREE.SphereGeometry(el.width * scale);
+      // shape = new THREE.SphereGeometry(el.width * scale);
+      shape = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height);
       mesh = new THREE.Mesh(shape, material);
+      mesh.rotation.x = -90 * 0.0174532925;
       geomType = 'event';
     }
     else if (el.width && el.height) {
