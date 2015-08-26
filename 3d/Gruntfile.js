@@ -38,16 +38,13 @@ module.exports = function(grunt) {
         transform: [ 'brfs' ]
       },
       watch: {
-        // options: {
-        //   watch: true
-        // },
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/**/*.js' ]
+          '<%= config.dist %>/app.js': [ '<%= config.sources %>/app.js' ]
         }
       },
       app: {
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/**/*.js' ]
+          '<%= config.dist %>/app.js': [ '<%= config.sources %>/app.js' ]
         }
       }
     },
@@ -61,6 +58,20 @@ module.exports = function(grunt) {
             dest: '<%= config.dist %>'
           }
         ]
+      }
+    },
+    concat: {
+      three: {
+        src: [
+          '<%= config.sources %>/Three.js',
+          '<%= config.sources %>/Detector.js',
+          '<%= config.sources %>/Stats.js',
+          '<%= config.sources %>/OrbitControls.js',
+          '<%= config.sources %>/THREEx.KeyboardState.js',
+          '<%= config.sources %>/THREEx.FullScreen.js',
+          '<%= config.sources %>/THREEx.WindowResize.js'
+        ],
+        dest: '<%= config.dist %>/dependencies.js'
       }
     },
     watch: {
