@@ -57,19 +57,18 @@ viewer.importXML(pizzaDiagram, function(err) {
       var gfx = elementRegistry.getGraphics(child),
           path;
 
-      if (notLabel(child)) {
         if (gfx.select('path')) {
           path = gfx.select('path').attr('d');
 
-          layers['layer' + layerNumber ].push(Snap.path.toAbsolute(path).toString());
+          layers['layer' + layerNumber ].push({
+            element: child,
+            svgPath: Snap.path.toAbsolute(path).toString()
+          });
         }
-      }
 
       _.forEach(child.children || [], function(elem) {
-        if (notLabel(elem)) {
           tempLayers.push(elem);
-        }
-      })
+      });
     });
 
     if (tempLayers.length === 0) {
@@ -80,13 +79,7 @@ viewer.importXML(pizzaDiagram, function(err) {
     traverse(tempLayers);
   }
 
-  var rootSvgPath = rootGfx.select('path').attr('d');
-
-  layers['layer' + layerNumber] = [ Snap.path.toAbsolute(rootSvgPath).toString() ];
-
-  layerNumber += 1;
-
   traverse(root.children);
-  
+
   console.log(layers);
 });
