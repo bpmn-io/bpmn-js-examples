@@ -3,7 +3,7 @@
 // exclude fs in package.json#browser + use the brfs transform
 // to generate a clean browserified bundle
 var fs = require('fs');
-
+var Snap = require('snapsvg');
 var _ = require('lodash');
 
 // inlined in result file via brfs
@@ -54,9 +54,15 @@ viewer.importXML(pizzaDiagram, function(err) {
     layers['layer' + layerNumber] = [];
 
     _.forEach(children, function (child) {
+      var gfx = elementRegistry.getGraphics(child),
+          path;
 
       if (notLabel(child)) {
-        layers['layer' + layerNumber].push(child);
+        if (gfx.select('path')) {
+          path = gfx.select('path').attr('d');
+
+          layers['layer' + layerNumber ].push(Snap.path.toAbsolute(path).toString());
+        }
       }
 
       _.forEach(child.children || [], function(elem) {
@@ -74,11 +80,13 @@ viewer.importXML(pizzaDiagram, function(err) {
     traverse(tempLayers);
   }
 
-  layers['layer' + layerNumber] = [ root ];
+  var rootSvgPath = rootGfx.select('path').attr('d');
+
+  layers['layer' + layerNumber] = [ Snap.path.toAbsolute(rootSvgPath).toString() ];
 
   layerNumber += 1;
 
   traverse(root.children);
-
+  
   console.log(layers);
 });
