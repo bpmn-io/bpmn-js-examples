@@ -6,10 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <style type="text/css">
-    html, body, #canvas, #canvas > div {
+    html,
+    body,
+    #three-container,
+    #canvas,
+    #canvas > div {
+      width: 100%;
       height: 100%;
+      padding: 0;
+      margin: 0;
     }
-
+    #three-container {
+      overflow: hidden;
+      /*height: 100vh;*/
+    }
   </style>
 
   <!--
@@ -20,19 +30,8 @@
   <title>npm/browserify example - bpmn-js-examples</title>
 </head>
 <body>
-
-  <h1>Pizza Collaboration Viewer</h1>
   <div id="three-container"></div>
   <div id="canvas"></div>
-<!--
-  <script src="./Three.js"></script>
-  <script src="./Detector.js"></script>
-  <script src="./Stats.js"></script>
-  <script src="./OrbitControls.js"></script>
-  <script src="./THREEx.KeyboardState.js"></script>
-  <script src="./THREEx.FullScreen.js"></script>
-  <script src="./THREEx.WindowResize.js"></script>
- -->
   <script src="./dependencies.js"></script>
   <script src="./app.js"></script>
 </body>
