@@ -1,15 +1,4 @@
 'use strict';
-
-// load dependencies
-// require('./Three');
-// require('./Detector');
-// require('./Stats');
-// require('./OrbitControls');
-// require('./THREEx.KeyboardState');
-// require('./THREEx.FullScreen');
-// require('./THREEx.WindowResize');
-
-
 // we use fs + brfs to inline an example XML document.
 // exclude fs in package.json#browser + use the brfs transform
 // to generate a clean browserified bundle
@@ -24,7 +13,7 @@ var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboratio
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
-
+var threeScene = require('./three-scene')(document.getElementById('three-container'));
 
 var viewer = new BpmnViewer({ container: '#canvas' });
 
