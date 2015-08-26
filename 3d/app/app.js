@@ -15,8 +15,10 @@
 // to generate a clean browserified bundle
 var fs = require('fs');
 
+var _ = require('lodash');
+
 // inlined in result file via brfs
-var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/simple.bpmn', 'utf-8');
+var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
 
 
 // require the viewer, make sure you added it to your project
@@ -45,22 +47,45 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   var layerNumber = 0;
 
-  // function traverse(element) {
-  //   var layer = [];
-  //
-  //   if (!element.children.length) {
-  //     return;
-  //   }
-  //
-  //   layers['layer' + layerNumber] = [];
-  //
-  //   forEach(element.children, function(elem) {
-  //     layers['layer' + layerNumber].push(children);
-  //   });
-  //
-  //   layerNumber += 1
-  //
-  // }
-  //
-  // traverse(root);
+  function notLabel(element) {
+    return !(element.type === 'label' && !element.businessObject.name);
+  }
+
+  function traverse(children) {
+    var tempLayers = [];
+
+    if (children.length === 0) {
+      return;
+    }
+
+    layers['layer' + layerNumber] = [];
+
+    _.forEach(children, function (child) {
+
+      if (notLabel(child)) {
+        layers['layer' + layerNumber].push(child);
+      }
+
+      _.forEach(child.children || [], function(elem) {
+        if (notLabel(elem)) {
+          tempLayers.push(elem);
+        }
+      })
+    });
+
+    if (tempLayers.length === 0) {
+      return;
+    }
+    layerNumber += 1;
+
+    traverse(tempLayers);
+  }
+
+  layers['layer' + layerNumber] = [ root ];
+
+  layerNumber += 1;
+
+  traverse(root.children);
+
+  console.log(layers);
 });
