@@ -14,6 +14,10 @@ var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboratio
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
 var threeScene = require('./three-scene')(document.getElementById('three-container'));
+var threeMesh = require('./three-shape2mesh');
+
+
+console.info('threeScene', threeScene, threeMesh);
 
 var viewer = new BpmnViewer({ container: '#canvas' });
 
