@@ -124,8 +124,8 @@ module.exports = function init(container) {
   scene.add(arrow);
 
 
-  // animate();
-
+  animate();
+  // renderer.render( scene, camera );
 
   return scene;
 };
