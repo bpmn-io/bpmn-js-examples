@@ -1,79 +1,69 @@
-# bpmn-js interaction example
+# bpmn-js in CommonJS Applications
 
-An example that showcases the different ways to enable user interaction with BPMN diagrams using [bpmn-js](https://github.com/bpmn-io/bpmn-js).
+[bpmn-js](https://github.com/bpmn-io/bpmn-js) is the BPMN 2.0 diagram modeling and rendering toolkit that powers [bpmn.io](http://bpmn.io).
+
+This example showcases how to integrate [bpmn-js](https://github.com/bpmn-io/bpmn-js) into a node-style application.
+It gets [bpmn-js via npm](https://www.npmjs.org/package/bpmn-js) and packages the application for the browser using [browserify](http://browserify.org).
 
 
 ## About
 
-The demo pulls bpmn-js via [bower](http://bower.io). It opens a BPMN 2.0 diagram and logs the user interaction with it.
+This example uses bpmn-js to embed the [pizza collaboration](http://demo.bpmn.io/s/pizza-collaboration) diagram into a web application.
+
+![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/simple-commonjs/docs/screenshot.png "Screenshot of the example application")
 
 
-## Usage summary
+## Usage Summary
 
-You may attach interaction event listeners to a BPMN viewer/modeler as soon as it has a diagram loaded:
+Install bpmn-js via [npm](http://npmjs.org)
 
+```
+npm install --save bpmn-js
+```
+
+Use it in your application
 
 ```javascript
-var viewer = new BpmnJS({ container: SOME_CONTAINER });
+var BpmnViewer = require('bpmn-js');
 
-viewer.importXML(diagramXML, function(err) {
-  if (err) {
-    return console.error(err);
+
+var viewer = new BpmnViewer({ container: '#canvas' });
+
+viewer.importXML(pizzaDiagram, function(err) {
+
+  if (!err) {
+    console.log('success!');
+    viewer.get('canvas').zoom('fit-viewport');
+  } else {
+    console.log('something went wrong:', err);
   }
-
-  // diagram is loaded, add interaction to it now
-  // see below for options
-});
-```
-
-Two options exists for making your diagram interactive.
-
-
-### Hook into diagram events
-
-Use the `eventBus` service to hook into `element.*` interaction events. [bpmn-js](https://github.com/bpmn-io/bpmn-js) makes sure the events are properly dispatched, even if the user works on a touch device.
-
-```javascript
-var eventBus = viewer.get('eventBus');
-
-// you may hook into any of the following events
-var events = [
-  'element.hover',
-  'element.out',
-  'element.click',
-  'element.dblclick',
-  'element.mousedown',
-  'element.mouseup'
-];
-
-events.forEach(function(event) {
-
-  eventBus.on(event, function(e) {
-    // e.element = the model element
-    // e.gfx = the graphical element
-
-    log(event, 'on', e.element.id);
-  });
 });
 ```
 
 
-### Directly attach listener to DOM
+## Building the Project
 
-You have more control on which elements you would like to address by directly attaching listeners
-to the underlying DOM (i.e. HTML/SVG) nodes.
+Initialize the project dependencies via
 
-You can do so by searching for selectors like `[data-element-id=ID_OF_ELEMENT]`:
-
-```javascript
-// each model element a data-element-id attribute attached to
-// it in HTML
-
-// select the end event
-var endEventNode = document.querySelector('[data-element-id=END_EVENT]');
-endEventNode.addEventListener('click', function(e) {
-  alert('clicked the end event!');
-});
+```
+npm install
 ```
 
-Both options allow you to intercept user interaction with the diagram and handle it accordingly.
+The project contains a  [Grunt](http://gruntjs.com/) build script that defines a few tasks.
+
+To create the sample distribution in the `dist` folder run
+
+```
+grunt
+```
+
+To bootstrap a development setup that spawns a small webserver and rebuilds your app on changes run
+
+```
+grunt auto-build
+```
+
+
+## License
+
+MIT
