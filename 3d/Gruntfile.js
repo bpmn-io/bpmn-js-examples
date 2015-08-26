@@ -38,9 +38,9 @@ module.exports = function(grunt) {
         transform: [ 'brfs' ]
       },
       watch: {
-        options: {
-          watch: true
-        },
+        // options: {
+        //   watch: true
+        // },
         files: {
           '<%= config.dist %>/app.js': [ '<%= config.sources %>/**/*.js' ]
         }
@@ -65,8 +65,12 @@ module.exports = function(grunt) {
     },
     watch: {
       samples: {
-        files: [ '<%= config.sources %>/**/*.*' ],
+        files: [ '<%= config.sources %>/**/*.*', '!<%= config.sources %>/**/*.js' ],
         tasks: [ 'copy:app' ]
+      },
+      scripts: {
+        files: ['<%= config.sources %>/**/*.js' ],
+        tasks: ['browserify']
       },
       livereload: {
         options: {
