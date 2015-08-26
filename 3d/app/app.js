@@ -36,57 +36,65 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   var rootGfx = elementRegistry.getGraphics(root);
 
-  var layers = {};
+  console.info('viewer', viewer);
 
-  var layerNumber = 0;
+  // var layers = {};
 
-  function notLabel(element) {
-    return !(element.type === 'label' && !element.businessObject.name);
-  }
+  // var layerNumber = 0;
 
-  function traverse(children) {
-    var tempLayers = [];
+  // function notLabel(element) {
+  //   return !(element.type === 'label' && !element.businessObject.name);
+  // }
 
-    if (children.length === 0) {
-      return;
-    }
+  // function traverse(children) {
+  //   var tempLayers = [];
 
-    layers['layer' + layerNumber] = [];
+  //   if (children.length === 0) {
+  //     return;
+  //   }
 
-    _.forEach(children, function (child) {
-      var gfx = elementRegistry.getGraphics(child),
-          path;
+  //   layers['layer' + layerNumber] = [];
 
-      if (notLabel(child)) {
-        if (gfx.select('path')) {
-          path = gfx.select('path').attr('d');
+  //   _.forEach(children, function (child) {
+  //     var gfx = elementRegistry.getGraphics(child),
+  //         path;
 
-          layers['layer' + layerNumber ].push(Snap.path.toAbsolute(path).toString());
-        }
-      }
+  //     if (notLabel(child)) {
+  //       if (gfx.select('path')) {
+  //         path = gfx.select('path').attr('d');
 
-      _.forEach(child.children || [], function(elem) {
-        if (notLabel(elem)) {
-          tempLayers.push(elem);
-        }
-      })
-    });
+  //         layers['layer' + layerNumber ].push(Snap.path.toAbsolute(path).toString());
+  //       }
+  //     }
 
-    if (tempLayers.length === 0) {
-      return;
-    }
-    layerNumber += 1;
+  //     _.forEach(child.children || [], function(elem) {
+  //       if (notLabel(elem)) {
+  //         tempLayers.push(elem);
+  //       }
+  //     });
+  //   });
 
-    traverse(tempLayers);
-  }
+  //   if (tempLayers.length === 0) {
+  //     return;
+  //   }
+  //   layerNumber += 1;
 
-  var rootSvgPath = rootGfx.select('path').attr('d');
+  //   traverse(tempLayers);
+  // }
 
-  layers['layer' + layerNumber] = [ Snap.path.toAbsolute(rootSvgPath).toString() ];
+  // var rootSvgPath = rootGfx.select('path').attr('d');
 
-  layerNumber += 1;
+  // layers['layer' + layerNumber] = [ Snap.path.toAbsolute(rootSvgPath).toString() ];
 
-  traverse(root.children);
-  
-  console.log(layers);
+  // layerNumber += 1;
+
+  // traverse(root.children);
+  // Object.keys(layers).forEach(function (name, depth) {
+  //   var shapes = layers[name];
+  //   shapes.forEach(function (shape) {
+  //     console.info('shape', shape);
+  //     threeMesh.create(shape, threeScene.scene);
+  //   });
+  // });
+  // console.log(layers);
 });

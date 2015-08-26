@@ -89,14 +89,14 @@ module.exports = function init(container) {
   // CUSTOM //
   ////////////
 
-  var geometry = new THREE.SphereGeometry( 30, 32, 16 );
-  var material = new THREE.MeshLambertMaterial( { color: 0x000088 } );
-  mesh = new THREE.Mesh( geometry, material );
-  mesh.position.set(40,40,40);
-  scene.add(mesh);
+  // var geometry = new THREE.SphereGeometry( 30, 32, 16 );
+  // var material = new THREE.MeshLambertMaterial( { color: 0x000088 } );
+  // mesh = new THREE.Mesh( geometry, material );
+  // mesh.position.set(40,40,40);
+  // scene.add(mesh);
 
   var axes = new THREE.AxisHelper(50);
-  axes.position = mesh.position;
+  axes.position = {x:-40, y:-40, z:-40};//mesh.position;
   scene.add(axes);
 
   var gridXZ = new THREE.GridHelper(100, 10);
