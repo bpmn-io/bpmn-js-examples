@@ -68,6 +68,13 @@ module.exports = function(grunt) {
         files: [ '<%= config.sources %>/**/*.*' ],
         tasks: [ 'copy:app' ]
       },
+      livereload: {
+        options: {
+          livereload: 9014
+        },
+        files: '<%= config.dist %>/**/*',
+        tasks: []
+      }
     },
     connect: {
       options: {

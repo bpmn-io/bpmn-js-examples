@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/app/app.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/home/vale/repos/bpmn-js-examples/3d/app/app.js":[function(require,module,exports){
 'use strict';
 
 // we use fs + brfs to inline an example XML document.
@@ -31,14 +31,35 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   var root = canvas.getRootElement();
 
-  console.log(root);
   var rootGfx = elementRegistry.getGraphics(root);
 
+  var layers = {};
+
+  var layerNumber = 0;
+
+  // function traverse(element) {
+  //   var layer = [];
+  //
+  //   if (!element.children.length) {
+  //     return;
+  //   }
+  //
+  //   layers['layer' + layerNumber] = [];
+  //
+  //   forEach(element.children, function(elem) {
+  //     layers['layer' + layerNumber].push(children);
+  //   });
+  //
+  //   layerNumber += 1
+  //
+  // }
+  //
+  // traverse(root);
 });
 
-},{"bpmn-js":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/index.js":[function(require,module,exports){
+},{"bpmn-js":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/index.js":[function(require,module,exports){
 module.exports = require('./lib/Viewer');
-},{"./lib/Viewer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/Viewer.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/Viewer.js":[function(require,module,exports){
+},{"./lib/Viewer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/Viewer.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/Viewer.js":[function(require,module,exports){
 'use strict';
 
 var assign = require('lodash/object/assign'),
@@ -392,14 +413,14 @@ Viewer.prototype._modules = [
 
 module.exports = Viewer;
 
-},{"./core":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/core/index.js","./import/Importer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Importer.js","bpmn-moddle":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/index.js","diagram-js":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/index.js","diagram-js/lib/features/overlays":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/index.js","diagram-js/lib/features/selection":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/index.js","lodash/lang/isNumber":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js","lodash/lang/isString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","lodash/object/omit":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/omit.js","min-dom/lib/domify":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/domify.js","min-dom/lib/query":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/query.js","min-dom/lib/remove":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/remove.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/core/index.js":[function(require,module,exports){
+},{"./core":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/core/index.js","./import/Importer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Importer.js","bpmn-moddle":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/index.js","diagram-js":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/index.js","diagram-js/lib/features/overlays":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/index.js","diagram-js/lib/features/selection":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/index.js","lodash/lang/isNumber":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js","lodash/lang/isString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","lodash/object/omit":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/omit.js","min-dom/lib/domify":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/domify.js","min-dom/lib/query":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/query.js","min-dom/lib/remove":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/remove.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/core/index.js":[function(require,module,exports){
 module.exports = {
   __depends__: [
     require('../draw'),
     require('../import')
   ]
 };
-},{"../draw":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/index.js","../import":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/BpmnRenderer.js":[function(require,module,exports){
+},{"../draw":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/index.js","../import":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/BpmnRenderer.js":[function(require,module,exports){
 'use strict';
 
 var inherits = require('inherits'),
@@ -2032,7 +2053,7 @@ BpmnRenderer.$inject = [ 'eventBus', 'styles', 'pathMap' ];
 
 module.exports = BpmnRenderer;
 
-},{"../util/DiUtil":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/DiUtil.js","diagram-js/lib/draw/Renderer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js","diagram-js/lib/util/Text":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Text.js","inherits":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/inherits/inherits_browser.js","lodash/collection/every":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/every.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/includes":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/includes.js","lodash/collection/some":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/some.js","lodash/lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/PathMap.js":[function(require,module,exports){
+},{"../util/DiUtil":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/DiUtil.js","diagram-js/lib/draw/Renderer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js","diagram-js/lib/util/Text":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Text.js","inherits":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/inherits/inherits_browser.js","lodash/collection/every":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/every.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/includes":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/includes.js","lodash/collection/some":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/some.js","lodash/lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/PathMap.js":[function(require,module,exports){
 'use strict';
 
 var Snap = require('diagram-js/vendor/snapsvg');
@@ -2487,12 +2508,12 @@ function PathMap() {
 
 module.exports = PathMap;
 
-},{"diagram-js/vendor/snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/index.js":[function(require,module,exports){
+},{"diagram-js/vendor/snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/index.js":[function(require,module,exports){
 module.exports = {
   renderer: [ 'type', require('./BpmnRenderer') ],
   pathMap: [ 'type', require('./PathMap') ]
 };
-},{"./BpmnRenderer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/BpmnRenderer.js","./PathMap":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/PathMap.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnImporter.js":[function(require,module,exports){
+},{"./BpmnRenderer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/BpmnRenderer.js","./PathMap":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/draw/PathMap.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnImporter.js":[function(require,module,exports){
 'use strict';
 
 var assign = require('lodash/object/assign'),
@@ -2684,7 +2705,7 @@ BpmnImporter.prototype._getElement = function(semantic) {
   return this._elementRegistry.get(semantic.id);
 };
 
-},{"../util/DiUtil":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/DiUtil.js","../util/LabelUtil":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/LabelUtil.js","./Util":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Util.js","lodash/collection/map":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/map.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnTreeWalker.js":[function(require,module,exports){
+},{"../util/DiUtil":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/DiUtil.js","../util/LabelUtil":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/LabelUtil.js","./Util":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Util.js","lodash/collection/map":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/map.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnTreeWalker.js":[function(require,module,exports){
 'use strict';
 
 var filter = require('lodash/collection/filter'),
@@ -3092,7 +3113,7 @@ function BpmnTreeWalker(handler) {
 }
 
 module.exports = BpmnTreeWalker;
-},{"./Util":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Util.js","lodash/collection/filter":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js","lodash/collection/find":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","object-refs":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Importer.js":[function(require,module,exports){
+},{"./Util":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Util.js","lodash/collection/filter":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js","lodash/collection/find":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","object-refs":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Importer.js":[function(require,module,exports){
 'use strict';
 
 var BpmnTreeWalker = require('./BpmnTreeWalker');
@@ -3151,7 +3172,7 @@ function importBpmnDiagram(diagram, definitions, done) {
 }
 
 module.exports.importBpmnDiagram = importBpmnDiagram;
-},{"./BpmnTreeWalker":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnTreeWalker.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Util.js":[function(require,module,exports){
+},{"./BpmnTreeWalker":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnTreeWalker.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/Util.js":[function(require,module,exports){
 'use strict';
 
 module.exports.elementToString = function(e) {
@@ -3161,11 +3182,11 @@ module.exports.elementToString = function(e) {
 
   return '<' + e.$type + (e.id ? ' id="' + e.id : '') + '" />';
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/index.js":[function(require,module,exports){
 module.exports = {
   bpmnImporter: [ 'type', require('./BpmnImporter') ]
 };
-},{"./BpmnImporter":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnImporter.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/DiUtil.js":[function(require,module,exports){
+},{"./BpmnImporter":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/import/BpmnImporter.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/DiUtil.js":[function(require,module,exports){
 'use strict';
 
 var is = require('./ModelUtil').is,
@@ -3188,7 +3209,7 @@ module.exports.isExpanded = function(element) {
   return true;
 };
 
-},{"./ModelUtil":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/ModelUtil.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/LabelUtil.js":[function(require,module,exports){
+},{"./ModelUtil":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/ModelUtil.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/LabelUtil.js":[function(require,module,exports){
 'use strict';
 
 var assign = require('lodash/object/assign');
@@ -3288,7 +3309,7 @@ module.exports.getExternalLabelBounds = function(semantic, element) {
     y: mid.y - size.height / 2
   }, size);
 };
-},{"lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/ModelUtil.js":[function(require,module,exports){
+},{"lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/lib/util/ModelUtil.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -3321,9 +3342,9 @@ function getBusinessObject(element) {
 
 module.exports.getBusinessObject = getBusinessObject;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/index.js":[function(require,module,exports){
 module.exports = require('./lib/simple');
-},{"./lib/simple":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/simple.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/bpmn-moddle.js":[function(require,module,exports){
+},{"./lib/simple":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/simple.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/bpmn-moddle.js":[function(require,module,exports){
 'use strict';
 
 var isString = require('lodash/lang/isString'),
@@ -3404,7 +3425,7 @@ BpmnModdle.prototype.toXML = function(element, options, done) {
   }
 };
 
-},{"lodash/lang/isFunction":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js","lodash/lang/isString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","moddle":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/index.js","moddle-xml/lib/reader":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/reader.js","moddle-xml/lib/writer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/writer.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/simple.js":[function(require,module,exports){
+},{"lodash/lang/isFunction":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js","lodash/lang/isString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","moddle":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/index.js","moddle-xml/lib/reader":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/reader.js","moddle-xml/lib/writer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/writer.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/simple.js":[function(require,module,exports){
 'use strict';
 
 var assign = require('lodash/object/assign');
@@ -3421,7 +3442,7 @@ var packages = {
 module.exports = function(additionalPackages, options) {
   return new BpmnModdle(assign({}, packages, additionalPackages), options);
 };
-},{"../resources/bpmn/json/bpmn.json":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmn.json","../resources/bpmn/json/bpmndi.json":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmndi.json","../resources/bpmn/json/dc.json":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/dc.json","../resources/bpmn/json/di.json":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/di.json","./bpmn-moddle":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/bpmn-moddle.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/common.js":[function(require,module,exports){
+},{"../resources/bpmn/json/bpmn.json":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmn.json","../resources/bpmn/json/bpmndi.json":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmndi.json","../resources/bpmn/json/dc.json":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/dc.json","../resources/bpmn/json/di.json":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/di.json","./bpmn-moddle":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/lib/bpmn-moddle.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/common.js":[function(require,module,exports){
 'use strict';
 
 function capitalize(string) {
@@ -3458,7 +3479,7 @@ module.exports.DEFAULT_NS_MAP = {
 };
 
 module.exports.XSI_TYPE = 'xsi:type';
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/reader.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/reader.js":[function(require,module,exports){
 'use strict';
 
 var reduce = require('lodash/collection/reduce'),
@@ -4097,7 +4118,7 @@ XMLReader.prototype.handler = function(name) {
 
 module.exports = XMLReader;
 module.exports.ElementHandler = ElementHandler;
-},{"./common":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/common.js","lodash/collection/find":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","lodash/function/defer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/defer.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","moddle":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/index.js","moddle/lib/ns":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","moddle/lib/types":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js","sax":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/sax/lib/sax.js","tiny-stack":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/tiny-stack/lib/tiny-stack.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/writer.js":[function(require,module,exports){
+},{"./common":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/common.js","lodash/collection/find":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","lodash/function/defer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/defer.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","moddle":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/index.js","moddle/lib/ns":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","moddle/lib/types":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js","sax":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/sax/lib/sax.js","tiny-stack":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/tiny-stack/lib/tiny-stack.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/writer.js":[function(require,module,exports){
 'use strict';
 
 var map = require('lodash/collection/map'),
@@ -4701,7 +4722,7 @@ function XMLWriter(options) {
 }
 
 module.exports = XMLWriter;
-},{"./common":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/common.js","lodash/collection/filter":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/map":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/map.js","lodash/lang/isString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","moddle/lib/ns":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","moddle/lib/types":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/sax/lib/sax.js":[function(require,module,exports){
+},{"./common":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/lib/common.js","lodash/collection/filter":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/map":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/map.js","lodash/lang/isString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","moddle/lib/ns":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","moddle/lib/types":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/sax/lib/sax.js":[function(require,module,exports){
 (function (Buffer){
 // wrapper for non-node envs
 ;(function (sax) {
@@ -6115,7 +6136,7 @@ if (!String.fromCodePoint) {
 })(typeof exports === "undefined" ? sax = {} : exports);
 
 }).call(this,undefined)
-},{"stream":false,"string_decoder":false}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/tiny-stack/lib/tiny-stack.js":[function(require,module,exports){
+},{"stream":false,"string_decoder":false}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle-xml/node_modules/tiny-stack/lib/tiny-stack.js":[function(require,module,exports){
 /**
  * Tiny stack for browser or server
  *
@@ -6232,9 +6253,9 @@ else {
 }
 } )( this );
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/index.js":[function(require,module,exports){
 module.exports = require('./lib/moddle');
-},{"./lib/moddle":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/moddle.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/base.js":[function(require,module,exports){
+},{"./lib/moddle":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/moddle.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/base.js":[function(require,module,exports){
 'use strict';
 
 function Base() { }
@@ -6249,7 +6270,7 @@ Base.prototype.set = function(name, value) {
 
 
 module.exports = Base;
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/descriptor-builder.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/descriptor-builder.js":[function(require,module,exports){
 'use strict';
 
 var pick = require('lodash/object/pick'),
@@ -6435,7 +6456,7 @@ DescriptorBuilder.prototype.addTrait = function(t) {
   allTypes.push(t);
 };
 
-},{"./ns":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","lodash/object/pick":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pick.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/factory.js":[function(require,module,exports){
+},{"./ns":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","lodash/object/pick":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pick.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/factory.js":[function(require,module,exports){
 'use strict';
 
 var forEach = require('lodash/collection/forEach');
@@ -6493,7 +6514,7 @@ Factory.prototype.createType = function(descriptor) {
 
   return ModdleElement;
 };
-},{"./base":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/base.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/moddle.js":[function(require,module,exports){
+},{"./base":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/base.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/moddle.js":[function(require,module,exports){
 'use strict';
 
 var isString = require('lodash/lang/isString'),
@@ -6715,7 +6736,7 @@ Moddle.prototype.getPropertyDescriptor = function(element, property) {
   return this.getElementDescriptor(element).propertiesByName[property];
 };
 
-},{"./factory":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/factory.js","./ns":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","./properties":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/properties.js","./registry":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/registry.js","lodash/collection/find":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/lang/isString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js":[function(require,module,exports){
+},{"./factory":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/factory.js","./ns":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","./properties":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/properties.js","./registry":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/registry.js","lodash/collection/find":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/lang/isString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -6752,7 +6773,7 @@ module.exports.parseName = function(name, defaultPrefix) {
     localName: localName
   };
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/properties.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/properties.js":[function(require,module,exports){
 'use strict';
 
 
@@ -6846,7 +6867,7 @@ Properties.prototype.defineDescriptor = function(target, descriptor) {
 Properties.prototype.defineModel = function(target, model) {
   this.define(target, '$model', { value: model });
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/registry.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/registry.js":[function(require,module,exports){
 'use strict';
 
 var assign = require('lodash/object/assign'),
@@ -7022,7 +7043,7 @@ Registry.prototype.getEffectiveDescriptor = function(name) {
 Registry.prototype.definePackage = function(target, pkg) {
   this.properties.define(target, '$pkg', { value: pkg });
 };
-},{"./descriptor-builder":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/descriptor-builder.js","./ns":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","./types":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js":[function(require,module,exports){
+},{"./descriptor-builder":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/descriptor-builder.js","./ns":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/ns.js","./types":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/node_modules/moddle/lib/types.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -7073,7 +7094,7 @@ module.exports.isBuiltIn = function(type) {
 module.exports.isSimple = function(type) {
   return !!TYPE_CONVERTERS[type];
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmn.json":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmn.json":[function(require,module,exports){
 module.exports={
   "name": "BPMN20",
   "uri": "http://www.omg.org/spec/BPMN/20100524/MODEL",
@@ -9961,7 +9982,7 @@ module.exports={
     "typePrefix": "t"
   }
 }
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmndi.json":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/bpmndi.json":[function(require,module,exports){
 module.exports={
   "name": "BPMNDI",
   "uri": "http://www.omg.org/spec/BPMN/20100524/DI",
@@ -10155,7 +10176,7 @@ module.exports={
   "associations": [],
   "prefix": "bpmndi"
 }
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/dc.json":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/dc.json":[function(require,module,exports){
 module.exports={
   "name": "DC",
   "uri": "http://www.omg.org/spec/DD/20100524/DC",
@@ -10255,7 +10276,7 @@ module.exports={
   "prefix": "dc",
   "associations": []
 }
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/di.json":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/bpmn-moddle/resources/bpmn/json/di.json":[function(require,module,exports){
 module.exports={
   "name": "DI",
   "uri": "http://www.omg.org/spec/DD/20100524/DI",
@@ -10472,9 +10493,9 @@ module.exports={
     "tagAlias": "lowerCase"
   }
 }
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/index.js":[function(require,module,exports){
 module.exports = require('./lib/Diagram');
-},{"./lib/Diagram":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/Diagram.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/Diagram.js":[function(require,module,exports){
+},{"./lib/Diagram":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/Diagram.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/Diagram.js":[function(require,module,exports){
 'use strict';
 
 var di = require('didi');
@@ -10668,7 +10689,7 @@ module.exports = Diagram;
 Diagram.prototype.destroy = function() {
   this.get('eventBus').fire('diagram.destroy');
 };
-},{"./core":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/index.js","didi":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/Canvas.js":[function(require,module,exports){
+},{"./core":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/index.js","didi":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/Canvas.js":[function(require,module,exports){
 'use strict';
 
 var isNumber = require('lodash/lang/isNumber'),
@@ -11540,7 +11561,7 @@ Canvas.prototype.getAbsoluteBBox = function(element) {
   };
 };
 
-},{"../../vendor/snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","../util/Collections":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Collections.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/lang/isNumber":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementFactory.js":[function(require,module,exports){
+},{"../../vendor/snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","../util/Collections":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Collections.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/lang/isNumber":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementFactory.js":[function(require,module,exports){
 'use strict';
 
 var Model = require('../model');
@@ -11590,7 +11611,7 @@ ElementFactory.prototype.create = function(type, attrs) {
 
   return Model.create(type, attrs);
 };
-},{"../model":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/model/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementRegistry.js":[function(require,module,exports){
+},{"../model":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/model/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementRegistry.js":[function(require,module,exports){
 'use strict';
 
 var ELEMENT_ID = 'data-element-id';
@@ -11780,7 +11801,7 @@ ElementRegistry.prototype._validateId = function(id) {
     throw new Error('element with id ' + id + ' already added');
   }
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/EventBus.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/EventBus.js":[function(require,module,exports){
 'use strict';
 
 var isFunction = require('lodash/lang/isFunction'),
@@ -12166,7 +12187,7 @@ Event.prototype.init = function(data) {
   assign(this, data || {});
 };
 
-},{"lodash/lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isFunction":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js","lodash/lang/isNumber":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/GraphicsFactory.js":[function(require,module,exports){
+},{"lodash/lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isFunction":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js","lodash/lang/isNumber":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/GraphicsFactory.js":[function(require,module,exports){
 'use strict';
 
 var forEach = require('lodash/collection/forEach'),
@@ -12328,7 +12349,7 @@ GraphicsFactory.prototype.remove = function(element) {
   gfx.parent().remove();
 };
 
-},{"../util/GraphicsUtil":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/GraphicsUtil.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","min-dom/lib/clear":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/clear.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/index.js":[function(require,module,exports){
+},{"../util/GraphicsUtil":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/GraphicsUtil.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","min-dom/lib/clear":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/clear.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/index.js":[function(require,module,exports){
 module.exports = {
   __depends__: [ require('../draw') ],
   __init__: [ 'canvas' ],
@@ -12338,7 +12359,7 @@ module.exports = {
   eventBus: [ 'type', require('./EventBus') ],
   graphicsFactory: [ 'type', require('./GraphicsFactory') ]
 };
-},{"../draw":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/index.js","./Canvas":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/Canvas.js","./ElementFactory":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementFactory.js","./ElementRegistry":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementRegistry.js","./EventBus":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/EventBus.js","./GraphicsFactory":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/GraphicsFactory.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js":[function(require,module,exports){
+},{"../draw":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/index.js","./Canvas":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/Canvas.js","./ElementFactory":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementFactory.js","./ElementRegistry":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/ElementRegistry.js","./EventBus":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/EventBus.js","./GraphicsFactory":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/core/GraphicsFactory.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js":[function(require,module,exports){
 'use strict';
 
 var Snap = require('../../vendor/snapsvg');
@@ -12439,7 +12460,7 @@ function updateLine(gfx, points) {
 
 module.exports.createLine = createLine;
 module.exports.updateLine = updateLine;
-},{"../../vendor/snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Styles.js":[function(require,module,exports){
+},{"../../vendor/snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Styles.js":[function(require,module,exports){
 'use strict';
 
 var isArray = require('lodash/lang/isArray'),
@@ -12504,12 +12525,12 @@ function Styles() {
 }
 
 module.exports = Styles;
-},{"lodash/collection/reduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","lodash/lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/index.js":[function(require,module,exports){
+},{"lodash/collection/reduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","lodash/lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/index.js":[function(require,module,exports){
 module.exports = {
   renderer: [ 'type', require('./Renderer') ],
   styles: [ 'type', require('./Styles') ]
 };
-},{"./Renderer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js","./Styles":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Styles.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/InteractionEvents.js":[function(require,module,exports){
+},{"./Renderer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js","./Styles":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Styles.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/InteractionEvents.js":[function(require,module,exports){
 'use strict';
 
 var forEach = require('lodash/collection/forEach'),
@@ -12748,12 +12769,12 @@ module.exports = InteractionEvents;
  * @property {Snap<Element>} gfx
  * @property {Event} originalEvent
  */
-},{"../../../vendor/snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","../../draw/Renderer":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js","../../util/Mouse":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Mouse.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","min-dom/lib/delegate":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/delegate.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/index.js":[function(require,module,exports){
+},{"../../../vendor/snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","../../draw/Renderer":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/draw/Renderer.js","../../util/Mouse":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Mouse.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","min-dom/lib/delegate":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/delegate.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/index.js":[function(require,module,exports){
 module.exports = {
   __init__: [ 'interactionEvents' ],
   interactionEvents: [ 'type', require('./InteractionEvents') ]
 };
-},{"./InteractionEvents":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/InteractionEvents.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/Outline.js":[function(require,module,exports){
+},{"./InteractionEvents":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/InteractionEvents.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/Outline.js":[function(require,module,exports){
 'use strict';
 
 var Snap = require('../../../vendor/snapsvg');
@@ -12834,14 +12855,14 @@ Outline.$inject = ['eventBus', 'styles', 'elementRegistry'];
 
 module.exports = Outline;
 
-},{"../../../vendor/snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","../../util/Elements":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Elements.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/index.js":[function(require,module,exports){
+},{"../../../vendor/snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","../../util/Elements":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Elements.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/index.js":[function(require,module,exports){
 'use strict';
 
 module.exports = {
   __init__: [ 'outline' ],
   outline: [ 'type', require('./Outline') ]
 };
-},{"./Outline":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/Outline.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/Overlays.js":[function(require,module,exports){
+},{"./Outline":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/Outline.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/Overlays.js":[function(require,module,exports){
 'use strict';
 
 var isArray = require('lodash/lang/isArray'),
@@ -13347,12 +13368,12 @@ Overlays.prototype._init = function(config) {
   });
 };
 
-},{"../../util/Elements":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Elements.js","../../util/IdGenerator":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/IdGenerator.js","lodash/collection/filter":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/function/debounce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/debounce.js","lodash/lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/lang/isString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","min-dom/lib/classes":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/classes.js","min-dom/lib/domify":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/domify.js","min-dom/lib/remove":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/remove.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/index.js":[function(require,module,exports){
+},{"../../util/Elements":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Elements.js","../../util/IdGenerator":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/IdGenerator.js","lodash/collection/filter":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/function/debounce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/debounce.js","lodash/lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/lang/isString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","min-dom/lib/classes":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/classes.js","min-dom/lib/domify":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/domify.js","min-dom/lib/remove":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/remove.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/index.js":[function(require,module,exports){
 module.exports = {
   __init__: [ 'overlays' ],
   overlays: [ 'type', require('./Overlays') ]
 };
-},{"./Overlays":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/Overlays.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/Selection.js":[function(require,module,exports){
+},{"./Overlays":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/overlays/Overlays.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/Selection.js":[function(require,module,exports){
 'use strict';
 
 var isArray = require('lodash/lang/isArray'),
@@ -13446,7 +13467,7 @@ Selection.prototype.select = function(elements, add) {
   this._eventBus.fire('selection.changed', { oldSelection: oldSelection, newSelection: selectedElements });
 };
 
-},{"lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionBehavior.js":[function(require,module,exports){
+},{"lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionBehavior.js":[function(require,module,exports){
 'use strict';
 
 var hasPrimaryModifier = require('../../util/Mouse').hasPrimaryModifier;
@@ -13508,7 +13529,7 @@ SelectionBehavior.$inject = [ 'eventBus', 'selection', 'canvas' ];
 
 module.exports = SelectionBehavior;
 
-},{"../../util/Mouse":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Mouse.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionVisuals.js":[function(require,module,exports){
+},{"../../util/Mouse":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Mouse.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionVisuals.js":[function(require,module,exports){
 'use strict';
 
 var forEach = require('lodash/collection/forEach');
@@ -13586,7 +13607,7 @@ SelectionVisuals.$inject = [
 
 module.exports = SelectionVisuals;
 
-},{"lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/index.js":[function(require,module,exports){
+},{"lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/index.js":[function(require,module,exports){
 module.exports = {
   __init__: [ 'selectionVisuals', 'selectionBehavior' ],
   __depends__: [
@@ -13598,7 +13619,7 @@ module.exports = {
   selectionBehavior: [ 'type', require('./SelectionBehavior') ]
 };
 
-},{"../interaction-events":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/index.js","../outline":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/index.js","./Selection":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/Selection.js","./SelectionBehavior":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionBehavior.js","./SelectionVisuals":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionVisuals.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/model/index.js":[function(require,module,exports){
+},{"../interaction-events":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/interaction-events/index.js","../outline":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/outline/index.js","./Selection":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/Selection.js","./SelectionBehavior":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionBehavior.js","./SelectionVisuals":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/features/selection/SelectionVisuals.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/model/index.js":[function(require,module,exports){
 'use strict';
 
 var assign = require('lodash/object/assign'),
@@ -13800,7 +13821,7 @@ module.exports.Root = Root;
 module.exports.Shape = Shape;
 module.exports.Connection = Connection;
 module.exports.Label = Label;
-},{"inherits":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/inherits/inherits_browser.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","object-refs":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Collections.js":[function(require,module,exports){
+},{"inherits":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/inherits/inherits_browser.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","object-refs":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Collections.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -13892,7 +13913,7 @@ module.exports.indexOf = function(collection, element) {
   return collection.indexOf(element);
 };
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Elements.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Elements.js":[function(require,module,exports){
 'use strict';
 
 var isArray = require('lodash/lang/isArray'),
@@ -14158,7 +14179,7 @@ module.exports.getEnclosedElements = getEnclosedElements;
 
 module.exports.getClosure = getClosure;
 
-},{"lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/groupBy":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/groupBy.js","lodash/lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isNumber":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Event.js":[function(require,module,exports){
+},{"lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/groupBy":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/groupBy.js","lodash/lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","lodash/lang/isNumber":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Event.js":[function(require,module,exports){
 'use strict';
 
 function __preventDefault(event) {
@@ -14229,7 +14250,7 @@ function toPoint(event) {
 
 module.exports.toPoint = toPoint;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/GraphicsUtil.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/GraphicsUtil.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -14275,7 +14296,7 @@ function getBBox(gfx) {
 module.exports.getVisual = getVisual;
 module.exports.getChildren = getChildren;
 module.exports.getBBox = getBBox;
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/IdGenerator.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/IdGenerator.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -14308,7 +14329,7 @@ IdGenerator.prototype.next = function() {
   return this._prefix + (++this._counter);
 };
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Mouse.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Mouse.js":[function(require,module,exports){
 'use strict';
 
 var getOriginalEvent = require('./Event').getOriginal;
@@ -14347,13 +14368,13 @@ module.exports.hasSecondaryModifier = function(event) {
   return isPrimaryButton(event) && originalEvent.shiftKey;
 };
 
-},{"./Event":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Event.js","./Platform":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Platform.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Platform.js":[function(require,module,exports){
+},{"./Event":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Event.js","./Platform":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Platform.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Platform.js":[function(require,module,exports){
 'use strict';
 
 module.exports.isMac = function isMac() {
   return (/mac/i).test(navigator.platform);
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Text.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/lib/util/Text.js":[function(require,module,exports){
 'use strict';
 
 var isObject = require('lodash/lang/isObject'),
@@ -14604,7 +14625,7 @@ Text.prototype.createText = function(parent, text, options) {
 
 
 module.exports = Text;
-},{"../../vendor/snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","lodash/collection/forEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","lodash/lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/object/assign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","lodash/object/merge":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/merge.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/eve/eve.js":[function(require,module,exports){
+},{"../../vendor/snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js","lodash/collection/forEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js","lodash/collection/reduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js","lodash/lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","lodash/object/assign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js","lodash/object/merge":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/merge.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/eve/eve.js":[function(require,module,exports){
 // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15009,7 +15030,7 @@ module.exports = Text;
     (typeof module != "undefined" && module.exports) ? (module.exports = eve) : (typeof define === "function" && define.amd ? (define("eve", [], function() { return eve; })) : (glob.eve = eve));
 })(this);
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/snapsvg/dist/snap.svg.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/snapsvg/dist/snap.svg.js":[function(require,module,exports){
 // Snap.svg 0.3.0
 // 
 // Copyright (c) 2013 – 2014 Adobe Systems Incorporated. All rights reserved.
@@ -21662,7 +21683,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
 
 return Snap;
 }));
-},{"eve":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/eve/eve.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js":[function(require,module,exports){
+},{"eve":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/eve/eve.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/vendor/snapsvg.js":[function(require,module,exports){
 'use strict';
 
 var snapsvg = module.exports = require('snapsvg');
@@ -21871,7 +21892,7 @@ snapsvg.plugin(function(Snap, Element, Paper, global) {
     return new Snap(svg);
   };
 });
-},{"snapsvg":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/snapsvg/dist/snap.svg.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/annotation.js":[function(require,module,exports){
+},{"snapsvg":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/diagram-js/node_modules/snapsvg/dist/snap.svg.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/annotation.js":[function(require,module,exports){
 
 var isArray = function(obj) {
   return Object.prototype.toString.call(obj) === '[object Array]';
@@ -21921,14 +21942,14 @@ exports.annotate = annotate;
 exports.parse = parse;
 exports.isArray = isArray;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/index.js":[function(require,module,exports){
 module.exports = {
   annotate: require('./annotation').annotate,
   Module: require('./module'),
   Injector: require('./injector')
 };
 
-},{"./annotation":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/annotation.js","./injector":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/injector.js","./module":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/module.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/injector.js":[function(require,module,exports){
+},{"./annotation":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/annotation.js","./injector":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/injector.js","./module":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/module.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/injector.js":[function(require,module,exports){
 var Module = require('./module');
 var autoAnnotate = require('./annotation').parse;
 var annotate = require('./annotation').annotate;
@@ -22144,7 +22165,7 @@ var Injector = function(modules, parent) {
 
 module.exports = Injector;
 
-},{"./annotation":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/annotation.js","./module":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/module.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/module.js":[function(require,module,exports){
+},{"./annotation":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/annotation.js","./module":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/module.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/didi/lib/module.js":[function(require,module,exports){
 var Module = function() {
   var providers = [];
 
@@ -22170,7 +22191,7 @@ var Module = function() {
 
 module.exports = Module;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -22195,7 +22216,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/array/last.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/array/last.js":[function(require,module,exports){
 /**
  * Gets the last element of `array`.
  *
@@ -22216,7 +22237,7 @@ function last(array) {
 
 module.exports = last;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/every.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/every.js":[function(require,module,exports){
 var arrayEvery = require('../internal/arrayEvery'),
     baseCallback = require('../internal/baseCallback'),
     baseEvery = require('../internal/baseEvery'),
@@ -22284,7 +22305,7 @@ function every(collection, predicate, thisArg) {
 
 module.exports = every;
 
-},{"../internal/arrayEvery":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEvery.js","../internal/baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseEvery":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEvery.js","../internal/isIterateeCall":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js":[function(require,module,exports){
+},{"../internal/arrayEvery":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEvery.js","../internal/baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseEvery":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEvery.js","../internal/isIterateeCall":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/filter.js":[function(require,module,exports){
 var arrayFilter = require('../internal/arrayFilter'),
     baseCallback = require('../internal/baseCallback'),
     baseFilter = require('../internal/baseFilter'),
@@ -22347,7 +22368,7 @@ function filter(collection, predicate, thisArg) {
 
 module.exports = filter;
 
-},{"../internal/arrayFilter":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayFilter.js","../internal/baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseFilter":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFilter.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js":[function(require,module,exports){
+},{"../internal/arrayFilter":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayFilter.js","../internal/baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseFilter":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFilter.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/find.js":[function(require,module,exports){
 var baseEach = require('../internal/baseEach'),
     createFind = require('../internal/createFind');
 
@@ -22405,7 +22426,7 @@ var find = createFind(baseEach);
 
 module.exports = find;
 
-},{"../internal/baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","../internal/createFind":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createFind.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js":[function(require,module,exports){
+},{"../internal/baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","../internal/createFind":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createFind.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/forEach.js":[function(require,module,exports){
 var arrayEach = require('../internal/arrayEach'),
     baseEach = require('../internal/baseEach'),
     createForEach = require('../internal/createForEach');
@@ -22444,7 +22465,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"../internal/arrayEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEach.js","../internal/baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","../internal/createForEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createForEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/groupBy.js":[function(require,module,exports){
+},{"../internal/arrayEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEach.js","../internal/baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","../internal/createForEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createForEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/groupBy.js":[function(require,module,exports){
 var createAggregator = require('../internal/createAggregator');
 
 /** Used for native method references. */
@@ -22505,7 +22526,7 @@ var groupBy = createAggregator(function(result, value, key) {
 
 module.exports = groupBy;
 
-},{"../internal/createAggregator":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAggregator.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/includes.js":[function(require,module,exports){
+},{"../internal/createAggregator":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAggregator.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/includes.js":[function(require,module,exports){
 var baseIndexOf = require('../internal/baseIndexOf'),
     getLength = require('../internal/getLength'),
     isArray = require('../lang/isArray'),
@@ -22564,7 +22585,7 @@ function includes(collection, target, fromIndex, guard) {
 
 module.exports = includes;
 
-},{"../internal/baseIndexOf":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIndexOf.js","../internal/getLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js","../internal/isIterateeCall":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js","../internal/isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","../object/values":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/values.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/map.js":[function(require,module,exports){
+},{"../internal/baseIndexOf":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIndexOf.js","../internal/getLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js","../internal/isIterateeCall":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js","../internal/isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js","../object/values":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/values.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/map.js":[function(require,module,exports){
 var arrayMap = require('../internal/arrayMap'),
     baseCallback = require('../internal/baseCallback'),
     baseMap = require('../internal/baseMap'),
@@ -22634,7 +22655,7 @@ function map(collection, iteratee, thisArg) {
 
 module.exports = map;
 
-},{"../internal/arrayMap":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayMap.js","../internal/baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseMap":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMap.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js":[function(require,module,exports){
+},{"../internal/arrayMap":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayMap.js","../internal/baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseMap":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMap.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/reduce.js":[function(require,module,exports){
 var arrayReduce = require('../internal/arrayReduce'),
     baseEach = require('../internal/baseEach'),
     createReduce = require('../internal/createReduce');
@@ -22680,7 +22701,7 @@ var reduce = createReduce(arrayReduce, baseEach);
 
 module.exports = reduce;
 
-},{"../internal/arrayReduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayReduce.js","../internal/baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","../internal/createReduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createReduce.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/some.js":[function(require,module,exports){
+},{"../internal/arrayReduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayReduce.js","../internal/baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","../internal/createReduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createReduce.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/collection/some.js":[function(require,module,exports){
 var arraySome = require('../internal/arraySome'),
     baseCallback = require('../internal/baseCallback'),
     baseSome = require('../internal/baseSome'),
@@ -22749,7 +22770,7 @@ function some(collection, predicate, thisArg) {
 
 module.exports = some;
 
-},{"../internal/arraySome":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arraySome.js","../internal/baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseSome":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSome.js","../internal/isIterateeCall":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/date/now.js":[function(require,module,exports){
+},{"../internal/arraySome":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arraySome.js","../internal/baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","../internal/baseSome":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSome.js","../internal/isIterateeCall":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/date/now.js":[function(require,module,exports){
 var getNative = require('../internal/getNative');
 
 /* Native method references for those with the same name as other `lodash` methods. */
@@ -22775,7 +22796,7 @@ var now = nativeNow || function() {
 
 module.exports = now;
 
-},{"../internal/getNative":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/debounce.js":[function(require,module,exports){
+},{"../internal/getNative":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/debounce.js":[function(require,module,exports){
 var isObject = require('../lang/isObject'),
     now = require('../date/now');
 
@@ -22958,7 +22979,7 @@ function debounce(func, wait, options) {
 
 module.exports = debounce;
 
-},{"../date/now":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/date/now.js","../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/defer.js":[function(require,module,exports){
+},{"../date/now":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/date/now.js","../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/defer.js":[function(require,module,exports){
 var baseDelay = require('../internal/baseDelay'),
     restParam = require('./restParam');
 
@@ -22985,7 +23006,7 @@ var defer = restParam(function(func, args) {
 
 module.exports = defer;
 
-},{"../internal/baseDelay":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDelay.js","./restParam":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js":[function(require,module,exports){
+},{"../internal/baseDelay":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDelay.js","./restParam":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js":[function(require,module,exports){
 /** Used as the `TypeError` message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
@@ -23045,7 +23066,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/SetCache.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/SetCache.js":[function(require,module,exports){
 (function (global){
 var cachePush = require('./cachePush'),
     getNative = require('./getNative');
@@ -23078,7 +23099,7 @@ SetCache.prototype.push = cachePush;
 module.exports = SetCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./cachePush":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cachePush.js","./getNative":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayCopy.js":[function(require,module,exports){
+},{"./cachePush":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cachePush.js","./getNative":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayCopy.js":[function(require,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -23100,7 +23121,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEach.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEach.js":[function(require,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for callback
  * shorthands and `this` binding.
@@ -23124,7 +23145,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEvery.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEvery.js":[function(require,module,exports){
 /**
  * A specialized version of `_.every` for arrays without support for callback
  * shorthands and `this` binding.
@@ -23149,7 +23170,7 @@ function arrayEvery(array, predicate) {
 
 module.exports = arrayEvery;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayFilter.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayFilter.js":[function(require,module,exports){
 /**
  * A specialized version of `_.filter` for arrays without support for callback
  * shorthands and `this` binding.
@@ -23176,7 +23197,7 @@ function arrayFilter(array, predicate) {
 
 module.exports = arrayFilter;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayMap.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayMap.js":[function(require,module,exports){
 /**
  * A specialized version of `_.map` for arrays without support for callback
  * shorthands and `this` binding.
@@ -23199,7 +23220,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayPush.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayPush.js":[function(require,module,exports){
 /**
  * Appends the elements of `values` to `array`.
  *
@@ -23221,7 +23242,7 @@ function arrayPush(array, values) {
 
 module.exports = arrayPush;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayReduce.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayReduce.js":[function(require,module,exports){
 /**
  * A specialized version of `_.reduce` for arrays without support for callback
  * shorthands and `this` binding.
@@ -23249,7 +23270,7 @@ function arrayReduce(array, iteratee, accumulator, initFromArray) {
 
 module.exports = arrayReduce;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arraySome.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arraySome.js":[function(require,module,exports){
 /**
  * A specialized version of `_.some` for arrays without support for callback
  * shorthands and `this` binding.
@@ -23274,7 +23295,7 @@ function arraySome(array, predicate) {
 
 module.exports = arraySome;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/assignWith.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/assignWith.js":[function(require,module,exports){
 var keys = require('../object/keys');
 
 /**
@@ -23308,7 +23329,7 @@ function assignWith(object, source, customizer) {
 
 module.exports = assignWith;
 
-},{"../object/keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseAssign.js":[function(require,module,exports){
+},{"../object/keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseAssign.js":[function(require,module,exports){
 var baseCopy = require('./baseCopy'),
     keys = require('../object/keys');
 
@@ -23329,7 +23350,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"../object/keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js","./baseCopy":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCopy.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js":[function(require,module,exports){
+},{"../object/keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js","./baseCopy":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCopy.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js":[function(require,module,exports){
 var baseMatches = require('./baseMatches'),
     baseMatchesProperty = require('./baseMatchesProperty'),
     bindCallback = require('./bindCallback'),
@@ -23366,7 +23387,7 @@ function baseCallback(func, thisArg, argCount) {
 
 module.exports = baseCallback;
 
-},{"../utility/identity":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/identity.js","../utility/property":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/property.js","./baseMatches":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatches.js","./baseMatchesProperty":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatchesProperty.js","./bindCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCopy.js":[function(require,module,exports){
+},{"../utility/identity":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/identity.js","../utility/property":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/property.js","./baseMatches":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatches.js","./baseMatchesProperty":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatchesProperty.js","./bindCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCopy.js":[function(require,module,exports){
 /**
  * Copies properties of `source` to `object`.
  *
@@ -23391,7 +23412,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDelay.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDelay.js":[function(require,module,exports){
 /** Used as the `TypeError` message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
@@ -23414,7 +23435,7 @@ function baseDelay(func, wait, args) {
 
 module.exports = baseDelay;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDifference.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDifference.js":[function(require,module,exports){
 var baseIndexOf = require('./baseIndexOf'),
     cacheIndexOf = require('./cacheIndexOf'),
     createCache = require('./createCache');
@@ -23471,7 +23492,7 @@ function baseDifference(array, values) {
 
 module.exports = baseDifference;
 
-},{"./baseIndexOf":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIndexOf.js","./cacheIndexOf":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cacheIndexOf.js","./createCache":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createCache.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js":[function(require,module,exports){
+},{"./baseIndexOf":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIndexOf.js","./cacheIndexOf":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cacheIndexOf.js","./createCache":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createCache.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js":[function(require,module,exports){
 var baseForOwn = require('./baseForOwn'),
     createBaseEach = require('./createBaseEach');
 
@@ -23488,7 +23509,7 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./baseForOwn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForOwn.js","./createBaseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEvery.js":[function(require,module,exports){
+},{"./baseForOwn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForOwn.js","./createBaseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEvery.js":[function(require,module,exports){
 var baseEach = require('./baseEach');
 
 /**
@@ -23512,7 +23533,7 @@ function baseEvery(collection, predicate) {
 
 module.exports = baseEvery;
 
-},{"./baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFilter.js":[function(require,module,exports){
+},{"./baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFilter.js":[function(require,module,exports){
 var baseEach = require('./baseEach');
 
 /**
@@ -23536,7 +23557,7 @@ function baseFilter(collection, predicate) {
 
 module.exports = baseFilter;
 
-},{"./baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFind.js":[function(require,module,exports){
+},{"./baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFind.js":[function(require,module,exports){
 /**
  * The base implementation of `_.find`, `_.findLast`, `_.findKey`, and `_.findLastKey`,
  * without support for callback shorthands and `this` binding, which iterates
@@ -23563,7 +23584,7 @@ function baseFind(collection, predicate, eachFunc, retKey) {
 
 module.exports = baseFind;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFindIndex.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFindIndex.js":[function(require,module,exports){
 /**
  * The base implementation of `_.findIndex` and `_.findLastIndex` without
  * support for callback shorthands and `this` binding.
@@ -23588,7 +23609,7 @@ function baseFindIndex(array, predicate, fromRight) {
 
 module.exports = baseFindIndex;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFlatten.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFlatten.js":[function(require,module,exports){
 var arrayPush = require('./arrayPush'),
     isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
@@ -23631,7 +23652,7 @@ function baseFlatten(array, isDeep, isStrict, result) {
 
 module.exports = baseFlatten;
 
-},{"../lang/isArguments":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./arrayPush":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayPush.js","./isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","./isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFor.js":[function(require,module,exports){
+},{"../lang/isArguments":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./arrayPush":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayPush.js","./isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","./isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFor.js":[function(require,module,exports){
 var createBaseFor = require('./createBaseFor');
 
 /**
@@ -23650,7 +23671,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./createBaseFor":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseFor.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForIn.js":[function(require,module,exports){
+},{"./createBaseFor":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseFor.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForIn.js":[function(require,module,exports){
 var baseFor = require('./baseFor'),
     keysIn = require('../object/keysIn');
 
@@ -23669,7 +23690,7 @@ function baseForIn(object, iteratee) {
 
 module.exports = baseForIn;
 
-},{"../object/keysIn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js","./baseFor":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFor.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForOwn.js":[function(require,module,exports){
+},{"../object/keysIn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js","./baseFor":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFor.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForOwn.js":[function(require,module,exports){
 var baseFor = require('./baseFor'),
     keys = require('../object/keys');
 
@@ -23688,7 +23709,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"../object/keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js","./baseFor":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFor.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseGet.js":[function(require,module,exports){
+},{"../object/keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js","./baseFor":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFor.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseGet.js":[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -23719,7 +23740,7 @@ function baseGet(object, path, pathKey) {
 
 module.exports = baseGet;
 
-},{"./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIndexOf.js":[function(require,module,exports){
+},{"./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIndexOf.js":[function(require,module,exports){
 var indexOfNaN = require('./indexOfNaN');
 
 /**
@@ -23748,7 +23769,7 @@ function baseIndexOf(array, value, fromIndex) {
 
 module.exports = baseIndexOf;
 
-},{"./indexOfNaN":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/indexOfNaN.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqual.js":[function(require,module,exports){
+},{"./indexOfNaN":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/indexOfNaN.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqual.js":[function(require,module,exports){
 var baseIsEqualDeep = require('./baseIsEqualDeep'),
     isObject = require('../lang/isObject'),
     isObjectLike = require('./isObjectLike');
@@ -23778,7 +23799,7 @@ function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
 
 module.exports = baseIsEqual;
 
-},{"../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","./baseIsEqualDeep":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqualDeep.js","./isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqualDeep.js":[function(require,module,exports){
+},{"../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","./baseIsEqualDeep":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqualDeep.js","./isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqualDeep.js":[function(require,module,exports){
 var equalArrays = require('./equalArrays'),
     equalByTag = require('./equalByTag'),
     equalObjects = require('./equalObjects'),
@@ -23882,7 +23903,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, 
 
 module.exports = baseIsEqualDeep;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isTypedArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js","./equalArrays":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalArrays.js","./equalByTag":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalByTag.js","./equalObjects":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalObjects.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsMatch.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isTypedArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js","./equalArrays":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalArrays.js","./equalByTag":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalByTag.js","./equalObjects":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalObjects.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsMatch.js":[function(require,module,exports){
 var baseIsEqual = require('./baseIsEqual'),
     toObject = require('./toObject');
 
@@ -23936,7 +23957,7 @@ function baseIsMatch(object, matchData, customizer) {
 
 module.exports = baseIsMatch;
 
-},{"./baseIsEqual":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqual.js","./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMap.js":[function(require,module,exports){
+},{"./baseIsEqual":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqual.js","./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMap.js":[function(require,module,exports){
 var baseEach = require('./baseEach'),
     isArrayLike = require('./isArrayLike');
 
@@ -23961,7 +23982,7 @@ function baseMap(collection, iteratee) {
 
 module.exports = baseMap;
 
-},{"./baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","./isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatches.js":[function(require,module,exports){
+},{"./baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js","./isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatches.js":[function(require,module,exports){
 var baseIsMatch = require('./baseIsMatch'),
     getMatchData = require('./getMatchData'),
     toObject = require('./toObject');
@@ -23993,7 +24014,7 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"./baseIsMatch":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsMatch.js","./getMatchData":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getMatchData.js","./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatchesProperty.js":[function(require,module,exports){
+},{"./baseIsMatch":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsMatch.js","./getMatchData":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getMatchData.js","./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMatchesProperty.js":[function(require,module,exports){
 var baseGet = require('./baseGet'),
     baseIsEqual = require('./baseIsEqual'),
     baseSlice = require('./baseSlice'),
@@ -24040,7 +24061,7 @@ function baseMatchesProperty(path, srcValue) {
 
 module.exports = baseMatchesProperty;
 
-},{"../array/last":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/array/last.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseGet":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseGet.js","./baseIsEqual":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqual.js","./baseSlice":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSlice.js","./isKey":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isKey.js","./isStrictComparable":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isStrictComparable.js","./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js","./toPath":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toPath.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMerge.js":[function(require,module,exports){
+},{"../array/last":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/array/last.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseGet":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseGet.js","./baseIsEqual":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseIsEqual.js","./baseSlice":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSlice.js","./isKey":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isKey.js","./isStrictComparable":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isStrictComparable.js","./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js","./toPath":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toPath.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMerge.js":[function(require,module,exports){
 var arrayEach = require('./arrayEach'),
     baseMergeDeep = require('./baseMergeDeep'),
     isArray = require('../lang/isArray'),
@@ -24098,7 +24119,7 @@ function baseMerge(object, source, customizer, stackA, stackB) {
 
 module.exports = baseMerge;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","../lang/isTypedArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js","../object/keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js","./arrayEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEach.js","./baseMergeDeep":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMergeDeep.js","./isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","./isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMergeDeep.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","../lang/isTypedArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js","../object/keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js","./arrayEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayEach.js","./baseMergeDeep":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMergeDeep.js","./isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","./isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMergeDeep.js":[function(require,module,exports){
 var arrayCopy = require('./arrayCopy'),
     isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
@@ -24167,7 +24188,7 @@ function baseMergeDeep(object, source, key, mergeFunc, customizer, stackA, stack
 
 module.exports = baseMergeDeep;
 
-},{"../lang/isArguments":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isPlainObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isPlainObject.js","../lang/isTypedArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js","../lang/toPlainObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/toPlainObject.js","./arrayCopy":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayCopy.js","./isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseProperty.js":[function(require,module,exports){
+},{"../lang/isArguments":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isPlainObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isPlainObject.js","../lang/isTypedArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js","../lang/toPlainObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/toPlainObject.js","./arrayCopy":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayCopy.js","./isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseProperty.js":[function(require,module,exports){
 /**
  * The base implementation of `_.property` without support for deep paths.
  *
@@ -24183,7 +24204,7 @@ function baseProperty(key) {
 
 module.exports = baseProperty;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/basePropertyDeep.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/basePropertyDeep.js":[function(require,module,exports){
 var baseGet = require('./baseGet'),
     toPath = require('./toPath');
 
@@ -24204,7 +24225,7 @@ function basePropertyDeep(path) {
 
 module.exports = basePropertyDeep;
 
-},{"./baseGet":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseGet.js","./toPath":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toPath.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseReduce.js":[function(require,module,exports){
+},{"./baseGet":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseGet.js","./toPath":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toPath.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseReduce.js":[function(require,module,exports){
 /**
  * The base implementation of `_.reduce` and `_.reduceRight` without support
  * for callback shorthands and `this` binding, which iterates over `collection`
@@ -24230,7 +24251,7 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSlice.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSlice.js":[function(require,module,exports){
 /**
  * The base implementation of `_.slice` without an iteratee call guard.
  *
@@ -24264,7 +24285,7 @@ function baseSlice(array, start, end) {
 
 module.exports = baseSlice;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSome.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseSome.js":[function(require,module,exports){
 var baseEach = require('./baseEach');
 
 /**
@@ -24289,7 +24310,7 @@ function baseSome(collection, predicate) {
 
 module.exports = baseSome;
 
-},{"./baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseToString.js":[function(require,module,exports){
+},{"./baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseToString.js":[function(require,module,exports){
 /**
  * Converts `value` to a string if it's not one. An empty string is returned
  * for `null` or `undefined` values.
@@ -24304,7 +24325,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseValues.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseValues.js":[function(require,module,exports){
 /**
  * The base implementation of `_.values` and `_.valuesIn` which creates an
  * array of `object` property values corresponding to the property names
@@ -24328,7 +24349,7 @@ function baseValues(object, props) {
 
 module.exports = baseValues;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js":[function(require,module,exports){
 var identity = require('../utility/identity');
 
 /**
@@ -24369,7 +24390,7 @@ function bindCallback(func, thisArg, argCount) {
 
 module.exports = bindCallback;
 
-},{"../utility/identity":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/identity.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cacheIndexOf.js":[function(require,module,exports){
+},{"../utility/identity":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/identity.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cacheIndexOf.js":[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -24390,7 +24411,7 @@ function cacheIndexOf(cache, value) {
 
 module.exports = cacheIndexOf;
 
-},{"../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cachePush.js":[function(require,module,exports){
+},{"../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/cachePush.js":[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -24412,7 +24433,7 @@ function cachePush(value) {
 
 module.exports = cachePush;
 
-},{"../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAggregator.js":[function(require,module,exports){
+},{"../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAggregator.js":[function(require,module,exports){
 var baseCallback = require('./baseCallback'),
     baseEach = require('./baseEach'),
     isArray = require('../lang/isArray');
@@ -24449,7 +24470,7 @@ function createAggregator(setter, initializer) {
 
 module.exports = createAggregator;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","./baseEach":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAssigner.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","./baseEach":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseEach.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAssigner.js":[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isIterateeCall = require('./isIterateeCall'),
     restParam = require('../function/restParam');
@@ -24492,7 +24513,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"../function/restParam":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js","./bindCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js","./isIterateeCall":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseEach.js":[function(require,module,exports){
+},{"../function/restParam":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js","./bindCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js","./isIterateeCall":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseEach.js":[function(require,module,exports){
 var getLength = require('./getLength'),
     isLength = require('./isLength'),
     toObject = require('./toObject');
@@ -24525,7 +24546,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./getLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js","./isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseFor.js":[function(require,module,exports){
+},{"./getLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js","./isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createBaseFor.js":[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -24554,7 +24575,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{"./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createCache.js":[function(require,module,exports){
+},{"./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createCache.js":[function(require,module,exports){
 (function (global){
 var SetCache = require('./SetCache'),
     getNative = require('./getNative');
@@ -24579,7 +24600,7 @@ function createCache(values) {
 module.exports = createCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./SetCache":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/SetCache.js","./getNative":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createFind.js":[function(require,module,exports){
+},{"./SetCache":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/SetCache.js","./getNative":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createFind.js":[function(require,module,exports){
 var baseCallback = require('./baseCallback'),
     baseFind = require('./baseFind'),
     baseFindIndex = require('./baseFindIndex'),
@@ -24606,7 +24627,7 @@ function createFind(eachFunc, fromRight) {
 
 module.exports = createFind;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","./baseFind":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFind.js","./baseFindIndex":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFindIndex.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createForEach.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","./baseFind":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFind.js","./baseFindIndex":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFindIndex.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createForEach.js":[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isArray = require('../lang/isArray');
 
@@ -24628,7 +24649,7 @@ function createForEach(arrayFunc, eachFunc) {
 
 module.exports = createForEach;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./bindCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createReduce.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./bindCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createReduce.js":[function(require,module,exports){
 var baseCallback = require('./baseCallback'),
     baseReduce = require('./baseReduce'),
     isArray = require('../lang/isArray');
@@ -24652,7 +24673,7 @@ function createReduce(arrayFunc, eachFunc) {
 
 module.exports = createReduce;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","./baseReduce":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseReduce.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalArrays.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCallback.js","./baseReduce":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseReduce.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalArrays.js":[function(require,module,exports){
 var arraySome = require('./arraySome');
 
 /**
@@ -24705,7 +24726,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
 
 module.exports = equalArrays;
 
-},{"./arraySome":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arraySome.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalByTag.js":[function(require,module,exports){
+},{"./arraySome":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arraySome.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalByTag.js":[function(require,module,exports){
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
     dateTag = '[object Date]',
@@ -24755,7 +24776,7 @@ function equalByTag(object, other, tag) {
 
 module.exports = equalByTag;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalObjects.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/equalObjects.js":[function(require,module,exports){
 var keys = require('../object/keys');
 
 /** Used for native method references. */
@@ -24824,7 +24845,7 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
 
 module.exports = equalObjects;
 
-},{"../object/keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js":[function(require,module,exports){
+},{"../object/keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js":[function(require,module,exports){
 var baseProperty = require('./baseProperty');
 
 /**
@@ -24841,7 +24862,7 @@ var getLength = baseProperty('length');
 
 module.exports = getLength;
 
-},{"./baseProperty":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseProperty.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getMatchData.js":[function(require,module,exports){
+},{"./baseProperty":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseProperty.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getMatchData.js":[function(require,module,exports){
 var isStrictComparable = require('./isStrictComparable'),
     pairs = require('../object/pairs');
 
@@ -24864,7 +24885,7 @@ function getMatchData(object) {
 
 module.exports = getMatchData;
 
-},{"../object/pairs":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pairs.js","./isStrictComparable":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isStrictComparable.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js":[function(require,module,exports){
+},{"../object/pairs":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pairs.js","./isStrictComparable":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isStrictComparable.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js":[function(require,module,exports){
 var isNative = require('../lang/isNative');
 
 /**
@@ -24882,7 +24903,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"../lang/isNative":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNative.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/indexOfNaN.js":[function(require,module,exports){
+},{"../lang/isNative":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNative.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/indexOfNaN.js":[function(require,module,exports){
 /**
  * Gets the index at which the first occurrence of `NaN` is found in `array`.
  *
@@ -24907,7 +24928,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = indexOfNaN;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js":[function(require,module,exports){
 var getLength = require('./getLength'),
     isLength = require('./isLength');
 
@@ -24924,7 +24945,7 @@ function isArrayLike(value) {
 
 module.exports = isArrayLike;
 
-},{"./getLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js","./isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js":[function(require,module,exports){
+},{"./getLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getLength.js","./isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js":[function(require,module,exports){
 /** Used to detect unsigned integer values. */
 var reIsUint = /^\d+$/;
 
@@ -24950,7 +24971,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIterateeCall.js":[function(require,module,exports){
 var isArrayLike = require('./isArrayLike'),
     isIndex = require('./isIndex'),
     isObject = require('../lang/isObject');
@@ -24980,7 +25001,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","./isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","./isIndex":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isKey.js":[function(require,module,exports){
+},{"../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js","./isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","./isIndex":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isKey.js":[function(require,module,exports){
 var isArray = require('../lang/isArray'),
     toObject = require('./toObject');
 
@@ -25010,7 +25031,7 @@ function isKey(value, object) {
 
 module.exports = isKey;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js":[function(require,module,exports){
 /**
  * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
  * of an array-like value.
@@ -25032,7 +25053,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js":[function(require,module,exports){
 /**
  * Checks if `value` is object-like.
  *
@@ -25046,7 +25067,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isStrictComparable.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isStrictComparable.js":[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -25063,7 +25084,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByArray.js":[function(require,module,exports){
+},{"../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByArray.js":[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -25093,7 +25114,7 @@ function pickByArray(object, props) {
 
 module.exports = pickByArray;
 
-},{"./toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByCallback.js":[function(require,module,exports){
+},{"./toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByCallback.js":[function(require,module,exports){
 var baseForIn = require('./baseForIn');
 
 /**
@@ -25117,7 +25138,7 @@ function pickByCallback(object, predicate) {
 
 module.exports = pickByCallback;
 
-},{"./baseForIn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForIn.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/shimKeys.js":[function(require,module,exports){
+},{"./baseForIn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForIn.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/shimKeys.js":[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('./isIndex'),
@@ -25160,7 +25181,7 @@ function shimKeys(object) {
 
 module.exports = shimKeys;
 
-},{"../lang/isArguments":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../object/keysIn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js","./isIndex":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js","./isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js":[function(require,module,exports){
+},{"../lang/isArguments":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../object/keysIn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js","./isIndex":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js","./isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js":[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -25176,7 +25197,7 @@ function toObject(value) {
 
 module.exports = toObject;
 
-},{"../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toPath.js":[function(require,module,exports){
+},{"../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toPath.js":[function(require,module,exports){
 var baseToString = require('./baseToString'),
     isArray = require('../lang/isArray');
 
@@ -25206,7 +25227,7 @@ function toPath(value) {
 
 module.exports = toPath;
 
-},{"../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseToString":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseToString.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js":[function(require,module,exports){
+},{"../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","./baseToString":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseToString.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js":[function(require,module,exports){
 var isArrayLike = require('../internal/isArrayLike'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -25242,7 +25263,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{"../internal/isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js":[function(require,module,exports){
+},{"../internal/isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js":[function(require,module,exports){
 var getNative = require('../internal/getNative'),
     isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
@@ -25284,7 +25305,7 @@ var isArray = nativeIsArray || function(value) {
 
 module.exports = isArray;
 
-},{"../internal/getNative":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js","../internal/isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js":[function(require,module,exports){
+},{"../internal/getNative":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js","../internal/isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js":[function(require,module,exports){
 var isObject = require('./isObject');
 
 /** `Object#toString` result references. */
@@ -25324,7 +25345,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{"./isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNative.js":[function(require,module,exports){
+},{"./isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNative.js":[function(require,module,exports){
 var isFunction = require('./isFunction'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -25374,7 +25395,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{"../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js","./isFunction":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js":[function(require,module,exports){
+},{"../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js","./isFunction":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isFunction.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isNumber.js":[function(require,module,exports){
 var isObjectLike = require('../internal/isObjectLike');
 
 /** `Object#toString` result references. */
@@ -25417,7 +25438,7 @@ function isNumber(value) {
 
 module.exports = isNumber;
 
-},{"../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js":[function(require,module,exports){
+},{"../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js":[function(require,module,exports){
 /**
  * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -25447,7 +25468,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isPlainObject.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isPlainObject.js":[function(require,module,exports){
 var baseForIn = require('../internal/baseForIn'),
     isArguments = require('./isArguments'),
     isObjectLike = require('../internal/isObjectLike');
@@ -25520,7 +25541,7 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{"../internal/baseForIn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForIn.js","../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js","./isArguments":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js":[function(require,module,exports){
+},{"../internal/baseForIn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseForIn.js","../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js","./isArguments":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isString.js":[function(require,module,exports){
 var isObjectLike = require('../internal/isObjectLike');
 
 /** `Object#toString` result references. */
@@ -25557,7 +25578,7 @@ function isString(value) {
 
 module.exports = isString;
 
-},{"../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js":[function(require,module,exports){
+},{"../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isTypedArray.js":[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -25633,7 +25654,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"../internal/isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/toPlainObject.js":[function(require,module,exports){
+},{"../internal/isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../internal/isObjectLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isObjectLike.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/toPlainObject.js":[function(require,module,exports){
 var baseCopy = require('../internal/baseCopy'),
     keysIn = require('../object/keysIn');
 
@@ -25666,7 +25687,7 @@ function toPlainObject(value) {
 
 module.exports = toPlainObject;
 
-},{"../internal/baseCopy":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCopy.js","../object/keysIn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js":[function(require,module,exports){
+},{"../internal/baseCopy":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseCopy.js","../object/keysIn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/assign.js":[function(require,module,exports){
 var assignWith = require('../internal/assignWith'),
     baseAssign = require('../internal/baseAssign'),
     createAssigner = require('../internal/createAssigner');
@@ -25711,7 +25732,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"../internal/assignWith":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/assignWith.js","../internal/baseAssign":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseAssign.js","../internal/createAssigner":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAssigner.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js":[function(require,module,exports){
+},{"../internal/assignWith":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/assignWith.js","../internal/baseAssign":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseAssign.js","../internal/createAssigner":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAssigner.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js":[function(require,module,exports){
 var getNative = require('../internal/getNative'),
     isArrayLike = require('../internal/isArrayLike'),
     isObject = require('../lang/isObject'),
@@ -25758,7 +25779,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internal/getNative":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js","../internal/isArrayLike":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","../internal/shimKeys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/shimKeys.js","../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js":[function(require,module,exports){
+},{"../internal/getNative":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/getNative.js","../internal/isArrayLike":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isArrayLike.js","../internal/shimKeys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/shimKeys.js","../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js":[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('../internal/isIndex'),
@@ -25824,7 +25845,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"../internal/isIndex":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js","../internal/isLength":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../lang/isArguments":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/merge.js":[function(require,module,exports){
+},{"../internal/isIndex":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isIndex.js","../internal/isLength":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isLength.js","../lang/isArguments":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArguments.js","../lang/isArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isArray.js","../lang/isObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/lang/isObject.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/merge.js":[function(require,module,exports){
 var baseMerge = require('../internal/baseMerge'),
     createAssigner = require('../internal/createAssigner');
 
@@ -25880,7 +25901,7 @@ var merge = createAssigner(baseMerge);
 
 module.exports = merge;
 
-},{"../internal/baseMerge":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMerge.js","../internal/createAssigner":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAssigner.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/omit.js":[function(require,module,exports){
+},{"../internal/baseMerge":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseMerge.js","../internal/createAssigner":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/createAssigner.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/omit.js":[function(require,module,exports){
 var arrayMap = require('../internal/arrayMap'),
     baseDifference = require('../internal/baseDifference'),
     baseFlatten = require('../internal/baseFlatten'),
@@ -25929,7 +25950,7 @@ var omit = restParam(function(object, props) {
 
 module.exports = omit;
 
-},{"../function/restParam":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js","../internal/arrayMap":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayMap.js","../internal/baseDifference":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDifference.js","../internal/baseFlatten":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFlatten.js","../internal/bindCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js","../internal/pickByArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByArray.js","../internal/pickByCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByCallback.js","./keysIn":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pairs.js":[function(require,module,exports){
+},{"../function/restParam":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js","../internal/arrayMap":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/arrayMap.js","../internal/baseDifference":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseDifference.js","../internal/baseFlatten":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFlatten.js","../internal/bindCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js","../internal/pickByArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByArray.js","../internal/pickByCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByCallback.js","./keysIn":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keysIn.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pairs.js":[function(require,module,exports){
 var keys = require('./keys'),
     toObject = require('../internal/toObject');
 
@@ -25964,7 +25985,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"../internal/toObject":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js","./keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pick.js":[function(require,module,exports){
+},{"../internal/toObject":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/toObject.js","./keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/pick.js":[function(require,module,exports){
 var baseFlatten = require('../internal/baseFlatten'),
     bindCallback = require('../internal/bindCallback'),
     pickByArray = require('../internal/pickByArray'),
@@ -26008,7 +26029,7 @@ var pick = restParam(function(object, props) {
 
 module.exports = pick;
 
-},{"../function/restParam":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js","../internal/baseFlatten":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFlatten.js","../internal/bindCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js","../internal/pickByArray":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByArray.js","../internal/pickByCallback":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByCallback.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/values.js":[function(require,module,exports){
+},{"../function/restParam":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/function/restParam.js","../internal/baseFlatten":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseFlatten.js","../internal/bindCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/bindCallback.js","../internal/pickByArray":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByArray.js","../internal/pickByCallback":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/pickByCallback.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/values.js":[function(require,module,exports){
 var baseValues = require('../internal/baseValues'),
     keys = require('./keys');
 
@@ -26043,7 +26064,7 @@ function values(object) {
 
 module.exports = values;
 
-},{"../internal/baseValues":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseValues.js","./keys":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/identity.js":[function(require,module,exports){
+},{"../internal/baseValues":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseValues.js","./keys":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/object/keys.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/identity.js":[function(require,module,exports){
 /**
  * This method returns the first argument provided to it.
  *
@@ -26065,7 +26086,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/property.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/utility/property.js":[function(require,module,exports){
 var baseProperty = require('../internal/baseProperty'),
     basePropertyDeep = require('../internal/basePropertyDeep'),
     isKey = require('../internal/isKey');
@@ -26098,9 +26119,9 @@ function property(path) {
 
 module.exports = property;
 
-},{"../internal/baseProperty":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseProperty.js","../internal/basePropertyDeep":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/basePropertyDeep.js","../internal/isKey":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isKey.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/classes.js":[function(require,module,exports){
+},{"../internal/baseProperty":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/baseProperty.js","../internal/basePropertyDeep":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/basePropertyDeep.js","../internal/isKey":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/lodash/internal/isKey.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/classes.js":[function(require,module,exports){
 module.exports = require('component-classes');
-},{"component-classes":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/clear.js":[function(require,module,exports){
+},{"component-classes":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/clear.js":[function(require,module,exports){
 module.exports = function(el) {
 
   var c;
@@ -26112,17 +26133,17 @@ module.exports = function(el) {
 
   return el;
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/delegate.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/delegate.js":[function(require,module,exports){
 module.exports = require('component-delegate');
-},{"component-delegate":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-delegate/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/domify.js":[function(require,module,exports){
+},{"component-delegate":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-delegate/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/domify.js":[function(require,module,exports){
 module.exports = require('domify');
-},{"domify":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/domify/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/query.js":[function(require,module,exports){
+},{"domify":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/domify/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/query.js":[function(require,module,exports){
 module.exports = require('component-query');
-},{"component-query":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-query/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/remove.js":[function(require,module,exports){
+},{"component-query":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-query/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/lib/remove.js":[function(require,module,exports){
 module.exports = function(el) {
   el.parentNode && el.parentNode.removeChild(el);
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/index.js":[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -26311,7 +26332,7 @@ ClassList.prototype.contains = function(name){
     : !! ~index(this.array(), name);
 };
 
-},{"indexof":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/node_modules/component-indexof/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/node_modules/component-indexof/index.js":[function(require,module,exports){
+},{"indexof":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/node_modules/component-indexof/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-classes/node_modules/component-indexof/index.js":[function(require,module,exports){
 module.exports = function(arr, obj){
   if (arr.indexOf) return arr.indexOf(obj);
   for (var i = 0; i < arr.length; ++i) {
@@ -26319,7 +26340,7 @@ module.exports = function(arr, obj){
   }
   return -1;
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-closest/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-closest/index.js":[function(require,module,exports){
 var matches = require('matches-selector')
 
 module.exports = function (element, selector, checkYoSelf, root) {
@@ -26340,7 +26361,7 @@ module.exports = function (element, selector, checkYoSelf, root) {
   }
 }
 
-},{"matches-selector":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-matches-selector/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-delegate/index.js":[function(require,module,exports){
+},{"matches-selector":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-matches-selector/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-delegate/index.js":[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -26384,7 +26405,7 @@ exports.unbind = function(el, type, fn, capture){
   event.unbind(el, type, fn, capture);
 };
 
-},{"closest":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-closest/index.js","event":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-event/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-event/index.js":[function(require,module,exports){
+},{"closest":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-closest/index.js","event":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-event/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-event/index.js":[function(require,module,exports){
 var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
     unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
     prefix = bind !== 'addEventListener' ? 'on' : '';
@@ -26420,7 +26441,7 @@ exports.unbind = function(el, type, fn, capture){
   el[unbind](prefix + type, fn, capture || false);
   return fn;
 };
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-matches-selector/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-matches-selector/index.js":[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -26468,7 +26489,7 @@ function match(el, selector) {
   return false;
 }
 
-},{"query":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-query/index.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-query/index.js":[function(require,module,exports){
+},{"query":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-query/index.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/component-query/index.js":[function(require,module,exports){
 function one(selector, el) {
   return el.querySelector(selector);
 }
@@ -26491,7 +26512,7 @@ exports.engine = function(obj){
   return exports;
 };
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/domify/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/min-dom/node_modules/domify/index.js":[function(require,module,exports){
 
 /**
  * Expose `parse`.
@@ -26605,11 +26626,11 @@ function parse(html, doc) {
   return fragment;
 }
 
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/index.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/index.js":[function(require,module,exports){
 module.exports = require('./lib/refs');
 
 module.exports.Collection = require('./lib/collection');
-},{"./lib/collection":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/collection.js","./lib/refs":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/refs.js"}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/collection.js":[function(require,module,exports){
+},{"./lib/collection":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/collection.js","./lib/refs":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/refs.js"}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/collection.js":[function(require,module,exports){
 'use strict';
 
 /**
@@ -26706,7 +26727,7 @@ function isExtended(collection) {
 module.exports.extend = extend;
 
 module.exports.isExtended = isExtended;
-},{}],"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/refs.js":[function(require,module,exports){
+},{}],"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/refs.js":[function(require,module,exports){
 'use strict';
 
 var Collection = require('./collection');
@@ -26898,4 +26919,4 @@ module.exports = Refs;
  * @property {boolean} [collection=false]
  * @property {boolean} [enumerable=false]
  */
-},{"./collection":"/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/collection.js"}]},{},["/Users/camunda/Desktop/BPMN.io/bpmn-js-examples/3d/app/app.js"]);
+},{"./collection":"/home/vale/repos/bpmn-js-examples/3d/node_modules/bpmn-js/node_modules/object-refs/lib/collection.js"}]},{},["/home/vale/repos/bpmn-js-examples/3d/app/app.js"]);
