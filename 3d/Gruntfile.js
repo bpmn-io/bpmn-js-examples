@@ -114,6 +114,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-build', [
     'copy',
+    'concat',
     'browserify:watch',
     'connect:livereload',
     'watch'
