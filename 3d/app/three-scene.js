@@ -127,5 +127,11 @@ module.exports = function init(container) {
   animate();
   // renderer.render( scene, camera );
 
-  return scene;
+  return {
+    scene: scene,
+    camera: camera,
+    renderer: renderer,
+    controls: controls,
+    stats: stats
+  };
 };
