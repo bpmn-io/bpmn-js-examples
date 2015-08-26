@@ -1,4 +1,5 @@
 'use strict';
+/*global THREE: false*/
 // we use fs + brfs to inline an example XML document.
 // exclude fs in package.json#browser + use the brfs transform
 // to generate a clean browserified bundle
@@ -14,10 +15,9 @@ var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboratio
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
 var threeScene = require('./three-scene')(document.getElementById('three-container'));
-var threeMesh = require('./three-shape2mesh');
+// var threeMesh = require('./three-shape2mesh');
 
 
-console.info('threeScene', threeScene, threeMesh);
 
 var viewer = new BpmnViewer({ container: '#canvas' });
 
@@ -36,65 +36,113 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   var rootGfx = elementRegistry.getGraphics(root);
 
-  console.info('viewer', viewer);
+  var layers = {};
 
-  // var layers = {};
+  var layerNumber = 0;
 
-  // var layerNumber = 0;
+  function notLabel(element) {
+    return !(element.type === 'label' && !element.businessObject.name);
+  }
 
-  // function notLabel(element) {
-  //   return !(element.type === 'label' && !element.businessObject.name);
-  // }
+  function traverse(children) {
+    var tempLayers = [];
 
-  // function traverse(children) {
-  //   var tempLayers = [];
+    if (children.length === 0) {
+      return;
+    }
 
-  //   if (children.length === 0) {
-  //     return;
-  //   }
+    layers['layer' + layerNumber] = [];
 
-  //   layers['layer' + layerNumber] = [];
+    _.forEach(children, function (child) {
+      var gfx = elementRegistry.getGraphics(child),
+          path;
 
-  //   _.forEach(children, function (child) {
-  //     var gfx = elementRegistry.getGraphics(child),
-  //         path;
+        layers['layer' + layerNumber ].push(child);
 
-  //     if (notLabel(child)) {
-  //       if (gfx.select('path')) {
-  //         path = gfx.select('path').attr('d');
+      _.forEach(child.children || [], function(elem) {
+          tempLayers.push(elem);
+      });
+    });
 
-  //         layers['layer' + layerNumber ].push(Snap.path.toAbsolute(path).toString());
-  //       }
-  //     }
+    if (tempLayers.length === 0) {
+      return;
+    }
+    layerNumber += 1;
 
-  //     _.forEach(child.children || [], function(elem) {
-  //       if (notLabel(elem)) {
-  //         tempLayers.push(elem);
-  //       }
-  //     });
-  //   });
+    traverse(tempLayers);
+  }
 
-  //   if (tempLayers.length === 0) {
-  //     return;
-  //   }
-  //   layerNumber += 1;
+  traverse(root.children);
+  console.log(layers);
 
-  //   traverse(tempLayers);
-  // }
+  var shapeMaterial = new THREE.MeshPhongMaterial({
+    color: 0x333366,
+    shininess: 60,
+    metal: false
+  });
+  var shapeCatchMaterial = new THREE.MeshPhongMaterial({
+    color: 0xFF3333,
+    shininess: 60,
+    metal: false
+  });
+  var shapeTaskMaterial = new THREE.MeshPhongMaterial({
+    color: 0xFFFFFF,
+    shininess: 30,
+    metal: false
+  });
 
-  // var rootSvgPath = rootGfx.select('path').attr('d');
+  var height = 50;
+  var scale = 0.2;
 
-  // layers['layer' + layerNumber] = [ Snap.path.toAbsolute(rootSvgPath).toString() ];
+  function createElementMesh(el, depth) {
+    var geomType;
+    var shape;
+    var mesh;
 
-  // layerNumber += 1;
+    var type = el.type;
+    var material = shapeMaterial;
 
-  // traverse(root.children);
-  // Object.keys(layers).forEach(function (name, depth) {
-  //   var shapes = layers[name];
-  //   shapes.forEach(function (shape) {
-  //     console.info('shape', shape);
-  //     threeMesh.create(shape, threeScene.scene);
-  //   });
-  // });
-  // console.log(layers);
+    if (type.indexOf('Catch') > -1) {
+      material = shapeCatchMaterial;
+    }
+    else if (type.indexOf('Task') > -1) {
+      material = shapeTaskMaterial;
+    }
+
+    if (type.indexOf('Gateway') > -1) {
+      shape = new THREE.CubeGeometry(el.width * scale, el.height * scale, height);
+      mesh = new THREE.Mesh(shape, material);
+      mesh.rotation.z = 45 * 0.0174532925;
+      geomType = 'gateway';
+    }
+    else if (type.indexOf('Event') > -1) {
+      shape = new THREE.SphereGeometry(el.width * scale);
+      mesh = new THREE.Mesh(shape, material);
+      geomType = 'event';
+    }
+    else if (el.width && el.height) {
+      shape = new THREE.CubeGeometry(el.width * scale, el.height * scale, height);
+      mesh = new THREE.Mesh(shape, material);
+      geomType = 'other';
+    }
+    else {
+      return;
+    }
+
+    console.info('el', geomType, type, el.width, el.height, el.x, el.y);
+    mesh.position.set(el.x * scale, el.y * scale, depth * height);
+    return mesh;
+  }
+
+  Object.keys(layers).forEach(function (name, depth) {
+    var shapes = layers[name];
+    shapes.forEach(function (shape) {
+      var mesh = createElementMesh(shape, depth);
+      if (mesh) {
+        threeScene.scene.add(mesh);
+      }
+    });
+  });
+
+  console.log(layers);
 });

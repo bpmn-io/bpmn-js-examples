@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 
     jshint: {
       src: [
-        ['<%=config.sources %>']
+        ['<%=config.sources %>/app.js']
       ],
       options: {
         jshintrc: true
@@ -26,6 +26,7 @@ module.exports = function(grunt) {
         browserifyOptions: {
           // make sure we do not include browser shims unnecessarily
           builtins: false,
+          debug: true,
           insertGlobalVars: {
             process: function () {
                 return 'undefined';
@@ -39,12 +40,12 @@ module.exports = function(grunt) {
       },
       watch: {
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/app.js' ]
+          '<%= config.dist %>/scripts.js': [ '<%= config.sources %>/app.js' ]
         }
       },
       app: {
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/app.js' ]
+          '<%= config.dist %>/scripts.js': [ '<%= config.sources %>/app.js' ]
         }
       }
     },
@@ -69,8 +70,7 @@ module.exports = function(grunt) {
           '<%= config.sources %>/OrbitControls.js',
           '<%= config.sources %>/THREEx.KeyboardState.js',
           '<%= config.sources %>/THREEx.FullScreen.js',
-          '<%= config.sources %>/THREEx.WindowResize.js',
-          '<%= config.sources %>/d3-threeD.js'
+          '<%= config.sources %>/THREEx.WindowResize.js'
         ],
         dest: '<%= config.dist %>/dependencies.js'
       }
