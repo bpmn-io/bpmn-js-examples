@@ -33,8 +33,6 @@ function addFlow(options) {
 
   var el = options.el,
       type = el.type,
-      scene = options.scene,
-      depth = options.depth || 0,
       height = options.height || 50,
       radius = options.radius || 1,
       wps = el.waypoints,
