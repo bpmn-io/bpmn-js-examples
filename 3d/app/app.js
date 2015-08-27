@@ -36,11 +36,25 @@ function addFlow(options) {
       height = options.height || 50,
       radius = options.radius || 1,
       wps = el.waypoints,
-      scale = options.scale || 1;
+      scale = options.scale || 1,
+      material;
 
-  var material = makeMaterial(options.materialType, options.materialOptions || {
-    color: type.indexOf('Sequence') > -1 ? 0xff0000 : 0x00ff00,
+  var blackMaterial = makeMaterial('MeshPhongMaterial', options.materialOptions || {
+    color: 0x000000
   });
+  if (type.indexOf('Sequence') > -1) {
+    material = blackMaterial;
+  }
+  else {
+    var stripeTexture = THREE.ImageUtils.loadTexture('stripe.png');
+    stripeTexture.anisotropy = 1;
+    stripeTexture.wrapS = stripeTexture.wrapT = THREE.RepeatWrapping;
+    stripeTexture.repeat.set( 5, 1 );
+    material = makeMaterial('MeshPhongMaterial', {
+      map: stripeTexture,
+      color: 0xffffff
+    });
+  }
 
   var group = new THREE.Object3D();
 
@@ -68,8 +82,12 @@ function addFlow(options) {
 
 
     var junctionGeometry = new THREE.SphereGeometry(radius, 16, 16);
-    var junctionMesh = new THREE.Mesh(junctionGeometry, material);
-    junctionMesh.position.set(start);
+    var junctionMesh = new THREE.Mesh(junctionGeometry, blackMaterial);
+    junctionMesh.position.set(
+      prevWp.x * scale,
+      prevWp.y * scale,
+      height * scale
+    );
     group.add(junctionMesh);
   });
 
@@ -254,14 +272,14 @@ viewer.importXML(pizzaDiagram, function(err) {
     else if (has('Task')) {
       created = created.concat(addTask(options));
     }
-    else if (has('Participant')) {
-      options.height = (height / 10) * depth;
-      created = created.concat(addTask(options));
-    }
-    else if (has('Lane')) {
-      options.height = (height / 10) * depth;
-      created = created.concat(addTask(options));
-    }
+    // else if (has('Participant')) {
+    //   options.height = (height / 10) * depth;
+    //   created = created.concat(addTask(options));
+    // }
+    // else if (has('Lane')) {
+    //   options.height = (height / 10) * depth;
+    //   created = created.concat(addTask(options));
+    // }
     else {
       console.info('unknow type', type);
     }

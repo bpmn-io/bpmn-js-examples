@@ -4,8 +4,8 @@
 
 // MAIN
 // standard global variables
-var scene, camera, renderer, controls, stats, lookAt, lookAtMesh;
-var keyboard = new THREEx.KeyboardState();
+var scene, camera, renderer, controls, stats, lookAt;//, lookAtMesh;
+// var keyboard = new THREEx.KeyboardState();
 var pageParams = {show: 0};
 
 var gui = new dat.GUI({
@@ -25,57 +25,65 @@ function animate() {
   update();
 }
 
+
+
+
 function update() {
-  var position = camera.position;
-  var speed = 5;
+  // var position = camera.position;
+  // var speed = 5;
 
 
-  if (keyboard.pressed('w') || keyboard.pressed('i')) {
-    if (!keyboard.pressed('space')) {
-      position.setZ(position.z - speed);
-    }
+  // if (keyboard.pressed('w') || keyboard.pressed('i')) {
+  //   if (!keyboard.pressed('space')) {
+  //     position.setZ(position.z - speed);
+  //   }
 
-    if (keyboard.pressed('shift')) {
-      lookAt.setZ(lookAt.z - speed);
-    }
-  }
-  else if (keyboard.pressed('s') || keyboard.pressed('k')) {
-    if (!keyboard.pressed('space')) {
-      position.setZ(position.z + speed);
-    }
+  //   if (keyboard.pressed('shift')) {
+  //     lookAt.setZ(lookAt.z - speed);
+  //   }
+  // }
+  // else if (keyboard.pressed('s') || keyboard.pressed('k')) {
+  //   if (!keyboard.pressed('space')) {
+  //     position.setZ(position.z + speed);
+  //   }
 
-    if (keyboard.pressed('shift')) {
-      lookAt.setZ(lookAt.z + speed);
-    }
-  }
+  //   if (keyboard.pressed('shift')) {
+  //     lookAt.setZ(lookAt.z + speed);
+  //   }
+  // }
 
-  if (keyboard.pressed('a') || keyboard.pressed('j')) {
-    if (!keyboard.pressed('space')) {
-      position.setX(position.x - speed);
-    }
+  // if (keyboard.pressed('a') || keyboard.pressed('j')) {
+  //   if (!keyboard.pressed('space')) {
+  //     position.setX(position.x - speed);
+  //   }
 
-    if (keyboard.pressed('shift')) {
-      lookAt.setX(lookAt.x - speed);
-    }
-  }
-  else if (keyboard.pressed('d') || keyboard.pressed('l')) {
-    if (!keyboard.pressed('space')) {
-      position.setX(position.x + speed);
-    }
+  //   if (keyboard.pressed('shift')) {
+  //     lookAt.setX(lookAt.x - speed);
+  //   }
+  // }
+  // else if (keyboard.pressed('d') || keyboard.pressed('l')) {
+  //   if (!keyboard.pressed('space')) {
+  //     position.setX(position.x + speed);
+  //   }
 
-    if (keyboard.pressed('shift')) {
-      lookAt.setX(lookAt.x + speed);
-    }
-  }
-  camera.lookAt(lookAt);
-  lookAtMesh.position.set(lookAt);
+  //   if (keyboard.pressed('shift')) {
+  //     lookAt.setX(lookAt.x + speed);
+  //   }
+  // }
+  // camera.lookAt(lookAt);
+  // lookAtMesh.position.set(lookAt);
 
-  var folderNames = Object.keys(gui.__folders);
-  folderNames.forEach(function (name) {
-    gui.__folders[name].__controllers.forEach(function (ctrl) {
-      ctrl.updateDisplay();
-    });
-  });
+
+  // var folderNames = Object.keys(gui.__folders);
+  // gui.__controllers.forEach(function (ctrl) {
+  //   ctrl.updateDisplay();
+  // });
+
+  // folderNames.forEach(function (name) {
+  //   gui.__folders[name].__controllers.forEach(function (ctrl) {
+  //     ctrl.updateDisplay();
+  //   });
+  // });
 
   controls.update();
   stats.update();
@@ -96,39 +104,40 @@ module.exports = function init(container) {
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
-
-  scene.add(camera);
-  camera.position.set(221, 119, 444);
+  camera.position.set(123, 138, 349);
   camera.lookAt(lookAt);
 
-  var lookAtGeometry = new THREE.SphereGeometry(20);
+  scene.add(camera);
 
-  var lookAtMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
+  scene.add(new THREE.CameraHelper(camera));
+  // var lookAtGeometry = new THREE.SphereGeometry(20);
 
-  lookAtMesh = new THREE.Mesh(lookAtGeometry, lookAtMaterial);
-  lookAtMesh.position.set(lookAt);
-  scene.add(lookAtMesh);
+  // var lookAtMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
 
-  var cameraCtrls = gui.addFolder('camera');
-  cameraCtrls.add(camera.position, 'x');
-  cameraCtrls.add(camera.position, 'y');
-  cameraCtrls.add(camera.position, 'z');
-  // cameraCtrls.open();
+  // lookAtMesh = new THREE.Mesh(lookAtGeometry, lookAtMaterial);
+  // lookAtMesh.position.set(lookAt);
+  // scene.add(lookAtMesh);
 
-  var cameraDirectionCtrls = gui.addFolder('direction');
-  cameraDirectionCtrls.add(lookAt, 'x').onChange(function(val) {
-    lookAt.setX(val);
-    camera.lookAt(lookAt);
-  });
-  cameraDirectionCtrls.add(lookAt, 'y').onChange(function(val) {
-    lookAt.setY(val);
-    camera.lookAt(lookAt);
-  });
-  cameraDirectionCtrls.add(lookAt, 'z').onChange(function(val) {
-    lookAt.setZ(val);
-    camera.lookAt(lookAt);
-  });
-  // cameraDirectionCtrls.open();
+  // var cameraCtrls = gui.addFolder('camera');
+  // cameraCtrls.add(camera.position, 'x');
+  // cameraCtrls.add(camera.position, 'y');
+  // cameraCtrls.add(camera.position, 'z');
+  // // cameraCtrls.open();
+
+  // var cameraDirectionCtrls = gui.addFolder('direction');
+  // cameraDirectionCtrls.add(lookAt, 'x').onChange(function(val) {
+  //   lookAt.setX(val);
+  //   camera.lookAt(lookAt);
+  // });
+  // cameraDirectionCtrls.add(lookAt, 'y').onChange(function(val) {
+  //   lookAt.setY(val);
+  //   camera.lookAt(lookAt);
+  // });
+  // cameraDirectionCtrls.add(lookAt, 'z').onChange(function(val) {
+  //   lookAt.setZ(val);
+  //   camera.lookAt(lookAt);
+  // });
+  // // cameraDirectionCtrls.open();
 
   // RENDERER
   if ( Detector.webgl ) {
