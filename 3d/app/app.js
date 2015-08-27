@@ -30,7 +30,7 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   canvas.zoom('fit-viewport');
 
-  // viewer.container.parentNode.style.display = 'none';
+  viewer.container.parentNode.style.display = 'none';
 
   var root = canvas.getRootElement();
 
@@ -142,43 +142,56 @@ viewer.importXML(pizzaDiagram, function(err) {
     } else
 
     if (type.indexOf('Flow') > -1) {
-      var CustomSinCurve = THREE.Curve.create(scale,
-        function ( t ) { //getPoint: t is between 0-1
-            return new THREE.Vector3(waypoint.x * scale,
-          (maxY * scale) + waypoint.y * scale * -1,
-          (depth * height) + (height * 0.5));
-        }
-      );
-
-      var path = new CustomSinCurve( el.waypoints.length );
-
-      var geometry = new THREE.TubeGeometry(
-        path,  //path
-        20,    //segments
-        2,     //radius
-        8,     //radiusSegments
-        false  //closed
-      );
       material = new THREE.LineBasicMaterial({
-        color: 0x000000
+        color: 0x000000,
+        linewidth: 5
       });
 
-      mesh = new THREE.Mesh(shape, material);
+      geometry = new THREE.Geometry();
 
-      // geometry = new THREE.Geometry();
-      // 
-      // _.forEach(el.waypoints, function(waypoint) {
-      //   var vector = new THREE.Vector3(waypoint.x * scale,
-      //     (maxY * scale) + waypoint.y * scale * -1,
-      //     (depth * height) + (height * 0.5));
-      //
-      //   geometry.vertices.push(vector);
-      // });
-      //
-      // line = new THREE.Line(geometry, material);
+      var targetDepth = depth,
+          sourceDepth = depth;
+
+      _.forEach(layers, function(layer, name) {
+        if (layer.indexOf(el.source) !== -1) {
+          targetDepth = parseInt(name.replace('layer', ''), 10);
+        }
+
+        if (layer.indexOf(el.target) !== -1) {
+          targetDepth = parseInt(name.replace('layer', ''), 10);
+        }
+      });
+
+      depth = {
+        source: sourceDepth - 1,
+        target: targetDepth
+      };
+
+      _.forEach(el.waypoints, function(waypoint, idx) {
+        var vector,
+            z = (depth.source * height),
+            middleZ = depth.source + ((depth.target - depth.source) / el.waypoints.length);
+
+        if (idx > 0) {
+          z = middleZ;
+        }
+
+        if (idx === el.waypoints.length - 1) {
+          z = depth.target;
+        }
+
+        vector = new THREE.Vector3(waypoint.x * scale,
+          (maxY * scale) + waypoint.y * scale * -1,
+          z);
+
+        geometry.vertices.push(vector);
+      });
+
+      line = new THREE.Line(geometry, material);
 
       geomType = 'connection';
-      return mesh;
+
+      return line;
     } else
 
     if (type.indexOf('Event') > -1) {
@@ -235,6 +248,13 @@ viewer.importXML(pizzaDiagram, function(err) {
 
     mesh.position.set(x, y, d * height);
     scene.add(mesh);
+
+    camera.position.set(x, y, (x + y) / 2);
+
+    var lookAt = mesh.position.clone();
+    lookAt.setZ(0);
+
+    camera.lookAt(lookAt);
   });
 
   console.log(scene);
