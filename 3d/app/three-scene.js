@@ -4,12 +4,15 @@
 
 // MAIN
 // standard global variables
-var scene, camera, renderer, controls, stats;
+var scene, camera, renderer, controls, stats, lookAt, lookAtMesh;
 var keyboard = new THREEx.KeyboardState();
-
+var pageParams = {show: 0};
 
 var gui = new dat.GUI();
-
+gui.add(pageParams, 'show', {WebGL: 0, SVG: 1}).onChange(function (value) {
+  console.info('change view', value);
+  document.body.classList[!parseInt(value, 10) ? 'remove' : 'add']('canvas');
+});
 
 function animate() {
   requestAnimationFrame( animate );
@@ -18,22 +21,55 @@ function animate() {
 }
 
 function update() {
-  if (keyboard.pressed('w')) {
-    console.info('pressed forth');
+  var position = camera.position;
+  var speed = 5;
+
+
+  if (keyboard.pressed('w') || keyboard.pressed('i')) {
+    if (!keyboard.pressed('space')) {
+      position.setZ(position.z - speed);
+    }
+
+    if (keyboard.pressed('shift')) {
+      lookAt.setZ(lookAt.z - speed);
+    }
   }
-  else if (keyboard.pressed('s')) {
-    console.info('pressed back');
+  else if (keyboard.pressed('s') || keyboard.pressed('k')) {
+    if (!keyboard.pressed('space')) {
+      position.setZ(position.z + speed);
+    }
+
+    if (keyboard.pressed('shift')) {
+      lookAt.setZ(lookAt.z + speed);
+    }
   }
 
-  if (keyboard.pressed('a')) {
-    console.info('pressed left');
-  }
-  else if (keyboard.pressed('d')) {
-    console.info('pressed left');
-  }
+  if (keyboard.pressed('a') || keyboard.pressed('j')) {
+    if (!keyboard.pressed('space')) {
+      position.setX(position.x - speed);
+    }
 
-  gui.__controllers.forEach(function (ctrl) {
-    ctrl.updateDisplay();
+    if (keyboard.pressed('shift')) {
+      lookAt.setX(lookAt.x - speed);
+    }
+  }
+  else if (keyboard.pressed('d') || keyboard.pressed('l')) {
+    if (!keyboard.pressed('space')) {
+      position.setX(position.x + speed);
+    }
+
+    if (keyboard.pressed('shift')) {
+      lookAt.setX(lookAt.x + speed);
+    }
+  }
+  camera.lookAt(lookAt);
+  lookAtMesh.position.set(lookAt);
+
+  var folderNames = Object.keys(gui.__folders);
+  folderNames.forEach(function (name) {
+    gui.__folders[name].__controllers.forEach(function (ctrl) {
+      ctrl.updateDisplay();
+    });
   });
 
   controls.update();
@@ -48,20 +84,26 @@ module.exports = function init(container) {
   /*jshint maxstatements: false*/
   // SCENE
   scene = new THREE.Scene();
+  lookAt = new THREE.Vector3(118, 94, 0);
+
   // CAMERA
   var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
   scene.add(camera);
-  camera.position.set(250, 250, 400);
-
-  var lookAt = scene.position.clone();
+  camera.position.set(316, 171, 636);
   camera.lookAt(lookAt);
 
+  var lookAtGeometry = new THREE.SphereGeometry(20);
+  var lookAtMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
+  lookAtMesh = new THREE.Mesh(lookAtGeometry, lookAtMaterial);
+  lookAtMesh.position.set(lookAt);
+  scene.add(lookAtMesh);
+
   var cameraCtrls = gui.addFolder('camera');
-  cameraCtrls.add(camera.position, 'x')/*.listen()*/;
-  cameraCtrls.add(camera.position, 'y')/*.listen()*/;
-  cameraCtrls.add(camera.position, 'z')/*.listen()*/;
+  cameraCtrls.add(camera.position, 'x');
+  cameraCtrls.add(camera.position, 'y');
+  cameraCtrls.add(camera.position, 'z');
   cameraCtrls.open();
 
   var cameraDirectionCtrls = gui.addFolder('direction');
@@ -79,6 +121,7 @@ module.exports = function init(container) {
   });
   cameraDirectionCtrls.open();
 
+  console.info('gui', gui);
 
 
 

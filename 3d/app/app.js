@@ -30,7 +30,7 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   canvas.zoom('fit-viewport');
 
-  viewer.container.parentNode.style.display = 'none';
+  // viewer.container.parentNode.style.display = 'none';
 
   var root = canvas.getRootElement();
 
@@ -216,13 +216,6 @@ viewer.importXML(pizzaDiagram, function(err) {
 
     mesh.position.set(x, y, d * height);
     scene.add(mesh);
-
-    camera.position.set(x, y, (x + y) / 2);
-
-    var lookAt = mesh.position.clone();
-    lookAt.setZ(0);
-
-    camera.lookAt(lookAt);
   });
 
   console.log(scene);

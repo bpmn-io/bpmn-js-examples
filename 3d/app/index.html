@@ -16,12 +16,35 @@
       padding: 0;
       margin: 0;
     }
-    #three-container {
+
+    body {
+      position: relative;
       overflow: hidden;
-      /*height: 100vh;*/
     }
+    #three-container,
     #canvas {
-      /*display: none;*/
+      transition: transform 0.218s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    #canvas {
+      transform: translateX(100%);
+    }
+
+    #three-container {
+      transform: translateX(0%);
+    }
+
+
+    body.canvas #canvas {
+      transform: translateX(0%);
+    }
+
+    body.canvas #three-container {
+      transform: translateX(-100%);
     }
   </style>
 
