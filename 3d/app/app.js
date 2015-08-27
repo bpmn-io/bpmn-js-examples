@@ -1,5 +1,5 @@
 'use strict';
-/*global THREE: false, dat: false*/
+/*global THREE: false */
 // we use fs + brfs to inline an example XML document.
 // exclude fs in package.json#browser + use the brfs transform
 // to generate a clean browserified bundle
@@ -13,28 +13,127 @@ var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboratio
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
-var threeScene = require('./three-scene')(document.getElementById('three-container'));
+var threeScene = require('./three-scene')(document.querySelector('#three-container .canvas'));
 // var threeMesh = require('./three-shape2mesh');
 var camera = threeScene.camera;
 var scene = threeScene.scene;
 
 var viewer = new BpmnViewer({ container: '#canvas' });
+function makeMaterial(materialType, materialOptions) {
+  return new THREE[materialType || 'MeshLambertMaterial'](materialOptions || {
+    color: 0xffffff
+  });
+}
+
+function addFlow(options) {
+  options = options || {};
+  var el = options.el;
+  var type = el.type;
+  var scene = options.scene;
+  var depth = options.depth || 0;
+  var height = options.height || 50;
+  var radius = options.radius || 1;
+  var wps = el.waypoints;
+  var scale = options.scale || 1;
+
+  var material = makeMaterial(options.materialType, options.materialOptions || {
+    color: type.indexOf('Sequence') > -1 ? 0xff0000 : 0x00ff00,
+  });
+
+  var returned = [];
+  wps.forEach(function (wp, i) {
+    if (i === 0) {
+      return;
+    }
+    var prevWp = wps[i - 1];
+
+    var start = new THREE.Vector3(
+      prevWp.x * scale,
+      prevWp.y * scale,
+      depth * height * scale
+    );
+    var end = new THREE.Vector3(
+      wp.x * scale,
+      wp.y * scale,
+      depth * height * scale
+    );
+
+    var twoPointsCurve = new THREE.SplineCurve3([start, end]);
+    var lineGeometry = new THREE.TubeGeometry(twoPointsCurve, 4, radius, 8, false);
+    var lineMesh = new THREE.Mesh(lineGeometry, material);
+    scene.add(lineMesh);
+    returned.push(lineMesh);
+
+    var junctionMesh = new THREE.Mesh(new THREE.SphereGeometry(radius), material);
+    junctionMesh.position.set(start);
+    scene.add(junctionMesh);
+    returned.push(junctionMesh);
+  });
+}
+
+
+function addTask(options) {
+  options = options || {};
+  var el = options.el;
+  var scene = options.scene;
+  var scale = options.scale || 1;
+  var depth = options.depth || 0;
+  var height = options.height || 50;
+
+  var material = makeMaterial(options.materialType, options.materialOptions);
+  var geometry = new THREE.CubeGeometry(el.width * scale, el.height * scale, height * scale);
+  var mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(el.x * scale, el.y * scale, depth * scale);
+  scene.add(mesh);
+  return [mesh];
+}
+
+function addEvent(options) {
+  options = options || {};
+  var el = options.el;
+
+  var scene = options.scene;
+  var scale = options.scale || 1;
+  var depth = options.depth || 0;
+  var height = options.height || 50;
+  var material = makeMaterial(options.materialType, options.materialOptions);
+  var geometry = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height * scale);
+  var mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(el.x * scale, el.y * scale, depth * scale);
+  mesh.rotation.x = -90 * 0.0174532925;
+  scene.add(mesh);
+  return [mesh];
+}
+
+function addGateway(options) {
+  options = options || {};
+  var el = options.el;
+
+  var scene = options.scene;
+  var scale = options.scale || 1;
+
+  var height = options.height || 50;
+  var material = makeMaterial(options.materialType, options.materialOptions);
+  var geometry = new THREE.Geometry();
+  var mesh = new THREE.Mesh(geometry, material);
+  mesh.position.set(el.x * scale, el.y * scale, height * scale);
+  mesh.rotation.z = 45 * 0.0174532925;
+  scene.add(mesh);
+  return [mesh];
+}
 
 viewer.importXML(pizzaDiagram, function(err) {
   if (err) {
     console.log('something went wrong:', err);
   }
 
-  var canvas = viewer.get('canvas'),
-      elementRegistry = viewer.get('elementRegistry');
+  var canvas = viewer.get('canvas');
 
   canvas.zoom('fit-viewport');
 
-  viewer.container.parentNode.style.display = 'none';
 
   var root = canvas.getRootElement();
 
-  var rootGfx = elementRegistry.getGraphics(root);
 
   var layers = {};
 
@@ -66,9 +165,6 @@ viewer.importXML(pizzaDiagram, function(err) {
     layers['layer' + layerNumber] = [];
 
     _.forEach(children, function (child) {
-      var gfx = elementRegistry.getGraphics(child),
-          path;
-
       if (isLabel(child)) {
         return;
       }
@@ -97,129 +193,37 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   traverse(root.children);
 
-  var shapeMaterial = new THREE.MeshPhongMaterial({
-    color: 0x333366,
-    shininess: 60,
-    metal: false
-  });
-  var shapeCatchMaterial = new THREE.MeshPhongMaterial({
-    color: 0xFF3333,
-    shininess: 60,
-    metal: false
-  });
-  var shapeTaskMaterial = new THREE.MeshPhongMaterial({
-    color: 0xFFFFFF,
-    shininess: 30,
-    metal: false
-  });
 
   var height = 50;
   var scale = 0.2;
 
   function createElementMesh(el, depth) {
-    var geomType,
-        geometry,
-        shape,
-        line,
-        mesh;
-
+    var created = [];
     var type = el.type;
-    var material = shapeMaterial;
 
-    if (type.indexOf('Catch') > -1) {
-      material = shapeCatchMaterial;
+    var options = {
+      el: el,
+      scene: scene,
+      scale: scale,
+      depth: depth,
+      height: height
+    };
+    function has(what) {
+      return type.indexOf(what) > -1;
     }
 
-    if (type.indexOf('Task') > -1) {
-      material = shapeTaskMaterial;
+    if (has('Gateway')) {
+      created = created.concat(addGateway(options));
     }
-
-    if (type.indexOf('Gateway') > -1) {
-      shape = new THREE.BoxGeometry(el.width * scale, el.height * scale, height);
-      mesh = new THREE.Mesh(shape, material);
-      mesh.rotation.z = 45 * 0.0174532925;
-      geomType = 'gateway';
-    } else
-
-    if (type.indexOf('Flow') > -1) {
-      material = new THREE.LineBasicMaterial({
-        color: 0x000000,
-        linewidth: 10
-      });
-
-      geometry = new THREE.Geometry();
-
-      var targetDepth = depth,
-          sourceDepth = depth;
-
-      _.forEach(layers, function(layer, name) {
-        if (layer.indexOf(el.source) !== -1) {
-          targetDepth = parseInt(name.replace('layer', ''), 10);
-        }
-
-        if (layer.indexOf(el.target) !== -1) {
-          targetDepth = parseInt(name.replace('layer', ''), 10);
-        }
-      });
-
-      depth = {
-        source: sourceDepth - 1,
-        target: targetDepth
-      };
-
-      _.forEach(el.waypoints, function(waypoint, idx) {
-        var vector,
-            z = (depth.source * height),
-            middleZ = depth.source + ((depth.target - depth.source) / el.waypoints.length);
-
-        if (idx > 0) {
-          z = middleZ;
-        }
-
-        if (idx === el.waypoints.length - 1) {
-          z = depth.target;
-        }
-
-        vector = new THREE.Vector3(waypoint.x * scale,
-          (maxY * scale) + waypoint.y * scale * -1,
-          z);
-
-        geometry.vertices.push(vector);
-      });
-
-      line = new THREE.Line(geometry, material);
-
-      geomType = 'connection';
-
-      return line;
-    } else
-
-    if (type.indexOf('Event') > -1) {
-      // shape = new THREE.SphereGeometry(el.width * scale);
-      shape = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height);
-      mesh = new THREE.Mesh(shape, material);
-      mesh.rotation.x = -90 * 0.0174532925;
-      geomType = 'event';
-    } else
-
-    if (type.indexOf('Task') > -1) {
-      shape = new THREE.BoxGeometry(el.width * scale, el.height * scale, height);
-      mesh = new THREE.Mesh(shape, material);
-      geomType = 'task';
+    else if (has('Flow')) {
+      created = created.concat(addFlow(options));
     }
-    // else if (type.indexOf('Lane') > -1) {
-    // else if (el.width && el.height) {
-    //   shape = new THREE.CubeGeometry(el.width * scale, el.height * scale, height * scale);
-    //   mesh = new THREE.Mesh(shape, material);
-    //   geomType = 'other';
-    // }
-    else {
-      return;
+    else if (has('Event')) {
+      created = created.concat(addEvent(options));
     }
-
-    console.info('el', geomType, type, el.width, el.height, el.x, el.y * scale * -1);
-    mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5));
-    return mesh;
+    else if (has('Task')) {
+      created = created.concat(addTask(options));
+    }
   }
 
   var names = Object.keys(layers).reverse();
@@ -227,10 +231,7 @@ viewer.importXML(pizzaDiagram, function(err) {
   _.forEach(names, function (name, d) {
     var shapes = layers[name];
     _.forEach(shapes, function (shape) {
-      var mesh = createElementMesh(shape, d);
-      if (mesh) {
-        scene.add(mesh);
-      }
+      createElementMesh(shape, d);
     });
   });
 
@@ -240,7 +241,7 @@ viewer.importXML(pizzaDiagram, function(err) {
       color: 0x999999,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.75
+      opacity: 0.2
     }));
 
     var x = (minX + (maxX / 2)) * scale;

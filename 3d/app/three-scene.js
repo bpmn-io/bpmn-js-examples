@@ -8,9 +8,14 @@ var scene, camera, renderer, controls, stats, lookAt, lookAtMesh;
 var keyboard = new THREEx.KeyboardState();
 var pageParams = {show: 0};
 
-var gui = new dat.GUI();
+var gui = new dat.GUI({
+  autoPlace: false
+});
+
+document.querySelector('#three-container').appendChild(gui.domElement);
+gui.domElement.classList.add('properties');
+
 gui.add(pageParams, 'show', {WebGL: 0, SVG: 1}).onChange(function (value) {
-  console.info('change view', value);
   document.body.classList[!parseInt(value, 10) ? 'remove' : 'add']('canvas');
 });
 
@@ -87,8 +92,7 @@ module.exports = function init(container) {
   lookAt = new THREE.Vector3(118, 94, 0);
 
   // CAMERA
-  var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
-
+  var SCREEN_WIDTH = container.clientWidth, SCREEN_HEIGHT = container.clientHeight;
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -109,7 +113,7 @@ module.exports = function init(container) {
   cameraCtrls.add(camera.position, 'x');
   cameraCtrls.add(camera.position, 'y');
   cameraCtrls.add(camera.position, 'z');
-  cameraCtrls.open();
+  // cameraCtrls.open();
 
   var cameraDirectionCtrls = gui.addFolder('direction');
   cameraDirectionCtrls.add(lookAt, 'x').onChange(function(val) {
@@ -124,7 +128,7 @@ module.exports = function init(container) {
     lookAt.setZ(val);
     camera.lookAt(lookAt);
   });
-  cameraDirectionCtrls.open();
+  // cameraDirectionCtrls.open();
 
   // RENDERER
   if ( Detector.webgl ) {
