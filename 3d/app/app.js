@@ -25,6 +25,11 @@ function makeMaterial(materialType, materialOptions) {
   });
 }
 
+
+
+
+
+
 function addFlow(options) {
   options = options || {};
   var el = options.el;
@@ -40,7 +45,7 @@ function addFlow(options) {
     color: type.indexOf('Sequence') > -1 ? 0xff0000 : 0x00ff00,
   });
 
-  var returned = [];
+  var created = [];
   wps.forEach(function (wp, i) {
     if (i === 0) {
       return;
@@ -62,13 +67,14 @@ function addFlow(options) {
     var lineGeometry = new THREE.TubeGeometry(twoPointsCurve, 4, radius, 8, false);
     var lineMesh = new THREE.Mesh(lineGeometry, material);
     scene.add(lineMesh);
-    returned.push(lineMesh);
+    created.push(lineMesh);
 
     var junctionMesh = new THREE.Mesh(new THREE.SphereGeometry(radius), material);
     junctionMesh.position.set(start);
     scene.add(junctionMesh);
-    returned.push(junctionMesh);
+    created.push(junctionMesh);
   });
+  return created;
 }
 
 
@@ -84,6 +90,7 @@ function addTask(options) {
   var geometry = new THREE.CubeGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(el.x * scale, el.y * scale, depth * scale);
+  // mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5))
   scene.add(mesh);
   return [mesh];
 }
@@ -100,6 +107,7 @@ function addEvent(options) {
   var geometry = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(el.x * scale, el.y * scale, depth * scale);
+  // mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5))
   mesh.rotation.x = -90 * 0.0174532925;
   scene.add(mesh);
   return [mesh];
@@ -117,10 +125,17 @@ function addGateway(options) {
   var geometry = new THREE.Geometry();
   var mesh = new THREE.Mesh(geometry, material);
   mesh.position.set(el.x * scale, el.y * scale, height * scale);
+  // mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5))
   mesh.rotation.z = 45 * 0.0174532925;
   scene.add(mesh);
   return [mesh];
 }
+
+
+
+
+
+
 
 viewer.importXML(pizzaDiagram, function(err) {
   if (err) {
@@ -206,7 +221,7 @@ viewer.importXML(pizzaDiagram, function(err) {
       scene: scene,
       scale: scale,
       depth: depth,
-      height: height
+      height: height * depth
     };
     function has(what) {
       return type.indexOf(what) > -1;
@@ -224,16 +239,30 @@ viewer.importXML(pizzaDiagram, function(err) {
     else if (has('Task')) {
       created = created.concat(addTask(options));
     }
+
+    return created;
   }
 
   var names = Object.keys(layers).reverse();
-
+  var created = [];
   _.forEach(names, function (name, d) {
     var shapes = layers[name];
     _.forEach(shapes, function (shape) {
-      createElementMesh(shape, d);
+      var group = new THREE.Object3D();
+      createElementMesh(shape, d).forEach(function (mesh) {
+        group.add(mesh);
+      });
+      var flip = 180 * 0.0174532925;
+      group.rotation.set(0, flip, flip);
+      group.translateX(maxX * scale);
+      group.translateY(maxY * (-1 * scale));
+      scene.add(group);
+      // created = created.concat(createElementMesh(shape, d));
+      created.push(group);
+
     });
   });
+
 
   names.forEach(function (layer, d) {
     var shape = new THREE.PlaneGeometry(maxX * scale, maxY * scale);
