@@ -88,14 +88,19 @@ module.exports = function init(container) {
 
   // CAMERA
   var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+
   var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+
   scene.add(camera);
   camera.position.set(316, 171, 636);
   camera.lookAt(lookAt);
 
   var lookAtGeometry = new THREE.SphereGeometry(20);
+
   var lookAtMaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
+
   lookAtMesh = new THREE.Mesh(lookAtGeometry, lookAtMaterial);
   lookAtMesh.position.set(lookAt);
   scene.add(lookAtMesh);
@@ -121,19 +126,14 @@ module.exports = function init(container) {
   });
   cameraDirectionCtrls.open();
 
-  console.info('gui', gui);
-
-
-
-
-
   // RENDERER
   if ( Detector.webgl ) {
-    renderer = new THREE.WebGLRenderer( {antialias:true} );
+    renderer = new THREE.WebGLRenderer( { antialias:true } );
   }
   else {
     renderer = new THREE.CanvasRenderer();
   }
+  renderer.setClearColor( 0xC1FCC0, 1);
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
   container.appendChild( renderer.domElement );
@@ -151,11 +151,11 @@ module.exports = function init(container) {
 
 
   // LIGHT
-  var light = new THREE.PointLight(0xffffff);
+  var light = new THREE.PointLight(0xffffff, 1);
   light.position.set(100,250,100);
   scene.add(light);
 
-  light = new THREE.PointLight(0xffffff);
+  light = new THREE.PointLight(0xffffff, 1);
   light.position.set(0,1000,1000);
   scene.add(light);
 
@@ -173,7 +173,6 @@ module.exports = function init(container) {
 
 
   var axes = new THREE.AxisHelper(50);
-  axes.position = {x:-40, y:-40, z:-40};//mesh.position;
   scene.add(axes);
 
   var gridXZ = new THREE.GridHelper(100, 10);
@@ -192,13 +191,6 @@ module.exports = function init(container) {
   gridYZ.rotation.z = Math.PI/2;
   gridYZ.setColors( new THREE.Color(0x660000), new THREE.Color(0x660000) );
   scene.add(gridYZ);
-
-
-
-
-
-
-
 
   animate();
 

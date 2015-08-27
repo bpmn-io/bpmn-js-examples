@@ -64,7 +64,7 @@ module.exports = function(grunt) {
     concat: {
       three: {
         src: [
-          '<%= config.sources %>/Three.js',
+          '<%= config.sources %>/three.min.js',
           '<%= config.sources %>/Detector.js',
           '<%= config.sources %>/Stats.js',
           '<%= config.sources %>/OrbitControls.js',

@@ -135,7 +135,7 @@ viewer.importXML(pizzaDiagram, function(err) {
     }
 
     if (type.indexOf('Gateway') > -1) {
-      shape = new THREE.CubeGeometry(el.width * scale, el.height * scale, height);
+      shape = new THREE.BoxGeometry(el.width * scale, el.height * scale, height);
       mesh = new THREE.Mesh(shape, material);
       mesh.rotation.z = 45 * 0.0174532925;
       geomType = 'gateway';
@@ -144,7 +144,7 @@ viewer.importXML(pizzaDiagram, function(err) {
     if (type.indexOf('Flow') > -1) {
       material = new THREE.LineBasicMaterial({
         color: 0x000000,
-        linewidth: 5
+        linewidth: 10
       });
 
       geometry = new THREE.Geometry();
@@ -188,10 +188,11 @@ viewer.importXML(pizzaDiagram, function(err) {
       });
 
       line = new THREE.Line(geometry, material);
+      mesh = new THREE.Mesh(line, material);
 
       geomType = 'connection';
 
-      return line;
+      return mesh;
     } else
 
     if (type.indexOf('Event') > -1) {
@@ -203,7 +204,7 @@ viewer.importXML(pizzaDiagram, function(err) {
     } else
 
     if (type.indexOf('Task') > -1) {
-      shape = new THREE.CubeGeometry(el.width * scale, el.height * scale, height);
+      shape = new THREE.BoxGeometry(el.width * scale, el.height * scale, height);
       mesh = new THREE.Mesh(shape, material);
       geomType = 'task';
     }
