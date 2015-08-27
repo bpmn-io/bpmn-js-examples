@@ -70,7 +70,8 @@ module.exports = function(grunt) {
           '<%= config.sources %>/OrbitControls.js',
           '<%= config.sources %>/THREEx.KeyboardState.js',
           '<%= config.sources %>/THREEx.FullScreen.js',
-          '<%= config.sources %>/THREEx.WindowResize.js'
+          '<%= config.sources %>/THREEx.WindowResize.js',
+          '<%= config.sources %>/dat.gui.js'
         ],
         dest: '<%= config.dist %>/dependencies.js'
       }
