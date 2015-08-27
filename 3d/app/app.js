@@ -188,11 +188,10 @@ viewer.importXML(pizzaDiagram, function(err) {
       });
 
       line = new THREE.Line(geometry, material);
-      mesh = new THREE.Mesh(line, material);
 
       geomType = 'connection';
 
-      return mesh;
+      return line;
     } else
 
     if (type.indexOf('Event') > -1) {
