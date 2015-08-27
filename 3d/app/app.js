@@ -10,7 +10,6 @@ var _ = require('lodash');
 // inlined in result file via brfs
 var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
 
-
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
@@ -41,9 +40,21 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   var layerNumber = 0;
 
-  function notLabel(element) {
-    return !(element.type === 'label' && !element.businessObject.name);
+  function isLabel(element) {
+    return element.type === 'label' && !element.businessObject.name;
   }
+
+  function hasCoords(shape) {
+    return shape.x &&
+           shape.y &&
+           shape.width &&
+           shape.height;
+  }
+
+  var maxX = 0,
+      minX = 0,
+      maxY = 0,
+      minY = 0;
 
   function traverse(children) {
     var tempLayers = [];
@@ -58,7 +69,18 @@ viewer.importXML(pizzaDiagram, function(err) {
       var gfx = elementRegistry.getGraphics(child),
           path;
 
-        layers['layer' + layerNumber ].push(child);
+      if (isLabel(child)) {
+        return;
+      }
+
+      layers['layer' + layerNumber ].push(child);
+
+      if (hasCoords(child)) {
+        minX = Math.min(child.x, minX);
+        maxX = Math.max(child.x + child.width, maxX);
+        minY = Math.min(child.y, minY);
+        maxY = Math.max(child.y + child.height, maxY);
+      }
 
       _.forEach(child.children || [], function(elem) {
           tempLayers.push(elem);
@@ -95,9 +117,11 @@ viewer.importXML(pizzaDiagram, function(err) {
   var scale = 0.2;
 
   function createElementMesh(el, depth) {
-    var geomType;
-    var shape;
-    var mesh;
+    var geomType,
+        geometry,
+        shape,
+        line,
+        mesh;
 
     var type = el.type;
     var material = shapeMaterial;
@@ -105,7 +129,8 @@ viewer.importXML(pizzaDiagram, function(err) {
     if (type.indexOf('Catch') > -1) {
       material = shapeCatchMaterial;
     }
-    else if (type.indexOf('Task') > -1) {
+
+    if (type.indexOf('Task') > -1) {
       material = shapeTaskMaterial;
     }
 
@@ -114,15 +139,38 @@ viewer.importXML(pizzaDiagram, function(err) {
       mesh = new THREE.Mesh(shape, material);
       mesh.rotation.z = 45 * 0.0174532925;
       geomType = 'gateway';
-    }
-    else if (type.indexOf('Event') > -1) {
+    } else
+
+    if (type.indexOf('Flow') > -1) {
+      material = new THREE.LineBasicMaterial({
+        color: 0x000000
+      });
+
+      geometry = new THREE.Geometry();
+
+      _.forEach(el.waypoints, function(waypoint) {
+        var vector = new THREE.Vector3(waypoint.x * scale,
+          (maxY * scale) + waypoint.y * scale * -1,
+          (depth * height) + (height * 0.5));
+
+        geometry.vertices.push(vector);
+      });
+
+      line = new THREE.Line(geometry, material);
+
+      geomType = 'connection';
+      return line;
+    } else
+
+    if (type.indexOf('Event') > -1) {
       // shape = new THREE.SphereGeometry(el.width * scale);
       shape = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height);
       mesh = new THREE.Mesh(shape, material);
       mesh.rotation.x = -90 * 0.0174532925;
       geomType = 'event';
-    }
-    else if (type.indexOf('Task') > -1) {
+    } else
+
+    if (type.indexOf('Task') > -1) {
       shape = new THREE.CubeGeometry(el.width * scale, el.height * scale, height);
       mesh = new THREE.Mesh(shape, material);
       geomType = 'task';
@@ -137,38 +185,16 @@ viewer.importXML(pizzaDiagram, function(err) {
       return;
     }
 
-    console.info('el', geomType, type, el.width, el.height, el.x, el.y);
-    mesh.position.set(el.x * scale, el.y * scale, (depth * height) + (height * 0.5));
+    console.info('el', geomType, type, el.width, el.height, el.x, el.y * scale * -1);
+    mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5));
     return mesh;
   }
 
-
-
   var names = Object.keys(layers).reverse();
-  var minX = 0;
-  var maxX = 0;
-  var minY = 0;
-  var maxY = 0;
 
-  function hasCoords(shape) {
-    console.info('shape', shape);
-    return typeof shape.x !== 'undefined' &&
-           typeof shape.y !== 'undefined' &&
-           typeof shape.width !== 'undefined' &&
-           typeof shape.height !== 'undefined';
-  }
-
-  names.forEach(function (name, d) {
+  _.forEach(names, function (name, d) {
     var shapes = layers[name];
-    shapes.forEach(function (shape) {
-      if (hasCoords(shape)) {
-        minX = Math.min(shape.x, minX);
-        maxX = Math.max(shape.x + shape.width, maxX);
-
-        minY = Math.min(shape.y, minY);
-        maxY = Math.max(shape.y + shape.height, maxY);
-      }
-
+    _.forEach(shapes, function (shape) {
       var mesh = createElementMesh(shape, d);
       if (mesh) {
         scene.add(mesh);
@@ -187,14 +213,17 @@ viewer.importXML(pizzaDiagram, function(err) {
 
     var x = (minX + (maxX / 2)) * scale;
     var y = (minY + (maxY / 2)) * scale;
+
     mesh.position.set(x, y, d * height);
     scene.add(mesh);
 
     camera.position.set(x, y, (x + y) / 2);
+
     var lookAt = mesh.position.clone();
     lookAt.setZ(0);
+
     camera.lookAt(lookAt);
   });
 
-  console.log(layers);
+  console.log(scene);
 });
