@@ -121,8 +121,8 @@ function addEvent(options) {
   y = (el.y + (el.height / 2)) * scale;
   z = depth * scale;
 
-  mesh.position.set(x, y, z);
   mesh.rotation.x = -90 * 0.0174532925;
+  mesh.position.set(x, y, z);
   scene.add(mesh);
 
   return [ mesh ];
@@ -140,11 +140,11 @@ function addGateway(options) {
 
   var material = makeMaterial(options.materialType, options.materialOptions);
 
-  var geometry = new THREE.Geometry();
+  var geometry = new THREE.BoxGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
 
   x = (el.x + (el.width / 2)) * scale;
-  y = (el.y + (el.height / 2)) * scale * -1;
+  y = (el.y + (el.height / 2)) * scale;
   z = depth * scale;
 
   mesh.position.set(x, y, z);
