@@ -134,7 +134,6 @@ function addGateway(options) {
       depth = options.depth || 0,
       height = options.height || 50;
 
-  var scale = options.scale || 1;
 
   var material = makeMaterial(options.materialType, options.materialOptions);
 
