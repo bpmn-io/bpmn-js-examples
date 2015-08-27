@@ -142,24 +142,43 @@ viewer.importXML(pizzaDiagram, function(err) {
     } else
 
     if (type.indexOf('Flow') > -1) {
+      var CustomSinCurve = THREE.Curve.create(scale,
+        function ( t ) { //getPoint: t is between 0-1
+            return new THREE.Vector3(waypoint.x * scale,
+          (maxY * scale) + waypoint.y * scale * -1,
+          (depth * height) + (height * 0.5));
+        }
+      );
+
+      var path = new CustomSinCurve( el.waypoints.length );
+
+      var geometry = new THREE.TubeGeometry(
+        path,  //path
+        20,    //segments
+        2,     //radius
+        8,     //radiusSegments
+        false  //closed
+      );
       material = new THREE.LineBasicMaterial({
         color: 0x000000
       });
 
-      geometry = new THREE.Geometry();
+      mesh = new THREE.Mesh(shape, material);
 
-      _.forEach(el.waypoints, function(waypoint) {
-        var vector = new THREE.Vector3(waypoint.x * scale,
-          (maxY * scale) + waypoint.y * scale * -1,
-          (depth * height) + (height * 0.5));
-
-        geometry.vertices.push(vector);
-      });
-
-      line = new THREE.Line(geometry, material);
+      // geometry = new THREE.Geometry();
+      // 
+      // _.forEach(el.waypoints, function(waypoint) {
+      //   var vector = new THREE.Vector3(waypoint.x * scale,
+      //     (maxY * scale) + waypoint.y * scale * -1,
+      //     (depth * height) + (height * 0.5));
+      //
+      //   geometry.vertices.push(vector);
+      // });
+      //
+      // line = new THREE.Line(geometry, material);
 
       geomType = 'connection';
-      return line;
+      return mesh;
     } else
 
     if (type.indexOf('Event') > -1) {
