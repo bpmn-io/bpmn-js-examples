@@ -19,6 +19,7 @@ var camera = threeScene.camera;
 var scene = threeScene.scene;
 
 var viewer = new BpmnViewer({ container: '#canvas' });
+
 function makeMaterial(materialType, materialOptions) {
   return new THREE[materialType || 'MeshLambertMaterial'](materialOptions || {
     color: 0xffffff
@@ -32,20 +33,26 @@ function makeMaterial(materialType, materialOptions) {
 
 function addFlow(options) {
   options = options || {};
-  var el = options.el;
-  var type = el.type;
-  var scene = options.scene;
-  var depth = options.depth || 0;
-  var height = options.height || 50;
-  var radius = options.radius || 1;
-  var wps = el.waypoints;
-  var scale = options.scale || 1;
+
+  var el = options.el,
+      type = el.type,
+      scene = options.scene,
+      depth = options.depth || 0,
+      height = options.height || 50,
+      radius = options.radius || 1,
+      wps = el.waypoints,
+      scale = options.scale || 1;
 
   var material = makeMaterial(options.materialType, options.materialOptions || {
     color: type.indexOf('Sequence') > -1 ? 0xff0000 : 0x00ff00,
   });
 
+<<<<<<< 0c6f16714c4ecb2e28437f0c81b35f40afff7eda
   var created = [];
+=======
+  var returned = [];
+
+>>>>>>> stuff
   wps.forEach(function (wp, i) {
     if (i === 0) {
       return;
@@ -66,10 +73,12 @@ function addFlow(options) {
     var twoPointsCurve = new THREE.SplineCurve3([start, end]);
     var lineGeometry = new THREE.TubeGeometry(twoPointsCurve, 4, radius, 8, false);
     var lineMesh = new THREE.Mesh(lineGeometry, material);
+
     scene.add(lineMesh);
     created.push(lineMesh);
 
     var junctionMesh = new THREE.Mesh(new THREE.SphereGeometry(radius), material);
+
     junctionMesh.position.set(start);
     scene.add(junctionMesh);
     created.push(junctionMesh);
@@ -80,55 +89,92 @@ function addFlow(options) {
 
 function addTask(options) {
   options = options || {};
-  var el = options.el;
-  var scene = options.scene;
-  var scale = options.scale || 1;
-  var depth = options.depth || 0;
-  var height = options.height || 50;
+  var x, y, z;
+
+  var el = options.el,
+      scene = options.scene,
+      scale = options.scale || 1,
+      depth = options.depth || 0,
+      height = options.height || 50;
 
   var material = makeMaterial(options.materialType, options.materialOptions);
   var geometry = new THREE.CubeGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
+<<<<<<< 0c6f16714c4ecb2e28437f0c81b35f40afff7eda
   mesh.position.set(el.x * scale, el.y * scale, depth * scale);
   // mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5))
+=======
+
+  x = (el.x + (el.width / 2)) * scale;
+  y = (el.y + (el.height / 2)) * scale * -1;
+  z = depth * scale;
+
+  mesh.position.set(x, y, z);
+
+>>>>>>> stuff
   scene.add(mesh);
-  return [mesh];
+  return [ mesh ];
 }
 
 function addEvent(options) {
   options = options || {};
-  var el = options.el;
+  var x, y, z;
 
-  var scene = options.scene;
-  var scale = options.scale || 1;
-  var depth = options.depth || 0;
-  var height = options.height || 50;
+  var el = options.el,
+      scene = options.scene,
+      scale = options.scale || 1,
+      depth = options.depth || 0,
+      height = options.height || 50;
+
   var material = makeMaterial(options.materialType, options.materialOptions);
   var geometry = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
+<<<<<<< 0c6f16714c4ecb2e28437f0c81b35f40afff7eda
   mesh.position.set(el.x * scale, el.y * scale, depth * scale);
   // mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5))
+=======
+
+  x = (el.x + (el.width / 2)) * scale;
+  y = (el.y + (el.height / 2)) * scale * -1;
+  z = depth * scale;
+
+  mesh.position.set(x, y, z);
+>>>>>>> stuff
   mesh.rotation.x = -90 * 0.0174532925;
   scene.add(mesh);
-  return [mesh];
+  
+  return [ mesh ];
 }
 
 function addGateway(options) {
   options = options || {};
-  var el = options.el;
+  var x, y, z;
 
-  var scene = options.scene;
-  var scale = options.scale || 1;
+  var el = options.el,
+      scene = options.scene,
+      scale = options.scale || 1,
+      depth = options.depth || 0,
+      height = options.height || 50;
 
-  var height = options.height || 50;
   var material = makeMaterial(options.materialType, options.materialOptions);
+
   var geometry = new THREE.Geometry();
   var mesh = new THREE.Mesh(geometry, material);
+<<<<<<< 0c6f16714c4ecb2e28437f0c81b35f40afff7eda
   mesh.position.set(el.x * scale, el.y * scale, height * scale);
   // mesh.position.set(el.x * scale, (maxY * scale) + (el.y * scale * -1), (depth * height) + (height * 0.5))
+=======
+
+  x = (el.x + (el.width / 2)) * scale;
+  y = (el.y + (el.height / 2)) * scale * -1;
+  z = depth * scale;
+
+  mesh.position.set(x, y, z);
+>>>>>>> stuff
   mesh.rotation.z = 45 * 0.0174532925;
   scene.add(mesh);
-  return [mesh];
+
+  return [ mesh ];
 }
 
 
@@ -223,6 +269,7 @@ viewer.importXML(pizzaDiagram, function(err) {
       depth: depth,
       height: height * depth
     };
+
     function has(what) {
       return type.indexOf(what) > -1;
     }
