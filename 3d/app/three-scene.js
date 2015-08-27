@@ -98,7 +98,7 @@ module.exports = function init(container) {
   camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
 
   scene.add(camera);
-  camera.position.set(316, 171, 636);
+  camera.position.set(221, 119, 444);
   camera.lookAt(lookAt);
 
   var lookAtGeometry = new THREE.SphereGeometry(20);
@@ -203,6 +203,7 @@ module.exports = function init(container) {
     camera: camera,
     renderer: renderer,
     controls: controls,
-    stats: stats
+    stats: stats,
+    gui: gui
   };
 };
