@@ -20,6 +20,7 @@
     body {
       position: relative;
       overflow: hidden;
+      font-family: sans-serif;
     }
     #three-container,
     #canvas {
@@ -40,6 +41,7 @@
       width: 80%;
     }
     #three-container > .properties {
+      padding-top: 50px;
       left: 80%;
       width: 20%;
       background-color: #1a1a1a;
@@ -67,6 +69,32 @@
     body.canvas #three-container {
       transform: translateX(-100%);
     }
+
+    #switch {
+      position: absolute;
+      width: 200px;
+      top: 5px;
+      left: 100%;
+      margin-left: -100px;
+      border: 3px solid #000;
+      background-color: #fff;
+      z-index: 99;
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+      font-weight: 100;
+      transition: transform 0.218s ease;
+    }
+
+    body.canvas #switch {
+      transform: translateX(-100vw);
+    }
+
+    #switch > span {
+      display: inline-block;
+      width: 100px;
+      text-align: center;
+      cursor: pointer;
+    }
   </style>
 
   <!--
@@ -77,11 +105,14 @@
   <title>npm/browserify example - bpmn-js-examples</title>
 </head>
 <body>
+  <div id="switch"><span>SVG</span><span>WebGL</span></div>
+
   <div id="three-container">
     <div class="canvas"></div>
-    <!-- <div class="properties"></div> -->
   </div>
+
   <div id="canvas"></div>
+
   <script src="./dependencies.js"></script>
   <script src="./scripts.js"></script>
 </body>

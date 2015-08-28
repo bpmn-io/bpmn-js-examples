@@ -9,16 +9,29 @@ var _ = require('lodash');
 
 // inlined in result file via brfs
 var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
+// var otherDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
+// var otherDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
 
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
 var threeScene = require('./three-scene')(document.querySelector('#three-container .canvas'));
-// var threeMesh = require('./three-shape2mesh');
 
 var scene = threeScene.scene;
 
 var viewer = new BpmnViewer({ container: '#canvas' });
+var flip = 180 * (Math.PI / 180);
+
+
+document.getElementById('switch').addEventListener('click', function () {
+  document.body.classList.toggle('canvas');
+});
+
+
+
+
+
+
 
 function makeMaterial(materialType, materialOptions) {
   var options = _.assign({
@@ -27,24 +40,51 @@ function makeMaterial(materialType, materialOptions) {
   return new THREE[materialType || 'MeshLambertMaterial'](options);
 }
 
-function createTextureMaterial(texturePath, materialType, materialOptions) {
+
+
+
+
+function createFaceMaterial(texturePath, materialType, materialOptions, texturedFace) {
+  texturedFace = typeof texturedFace === 'undefined' ? 5 : texturedFace;
   var faces = [];
-  var taskTexture = THREE.ImageUtils.loadTexture(texturePath);
+  var texture = THREE.ImageUtils.loadTexture(texturePath);
 
   var opts = _.assign({}, materialOptions, {
-    map: taskTexture
+    color: 0xffffff,
+    map: texture
   });
 
-  for (var i = 0; i < 5; i++) {
-    faces.push(makeMaterial(materialType, { color: 0x000000 }));
+  for (var i = 0; i < 6; i++) {
+    faces.push(makeMaterial(materialType, {
+      color: 0x000000
+    }));
   }
-  faces.push(makeMaterial(materialType, opts));
+  faces[texturedFace] = makeMaterial(materialType, opts);
 
   return new THREE.MeshFaceMaterial(faces);
 }
 
 
-var flip = 180 * (Math.PI / 180);
+
+
+
+
+
+function addLane(options) {
+  options = options || {};
+
+  // var shape = new THREE.PlaneGeometry(maxX * scale, maxY * scale);
+  // var mesh = new THREE.Mesh(shape, new THREE.MeshLambertMaterial({
+  //   color: 0x999999,
+  //   side: THREE.DoubleSide,
+  //   transparent: true,
+  //   opacity: 0.2
+  // }));
+
+  // mesh.position.set(x, y, options.height || 0);
+  console.info('addLane', options);
+  return [];
+}
 
 function addFlow(options) {
   options = options || {};
@@ -118,15 +158,12 @@ function addFlow(options) {
 function addTask(options) {
   options = options || {};
   var x, y, z;
-  var faces = [];
 
   var el = options.el,
       scale = options.scale || 1,
-      depth = options.depth || 0,
-      height = options.height || 50,
-      gap = options.gap || 0;
+      height = options.height || 50;
 
-  var material = createTextureMaterial('textures/task.png');
+  var material = createFaceMaterial('textures/task.png');
 
   var geometry = new THREE.BoxGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
@@ -146,11 +183,10 @@ function addEvent(options) {
 
   var el = options.el,
       scale = options.scale || 1,
-      depth = options.depth || 0,
-      height = options.height || 50,
-      gap = options.gap || 0;
+      height = options.height || 50;
 
-  var material = makeMaterial(options.materialType, options.materialOptions);
+
+  var material = createFaceMaterial('textures/event.png', null, null, 0);
   var geometry = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
 
@@ -171,11 +207,10 @@ function addGateway(options) {
   var el = options.el,
       scene = options.scene,
       scale = options.scale || 1,
-      depth = options.depth || 0,
-      height = options.height || 50,
-      gap = options.gap || 0;
+      height = options.height || 50;
 
-  var material = makeMaterial(options.materialType, options.materialOptions);
+  // var material = makeMaterial(options.materialType, options.materialOptions);
+  var material = createFaceMaterial('textures/gateway.png', options.materialType, options.materialOptions);
 
   var geometry = new THREE.BoxGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
@@ -301,17 +336,15 @@ viewer.importXML(pizzaDiagram, function(err) {
     //   options.height = (height / 10) * depth;
     //   created = created.concat(addTask(options));
     // }
-    // else if (has('Lane')) {
-    //   options.height = (height / 10) * depth;
-    //   created = created.concat(addTask(options));
-    // }
+    else if (has('Lane')) {
+      created = created.concat(addLane(options));
+    }
     else {
       console.info('unknow type', type);
     }
 
     return created;
   }
-  console.log(layers);
 
   var names = Object.keys(layers);
   var created = [];
@@ -328,36 +361,9 @@ viewer.importXML(pizzaDiagram, function(err) {
 
       group.translateY(maxY * (-1 * scale));
       group.translateZ((scale * height) * -2);
-      console.log(group);
       scene.add(group);
 
       created.push(group);
     });
   });
-
-
-  // names.forEach(function (layer, d) {
-  //   var shape = new THREE.PlaneGeometry(maxX * scale, maxY * scale);
-  //   var mesh = new THREE.Mesh(shape, new THREE.MeshLambertMaterial({
-  //     color: 0x999999,
-  //     side: THREE.DoubleSide,
-  //     transparent: true,
-  //     opacity: 0.2
-  //   }));
-
-  //   var x = (minX + (maxX / 2)) * scale;
-  //   var y = (minY + (maxY / 2)) * scale;
-
-  //   mesh.position.set(x, y, d * height);
-  //   scene.add(mesh);
-
-  //   camera.position.set(x, y, (x + y) / 2);
-
-  //   var lookAt = mesh.position.clone();
-  //   lookAt.setZ(0);
-
-  //   camera.lookAt(lookAt);
-  // });
-
-  // console.log(scene);
 });

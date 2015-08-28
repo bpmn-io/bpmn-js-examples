@@ -15,9 +15,13 @@ var gui = new dat.GUI({
 document.querySelector('#three-container').appendChild(gui.domElement);
 gui.domElement.classList.add('properties');
 
-gui.add(pageParams, 'show', {WebGL: 0, SVG: 1}).onChange(function (value) {
-  document.body.classList[!parseInt(value, 10) ? 'remove' : 'add']('canvas');
-});
+// gui.add(pageParams, 'show', {WebGL: 0, SVG: 1}).onChange(function (value) {
+//   document.body.classList[!parseInt(value, 10) ? 'remove' : 'add']('canvas');
+// });
+
+
+
+
 
 function animate() {
   requestAnimationFrame( animate );
