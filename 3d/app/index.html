@@ -95,6 +95,29 @@
       text-align: center;
       cursor: pointer;
     }
+
+    body.loading:before,
+    body.rendering:before {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      line-height: 100vh;
+      background-color: #1a1a1a;
+      display: block;
+      color: #fff;
+      z-index: 999;
+    }
+
+    body.loading:before {
+      content: 'loading';
+    }
+
+    body.rendering:before {
+      content: 'rendering';
+    }
   </style>
 
   <!--
