@@ -8,6 +8,10 @@ var fs = require('fs');
 var _ = require('lodash');
 
 
+function has(stuff, what) {
+  return stuff.indexOf(what) > -1;
+}
+
 var pageControls = {
   diagram: 0
 };
@@ -86,17 +90,31 @@ function createFaceMaterial(texturePath, materialType, materialOptions, textured
 function addLane(options) {
   options = options || {};
 
-  // var shape = new THREE.PlaneGeometry(maxX * scale, maxY * scale);
-  // var mesh = new THREE.Mesh(shape, new THREE.MeshLambertMaterial({
-  //   color: 0x999999,
-  //   side: THREE.DoubleSide,
-  //   transparent: true,
-  //   opacity: 0.2
-  // }));
+  var scale = options.scale;
 
-  // mesh.position.set(x, y, options.height || 0);
-  console.info('addLane', options);
-  return [];
+  var width = options.el.width * scale;
+  var height = options.el.height * scale;
+
+  var x = (options.el.x * scale) + (width * 0.5);
+  var y = (options.el.y * scale) + (height * 0.5);
+
+  var z = options.depth * 10;
+
+  var shape = new THREE.PlaneGeometry(width, height);
+  var mesh = new THREE.Mesh(shape, new THREE.MeshBasicMaterial({
+    map: THREE.ImageUtils.loadTexture('textures/gateway.png'),
+    color: 0xffffff,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.7
+  }));
+
+  console.info('lane', '('+width+', '+height+'), ('+x+', '+y+', '+z+')');
+
+
+  mesh.position.set(x, y, z);
+
+  return [mesh];
 }
 
 function addFlow(options) {
@@ -222,7 +240,6 @@ function addGateway(options) {
       scale = options.scale || 1,
       height = options.height || 50;
 
-  // var material = makeMaterial(options.materialType, options.materialOptions);
   var material = createFaceMaterial('textures/gateway.png', options.materialType, options.materialOptions);
 
   var geometry = new THREE.BoxGeometry(el.width * scale, el.height * scale, height * scale);
@@ -346,10 +363,6 @@ function loadBpmn(num) {
         height: height
       };
 
-      function has(stuff, what) {
-        return stuff.indexOf(what) > -1;
-      }
-
       if (has(el.parent.id, 'SubProcess')) {
         options.height *= 2;
       }
@@ -370,7 +383,7 @@ function loadBpmn(num) {
       //   options.height = (height / 10) * depth;
       //   created = created.concat(addTask(options));
       // }
-      else if (has('Lane')) {
+      else if (has(type, 'Lane')) {
         created = created.concat(addLane(options));
       }
       else {
