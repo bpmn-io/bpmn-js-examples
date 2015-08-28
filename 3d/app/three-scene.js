@@ -172,6 +172,10 @@ module.exports = function init(container) {
   light.position.set(0,1000,1000);
   scene.add(light);
 
+  light = new THREE.PointLight(0xffffff, 1);
+  light.position.set(1000, 0, 0);
+  scene.add(light);
+
 
   // // FLOOR
   // var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );

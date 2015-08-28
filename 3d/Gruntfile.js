@@ -64,14 +64,14 @@ module.exports = function(grunt) {
     concat: {
       three: {
         src: [
-          '<%= config.sources %>/three.js',
-          '<%= config.sources %>/Detector.js',
-          '<%= config.sources %>/Stats.js',
-          '<%= config.sources %>/OrbitControls.js',
-          '<%= config.sources %>/THREEx.KeyboardState.js',
-          '<%= config.sources %>/THREEx.FullScreen.js',
-          '<%= config.sources %>/THREEx.WindowResize.js',
-          '<%= config.sources %>/dat.gui.js'
+          '<%= config.sources %>/vendor/three.js',
+          '<%= config.sources %>/vendor/Detector.js',
+          '<%= config.sources %>/vendor/Stats.js',
+          '<%= config.sources %>/vendor/OrbitControls.js',
+          '<%= config.sources %>/vendor/THREEx.KeyboardState.js',
+          '<%= config.sources %>/vendor/THREEx.FullScreen.js',
+          '<%= config.sources %>/vendor/THREEx.WindowResize.js',
+          '<%= config.sources %>/vendor/dat.gui.js'
         ],
         dest: '<%= config.dist %>/dependencies.js'
       }

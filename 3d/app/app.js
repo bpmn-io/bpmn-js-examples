@@ -21,13 +21,31 @@ var scene = threeScene.scene;
 var viewer = new BpmnViewer({ container: '#canvas' });
 
 function makeMaterial(materialType, materialOptions) {
-  return new THREE[materialType || 'MeshLambertMaterial'](materialOptions || {
+  var options = _.assign({
     color: 0xffffff
+  }, materialOptions);
+  return new THREE[materialType || 'MeshLambertMaterial'](options);
+}
+
+function createTextureMaterial(texturePath, materialType, materialOptions) {
+  var faces = [];
+  var taskTexture = THREE.ImageUtils.loadTexture(texturePath);
+
+  var opts = _.assign({}, materialOptions, {
+    map: taskTexture
   });
+
+  for (var i = 0; i < 5; i++) {
+    faces.push(makeMaterial(materialType, { color: 0x000000 }));
+  }
+  faces.push(makeMaterial(materialType, opts));
+
+  return new THREE.MeshFaceMaterial(faces);
 }
 
 
-var flip = 180 * 0.0174532925;
+var flip = 180 * (Math.PI / 180);
+
 function addFlow(options) {
   options = options || {};
 
@@ -46,7 +64,7 @@ function addFlow(options) {
     material = blackMaterial;
   }
   else {
-    var stripeTexture = THREE.ImageUtils.loadTexture('stripe.png');
+    var stripeTexture = THREE.ImageUtils.loadTexture('textures/stripe.png');
     stripeTexture.anisotropy = 1;
     stripeTexture.wrapS = stripeTexture.wrapT = THREE.RepeatWrapping;
     stripeTexture.repeat.set( 5, 1 );
@@ -100,20 +118,23 @@ function addFlow(options) {
 function addTask(options) {
   options = options || {};
   var x, y, z;
+  var faces = [];
 
   var el = options.el,
       scale = options.scale || 1,
       depth = options.depth || 0,
-      height = options.height || 50;
+      height = options.height || 50,
+      gap = options.gap || 0;
 
-  var material = makeMaterial(options.materialType, options.materialOptions);
+  var material = createTextureMaterial('textures/task.png');
+
   var geometry = new THREE.BoxGeometry(el.width * scale, el.height * scale, height * scale);
   var mesh = new THREE.Mesh(geometry, material);
 
 
   x = (el.x + (el.width / 2)) * scale;
   y = (el.y + (el.height / 2)) * scale;
-  z = depth * scale;
+  z = scale * height;
 
   mesh.position.set(x, y, z);
   return [mesh];
@@ -126,7 +147,8 @@ function addEvent(options) {
   var el = options.el,
       scale = options.scale || 1,
       depth = options.depth || 0,
-      height = options.height || 50;
+      height = options.height || 50,
+      gap = options.gap || 0;
 
   var material = makeMaterial(options.materialType, options.materialOptions);
   var geometry = new THREE.CylinderGeometry(el.width * scale, el.height * scale, height * scale);
@@ -134,7 +156,7 @@ function addEvent(options) {
 
   x = (el.x + (el.width / 2)) * scale;
   y = (el.y + (el.height / 2)) * scale;
-  z = depth * scale;
+  z = scale * height;
 
   mesh.rotation.x = -90 * 0.0174532925;
   mesh.position.set(x, y, z);
@@ -150,8 +172,8 @@ function addGateway(options) {
       scene = options.scene,
       scale = options.scale || 1,
       depth = options.depth || 0,
-      height = options.height || 50;
-
+      height = options.height || 50,
+      gap = options.gap || 0;
 
   var material = makeMaterial(options.materialType, options.materialOptions);
 
@@ -160,7 +182,7 @@ function addGateway(options) {
 
   x = (el.x + (el.width / 2)) * scale;
   y = (el.y + (el.height / 2)) * scale;
-  z = depth * scale;
+  z = scale * height;
 
   mesh.position.set(x, y, z);
   mesh.rotation.z = 45 * 0.0174532925;
@@ -240,7 +262,6 @@ viewer.importXML(pizzaDiagram, function(err) {
 
   traverse(root.children);
 
-
   var height = 50;
   var scale = 0.2;
 
@@ -253,23 +274,27 @@ viewer.importXML(pizzaDiagram, function(err) {
       scene: scene,
       scale: scale,
       depth: depth,
-      height: height * depth
+      height: height
     };
 
-    function has(what) {
-      return type.indexOf(what) > -1;
+    function has(stuff, what) {
+      return stuff.indexOf(what) > -1;
     }
 
-    if (has('Gateway')) {
+    if (has(el.parent.id, 'SubProcess')) {
+      options.height *= 2;
+    }
+
+    if (has(type, 'Gateway')) {
       created = created.concat(addGateway(options));
     }
-    else if (has('Flow')) {
+    else if (has(type, 'Flow')) {
       created = created.concat(addFlow(options));
     }
-    else if (has('Event')) {
+    else if (has(type, 'Event')) {
       created = created.concat(addEvent(options));
     }
-    else if (has('Task')) {
+    else if (has(type, 'Task') || has(type, 'SubProcess')) {
       created = created.concat(addTask(options));
     }
     // else if (has('Participant')) {
@@ -286,9 +311,11 @@ viewer.importXML(pizzaDiagram, function(err) {
 
     return created;
   }
+  console.log(layers);
 
-  var names = Object.keys(layers).reverse();
+  var names = Object.keys(layers);
   var created = [];
+
   _.forEach(names, function (name, d) {
     var shapes = layers[name];
     _.forEach(shapes, function (shape) {
@@ -297,10 +324,11 @@ viewer.importXML(pizzaDiagram, function(err) {
         group.add(mesh);
       });
 
-      group.rotation.set(0, flip, flip);
-      group.translateZ(-1 * d * height * scale);
-      group.translateY(maxY * (-1 * scale));
+      group.rotation.set(flip, 0, 0);
 
+      group.translateY(maxY * (-1 * scale));
+      group.translateZ((scale * height) * -2);
+      console.log(group);
       scene.add(group);
 
       created.push(group);
