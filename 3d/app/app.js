@@ -7,16 +7,29 @@ var fs = require('fs');
 // var Snap = require('snapsvg');
 var _ = require('lodash');
 
-// inlined in result file via brfs
-var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
-// var otherDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
-// var otherDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
+
+var pageControls = {
+  diagram: 0
+};
+
+var diagrams = [
+  fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8'),
+  fs.readFileSync(__dirname + '/../resources/sequentialMultiInstanceReceiveTask.bpmn20.xml', 'utf-8'),
+  fs.readFileSync(__dirname + '/../resources/oneTaskProcess.bpmn20.xml', 'utf-8'),
+  fs.readFileSync(__dirname + '/../resources/simple.bpmn', 'utf-8')
+];
+
+var diagramNames = [
+  'pizza-collaboration',
+  'sequentialMultiInstanceReceiveTask',
+  'oneTaskProcess',
+  'simple'
+];
 
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
 var BpmnViewer = require('bpmn-js');
 var threeScene = require('./three-scene')(document.querySelector('#three-container .canvas'));
-
 var scene = threeScene.scene;
 
 var viewer = new BpmnViewer({ container: '#canvas' });
@@ -226,144 +239,170 @@ function addGateway(options) {
   return [ mesh ];
 }
 
-viewer.importXML(pizzaDiagram, function(err) {
-  if (err) {
-    console.log('something went wrong:', err);
-  }
+var sceneMeshes = [];
 
-  var canvas = viewer.get('canvas');
+function clearScene() {
+  sceneMeshes.forEach(function (mesh) {
+    scene.remove(mesh);
+  });
 
-  canvas.zoom('fit-viewport');
+  sceneMeshes = [];
+}
 
+function loadBpmn(num) {
+  num = diagramNames.indexOf(num);
+  console.info('using diagram num', num);
+  document.body.classList.add('loading');
+  clearScene();
+  viewer.importXML(diagrams[num], function(err) {
+    document.body.classList.remove('loading');
 
-  var root = canvas.getRootElement();
-
-
-  var layers = {};
-
-  var layerNumber = 0;
-
-  function isLabel(element) {
-    return element.type === 'label' && !element.businessObject.name;
-  }
-
-  function hasCoords(shape) {
-    return shape.x &&
-           shape.y &&
-           shape.width &&
-           shape.height;
-  }
-
-  var maxX = 0,
-      minX = 0,
-      maxY = 0,
-      minY = 0;
-
-  function traverse(children) {
-    var tempLayers = [];
-
-    if (children.length === 0) {
-      return;
+    if (err) {
+      console.log('something went wrong:', err);
     }
 
-    layers['layer' + layerNumber] = [];
+    var canvas = viewer.get('canvas');
 
-    _.forEach(children, function (child) {
-      if (isLabel(child)) {
+    canvas.zoom('fit-viewport');
+
+
+    var root = canvas.getRootElement();
+
+
+    var layers = {};
+
+    var layerNumber = 0;
+
+    function isLabel(element) {
+      return element.type === 'label' && !element.businessObject.name;
+    }
+
+    function hasCoords(shape) {
+      return shape.x &&
+             shape.y &&
+             shape.width &&
+             shape.height;
+    }
+
+    var maxX = 0,
+        minX = 0,
+        maxY = 0,
+        minY = 0;
+
+    function traverse(children) {
+      if (!children) {
+        alert('the diagram is fucked up');
+        return;
+      }
+      var tempLayers = [];
+
+      if (children.length === 0) {
         return;
       }
 
-      layers['layer' + layerNumber ].push(child);
+      layers['layer' + layerNumber] = [];
 
-      if (hasCoords(child)) {
-        minX = Math.min(child.x, minX);
-        maxX = Math.max(child.x + child.width, maxX);
-        minY = Math.min(child.y, minY);
-        maxY = Math.max(child.y + child.height, maxY);
+      _.forEach(children, function (child) {
+        if (isLabel(child)) {
+          return;
+        }
+
+        layers['layer' + layerNumber ].push(child);
+
+        if (hasCoords(child)) {
+          minX = Math.min(child.x, minX);
+          maxX = Math.max(child.x + child.width, maxX);
+          minY = Math.min(child.y, minY);
+          maxY = Math.max(child.y + child.height, maxY);
+        }
+
+        _.forEach(child.children || [], function(elem) {
+            tempLayers.push(elem);
+        });
+      });
+
+      if (tempLayers.length === 0) {
+        return;
+      }
+      layerNumber += 1;
+
+      traverse(tempLayers);
+    }
+
+    traverse(root.children);
+
+    var height = 50;
+    var scale = 0.2;
+
+    function createElementMesh(el, depth) {
+      var created = [];
+      var type = el.type;
+
+      var options = {
+        el: el,
+        scene: scene,
+        scale: scale,
+        depth: depth,
+        height: height
+      };
+
+      function has(stuff, what) {
+        return stuff.indexOf(what) > -1;
       }
 
-      _.forEach(child.children || [], function(elem) {
-          tempLayers.push(elem);
+      if (has(el.parent.id, 'SubProcess')) {
+        options.height *= 2;
+      }
+
+      if (has(type, 'Gateway')) {
+        created = created.concat(addGateway(options));
+      }
+      else if (has(type, 'Flow')) {
+        created = created.concat(addFlow(options));
+      }
+      else if (has(type, 'Event')) {
+        created = created.concat(addEvent(options));
+      }
+      else if (has(type, 'Task') || has(type, 'SubProcess')) {
+        created = created.concat(addTask(options));
+      }
+      // else if (has('Participant')) {
+      //   options.height = (height / 10) * depth;
+      //   created = created.concat(addTask(options));
+      // }
+      else if (has('Lane')) {
+        created = created.concat(addLane(options));
+      }
+      else {
+        console.info('unknow type', type);
+      }
+
+      return created;
+    }
+
+    var names = Object.keys(layers);
+
+    _.forEach(names, function (name, d) {
+      var shapes = layers[name];
+      _.forEach(shapes, function (shape) {
+        var group = new THREE.Object3D();
+        createElementMesh(shape, d).forEach(function (mesh) {
+          group.add(mesh);
+        });
+
+        group.rotation.set(flip, 0, 0);
+
+        group.translateY(maxY * (-1 * scale));
+        group.translateZ((scale * height) * -2);
+        scene.add(group);
+
+        sceneMeshes.push(group);
       });
-    });
-
-    if (tempLayers.length === 0) {
-      return;
-    }
-    layerNumber += 1;
-
-    traverse(tempLayers);
-  }
-
-  traverse(root.children);
-
-  var height = 50;
-  var scale = 0.2;
-
-  function createElementMesh(el, depth) {
-    var created = [];
-    var type = el.type;
-
-    var options = {
-      el: el,
-      scene: scene,
-      scale: scale,
-      depth: depth,
-      height: height
-    };
-
-    function has(stuff, what) {
-      return stuff.indexOf(what) > -1;
-    }
-
-    if (has(el.parent.id, 'SubProcess')) {
-      options.height *= 2;
-    }
-
-    if (has(type, 'Gateway')) {
-      created = created.concat(addGateway(options));
-    }
-    else if (has(type, 'Flow')) {
-      created = created.concat(addFlow(options));
-    }
-    else if (has(type, 'Event')) {
-      created = created.concat(addEvent(options));
-    }
-    else if (has(type, 'Task') || has(type, 'SubProcess')) {
-      created = created.concat(addTask(options));
-    }
-    // else if (has('Participant')) {
-    //   options.height = (height / 10) * depth;
-    //   created = created.concat(addTask(options));
-    // }
-    else if (has('Lane')) {
-      created = created.concat(addLane(options));
-    }
-    else {
-      console.info('unknow type', type);
-    }
-
-    return created;
-  }
-
-  var names = Object.keys(layers);
-  var created = [];
-
-  _.forEach(names, function (name, d) {
-    var shapes = layers[name];
-    _.forEach(shapes, function (shape) {
-      var group = new THREE.Object3D();
-      createElementMesh(shape, d).forEach(function (mesh) {
-        group.add(mesh);
-      });
-
-      group.rotation.set(flip, 0, 0);
-
-      group.translateY(maxY * (-1 * scale));
-      group.translateZ((scale * height) * -2);
-      scene.add(group);
-
-      created.push(group);
     });
   });
-});
+}
+
+loadBpmn(diagramNames[0]);
+
+threeScene.gui.add(pageControls, 'diagram', diagramNames).onChange(loadBpmn);
+
