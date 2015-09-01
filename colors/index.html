@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <style>
+    html, body, #diagram {
+      height: 100%
+    }
+
+    .highlight:not(.djs-connection) .djs-visual > :nth-child(1) {
+      fill: green !important; /* color elements as green */
+    }
+
+    .highlight-overlay {
+      background-color: green; /* color elements as green */
+      opacity: 0.4;
+      pointer-events: none; /* no pointer events, allows clicking through onto the element */
+    }
+  </style>
+
+  <!--
+    this is an example of how to add colors to your BPMN diagram using bpmn-js
+  -->
+
+  <title>bpmn-js colors example - bpmn-js-examples</title>
+</head>
+<body>
+
+  <h1>bpmn-js Colors</h1>
+
+  <div id="diagram"></div>
+
+  <!-- viewer -->
+  <script src="bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+
+  <!-- jquery (required for example only) -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+
+  <!-- app -->
+  <script src="index.js"></script>
+</body>
+</html>

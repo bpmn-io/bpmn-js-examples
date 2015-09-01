@@ -1,0 +1,13 @@
+{
+  "name": "colors",
+  "version": "0.0.0",
+  "authors": [
+    "Nico Rehwaldt <nico.rehwaldt@camunda.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bpmn-js": "^0.11.0",
+    "jquery": "~2.1.4"
+  }
+}
