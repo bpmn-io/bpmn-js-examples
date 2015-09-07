@@ -1,0 +1,8 @@
+{
+  "triangle": {
+    "foo": "bar"
+  },
+  "circle": {
+    "companions": []
+  }
+}
