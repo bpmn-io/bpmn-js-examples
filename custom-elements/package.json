@@ -1,7 +1,7 @@
 {
-  "name": "bpmn-js-example-custom-element",
+  "name": "custom-elements-example",
   "version": "0.0.0",
-  "description": "An example on how to create a custom element with bpmn-js",
+  "description": "An example on how to create a custom elements with bpmn-js",
   "main": "app/app.js",
   "repository": {
     "type": "git",
@@ -32,8 +32,8 @@
     "load-grunt-tasks": "~3.2.0"
   },
   "dependencies": {
-    "bpmn-js": "bpmn-io/bpmn-js",
-    "diagram-js": "bpmn-io/diagram-js",
+    "bpmn-js": "^0.11.0",
+    "diagram-js": "^0.11.0",
     "inherits": "^2.0.1",
     "lodash": "^3.10.1"
   }

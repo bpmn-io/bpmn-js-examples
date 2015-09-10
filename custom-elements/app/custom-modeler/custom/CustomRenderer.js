@@ -7,6 +7,9 @@ var BaseRenderer = require('diagram-js/lib/draw/BaseRenderer');
 var componentsToPath = require('diagram-js/lib/util/RenderUtil').componentsToPath;
 
 
+/**
+ * A renderer that knows how to render custom elements.
+ */
 function CustomRenderer(eventBus, styles) {
 
   BaseRenderer.call(this, eventBus, 2000);

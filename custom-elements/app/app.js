@@ -8,11 +8,13 @@ var fs = require('fs');
 // inlined in result file via brfs
 var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf8');
 
-var businessInfo = fs.readFileSync(__dirname + '/businessInfo.json', { encoding: 'utf-8' });
+
+// we load custom elements from a JSON file
+var customElements = require('./custom-elements.json', { encoding: 'utf-8' });
 
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
-var CustomModeler = require('./custom-bpmn-js/CustomModeler');
+var CustomModeler = require('./custom-modeler');
 
 
 var modeler = new CustomModeler({ container: '#canvas', keyboard: { bindTo: document } });
@@ -25,7 +27,8 @@ modeler.importXML(pizzaDiagram, function(err) {
 
   modeler.get('canvas').zoom('fit-viewport');
 
-  modeler.get('customModel').setBusinessModel(JSON.parse(businessInfo));
+  modeler.setCustomElements(customElements);
 });
 
-window.modeler = modeler;
+
+window.bpmnjs = modeler;

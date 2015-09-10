@@ -3,7 +3,7 @@
 var assign = require('lodash/object/assign');
 
 /**
- * A palette provider for BPMN 2.0 elements.
+ * A palette that allows you to create BPMN _and_ custom elements.
  */
 function PaletteProvider(palette, create, elementFactory, spaceTool, lassoTool) {
 

@@ -1,0 +1,12 @@
+[
+  {
+    "type": "custom:triangle",
+    "x": 300,
+    "y": 300
+  },
+  {
+    "type": "custom:circle",
+    "x": 500,
+    "y": 400
+  }
+]
