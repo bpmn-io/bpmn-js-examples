@@ -1,19 +1,13 @@
 'use strict';
 
-// we use fs + brfs to inline an example XML document.
-// exclude fs in package.json#browser + use the brfs transform
-// to generate a clean browserified bundle
-var fs = require('fs');
+// inlined diagram; load it from somewhere else if you like
+var pizzaDiagram = require('../resources/pizza-collaboration.bpmn');
 
-// inlined in result file via brfs
-var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf8');
+// custom elements JSON; load it from somewhere else if you like
+var customElements = require('./custom-elements.json');
 
 
-// we load custom elements from a JSON file
-var customElements = require('./custom-elements.json', { encoding: 'utf-8' });
-
-// require the viewer, make sure you added it to your project
-// dependencies via npm install --save-dev bpmn-js
+// our custom modeler
 var CustomModeler = require('./custom-modeler');
 
 
@@ -31,4 +25,5 @@ modeler.importXML(pizzaDiagram, function(err) {
 });
 
 
+// expose bpmnjs to window for debugging purposes
 window.bpmnjs = modeler;

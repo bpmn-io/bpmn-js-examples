@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             }
           }
         },
-        transform: [ 'brfs' ]
+        transform: [ [ 'stringify', { extensions: [ '.bpmn', '.xml', '.css' ] } ] ]
       },
       watch: {
         options: {
