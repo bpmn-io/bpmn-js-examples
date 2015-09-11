@@ -11,6 +11,7 @@ This repository contains a number of examples showing how use and integrate [bpm
 
 ## Intermediate
 
+* [interaction](https://github.com/bpmn-io/bpmn-js-examples/tree/master/interaction) - listen to diagram events and react to them
 * [overlays](https://github.com/bpmn-io/bpmn-js-examples/tree/master/overlays) - attach overlays to BPMN 2.0 diagrams
 * [colors](https://github.com/bpmn-io/bpmn-js-examples/tree/master/colors) - showcasing different ways to add colors to your BPMN diagram
 * [url-viewer](https://github.com/bpmn-io/bpmn-js-examples/tree/master/url-viewer) - a quick and dirty url viewer for BPMN 2.0 process diagrams created with the bower packaging of bpmn-js.
