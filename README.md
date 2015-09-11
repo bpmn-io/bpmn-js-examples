@@ -15,6 +15,7 @@ This repository contains a number of examples showing how use and integrate [bpm
 * [url-viewer](https://github.com/bpmn-io/bpmn-js-examples/tree/master/url-viewer) - a quick and dirty url viewer for BPMN 2.0 process diagrams created with the bower packaging of bpmn-js.
 * [modeler](https://github.com/bpmn-io/bpmn-js-examples/tree/master/modeler) - a simple BPMN 2.0 modeler. Gains more features as time passes by.
 * [commenting](https://github.com/bpmn-io/bpmn-js-examples/tree/master/commenting) - a simple commenting application build on top of BPMN 2.0 diagrams
+* [bpmn-properties](https://github.com/bpmn-io/bpmn-js-examples/tree/master/bpmn-properties) - read and write BPMN properties with bpmn-js
 
 
 ## Advanced
