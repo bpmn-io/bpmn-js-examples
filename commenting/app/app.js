@@ -109,3 +109,56 @@ var fs = require('fs');
 var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration-annotated.bpmn', 'utf-8');
 
 openDiagram(pizzaDiagram);
+
+
+
+
+////// file drag / drop ///////////////////////
+
+function openFile(file, callback) {
+
+  // check file api availability
+  if (!window.FileReader) {
+    return window.alert(
+      'Looks like you use an older browser that does not support drag and drop. ' +
+      'Try using a modern browser such as Chrome, Firefox or Internet Explorer > 10.');
+  }
+
+  // no file chosen
+  if (!file) {
+    return;
+  }
+
+  var reader = new FileReader();
+
+  reader.onload = function(e) {
+
+    var xml = e.target.result;
+
+    callback(xml);
+  };
+
+  reader.readAsText(file);
+}
+
+(function onFileDrop(container, callback) {
+
+  function handleFileSelect(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    var files = e.dataTransfer.files;
+    openFile(files[0], callback);
+  }
+
+  function handleDragOver(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    e.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+
+  container.get(0).addEventListener('dragover', handleDragOver, false);
+  container.get(0).addEventListener('drop', handleFileSelect, false);
+
+})($('body'), openDiagram);
