@@ -34,6 +34,27 @@ The method `Overlays#add` receives two important parameters:
 
 The overlay descriptor must contain a `html` element you want to attach as the overlay as well as a `position` that indicates where you want the overlay to be added on the element. Use `top`, `left`, `bottom`, `right` to control the attachment.
 
+### Interacting with Overlays
+
+Instead of adding an HTML string, you can pass a JQuery object or plain DOM element via the overlay descriptor, too. This way you can register events with it, thus making it interactive.
+
+```javascript
+var overlayHtml = $('<div>Mixed up the labels?</div>');
+
+overlayHtml.click(function(e) {
+  alert('someone clicked me');
+});
+
+// attach the overlayHtml to a node
+overlays.add('SCAN_OK', {
+  position: {
+    bottom: 0,
+    right: 0
+  },
+  html: overlayHtml
+});
+```
+
 
 ## Setting up bpmn-js
 
