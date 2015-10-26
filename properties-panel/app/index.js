@@ -15,8 +15,8 @@ var container = $('#js-drop-zone');
 var canvas = $('#js-canvas');
 
 var propertiesPanelConfig = {
-  "config.propertiesPanel": ['value', { parent: $('#js-properties-panel') }]
-}
+  'config.propertiesPanel': ['value', { parent: $('#js-properties-panel') }]
+};
 
 var renderer = new BpmnModeler({ container: canvas,
     additionalModules: [propertiesPanelModule, propertiesProviderModule, propertiesPanelConfig],

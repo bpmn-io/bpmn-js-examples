@@ -25,18 +25,24 @@
 }
 
 .djs-shape.connect-ok .djs-visual > :nth-child(1) {
-  fill: #54FF00 /* light-green */ !important;
-  fill-opacity: 0.2;
+  fill: #DCFECC /* light-green */ !important;
 }
 
 .djs-shape.connect-not-ok .djs-visual > :nth-child(1),
 .djs-shape.drop-not-ok .djs-visual > :nth-child(1) {
-  fill: #E56283 /* light-red */ !important;
-  fill-opacity: 0.2;
+  fill: #f9dee5 /* light-red */ !important;
+}
+
+.djs-shape.new-parent .djs-visual > :nth-child(1) {
+  fill: #F7F9FF !important;
 }
 
 svg.drop-not-ok {
-  background: rgba(229, 98, 131, 0.2) /* light-red */ !important;
+  background: #f9dee5 /* light-red */ !important;
+}
+
+svg.new-parent {
+  background: #F7F9FF /* light-blue */ !important;
 }
 
 .djs-connection.connect-ok .djs-visual > :nth-child(1),
@@ -52,6 +58,11 @@ svg.drop-not-ok {
 .drop-not-ok,
 .connect-not-ok {
   cursor: not-allowed;
+}
+
+.djs-element.attach-ok .djs-visual > :nth-child(1) {
+  stroke-width: 5px !important;
+  stroke: rgba(255, 116, 0, 0.7);
 }
 
 
@@ -239,6 +250,7 @@ svg.drop-not-ok {
   width: 46px;
   height: 46px;
   line-height: 46px;
+  cursor: default;
 }
 
 .djs-palette .separator {
@@ -261,6 +273,10 @@ svg.drop-not-ok {
   font-size: 30px;
 
   text-align: center;
+}
+
+.djs-palette .entry img {
+  max-width: 100%;
 }
 
 .djs-palette.open .djs-palette-toggle {
@@ -304,8 +320,8 @@ svg.drop-not-ok {
 
   cursor: default;
 
-  background-color: rgba(255,255,255, 0.85);
-  box-shadow: 0 0 2px 1px rgba(255,255,255, 0.85);
+  background-color: #FEFEFE;
+  box-shadow: 0 0 2px 1px #FEFEFE;
 
   pointer-events: all;
 }
@@ -322,27 +338,71 @@ svg.drop-not-ok {
   display: block;
 }
 
-.djs-popup-entry {
-  font-size: 20px;
+/**
+ * popup styles
+ */
+.djs-popup .entry {
   line-height: 20px;
-  padding: 2px 10px 2px 5px;
-  background-color: rgba(255,255,255, 0.85);
   white-space: nowrap;
+  border: solid 1px transparent;
+  cursor: default;
 }
 
-.djs-popup-entry:hover {
+/* larger font for prefixed icons */
+.djs-popup .entry:before {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.djs-popup .entry > span {
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.djs-popup .entry:hover,
+.djs-popup .entry.active:hover {
   background: rgb(255, 252, 176);
 }
 
-.djs-popup-entry > span {
-  font-size: 14px;
-  margin-left: 5px;
-
-  vertical-align: middle;
+.djs-popup .entry.disabled {
+  background: inherit;
 }
 
-.djs-popup-entry:before {
-  vertical-align: middle;
+.djs-popup .entry.active {
+  color: rgb(255, 116, 0);
+  border: solid 1px rgb(255, 116, 0);
+  border-radius: 3px;
+  background-color: #F6F6F6;
+}
+
+.djs-popup-body .entry {
+  padding: 2px 10px 2px 5px;
+}
+
+.djs-popup-header .entry {
+  display: inline-block;
+  padding: 2px 3px 2px 3px;
+}
+
+.djs-popup-body .entry > span {
+  margin-left: 5px;
+}
+
+.djs-popup-body {
+  background-color: #FEFEFE;
+}
+
+.djs-popup-header {
+  border-bottom: 1px solid #DDD;
+}
+
+.djs-popup-header .entry {
+  margin: 1px;
+  margin-left: 3px;
+}
+
+.djs-popup-header .entry:last-child {
+  margin-right: 3px;
 }
 
 /**
@@ -364,6 +424,7 @@ svg.drop-not-ok {
   touch-action: none;
 }
 
+.djs-segment-dragger,
 .djs-bendpoint {
   display: none;
 }
@@ -371,6 +432,14 @@ svg.drop-not-ok {
 /**
  * bendpoints
  */
+.djs-segment-dragger .djs-visual {
+  pointer-events: none;
+  fill: rgba(255, 255, 121, 0.4);
+  stroke-width: 1px;
+  stroke-opacity: 0.0;
+  stroke: black;
+}
+
 .djs-bendpoint .djs-visual {
   pointer-events: none;
   fill: rgba(255, 255, 121, 0.8);
@@ -379,6 +448,9 @@ svg.drop-not-ok {
   stroke: black;
 }
 
+.djs-segment-dragger:hover,
+.djs-bendpoints.hover .djs-segment-dragger,
+.djs-bendpoints.selected .djs-segment-dragger,
 .djs-bendpoint:hover,
 .djs-bendpoints.hover .djs-bendpoint,
 .djs-bendpoints.selected .djs-bendpoint {
@@ -389,18 +461,29 @@ svg.drop-not-ok {
   display: none;
 }
 
+.djs-segment-dragger:hover .djs-visual,
 .djs-bendpoint:hover .djs-visual,
 .djs-bendpoint.floating .djs-visual {
   fill: yellow;
+  stroke-opacity: 0.5;
 }
 
 .djs-bendpoint.floating .djs-hit {
   pointer-events: none;
 }
 
+.djs-segment-dragger .djs-hit,
 .djs-bendpoint .djs-hit {
   pointer-events: all;
   fill: none;
+}
+
+.djs-segment-dragger.horizontal .djs-hit {
+  cursor: ns-resize;
+}
+
+.djs-segment-dragger.vertical .djs-hit {
+  cursor: ew-resize;
 }
 
 .djs-updating,
@@ -418,13 +501,16 @@ svg.drop-not-ok {
   display: none !important;
 }
 
+.djs-segment-dragger.djs-dragging,
 .djs-bendpoint.djs-dragging {
   display: block;
   opacity: 1.0;
 }
 
+.djs-segment-dragger.djs-dragging .djs-visual,
 .djs-bendpoint.djs-dragging .djs-visual {
   fill: yellow;
+  stroke-opacity: 0.5;
 }
 
 
