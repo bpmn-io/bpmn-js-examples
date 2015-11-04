@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/node,odx
 
+dist
+
 ### Node ###
 # Logs
 logs
@@ -36,7 +38,7 @@ node_modules
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
