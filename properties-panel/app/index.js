@@ -5,9 +5,7 @@ var fs = require('fs');
 var $ = require('jquery'),
     BpmnModeler = require('bpmn-js/lib/Modeler');
 
-
-var propertiesPanelModule = require('bpmn-js-properties-panel/lib'),
-    propertiesProviderModule = require('bpmn-js-properties-panel/lib/provider/camunda'),
+var propertiesPanelModule = require('bpmn-js-properties-panel'),
     camundaModdlePackage = require('bpmn-js-properties-panel/lib/provider/camunda/camunda-moddle');
 
 var container = $('#js-drop-zone');
@@ -18,9 +16,14 @@ var propertiesPanelConfig = {
   'config.propertiesPanel': ['value', { parent: $('#js-properties-panel') }]
 };
 
-var renderer = new BpmnModeler({ container: canvas,
-    additionalModules: [propertiesPanelModule, propertiesProviderModule, propertiesPanelConfig],
-    moddleExtensions: {camunda: camundaModdlePackage}});
+var renderer = new BpmnModeler({
+  container: canvas,
+  additionalModules: [
+    propertiesPanelModule,
+    propertiesPanelConfig
+  ],
+  moddleExtensions: {camunda: camundaModdlePackage}
+});
 
 var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
 
