@@ -118,6 +118,9 @@ a:link {
   z-index: 10;
   border-left: 1px solid #ccc;
   overflow: auto;
+  &:empty {
+    display: none;
+  }
   > .djs-properties-panel {
     padding-bottom: 70px;
     min-height:100%;
