@@ -1,7 +1,7 @@
 {
   "name": "bpmn-js-example-properties-panel",
   "version": "0.0.0",
-  "description": "A bpmn-js modeler + properties panel exmaple",
+  "description": "A bpmn-js modeler + properties panel example",
   "main": "app/index.js",
   "repository": {
     "type": "git",

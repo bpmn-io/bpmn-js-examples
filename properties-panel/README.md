@@ -1,12 +1,13 @@
-# bpmn-js Modeler Example
+# bpmn-js Modeler + Properties Panel Example
 
-This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) to implement a modeler for BPMN 2.0 process diagrams. It serves as the basis of the bpmn-js demo application available at [demo.bpmn.io](http://demo.bpmn.io).
+This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [bpmn-js-properties-panel](https://github.com/bpmn-io/bpmn-js-properties-panel). It implements a BPMN 2.0 modeler that allows you to edit execution related properties via a properties panel.
+
 
 ## About
 
 This example is a node-style web application that builds a user interface around the bpmn-js BPMN 2.0 modeler.
 
-![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/modeler/docs/screenshot.png "Screenshot of the example application")
+![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/properties-panel/docs/screenshot.png "Screenshot of the modeler + properties panel example")
 
 
 ## Building
@@ -19,7 +20,7 @@ To install all project dependencies execute
 npm install
 ```
 
-Build the application (including [bpmn-js](https://github.com/bpmn-io/bpmn-js)) using [browserify](http://browserify.org) via
+Build the example using [browserify](http://browserify.org) via
 
 ```
 grunt

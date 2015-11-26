@@ -7,6 +7,7 @@ This repository contains a number of examples showing how use and integrate [bpm
 
 * [simple-bower](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-bower) - an example showcasing how pull bpmn-js via [bower](http://bower.io) and include it into your application.
 * [simple-commonjs](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-commonjs) - an example showcasing how to load bpmn-js via [npm](http://npmjs.org) in a node-style application and package it and the application code for the browser with [browserify](http://browserify.org).
+* [properties-panel](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel) - add a properties panel and edit execution related BPMN 2.0 properties.
 
 
 ## Intermediate
