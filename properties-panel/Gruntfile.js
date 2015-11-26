@@ -130,7 +130,6 @@ module.exports = function(grunt) {
         },
         files: [
           '<%= config.dist %>/**/*.css'
-          // '<%= config.dist %>/**/*.{html,js,css}'
         ],
         tasks: []
       }

@@ -6,23 +6,25 @@ var $ = require('jquery'),
     BpmnModeler = require('bpmn-js/lib/Modeler');
 
 var propertiesPanelModule = require('bpmn-js-properties-panel'),
-    camundaModdlePackage = require('bpmn-js-properties-panel/lib/provider/camunda/camunda-moddle');
+    propertiesProviderModule = require('bpmn-js-properties-panel/lib/provider/camunda'),
+    camundaModdleDescriptor = require('camunda-bpmn-moddle/resources/camunda');
 
 var container = $('#js-drop-zone');
 
 var canvas = $('#js-canvas');
 
-var propertiesPanelConfig = {
-  'config.propertiesPanel': ['value', { parent: $('#js-properties-panel') }]
-};
-
-var renderer = new BpmnModeler({
+var bpmnModeler = new BpmnModeler({
   container: canvas,
+  propertiesPanel: {
+    parent: '#js-properties-panel'
+  },
   additionalModules: [
     propertiesPanelModule,
-    propertiesPanelConfig
+    propertiesProviderModule
   ],
-  moddleExtensions: {camunda: camundaModdlePackage}
+  moddleExtensions: {
+    camunda: camundaModdleDescriptor
+  }
 });
 
 var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
@@ -33,7 +35,7 @@ function createNewDiagram() {
 
 function openDiagram(xml) {
 
-  renderer.importXML(xml, function(err) {
+  bpmnModeler.importXML(xml, function(err) {
 
     if (err) {
       container
@@ -54,12 +56,12 @@ function openDiagram(xml) {
 }
 
 function saveSVG(done) {
-  renderer.saveSVG(done);
+  bpmnModeler.saveSVG(done);
 }
 
 function saveDiagram(done) {
 
-  renderer.saveXML({ format: true }, function(err, xml) {
+  bpmnModeler.saveXML({ format: true }, function(err, xml) {
     done(err, xml);
   });
 }
@@ -143,9 +145,9 @@ $(document).on('ready', function() {
     }
   }
 
-  var _ = require('lodash');
+  var debounce = require('lodash/function/debounce');
 
-  var exportArtifacts = _.debounce(function() {
+  var exportArtifacts = debounce(function() {
 
     saveSVG(function(err, svg) {
       setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
@@ -156,5 +158,5 @@ $(document).on('ready', function() {
     });
   }, 500);
 
-  renderer.on('commandStack.changed', exportArtifacts);
+  bpmnModeler.on('commandStack.changed', exportArtifacts);
 });
