@@ -10,7 +10,46 @@ This example is a node-style web application that builds a user interface around
 ![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/properties-panel/docs/screenshot.png "Screenshot of the modeler + properties panel example")
 
 
-## Building
+## Usage
+
+Add the [properties panel](https://github.com/bpmn-io/bpmn-js-properties-panel) to your project:
+
+```
+npm install --save bpmn-js-properties-panel
+```
+
+Additionally, if you'd like to use [Camunda BPM](https://camunda.org) execution related properties, include the [camunda-bpmn-moddle](https://github.com/camunda/camunda-bpmn-moddle) dependency which tells the modeler about `camunda:XXX` extension properties:
+
+```
+npm install --save camunda-bpmn-moddle
+```
+
+Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with two properties panel related modules, the panel itself and a provider module that controls which properties are visible for each element. Additionally you must pass an element via `propertiesPanel.parent` into which the properties panel will be rendered.
+
+```javascript
+var propertiesPanelModule = require('bpmn-js-properties-panel'),
+    // providing camunda executable properties, too
+    propertiesProviderModule = require('bpmn-js-properties-panel/lib/provider/camunda'),
+    camundaModdleDescriptor = require('camunda-bpmn-moddle/resources/camunda');
+
+var bpmnModeler = new BpmnModeler({
+  container: '#js-canvas',
+  propertiesPanel: {
+    parent: '#js-properties-panel'
+  },
+  additionalModules: [
+    propertiesPanelModule,
+    propertiesProviderModule
+  ],
+  // needed if you'd like to maintain camunda:XXX properties in the properties panel
+  moddleExtensions: {
+    camunda: camundaModdleDescriptor
+  }
+});
+```
+
+
+## Building the Example
 
 You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) and [grunt](http://gruntjs.com) installed to build the project.
 
