@@ -35,13 +35,12 @@ module.exports = function(grunt) {
           debug: true,
           list: true,
           // make sure we do not include browser shims unnecessarily
-          builtins: false,
           insertGlobalVars: {
             process: function () {
-                return 'undefined';
+              return 'undefined';
             },
             Buffer: function () {
-                return 'undefined';
+              return 'undefined';
             }
           }
         },
