@@ -33,10 +33,10 @@
     "load-grunt-tasks": "~0.3.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.13.0",
+    "bpmn-js": "^0.14.0",
     "bpmn-js-properties-panel": "^0.6.0",
     "camunda-bpmn-moddle": "^0.2.5",
-    "diagram-js": "^0.13.0",
+    "diagram-js": "^0.14.0",
     "jquery": "^2.1.1",
     "lodash": "^3.0.0"
   }

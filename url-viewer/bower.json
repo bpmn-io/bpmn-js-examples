@@ -2,12 +2,12 @@
   "name": "bpmn-url-viewer",
   "version": "0.0.0",
   "authors": [
-    "Nico Rehwaldt <git_nikku@nixis.de>"
+    "Nico Rehwaldt <nico.rehwaldt@camunda.com>"
   ],
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bpmn-js": "^0.13.0",
+    "bpmn-js": "^0.14.0",
     "jquery": "~2.1.0"
   }
 }
