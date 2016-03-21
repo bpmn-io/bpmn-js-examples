@@ -26,6 +26,7 @@ This repository contains a number of examples showing how use and integrate [bpm
 * [custom-modeling-rules](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-modeling-rules) - add custom rules to the bpmn-js modeler
 * [custom-elements](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-elements) - a modeler that allows you to create custom elements on a bpmn diagram
 * [custom-meta-model](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-meta-model) - an example showing how the BPMN meta-model can be extended to recognized BPMN extension elements and attributes
+* [properties-panel-extension](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension) - an example showing how to extend the properties panel with custom controls
 * [bpmn-js-nyan](https://github.com/nikku/bpmn-js-nyan) - model nyan cats instead of service tasks, resize elements and assign custom element colors
 
 ## Custom
