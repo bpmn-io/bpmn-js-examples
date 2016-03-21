@@ -9,7 +9,7 @@ var container = $('#js-drop-zone');
 
 var canvas = $('#js-canvas');
 
-var renderer = new BpmnModeler({ container: canvas });
+var modeler = new BpmnModeler({ container: canvas });
 
 var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
 
@@ -19,7 +19,7 @@ function createNewDiagram() {
 
 function openDiagram(xml) {
 
-  renderer.importXML(xml, function(err) {
+  modeler.importXML(xml, function(err) {
 
     if (err) {
       container
@@ -40,12 +40,12 @@ function openDiagram(xml) {
 }
 
 function saveSVG(done) {
-  renderer.saveSVG(done);
+  modeler.saveSVG(done);
 }
 
 function saveDiagram(done) {
 
-  renderer.saveXML({ format: true }, function(err, xml) {
+  modeler.saveXML({ format: true }, function(err, xml) {
     done(err, xml);
   });
 }
@@ -142,5 +142,5 @@ $(document).on('ready', function() {
     });
   }, 500);
 
-  renderer.on('commandStack.changed', exportArtifacts);
+  modeler.on('commandStack.changed', exportArtifacts);
 });
