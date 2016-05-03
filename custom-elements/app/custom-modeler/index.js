@@ -2,12 +2,15 @@
 
 var Modeler = require('bpmn-js/lib/Modeler');
 
-var assign = require('lodash/object/assign');
+var assign = require('lodash/object/assign'),
+    isArray = require('lodash/lang/isArray');
 
 var inherits = require('inherits');
 
 function CustomModeler(options) {
   Modeler.call(this, options);
+
+  this._customElements = [];
 }
 
 inherits(CustomModeler, Modeler);
@@ -24,32 +27,68 @@ CustomModeler.prototype._modules = [].concat(
  *
  * @param {Object} customElement
  */
-CustomModeler.prototype.addCustomElement = function(customElement) {
+CustomModeler.prototype._addCustomShape = function(customElement) {
+
+  this._customElements.push(customElement);
 
   var canvas = this.get('canvas'),
       elementFactory = this.get('elementFactory');
 
-  var customShapeAttrs = assign({ businessObject: customElement }, customElement);
+  var customAttrs = assign({ businessObject: customElement }, customElement);
 
-  var customShape = elementFactory.create('shape', customShapeAttrs);
+  var customShape = elementFactory.create('shape', customAttrs);
+  
+  return canvas.addShape(customShape);
 
-  canvas.addShape(customShape);
+};
+
+CustomModeler.prototype._addCustomConnection = function(customElement) {
+
+  this._customElements.push(customElement);
+
+  var canvas = this.get('canvas'),
+      elementFactory = this.get('elementFactory'),
+      elementRegistry = this.get('elementRegistry');
+
+  var customAttrs = assign({ businessObject: customElement }, customElement);
+
+  var connection = elementFactory.create('connection', assign(customAttrs, {
+    source: elementRegistry.get(customElement.source),
+    target: elementRegistry.get(customElement.target)
+  }),
+  elementRegistry.get(customElement.source).parent);
+
+  return canvas.addConnection(connection);
+
 };
 
 /**
- * Add a number of custom elements to the underlying diagram.
+ * Add a number of custom elements and connections to the underlying diagram.
  *
  * @param {Array<Object>} customElements
  */
-CustomModeler.prototype.setCustomElements = function(customElements) {
+CustomModeler.prototype.addCustomElements = function(customElements) {
 
-  if (!this.diagram) {
-    throw new Error('load a diagram first');
+  if (!isArray(customElements)) {
+    throw new Error('argument must be an array');
   }
 
-  this._customElements = customElements;
+  var shapes = [],
+      connections = [];
 
-  customElements.forEach(this.addCustomElement.bind(this));
+  customElements.forEach(function(customElement) {
+    if (isCustomConnection(customElement)) {
+      connections.push(customElement);
+    } else {
+      shapes.push(customElement);
+    }
+  });
+
+  // add shapes before connections so that connections
+  // can already rely on the shapes being part of the diagram
+  shapes.forEach(this._addCustomShape, this);
+
+  connections.forEach(this._addCustomConnection, this);
 };
 
 /**
@@ -62,3 +101,9 @@ CustomModeler.prototype.getCustomElements = function() {
 };
 
 module.exports = CustomModeler;
+
+
+
+function isCustomConnection(element) {
+   return element.type === 'custom:connection';
+}

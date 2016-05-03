@@ -3,6 +3,7 @@
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
 
   var path = require('path');
 
@@ -12,6 +13,10 @@ module.exports = function(grunt) {
   function resolvePath(project, file) {
     return path.join(path.dirname(require.resolve(project)), file);
   }
+
+  // configures browsers to run test against
+  // any of [ 'PhantomJS', 'Chrome', 'Firefox', 'IE']
+  var TEST_BROWSERS = ((process.env.TEST_BROWSERS || '').replace(/^\s+|\s+$/, '') || 'PhantomJS').split(/\s*,\s*/g);
 
   // project configuration
   grunt.initConfig({
@@ -34,8 +39,10 @@ module.exports = function(grunt) {
     browserify: {
       options: {
         browserifyOptions: {
-          // make sure we do not include browser shims unnecessarily
-          builtins: false,
+          debug: true,
+          // strip unnecessary built-ins
+          builtins: [ 'events' ],
+          // make sure we do not include Node stubs unnecessarily
           insertGlobalVars: {
             process: function () {
                 return 'undefined';
@@ -111,6 +118,20 @@ module.exports = function(grunt) {
           ]
         }
       }
+    },
+    karma: {
+      options: {
+        configFile: 'test/config/karma.unit.js'
+      },
+      single: {
+        singleRun: true,
+        autoWatch: false,
+
+        browsers: TEST_BROWSERS
+      },
+      unit: {
+        browsers: TEST_BROWSERS
+      }
     }
   });
 
@@ -125,5 +146,9 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('default', [ 'jshint', 'build' ]);
+  grunt.registerTask('test', [ 'karma:single' ]);
+
+  grunt.registerTask('auto-test', [ 'karma:unit' ]);
+
+  grunt.registerTask('default', [ 'jshint', 'test', 'build' ]);
 };

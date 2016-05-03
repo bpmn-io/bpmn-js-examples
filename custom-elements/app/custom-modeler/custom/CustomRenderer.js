@@ -4,7 +4,8 @@ var inherits = require('inherits');
 
 var BaseRenderer = require('diagram-js/lib/draw/BaseRenderer');
 
-var componentsToPath = require('diagram-js/lib/util/RenderUtil').componentsToPath;
+var componentsToPath = require('diagram-js/lib/util/RenderUtil').componentsToPath,
+    createLine = require('diagram-js/lib/util/RenderUtil').createLine;
 
 
 /**
@@ -14,24 +15,12 @@ function CustomRenderer(eventBus, styles) {
 
   BaseRenderer.call(this, eventBus, 2000);
 
-  this._styles = styles;
-
-  var self = this;
-
   var computeStyle = styles.computeStyle;
 
-  this.handlers = {
-    'custom:triangle': function(p, element) {
-      return self.drawTriangle(p, element.width);
-    },
-    'custom:circle': function(p, element, attrs) {
-      return self.drawCircle(p, element.width, element.height,  attrs);
-    }
-  };
-
-  this.drawTriangle = function(p, side, attrs) {
+  this.drawTriangle = function(p, side) {
     var halfSide = side / 2,
-        points;
+        points,
+        attrs;
 
     points = [ halfSide, 0, side, side, 0, side ];
 
@@ -60,11 +49,11 @@ function CustomRenderer(eventBus, styles) {
     return componentsToPath(trianglePath);
   };
 
-  this.drawCircle = function(p, width, height, attrs) {
+  this.drawCircle = function(p, width, height) {
     var cx = width / 2,
         cy = height / 2;
 
-    attrs = computeStyle(attrs, {
+    var attrs = computeStyle(attrs, {
       stroke: '#4488aa',
       strokeWidth: 4,
       fill: 'white'
@@ -89,6 +78,32 @@ function CustomRenderer(eventBus, styles) {
     return componentsToPath(circlePath);
   };
 
+  this.drawCustomConnection = function(p, element) {
+    var attrs = computeStyle(attrs, {
+      stroke: '#ff471a',
+      strokeWidth: 2
+    });
+
+    return createLine(element.waypoints, attrs).appendTo(p);
+  };
+
+  this.getCustomConnectionPath = function(connection) {
+    var waypoints = connection.waypoints.map(function(p) {
+      return p.original || p;
+    });
+
+    var connectionPath = [
+      ['M', waypoints[0].x, waypoints[0].y]
+    ];
+
+    waypoints.forEach(function(waypoint, index) {
+      if (index !== 0) {
+        connectionPath.push(['L', waypoint.x, waypoint.y]);
+      }
+    });
+
+    return componentsToPath(connectionPath);
+  };
 }
 
 inherits(CustomRenderer, BaseRenderer);
@@ -102,29 +117,45 @@ CustomRenderer.prototype.canRender = function(element) {
   return /^custom\:/.test(element.type);
 };
 
-CustomRenderer.prototype.drawShape = function(visuals, element) {
+CustomRenderer.prototype.drawShape = function(p, element) {
   var type = element.type;
-  var h = this.handlers[type];
 
-  /* jshint -W040 */
-  return h(visuals, element);
+  if (type === 'custom:triangle') {
+    return this.drawTriangle(p, element.width);
+  }
+
+  if (type === 'custom:circle') {
+    return this.drawCircle(p, element.width, element.height);
+  }
 };
 
-CustomRenderer.prototype.drawConnection = function(visuals, element) {
-  var type = element.type;
-  var h = this.handlers[type];
+CustomRenderer.prototype.getShapePath = function(shape) {
+  var type = shape.type;
 
-  /* jshint -W040 */
-  return h(visuals, element);
+  if (type === 'custom:triangle') {
+    return this.getTrianglePath(shape);
+  }
+
+  if (type === 'custom:circle') {
+    return this.getCirclePath(shape);
+  }
 };
 
-CustomRenderer.prototype.getShapePath = function(element) {
-  var type = element.type.replace(/^custom\:/, '');
+CustomRenderer.prototype.drawConnection = function(p, element) {
 
-  var shapes = {
-    triangle: this.getTrianglePath,
-    circle: this.getCirclePath
-  };
+  var type = element.type;
 
-  return shapes[type](element);
+  if (type === 'custom:connection') {
+    return this.drawCustomConnection(p, element);
+  }
+};
+
+
+CustomRenderer.prototype.getConnectionPath = function(connection) {
+
+  var type = connection.type;
+
+  if (type === 'custom:connection') {
+    return this.getCustomConnectionPath(connection);
+  }
 };

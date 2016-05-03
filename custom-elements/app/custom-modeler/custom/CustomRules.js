@@ -44,6 +44,31 @@ CustomRules.prototype.init = function() {
     return is(target, 'bpmn:Process') || is(target, 'bpmn:Participant') || is(target, 'bpmn:Collaboration');
   }
 
+  /**
+   * Can source and target be connected?
+   */
+  function canConnect(source, target) {
+
+    // only judge about custom elements
+    if (!isCustom(source) && !isCustom(target)) {
+      return;
+    }
+
+    // allow connection between custom shape and task
+    if (isCustom(source)) {
+      if (is(target, 'bpmn:Task')) {
+        return {type: 'custom:connection'};
+      } else {
+        return false;
+      }
+    } else if (isCustom(target)) {
+      if (is(source, 'bpmn:Task')) {
+        return {type: 'custom:connection'};
+      } else {
+        return false;
+      }
+    }
+  }
 
   this.addRule('elements.move', HIGH_PRIORITY, function(context) {
 
@@ -85,6 +110,29 @@ CustomRules.prototype.init = function() {
       // cannot resize custom elements
       return false;
     }
+  });
+
+  this.addRule('connection.create', HIGH_PRIORITY, function(context) {
+    var source = context.source,
+        target = context.target;
+
+    return canConnect(source, target);
+  });
+
+  this.addRule('connection.reconnectStart', HIGH_PRIORITY, function(context) {
+    var connection = context.connection,
+        source = context.hover || context.source,
+        target = connection.target;
+
+    return canConnect(source, target, connection);
+  });
+
+  this.addRule('connection.reconnectEnd', HIGH_PRIORITY, function(context) {
+    var connection = context.connection,
+        source = connection.source,
+        target = context.hover || context.target;
+
+    return canConnect(source, target, connection);
   });
 
 };

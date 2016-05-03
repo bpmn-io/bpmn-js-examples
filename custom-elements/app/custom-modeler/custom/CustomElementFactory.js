@@ -24,23 +24,32 @@ function CustomElementFactory(bpmnFactory, moddle) {
    * @return {djs.model.Base}
    */
   this.create = function(elementType, attrs) {
-    var type = attrs.type,
-        size;
+    var type = attrs.type;
 
     if (elementType === 'label') {
       return self.baseCreate(elementType, assign({ type: 'label' }, LabelUtil.DEFAULT_LABEL_SIZE, attrs));
     }
 
+    // add type to businessObject if custom
     if (/^custom\:/.test(type)) {
       if (!attrs.businessObject) {
         attrs.businessObject = {
-          type: type
+          type: type,
         };
+
+        if(attrs.id) {
+          assign(attrs.businessObject, {
+            id: attrs.id
+          });
+        }
       }
 
-      size = self._getCustomElementSize(type);
+      // add width and height if shape
+      if (!/\:connection$/.test(type)) {
+        assign(attrs, self._getCustomElementSize(type));
+      }
 
-      return self.baseCreate(elementType, assign(attrs, size));
+      return self.baseCreate(elementType, attrs);
     }
 
     return self.createBpmnElement(elementType, attrs);
