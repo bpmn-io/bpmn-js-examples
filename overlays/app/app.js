@@ -10,8 +10,7 @@ var qrDiagram = fs.readFileSync(__dirname + '/../resources/qr-code.bpmn', 'utf-8
 
 
 
-var BpmnViewer = require('bpmn-js'),
-    $ = require('jquery');
+var BpmnViewer = require('bpmn-js');
 
 var bpmnViewer = new BpmnViewer({
   container: '#canvas'
