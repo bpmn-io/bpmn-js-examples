@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "A properties panel extension example",
   "main": "app/index.js",
+  "scripts": {
+    "all": "grunt",
+    "dev": "grunt auto-build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-js-examples"
@@ -25,6 +29,7 @@
     "brfs": "^1.2.0",
     "grunt": "~0.4.4",
     "grunt-browserify": "^4.0.1",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "~0.6.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-jshint": "~0.7.2",
@@ -35,7 +40,7 @@
   "dependencies": {
     "bpmn-js": "^0.15.0",
     "bpmn-js-properties-panel": "^0.7.0",
-    "camunda-bpmn-moddle": "^0.2.5",
+    "camunda-bpmn-moddle": "^0.5.1",
     "diagram-js": "^0.15.0",
     "inherits": "^2.0.1",
     "jquery": "^2.1.1",
