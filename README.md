@@ -29,6 +29,7 @@ This repository contains a number of examples showing how use and integrate [bpm
 * [custom-meta-model](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-meta-model) - an example showing how the BPMN meta-model can be extended to recognized BPMN extension elements and attributes
 * [properties-panel-extension](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension) - an example showing how to extend the properties panel with custom controls
 * [bpmn-js-nyan](https://github.com/nikku/bpmn-js-nyan) - model nyan cats instead of service tasks, resize elements and assign custom element colors
+* [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) - a custom overlay diagram interaction demo
 
 ## Custom
 
