@@ -23,13 +23,6 @@ bower install --save bpmn-js
 Embed it and its dependencies into a website
 
 ```html
-<!-- viewer dependencies -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="bower_components/lodash/dist/lodash.js"></script>
-<script src="bower_components/sax/lib/sax.js"></script>
-<script src="bower_components/Snap.svg/dist/snap.svg.js"></script>
-
 <!-- viewer -->
 <script src="bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
 ```
