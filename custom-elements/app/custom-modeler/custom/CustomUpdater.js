@@ -17,7 +17,7 @@ import {
  * A handler responsible for updating the custom element's businessObject
  * once changes on the diagram happen.
  */
-export default function CustomUpdater(eventBus, bpmnjs) {
+export default function CustomUpdater(eventBus, modeling, bpmnjs) {
 
   CommandInterceptor.call(this, eventBus);
 
@@ -110,11 +110,30 @@ export default function CustomUpdater(eventBus, bpmnjs) {
     'connection.move'
   ], ifCustomElement(updateCustomConnection));
 
+
+  /**
+   * When morphing a Process into a Collaboration or vice-versa,
+   * make sure that the existing custom elements get their parents updated.
+   */
+  function updateCustomElementsRoot(event) {
+    var context = event.context,
+        oldRoot = context.oldRoot,
+        newRoot = context.newRoot,
+        children = oldRoot.children;
+
+    var customChildren = children.filter(isCustom);
+
+    if (customChildren.length) {
+      modeling.moveElements(customChildren, { x: 0, y: 0 }, newRoot);
+    }
+  }
+
+  this.postExecute('canvas.updateRoot', updateCustomElementsRoot);
 }
 
 inherits(CustomUpdater, CommandInterceptor);
 
-CustomUpdater.$inject = [ 'eventBus', 'bpmnjs' ];
+CustomUpdater.$inject = [ 'eventBus', 'modeling', 'bpmnjs' ];
 
 
 /////// helpers ///////////////////////////////////
