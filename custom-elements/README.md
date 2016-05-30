@@ -23,17 +23,17 @@ The example provides a [custom modeler](https://github.com/bpmn-io/bpmn-js-examp
 // add custom elements
 var customElements = [
   {
-    "type":"custom:triangle",
-    "id":"CustomTriangle_1",
-    "x":300,
-    "y":300
+    type: "custom:triangle",
+    id: "CustomTriangle_1",
+    x: 300,
+    y: 300
   },
   {
-    "type":"custom:connection",
-    "id":"CustomConnection_1",
-    "source":"CustomTriangle_1",
-    "target":"Task_1",
-    "waypoints":[
+    type: "custom:connection",
+    id: "CustomConnection_1",
+    source: "CustomTriangle_1",
+    target: "Task_1",
+    waypoints: [
       // ...
     ]
  }
