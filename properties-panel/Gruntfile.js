@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
@@ -108,6 +110,10 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      options: {
+        livereload: true
+      },
+
       samples: {
         files: [ '<%= config.sources %>/**/*.*' ],
         tasks: [ 'copy:app' ]
@@ -122,26 +128,14 @@ module.exports = function(grunt) {
           'less'
         ]
       },
-
-      connect: {
-        options: {
-          livereload: 9014
-        },
-        files: [
-          '<%= config.dist %>/**/*.css'
-        ],
-        tasks: []
-      }
     },
 
     connect: {
-      options: {
-        port: 9013,
-        livereload: 9014,
-        hostname: 'localhost'
-      },
       livereload: {
         options: {
+          port: 9013,
+          livereload: true,
+          hostname: 'localhost',
           open: true,
           base: [
             '<%= config.dist %>'
