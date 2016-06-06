@@ -11,9 +11,9 @@ The example shows two different approaches how to add colors to your BPMN diagra
 
 The following options exist: 
 
-* [Color via Markiers + CSS classes]()
-* [Color via Overlays]()
-* [Color via Custom Renderer]()
+* [Color via Markiers + CSS classes](#option-1-colors-via-css-styling)
+* [Color via Overlays](#option-2-colors-via-overlay)
+* [Color via Custom Renderer](#option-3-colors-via-custom-renderer)
 
 See below for details on each of the approaches.
 
