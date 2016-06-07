@@ -22,9 +22,16 @@ bower install --save bpmn-js
 
 Embed it and its dependencies into a website
 
+#### Embed the Viewer
+
 ```html
-<!-- viewer -->
 <script src="bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+```
+
+#### Embed the Modeler
+
+```html
+<script src="bower_components/bpmn-js/dist/bpmn-modeler.js"></script>
 ```
 
 Use it in your application
