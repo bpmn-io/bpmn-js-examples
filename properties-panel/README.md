@@ -24,7 +24,7 @@ Additionally, if you'd like to use [Camunda BPM](https://camunda.org) execution 
 npm install --save camunda-bpmn-moddle
 ```
 
-Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with two properties panel related modules, the panel itself and a provider module that controls which properties are visible for each element. Additionally you must pass an element via `propertiesPanel.parent` into which the properties panel will be rendered.
+Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with two properties panel related modules, the panel itself and a provider module that controls which properties are visible for each element. Additionally you must pass an element via `propertiesPanel.parent` into which the properties panel will be rendered (cf. [`app/index.js`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/properties-panel/app/index.js#L16) for details).
 
 ```javascript
 var propertiesPanelModule = require('bpmn-js-properties-panel'),
