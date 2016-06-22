@@ -16,8 +16,8 @@ module.exports = function(grunt) {
         options: {
           browserifyOptions: {
             standalone: 'BpmnJS',
-            // make sure we do not include browser shims unnecessarily
-            builtins: false,
+            // strip unnecessary built-ins
+            builtins: [ 'events' ],
             insertGlobalVars: {
               process: function () {
                   return 'undefined';

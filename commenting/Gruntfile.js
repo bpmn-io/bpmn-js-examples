@@ -25,8 +25,8 @@ module.exports = function(grunt) {
     browserify: {
       options: {
         browserifyOptions: {
-          // make sure we do not include browser shims unnecessarily
-          builtins: false,
+          // strip unnecessary built-ins
+          builtins: [ 'events' ],
           insertGlobalVars: {
             process: function () {
                 return 'undefined';
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      
+
       samples: {
         files: [ '<%= config.sources %>/**/*.*' ],
         tasks: [ 'copy:app' ]
