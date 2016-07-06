@@ -1,0 +1,41 @@
+{
+  "name": "bpmn-js-example-transaction-boundaries",
+  "version": "0.0.0",
+  "description": "Integrate the transaction boundaries extension in bpmn-js modeler",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+  },
+  "keywords": [
+    "bpmnjs-example"
+  ],
+  "author": {
+    "name": "Patrick Dehn",
+    "url": "https://github.com/pedesen"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "brfs": "^1.2.0",
+    "grunt": "~1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-connect": "~1.0.2",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "load-grunt-tasks": "~3.5.0"
+  },
+  "dependencies": {
+    "bpmn-js": "^0.15.0",
+    "diagram-js": "^0.15.0",
+    "jquery": "^2.1.1",
+    "lodash": "^3.0.0"
+  }
+}
