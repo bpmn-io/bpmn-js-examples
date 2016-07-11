@@ -31,6 +31,10 @@ Embed it and its dependencies into a website
 #### Embed the Modeler
 
 ```html
+<!-- necessary stylesheets -->
+<link rel="stylesheet" href="bower_components/bpmn-js/dist/assets/diagram-js.css" />
+<link rel="stylesheet" href="bower_components/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css" />
+
 <script src="bower_components/bpmn-js/dist/bpmn-modeler.js"></script>
 ```
 
