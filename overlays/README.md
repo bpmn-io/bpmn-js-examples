@@ -12,7 +12,7 @@ The example loads a process diagram on how to process QR codes and attaches a no
 
 ## Usage summary
 
-Access the `overlays` service via `bpmnViewer.get('overlays')` and add overlays to elements by id using the `Overlays#add` method.
+Access the [`overlays` service](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) via `bpmnViewer.get('overlays')` and add overlays to elements by id using the `Overlays#add` method.
 
 ```javascript
 var overlays = bpmnViewer.get('overlays');
@@ -53,6 +53,19 @@ overlays.add('SCAN_OK', {
   },
   html: overlayHtml
 });
+```
+
+### Removing Overlays
+
+Overlays may be removed via `Overlays#remove`, passing the overlay id or a complex element/type selector:
+
+```javascript
+// remove by id
+var overlayId = overlays.add(...);
+overlays.remove(overlayId);
+
+// remove by element and/or type
+overlays.remove({ element: 'SCAN_OK' });
 ```
 
 
