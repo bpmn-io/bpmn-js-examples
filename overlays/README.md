@@ -1,18 +1,18 @@
 # bpmn-js overlays example
 
-This example shows how to use the overlays api of [bpmn-js](https://github.com/bpmn-io/bpmn-js) to attach HTML overlays to a BPMN 2.0 diagram.
+This example shows how to use the [overlays API](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) of [bpmn-js](https://github.com/bpmn-io/bpmn-js) to attach HTML overlays to a BPMN 2.0 diagram.
 
 
 ## About
 
-The example loads a process diagram on how to process QR codes and attaches a note on it using the `overlays` service.
+The example loads a process diagram on how to process QR codes and attaches a note on it using the  [`overlays`](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) service.
 
 ![QR-CODE workflow process](./docs/qr-code.png "Screenshot of the example process.")
 
 
 ## Usage summary
 
-Access the [`overlays` service](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) via `bpmnViewer.get('overlays')` and add overlays to elements by id using the `Overlays#add` method.
+Access the [`overlays`](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) service via `bpmnViewer.get('overlays')` and add overlays to elements by id using the `Overlays#add` method.
 
 ```javascript
 var overlays = bpmnViewer.get('overlays');
