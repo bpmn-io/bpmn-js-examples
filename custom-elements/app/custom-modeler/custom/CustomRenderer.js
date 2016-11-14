@@ -7,6 +7,10 @@ var BaseRenderer = require('diagram-js/lib/draw/BaseRenderer');
 var componentsToPath = require('diagram-js/lib/util/RenderUtil').componentsToPath,
     createLine = require('diagram-js/lib/util/RenderUtil').createLine;
 
+var svgAppend = require('tiny-svg/lib/append'),
+    svgAttr = require('tiny-svg/lib/attr'),
+    svgCreate = require('tiny-svg/lib/create');
+
 
 /**
  * A renderer that knows how to render custom elements.
@@ -30,7 +34,17 @@ function CustomRenderer(eventBus, styles) {
       fill: '#3CAA82'
     });
 
-    return p.polygon(points).attr(attrs);
+    var polygon = svgCreate('polygon');
+
+    svgAttr(polygon, {
+      points: points
+    });
+
+    svgAttr(polygon, attrs);
+
+    svgAppend(p, polygon);
+
+    return polygon;
   };
 
   this.getTrianglePath = function(element) {
@@ -59,7 +73,19 @@ function CustomRenderer(eventBus, styles) {
       fill: 'white'
     });
 
-    return p.circle(cx, cy, Math.round((width + height) / 4)).attr(attrs);
+    var circle = svgCreate('circle');
+
+    svgAttr(circle, {
+      cx: cx,
+      cy: cy,
+      r: Math.round((width + height) / 4)
+    });
+
+    svgAttr(circle, attrs);
+
+    svgAppend(p, circle);
+
+    return circle;
   };
 
   this.getCirclePath = function(shape) {
@@ -84,7 +110,7 @@ function CustomRenderer(eventBus, styles) {
       strokeWidth: 2
     });
 
-    return createLine(element.waypoints, attrs).appendTo(p);
+    return svgAppend(p, createLine(element.waypoints, attrs));
   };
 
   this.getCustomConnectionPath = function(connection) {
