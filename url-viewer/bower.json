@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bpmn-js": "^0.18.0",
+    "bpmn-js": "^0.20.0",
     "jquery": "~2.1.0"
   }
 }

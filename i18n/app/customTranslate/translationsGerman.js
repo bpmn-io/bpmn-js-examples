@@ -3,6 +3,7 @@
 module.exports = {
 
   // Labels
+  'Activate the global connect tool' : 'Globales Verbindungswerkzeug aktivieren',
   'Append {type}': '{type} anfügen',
   'Add Lane above': 'Lane oberhalb hinzufügen',
   'Divide into two Lanes': 'In zwei Lanes aufteilen',
@@ -18,6 +19,7 @@ module.exports = {
   'Activate the lasso tool': 'Lasso-Tool aktivieren',
   'Activate the create/remove space tool': 'Platz-hinzufügen/entfernen-Tool aktivieren',
   'Create expanded SubProcess': 'Erweiterten SubProcess erzeugen',
+  'Create IntermediateThrowEvent/BoundaryEvent' : 'IntermediateThrowEvent/BoundaryEvent erzeugen',
   'Create Pool/Participant': 'Pool/Teilnehmer erzeugen',
   'Parallel Multi Instance': 'Parallele Multi-Instanz',
   'Sequential Multi Instance': 'Sequenzielle Multi-Instanz',
