@@ -157,6 +157,21 @@ The second step to create a custom property is to create a moddle extension so t
 
 In this file we define the new type `BewitchesStartEvent` which extends the type `bpmn:StartEvent` and adds the "spell" property as an attribute to it.
 
+**Please note**: It is necessary to define in the descriptor which element you want to extend. If you want the property to be valid for all bpmn elements, you can extend `bpmn:BaseElement`:
+
+```javascript
+...
+
+{
+  "name": "BewitchedStartEvent",
+  "extends": [
+    "bpmn:BaseElement"
+  ],
+
+  ...
+},
+```
+
 
 ### Plugging Everything together
 
