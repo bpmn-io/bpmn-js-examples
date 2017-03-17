@@ -82,9 +82,7 @@ function createMagicTabGroups(element, elementRegistry) {
   var blackMagicGroup = {
     id: 'black-magic',
     label: 'Black Magic',
-    entries: [
-      spellProps(blackMagicGroup, element);
-    ]
+    entries: []
   };
 
   // Add the spell props to the black magic group.
