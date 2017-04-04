@@ -31,6 +31,8 @@ This repository contains a number of examples showing how use and integrate [bpm
 * [bpmn-js-nyan](https://github.com/nikku/bpmn-js-nyan) - model nyan cats instead of service tasks, resize elements and assign custom element colors
 * [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) - persistent task colors, diagram interaction and custom extension elements demo
 * [bpmn-js-in-color](https://github.com/bpmn-io/bpmn-js-in-color) - adding color support for BPMN based on the [BPMN in Color](https://github.com/bpmn-miwg/bpmn-in-color) proposal
+* [transaction-boundaries](https://github.com/bpmn-io/bpmn-js-examples/tree/master/transaction-boundaries) - visualizing transaction boundaries in bpmn-js
+* [minimap](https://github.com/bpmn-io/bpmn-js-examples/tree/master/minimap) - adding a minimap to bpmn-js
 
 ## Custom
 
