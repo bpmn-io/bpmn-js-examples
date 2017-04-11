@@ -14,7 +14,7 @@ module.exports = function(group, element) {
       id : 'spell',
       description : 'Apply a black magic spell',
       label : 'Spell',
-      modelProperty : 'spell'
+      modelProperty : 'magic:spell'
     }));
   }
 };
