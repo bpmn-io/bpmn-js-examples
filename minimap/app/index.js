@@ -18,7 +18,7 @@ var bpmnModeler = new BpmnModeler({
   ]
 });
 
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/transaction-boundaries.bpmn', 'utf-8');
+var newDiagramXML = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
 
 function createNewDiagram() {
   openDiagram(newDiagramXML);
@@ -40,6 +40,8 @@ function openDiagram(xml) {
       container
         .removeClass('with-error')
         .addClass('with-diagram');
+
+      bpmnModeler.get('minimap').open();
 
       console.log('Awesome! Ready to navigate!');
     }

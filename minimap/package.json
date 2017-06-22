@@ -1,7 +1,7 @@
 {
-  "name": "bpmn-js-example-transaction-boundaries",
+  "name": "bpmn-js-example-minimap",
   "version": "0.0.0",
-  "description": "Integrate the transaction boundaries extension in bpmn-js modeler",
+  "description": "Use the diagram-js minimap with the bpmn-js modeler",
   "main": "app/index.js",
   "repository": {
     "type": "git",
@@ -11,8 +11,8 @@
     "bpmnjs-example"
   ],
   "author": {
-    "name": "Patrick Dehn",
-    "url": "https://github.com/pedesen"
+    "name": "Philipp Fromme",
+    "url": "https://github.com/philippfromme"
   },
   "contributors": [
     {
@@ -23,7 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "brfs": "^1.2.0",
-    "diagram-js-minimap": "^0.1.0",
+    "diagram-js-minimap": "^0.5.2",
     "grunt": "~1.0.1",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-connect": "~1.0.2",
@@ -34,8 +34,8 @@
     "load-grunt-tasks": "~3.5.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.20.5",
-    "diagram-js": "^0.19.3",
+    "bpmn-js": "^0.20.7",
+    "diagram-js": "^0.19.6",
     "jquery": "^2.1.1",
     "lodash": "^3.0.0"
   }
