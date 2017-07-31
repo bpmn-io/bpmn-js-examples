@@ -23,7 +23,6 @@
   "license": "MIT",
   "devDependencies": {
     "brfs": "^1.2.0",
-    "diagram-js-minimap": "^0.5.2",
     "grunt": "~1.0.1",
     "grunt-browserify": "^5.0.0",
     "grunt-contrib-connect": "~1.0.2",
@@ -34,8 +33,9 @@
     "load-grunt-tasks": "~3.5.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.20.7",
-    "diagram-js": "^0.19.6",
+    "bpmn-js": "^0.21.0",
+    "diagram-js": "^0.20.0",
+    "diagram-js-minimap": "^0.5.3",
     "jquery": "^2.1.1",
     "lodash": "^3.0.0"
   }

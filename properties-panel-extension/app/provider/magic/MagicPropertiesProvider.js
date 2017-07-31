@@ -20,24 +20,24 @@ var spellProps = require('./parts/SpellProps');
 
 // The general tab contains all bpmn relevant properties.
 // The properties are organized in groups.
-function createGeneralTabGroups(element, bpmnFactory, elementRegistry) {
+function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate) {
 
   var generalGroup = {
     id: 'general',
     label: 'General',
     entries: []
   };
-  idProps(generalGroup, element, elementRegistry);
-  nameProps(generalGroup, element);
-  processProps(generalGroup, element);
+  idProps(generalGroup, element, translate);
+  nameProps(generalGroup, element, translate);
+  processProps(generalGroup, element, translate);
 
   var detailsGroup = {
     id: 'details',
     label: 'Details',
     entries: []
   };
-  linkProps(detailsGroup, element);
-  eventProps(detailsGroup, element, bpmnFactory, elementRegistry);
+  linkProps(detailsGroup, element, translate);
+  eventProps(detailsGroup, element, bpmnFactory, elementRegistry, translate);
 
   var documentationGroup = {
     id: 'documentation',
@@ -45,7 +45,7 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry) {
     entries: []
   };
 
-  documentationProps(documentationGroup, element, bpmnFactory);
+  documentationProps(documentationGroup, element, bpmnFactory, translate);
 
   return[
     generalGroup,
@@ -72,7 +72,7 @@ function createMagicTabGroups(element, elementRegistry) {
   ];
 }
 
-function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry) {
+function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry, translate) {
 
   PropertiesActivator.call(this, eventBus);
 
@@ -81,7 +81,7 @@ function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry) {
     var generalTab = {
       id: 'general',
       label: 'General',
-      groups: createGeneralTabGroups(element, bpmnFactory, elementRegistry)
+      groups: createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate)
     };
 
     // The "magic" tab
