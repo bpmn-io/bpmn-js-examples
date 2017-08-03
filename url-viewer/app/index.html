@@ -3,6 +3,10 @@
   <title>bpmn-js url viewer demo</title>
 
   <style>
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
     .header input[type=text] {
       width: 300px;
       max-width: 100%;
@@ -14,12 +18,16 @@
       border: none;
       padding: 0;
     }
+
+    .canvas {
+      border: solid 1px black;
+    }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <h1>Open BPMN 2.0 diagram from URL</h1>
+    <h3>Open BPMN 2.0 diagram from URL</h3>
     <p>
       <input type="text" id="js-url" placeholder="path to diagram" /><button id="js-open">Open</button>
     </p>
@@ -28,17 +36,12 @@
     </p>
   </div>
 
-  <hr>
-
   <div class="canvas">
-    <h3>diagram</h3>
     <div id="js-canvas"></div>
   </div>
 
-  <hr>
-
   <div class="console">
-    <h3>console</h3>
+    <h3>Console</h3>
     <textarea id="js-console"></textarea>
   </div>
 
