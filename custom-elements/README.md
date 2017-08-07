@@ -1,6 +1,4 @@
-# custom elements
-
-> Advanced example. Works with [bpmn-js](https://github.com/bpmn-io/bpmn-js) version v0.15.
+# Custom Elements
 
 This example shows how to add support for custom shapes and connections to [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
