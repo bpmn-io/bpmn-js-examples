@@ -49,18 +49,16 @@ Initialize the project dependencies via
 npm install
 ```
 
-The project contains a  [Grunt](http://gruntjs.com/) build script that defines a few tasks.
-
 To create the sample distribution in the `dist` folder run
 
 ```
-grunt
+npm run all
 ```
 
 To bootstrap a development setup that spawns a small webserver and rebuilds your app on changes run
 
 ```
-grunt auto-build
+npm run dev
 ```
 
 
