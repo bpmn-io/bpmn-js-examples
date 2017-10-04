@@ -7,7 +7,7 @@ This example shows how to use the [overlays API](https://github.com/bpmn-io/diag
 
 The example loads a process diagram on how to process QR codes and attaches a note on it using the  [`overlays`](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) service.
 
-![QR-CODE workflow process](./docs/qr-code.png "Screenshot of the example process.")
+![QR-CODE workflow process](./docs/qr-code.gif "Screencast of overlays in action.")
 
 
 ## Usage summary
@@ -33,6 +33,9 @@ The method `Overlays#add` receives two important parameters:
 * a overlay descriptor
 
 The overlay descriptor must contain a `html` element you want to attach as the overlay as well as a `position` that indicates where you want the overlay to be added on the element. Use `top`, `left`, `bottom`, `right` to control the attachment.
+
+Checkout [the example](https://github.com/bpmn-io/bpmn-js-examples/blob/master/overlays/app/app.js) for additional configuration options such as conditional scaling and showing of overlays.
+
 
 ### Interacting with Overlays
 
@@ -106,18 +109,16 @@ Initialize the project dependencies via
 npm install
 ```
 
-The project contains a  [Grunt](http://gruntjs.com/) build script that defines a few tasks.
-
 To create the sample distribution in the `dist` folder run
 
 ```
-grunt
+npm run all
 ```
 
 To bootstrap a development setup that spawns a small webserver and rebuilds your app on changes run
 
 ```
-grunt auto-build
+npm run dev
 ```
 
 

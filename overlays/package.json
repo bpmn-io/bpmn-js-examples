@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "An example how to use the Overlay API",
   "main": "app/app.js",
+  "scripts": {
+    "all": "grunt",
+    "dev": "grunt auto-build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-js-examples"
