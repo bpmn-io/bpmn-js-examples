@@ -16,18 +16,18 @@
     <extensionElements/>
     <laneSet id="sid-b167d0d7-e761-4636-9200-76b7f0e8e83a">
         <lane id="sid-57E4FE0D-18E4-478D-BC5D-B15164E93254">
-            <flowNodeRef>sid-D7F237E8-56D0-4283-A3CE-4F0EFE446138</flowNodeRef>
-            <flowNodeRef>sid-52EB1772-F36E-433E-8F5B-D5DFD26E6F26</flowNodeRef>
+            <flowNodeRef>START_PROCESS</flowNodeRef>
+            <flowNodeRef>SCAN_QR_CODE</flowNodeRef>
             <flowNodeRef>SCAN_OK</flowNodeRef>
             <flowNodeRef>sid-E49425CF-8287-4798-B622-D2A7D78EF00B</flowNodeRef>
-            <flowNodeRef>sid-E433566C-2289-4BEB-A19C-1697048900D2</flowNodeRef>
+            <flowNodeRef>END_PROCESS</flowNodeRef>
             <flowNodeRef>sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9</flowNodeRef>
         </lane>
     </laneSet>
-    <startEvent id="sid-D7F237E8-56D0-4283-A3CE-4F0EFE446138" name="Notices&#10;QR code">
+    <startEvent id="START_PROCESS" name="Notices&#10;QR code">
         <outgoing>sid-7B791A11-2F2E-4D80-AFB3-91A02CF2B4FD</outgoing>
     </startEvent>
-    <task completionQuantity="1" id="sid-52EB1772-F36E-433E-8F5B-D5DFD26E6F26" isForCompensation="false" name="Scan QR code" startQuantity="1">
+    <task completionQuantity="1" id="SCAN_QR_CODE" isForCompensation="false" name="Scan QR code" startQuantity="1">
         <incoming>sid-4DC479E5-5C20-4948-BCFC-9EC5E2F66D8D</incoming>
         <outgoing>sid-EE8A7BA0-5D66-4F8B-80E3-CC2751B3856A</outgoing>
     </task>
@@ -40,7 +40,7 @@
         <incoming>sid-8B820AF5-DC5C-4618-B854-E08B71FB55CB</incoming>
         <outgoing>sid-57EB1F24-BD94-479A-BF1F-57F1EAA19C6C</outgoing>
     </task>
-    <endEvent id="sid-E433566C-2289-4BEB-A19C-1697048900D2" name="Is informed">
+    <endEvent id="END_PROCESS" name="Is informed">
         <incoming>sid-57EB1F24-BD94-479A-BF1F-57F1EAA19C6C</incoming>
     </endEvent>
     <exclusiveGateway gatewayDirection="Converging" id="sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9">
@@ -48,11 +48,11 @@
         <incoming>sid-337A23B9-A923-4CCE-B613-3E247B773CCE</incoming>
         <outgoing>sid-4DC479E5-5C20-4948-BCFC-9EC5E2F66D8D</outgoing>
     </exclusiveGateway>
-    <sequenceFlow id="sid-7B791A11-2F2E-4D80-AFB3-91A02CF2B4FD" sourceRef="sid-D7F237E8-56D0-4283-A3CE-4F0EFE446138" targetRef="sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9"/>
-    <sequenceFlow id="sid-EE8A7BA0-5D66-4F8B-80E3-CC2751B3856A" sourceRef="sid-52EB1772-F36E-433E-8F5B-D5DFD26E6F26" targetRef="SCAN_OK"/>
-    <sequenceFlow id="sid-57EB1F24-BD94-479A-BF1F-57F1EAA19C6C" sourceRef="sid-E49425CF-8287-4798-B622-D2A7D78EF00B" targetRef="sid-E433566C-2289-4BEB-A19C-1697048900D2"/>
+    <sequenceFlow id="sid-7B791A11-2F2E-4D80-AFB3-91A02CF2B4FD" sourceRef="START_PROCESS" targetRef="sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9"/>
+    <sequenceFlow id="sid-EE8A7BA0-5D66-4F8B-80E3-CC2751B3856A" sourceRef="SCAN_QR_CODE" targetRef="SCAN_OK"/>
+    <sequenceFlow id="sid-57EB1F24-BD94-479A-BF1F-57F1EAA19C6C" sourceRef="sid-E49425CF-8287-4798-B622-D2A7D78EF00B" targetRef="END_PROCESS"/>
     <sequenceFlow id="sid-8B820AF5-DC5C-4618-B854-E08B71FB55CB" name="No" sourceRef="SCAN_OK" targetRef="sid-E49425CF-8287-4798-B622-D2A7D78EF00B"/>
-    <sequenceFlow id="sid-4DC479E5-5C20-4948-BCFC-9EC5E2F66D8D" sourceRef="sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9" targetRef="sid-52EB1772-F36E-433E-8F5B-D5DFD26E6F26"/>
+    <sequenceFlow id="sid-4DC479E5-5C20-4948-BCFC-9EC5E2F66D8D" sourceRef="sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9" targetRef="SCAN_QR_CODE"/>
     <sequenceFlow id="sid-337A23B9-A923-4CCE-B613-3E247B773CCE" name="Yes" sourceRef="SCAN_OK" targetRef="sid-5134932A-1863-4FFA-BB3C-A4B4078B11A9"/>
 </process>
 <bpmndi:BPMNDiagram id="sid-74620812-92c4-44e5-949c-aa47393d3830">
@@ -66,13 +66,13 @@
         <bpmndi:BPMNShape bpmnElement="sid-57E4FE0D-18E4-478D-BC5D-B15164E93254" id="sid-57E4FE0D-18E4-478D-BC5D-B15164E93254_gui" isHorizontal="true">
             <omgdc:Bounds height="250.0" width="903.0" x="72.5" y="75.0"/>
         </bpmndi:BPMNShape>
-        <bpmndi:BPMNShape bpmnElement="sid-D7F237E8-56D0-4283-A3CE-4F0EFE446138" id="sid-D7F237E8-56D0-4283-A3CE-4F0EFE446138_gui">
+        <bpmndi:BPMNShape bpmnElement="START_PROCESS" id="START_PROCESS_gui">
             <omgdc:Bounds height="30.0" width="30.0" x="150.0" y="165.0"/>
             <bpmndi:BPMNLabel labelStyle="sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581">
                 <omgdc:Bounds height="22.0" width="46.35714340209961" x="141.8214282989502" y="197.0"/>
             </bpmndi:BPMNLabel>
         </bpmndi:BPMNShape>
-        <bpmndi:BPMNShape bpmnElement="sid-52EB1772-F36E-433E-8F5B-D5DFD26E6F26" id="sid-52EB1772-F36E-433E-8F5B-D5DFD26E6F26_gui">
+        <bpmndi:BPMNShape bpmnElement="SCAN_QR_CODE" id="SCAN_QR_CODE_gui">
             <omgdc:Bounds height="80.0" width="100.0" x="352.5" y="140.0"/>
             <bpmndi:BPMNLabel labelStyle="sid-84cb49fd-2f7c-44fb-8950-83c3fa153d3b">
                 <omgdc:Bounds height="12.0" width="84.0" x="360.5" y="172.0"/>
@@ -90,7 +90,7 @@
                 <omgdc:Bounds height="36.0" width="83.14285278320312" x="695.9285736083984" y="162.0"/>
             </bpmndi:BPMNLabel>
         </bpmndi:BPMNShape>
-        <bpmndi:BPMNShape bpmnElement="sid-E433566C-2289-4BEB-A19C-1697048900D2" id="sid-E433566C-2289-4BEB-A19C-1697048900D2_gui">
+        <bpmndi:BPMNShape bpmnElement="END_PROCESS" id="END_PROCESS_gui">
             <omgdc:Bounds height="28.0" width="28.0" x="865.0" y="166.0"/>
             <bpmndi:BPMNLabel labelStyle="sid-e0502d32-f8d1-41cf-9c4a-cbb49fecf581">
                 <omgdc:Bounds height="11.0" width="62.857147216796875" x="847.5714263916016" y="196.0"/>

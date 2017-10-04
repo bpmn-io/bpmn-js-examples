@@ -7,7 +7,20 @@
 
   <style type="text/css">
     html, body, #canvas {
+      padding: 0;
+      margin: 0;
       height: 100%
+    }
+
+    h1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px 20px;
+      margin: 0;
+      z-index: 1;
+      background: rgba(255, 255, 255, .8);
+      border: solid 1px #CCC;
     }
 
     .diagram-note {
@@ -23,11 +36,11 @@
     }
   </style>
 
-  <title>Using the HTML Toolkit API</title>
+  <title>Using the Overlay API</title>
 </head>
 <body>
 
-  <h1>QR Code use case</h1>
+  <h1>Overlay API example</h1>
 
   <div id="canvas"></div>
 

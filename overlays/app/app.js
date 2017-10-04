@@ -10,10 +10,18 @@ var qrDiagram = fs.readFileSync(__dirname + '/../resources/qr-code.bpmn', 'utf-8
 
 
 
-var BpmnViewer = require('bpmn-js');
+var BpmnViewer = require('bpmn-js/lib/NavigatedViewer');
 
 var bpmnViewer = new BpmnViewer({
-  container: '#canvas'
+  container: '#canvas',
+  /* uncomment to configure defaults for all overlays
+  overlays: {
+    defaults: {
+      show: { minZoom: 1 },
+      scale: true
+    }
+  }
+  */
 });
 
 
@@ -39,6 +47,41 @@ bpmnViewer.importXML(qrDiagram, function(err) {
       right: 0
     },
     html: '<div class="diagram-note">Mixed up the labels?</div>'
+  });
+
+
+  // configure scale=false to use non-scaling overlays
+  overlays.add('START_PROCESS', 'note', {
+    position: {
+      bottom: 0,
+      right: 0
+    },
+    scale: false,
+    html: '<div class="diagram-note">I don\'t scale</div>'
+  });
+
+  // configure scale={ min: 1 } to use non-shrinking overlays
+  overlays.add('SCAN_QR_CODE', 'note', {
+    position: {
+      bottom: 0,
+      right: 0
+    },
+    scale: { min: 1 },
+    html: '<div class="diagram-note">I don\'t shrink beyond 100%</div>'
+  });
+
+
+
+  // configure show={ minZoom: 0.6 } to hide overlays at low zoom levels
+  overlays.add('END_PROCESS', 'note', {
+    position: {
+      bottom: 0,
+      right: 0
+    },
+    show: {
+      minZoom: 0.7
+    },
+    html: '<div class="diagram-note">I hide at low zoom levels</div>'
   });
 
 });
