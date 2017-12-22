@@ -59,10 +59,10 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.25.0",
-    "diagram-js": "^0.21.1",
+    "bpmn-js": "^0.27.2",
+    "diagram-js": "^0.27.2",
     "inherits": "^2.0.1",
     "lodash": "^3.10.1",
-    "tiny-svg": "^0.1.0"
+    "tiny-svg": "^0.3.0"
   }
 }
