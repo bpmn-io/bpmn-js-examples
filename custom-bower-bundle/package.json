@@ -7,7 +7,7 @@
     "grunt-browserify": "^3.3.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.27.2",
+    "bpmn-js": "^0.26.2",
     "diagram-js": "^0.27.2"
   }
 }
