@@ -7,6 +7,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bpmn-js": "^0.26.2"
+    "bpmn-js": "^0.27.0-0"
   }
 }
