@@ -25,7 +25,7 @@ Embed it and its dependencies into a website
 #### Embed the Viewer
 
 ```html
-<script src="bower_components/bpmn-js/dist/bpmn-viewer.js"></script>
+<script src="bower_components/bpmn-js/dist/bpmn-viewer.development.js"></script>
 ```
 
 #### Embed the Modeler
@@ -35,7 +35,7 @@ Embed it and its dependencies into a website
 <link rel="stylesheet" href="bower_components/bpmn-js/dist/assets/diagram-js.css" />
 <link rel="stylesheet" href="bower_components/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css" />
 
-<script src="bower_components/bpmn-js/dist/bpmn-modeler.js"></script>
+<script src="bower_components/bpmn-js/dist/bpmn-modeler.development.js"></script>
 ```
 
 Use it in your application
