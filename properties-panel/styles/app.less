@@ -1,3 +1,5 @@
+@import "bpmn-js-properties-panel/styles/properties";
+
 * {
   box-sizing: border-box;
 }
@@ -69,12 +71,15 @@ a:link {
   }
 
   .canvas,
-  &.with-error .canvas {
-    visibility: hidden;
+  .properties-panel-parent {
+    display: none;
   }
 
-  &.with-diagram .canvas {
-    visibility: visible;
+  &.with-diagram {
+    .canvas,
+    .properties-panel-parent  {
+      display: block;
+    }
   }
 }
 
@@ -109,7 +114,7 @@ a:link {
   }
 }
 
-#js-properties-panel {
+.properties-panel-parent {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -126,5 +131,3 @@ a:link {
     min-height:100%;
   }
 }
-
-@import "bpmn-js-properties-panel/styles/properties";

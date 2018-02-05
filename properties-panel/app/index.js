@@ -113,7 +113,7 @@ if (!window.FileList || !window.FileReader) {
 
 // bootstrap diagram functions
 
-$(document).on('ready', function() {
+$(function() {
 
   $('#js-create-diagram').click(function(e) {
     e.stopPropagation();
