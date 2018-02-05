@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "A bpmn-js modeler + properties panel example",
   "main": "app/index.js",
+  "scripts": {
+    "all": "grunt",
+    "dev": "grunt auto-build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-js-examples"
@@ -25,6 +29,7 @@
     "brfs": "^1.2.0",
     "grunt": "~1.0.1",
     "grunt-browserify": "^5.0.0",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-connect": "~1.0.2",
     "grunt-contrib-copy": "~1.0.0",
     "grunt-contrib-jshint": "~1.0.0",
@@ -33,10 +38,10 @@
     "load-grunt-tasks": "~3.5.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.26.2",
-    "bpmn-js-properties-panel": "^0.16.1",
+    "bpmn-js": "^0.26.6",
+    "bpmn-js-properties-panel": "^0.20.0",
     "camunda-bpmn-moddle": "^0.13.0",
-    "diagram-js": "^0.27.2",
+    "diagram-js": "^0.28.1",
     "jquery": "^3.3.1",
     "lodash": "^3.0.0"
   }
