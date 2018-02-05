@@ -86,4 +86,4 @@ handle it accordingly.
 
 ## Run this Example
 
-Download and open the [example HTML page](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/interaction/index.html).
+Download and open the [example HTML page](https://rawgit.com/bpmn-io/bpmn-js-examples/master/interaction/index.html).

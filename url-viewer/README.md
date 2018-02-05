@@ -15,4 +15,4 @@ Make sure you serve the application via a web server (nginx, apache, embedded) a
 
 ## Run the Example
 
-Download and open the [example HTML page](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/url-viewer/index.html).
+Download and open the [example HTML page](https://rawgit.com/bpmn-io/bpmn-js-examples/master/url-viewer/index.html).

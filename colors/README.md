@@ -102,7 +102,7 @@ Checkout [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-prior
 
 ## Run this Example
 
-Download the [example diagram](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/colors/index.html) and open it
+Download the [example diagram](https://rawgit.com/bpmn-io/bpmn-js-examples/master/colors/index.html) and open it
 in a web browser.
 
 
