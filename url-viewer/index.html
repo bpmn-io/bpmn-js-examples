@@ -8,7 +8,7 @@
     }
 
     .header input[type=text] {
-      width: 300px;
+      width: 500px;
       max-width: 100%;
     }
 
@@ -32,7 +32,7 @@
       <input type="text" id="js-url" placeholder="path to diagram" /><button id="js-open">Open</button>
     </p>
     <p>
-      <small>Hint: try <code>../resources/pizza-collaboration.bpmn</code></small>
+      <strong>Hint:</strong> try <code>https://rawgit.com/bpmn-io/bpmn-js-examples/master/url-viewer/resources/pizza-collaboration.bpmn</code></strong>
     </p>
   </div>
 
@@ -45,18 +45,19 @@
     <textarea id="js-console"></textarea>
   </div>
 
-  <!-- demo dependencies -->
-  <script src="../bower_components/jquery/dist/jquery.js"></script>
-
   <!-- viewer -->
-  <script src="../bower_components/bpmn-js/dist/bpmn-viewer.development.js"></script>
+  <script src="https://unpkg.com/bpmn-js@0.27.0-1/dist/bpmn-viewer.development.js"></script>
+
+  <!-- jquery (required for example only) -->
+  <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
 
   <!-- app -->
 
   <script>
-    var BpmnViewer = window.BpmnJS;
-
-    var viewer = new BpmnViewer({ container: $('#js-canvas'), height: 600 });
+    var viewer = new BpmnJS({
+      container: $('#js-canvas'),
+      height: 600
+    });
 
     function log(str) {
       var console = $('#js-console');
