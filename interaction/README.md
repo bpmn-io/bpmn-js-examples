@@ -1,16 +1,18 @@
 # bpmn-js interaction example
 
-An example that showcases the different ways to enable user interaction with BPMN diagrams using [bpmn-js](https://github.com/bpmn-io/bpmn-js).
+An example that showcases the different ways to enable user interaction with
+BPMN diagrams using [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
 
 ## About
 
-The demo pulls bpmn-js via [bower](http://bower.io). It opens a BPMN 2.0 diagram and logs the user interaction with it.
+The embeds a BPMN viewer, opens a BPMN 2.0 diagram and logs user interactions.
 
 
 ## Usage summary
 
-You may attach interaction event listeners to a BPMN viewer/modeler as soon as it has a diagram loaded:
+You may attach interaction event listeners to a BPMN viewer/modeler as soon as
+it has a diagram loaded:
 
 
 ```javascript
@@ -31,7 +33,9 @@ Two options exists for making your diagram interactive.
 
 ### Hook into diagram events
 
-Use the `eventBus` service to hook into `element.*` interaction events. [bpmn-js](https://github.com/bpmn-io/bpmn-js) makes sure the events are properly dispatched, even if the user works on a touch device.
+Use the `eventBus` service to hook into `element.*` interaction events.
+[bpmn-js](https://github.com/bpmn-io/bpmn-js) makes sure the events are
+properly dispatched, even if the user works on a touch device.
 
 ```javascript
 var eventBus = viewer.get('eventBus');
@@ -60,8 +64,8 @@ events.forEach(function(event) {
 
 ### Directly attach listener to DOM
 
-You have more control on which elements you would like to address by directly attaching listeners
-to the underlying DOM (i.e. HTML/SVG) nodes.
+You have more control on which elements you would like to address by directly
+attaching listeners to the underlying DOM (i.e. HTML/SVG) nodes.
 
 You can do so by searching for selectors like `[data-element-id=ID_OF_ELEMENT]`:
 
@@ -76,4 +80,10 @@ endEventNode.addEventListener('click', function(e) {
 });
 ```
 
-Both options allow you to intercept user interaction with the diagram and handle it accordingly.
+Both options allow you to intercept user interaction with the diagram and
+handle it accordingly.
+
+
+## Run this Example
+
+Download and open the [example HTML page](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/interaction/index.html).
