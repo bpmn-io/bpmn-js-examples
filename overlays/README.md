@@ -74,7 +74,7 @@ overlays.remove({ element: 'SCAN_OK' });
 
 ## Setting up bpmn-js
 
-You need to get hold on the bpmn-js first. Get it via [bower](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-bower) or [npm](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-commonjs).
+Grab [bpmn-js](https://github.com/bpmn-io/bpmn-js) [pre-packaged](../pre-packaged) or [via npm](../bundling):
 
 To use `overlays` and other services provided by bpmn-js instantiate bpmn-js (this time the viewer) via
 
