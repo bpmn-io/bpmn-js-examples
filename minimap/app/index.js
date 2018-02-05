@@ -107,7 +107,7 @@ if (!window.FileList || !window.FileReader) {
 
 // bootstrap diagram functions
 
-$(document).on('ready', function() {
+$(function() {
 
   createNewDiagram();
 
