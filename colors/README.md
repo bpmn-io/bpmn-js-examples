@@ -7,9 +7,9 @@ This example shows how to add colors to BPMN diagrams rendered with [bpmn-js](ht
 
 The example shows two different approaches how to add colors to your BPMN diagrams.
 
-![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/colors/screenshot.png "Screenshot of the example application")
+![demo application screenshot](./screenshot.png "Screenshot of the example application")
 
-The following options exist: 
+The following options exist:
 
 * [Color via Markiers + CSS classes](#option-1-colors-via-css-styling)
 * [Color via Overlays](#option-2-colors-via-overlay)
@@ -20,7 +20,7 @@ See below for details on each of the approaches.
 
 ## Usage Summary
 
-Include [bpmn-js](https://github.com/bpmn-io/bpmn-js) via [Bower](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-bower) or [CommonJS](https://github.com/bpmn-io/bpmn-js-examples/tree/master/simple-commonjs) and set it up:
+Include [bpmn-js](https://github.com/bpmn-io/bpmn-js) and set it up [pre-packaged](../pre-packaged) or [via npm](../bundling):
 
 
 ```javascript
@@ -102,20 +102,8 @@ Checkout [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-prior
 
 ## Run this Example
 
-Fetch dependencies:
-
-```
-bower install
-```
-
-Serve example via static webserver, i.e. using Apache, Nginx, [static](https://github.com/cloudhead/node-static) or pythons webserver module:
-
-```
-> python -m SimpleHTTPServer
-Serving HTTP on 0.0.0.0 port 8000 ...
-```
-
-Visit page at [127.0.0.1:8000](http://127.0.0.1:8000).
+Download the [example diagram](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/colors/index.html) and open it
+in a web browser.
 
 
 ## License

@@ -34,12 +34,52 @@
   <div id="diagram"></div>
 
   <!-- viewer -->
-  <script src="bower_components/bpmn-js/dist/bpmn-viewer.development.js"></script>
+  <script src="https://unpkg.com/bpmn-js@0.27.0-1/dist/bpmn-viewer.development.js"></script>
 
   <!-- jquery (required for example only) -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
 
   <!-- app -->
-  <script src="index.js"></script>
+  <script>
+
+    var viewer = new BpmnJS({
+      container: '#diagram'
+    });
+
+    function showDiagram(diagramXML) {
+
+      viewer.importXML(diagramXML, function() {
+
+        var overlays = viewer.get('overlays'),
+            canvas = viewer.get('canvas'),
+            elementRegistry = viewer.get('elementRegistry');
+
+        // option 1: highlight via CSS class
+        canvas.addMarker('OrderReceivedEvent', 'highlight');
+
+
+        // option 2: highlight via overlay
+
+        var shape = elementRegistry.get('CalmCustomerTask');
+
+        var $overlayHtml = $('<div class="highlight-overlay">')
+                                .css({
+                                  width: shape.width,
+                                  height: shape.height
+                                });
+
+        overlays.add('CalmCustomerTask', {
+          position: {
+            top: 0,
+            left: 0
+          },
+          html: $overlayHtml
+        });
+      });
+    }
+
+    // load + show diagram
+    $.get('https://rawgit.com/bpmn-io/bpmn-js-examples/master/colors/resources/pizza-collaboration.bpmn', showDiagram);
+  </script>
 </body>
 </html>
