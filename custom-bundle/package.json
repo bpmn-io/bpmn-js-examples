@@ -1,0 +1,19 @@
+{
+  "name": "custom-bundle",
+  "version": "0.0.0",
+  "description": "Bundle a custom version of bpmn-js",
+  "scripts": {
+    "all": "run-s bundle open",
+    "bundle": "browserify src/custom-viewer.js -o dist/custom-viewer.bundled.js --standalone=CustomBpmnJS",
+    "open": "opn ./index.html"
+  },
+  "dependencies": {
+    "bpmn-js": "^0.26.6",
+    "diagram-js": "^0.27.2"
+  },
+  "devDependencies": {
+    "browserify": "^15.2.0",
+    "npm-run-all": "^4.1.2",
+    "opn-cli": "^3.1.0"
+  }
+}
