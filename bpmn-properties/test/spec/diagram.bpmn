@@ -8,8 +8,8 @@
       <bpmn:incoming>SequenceFlow_1</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1" name="FOO > BAR?">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${foo > bar}</bpmn:conditionExpression>
+    <bpmn:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="Task_1" name="FOO &gt; BAR?">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${foo > bar}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="EndEvent_1">
       <bpmn:incoming>SequenceFlow_2</bpmn:incoming>

@@ -1,6 +1,6 @@
 'use strict';
 
-var TestHelper = require('../TestHelper');
+require('../TestHelper');
 
 /* global bootstrapModeler, inject */
 
@@ -58,50 +58,54 @@ describe('bpmn properties', function() {
 
   describe('write properties', function() {
 
-    it('should write conditionExpression', inject(function(elementRegistry, moddle, modeling) {
+    it('should write conditionExpression', inject(
+      function(elementRegistry, moddle, modeling) {
 
-      // given
-      var sequenceFlowElement = elementRegistry.get('SequenceFlow_2'),
-          sequenceFlow = sequenceFlowElement.businessObject;
+        // given
+        var sequenceFlowElement = elementRegistry.get('SequenceFlow_2'),
+            sequenceFlow = sequenceFlowElement.businessObject;
 
-      var newCondition = moddle.create('bpmn:FormalExpression', {
-        body: '${ value > 100 }'
-      });
+        var newCondition = moddle.create('bpmn:FormalExpression', {
+          body: '${ value > 100 }'
+        });
 
-      // assume
-      expect(sequenceFlow.conditionExpression).not.to.exist;
+        // assume
+        expect(sequenceFlow.conditionExpression).not.to.exist;
 
-      // when
-      modeling.updateProperties(sequenceFlowElement, {
-        conditionExpression: newCondition
-      });
+        // when
+        modeling.updateProperties(sequenceFlowElement, {
+          conditionExpression: newCondition
+        });
 
-      // then
-      expect(sequenceFlow.conditionExpression).to.equal(newCondition);
-    }));
-
-
-    it('should undo write conditionExpression', inject(function(elementRegistry, moddle, modeling, commandStack) {
-
-      // given
-      var sequenceFlowElement = elementRegistry.get('SequenceFlow_2'),
-          sequenceFlow = sequenceFlowElement.businessObject;
-
-      var newCondition = moddle.create('bpmn:FormalExpression', {
-        body: '${ value > 100 }'
-      });
-
-      modeling.updateProperties(sequenceFlowElement, {
-        conditionExpression: newCondition
-      });
+        // then
+        expect(sequenceFlow.conditionExpression).to.equal(newCondition);
+      }
+    ));
 
 
-      // when
-      commandStack.undo();
+    it('should undo write conditionExpression', inject(
+      function(elementRegistry, moddle, modeling, commandStack) {
 
-      // then
-      expect(sequenceFlow.conditionExpression).not.to.exist;
-    }));
+        // given
+        var sequenceFlowElement = elementRegistry.get('SequenceFlow_2'),
+            sequenceFlow = sequenceFlowElement.businessObject;
+
+        var newCondition = moddle.create('bpmn:FormalExpression', {
+          body: '${ value > 100 }'
+        });
+
+        modeling.updateProperties(sequenceFlowElement, {
+          conditionExpression: newCondition
+        });
+
+
+        // when
+        commandStack.undo();
+
+        // then
+        expect(sequenceFlow.conditionExpression).not.to.exist;
+      }
+    ));
 
   });
 
