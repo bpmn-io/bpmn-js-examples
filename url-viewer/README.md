@@ -3,6 +3,9 @@
 This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) to implement a
 simple viewer for BPMN 2.0 process diagrams that can be loaded via their URL.
 
+[__Try out__](https://rawgit.com/bpmn-io/bpmn-js-examples/master/url-viewer/index.html).
+
+
 ## About
 
 The demo includes the [pre-packaged](../pre-packaged) BPMN viewer.

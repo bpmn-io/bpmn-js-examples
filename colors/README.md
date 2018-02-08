@@ -2,6 +2,8 @@
 
 This example shows how to add colors to BPMN diagrams rendered with [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
+[__Try out__](https://rawgit.com/bpmn-io/bpmn-js-examples/master/colors/index.html).
+
 
 ## About
 
