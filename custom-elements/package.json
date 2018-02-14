@@ -59,7 +59,7 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.27.0",
+    "bpmn-js": "^0.27.1",
     "diagram-js": "^0.27.2",
     "inherits": "^2.0.1",
     "lodash": "^3.10.1",
