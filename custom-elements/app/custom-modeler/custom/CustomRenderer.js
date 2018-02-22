@@ -140,7 +140,7 @@ CustomRenderer.$inject = [ 'eventBus', 'styles' ];
 
 
 CustomRenderer.prototype.canRender = function(element) {
-  return /^custom\:/.test(element.type);
+  return /^custom:/.test(element.type);
 };
 
 CustomRenderer.prototype.drawShape = function(p, element) {

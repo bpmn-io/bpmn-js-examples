@@ -1,15 +1,10 @@
 'use strict';
 
-var TestHelper = require('../TestHelper');
-
 var assign = require('lodash/object/assign');
 
-/* global bootstrapModeler, inject */
+/* global bootstrapBpmnJS, inject */
 
-var CustomModeler = require('../../app/custom-modeler'),
-    customModules = CustomModeler._modules;
-
-var coreModule = require('bpmn-js/lib/core');
+var CustomModeler = require('../../app/custom-modeler');
 
 
 describe('custom modeling', function() {
@@ -35,32 +30,34 @@ describe('custom modeling', function() {
     }));
 
 
-    it('should export custom element', inject(function(bpmnjs, elementRegistry, modeling) {
+    it('should export custom element', inject(
+      function(bpmnjs, elementRegistry, modeling) {
 
-      // given
-      var customElement = {
-        type: 'custom:circle',
-        id: 'CustomCircle_1',
-        x: 200,
-        y: 400
-      };
+        // given
+        var customElement = {
+          type: 'custom:circle',
+          id: 'CustomCircle_1',
+          x: 200,
+          y: 400
+        };
 
-      var position = { x: customElement.x, y: customElement.y },
-          target = elementRegistry.get('Process_1');
+        var position = { x: customElement.x, y: customElement.y },
+            target = elementRegistry.get('Process_1');
 
-      modeling.createShape(
-        assign({ businessObject: customElement }, customElement),
-        position,
-        target
-      );
+        modeling.createShape(
+          assign({ businessObject: customElement }, customElement),
+          position,
+          target
+        );
 
-      // when
-      var customElements = bpmnjs.getCustomElements();
+        // when
+        var customElements = bpmnjs.getCustomElements();
 
-      // then
-      expect(customElements).to.contain(customElement);
+        // then
+        expect(customElements).to.contain(customElement);
 
-    }));
+      }
+    ));
 
 
     it('should not resize custom shape', inject(function(elementRegistry, rules) {
@@ -90,18 +87,20 @@ describe('custom modeling', function() {
     }));
 
 
-    it('should remove deleted shape from _customElements', inject(function(bpmnjs, elementRegistry, modeling) {
+    it('should remove deleted shape from _customElements', inject(
+      function(bpmnjs, elementRegistry, modeling) {
 
-      // given
-      var customShape = elementRegistry.get('CustomTriangle_1'),
-          customElements = bpmnjs.getCustomElements();
+        // given
+        var customShape = elementRegistry.get('CustomTriangle_1'),
+            customElements = bpmnjs.getCustomElements();
 
-      // when
-      modeling.removeShape(customShape);
+        // when
+        modeling.removeShape(customShape);
 
-      // then
-      expect(customElements.length).to.equal(0);
-    }));
+        // then
+        expect(customElements.length).to.equal(0);
+      }
+    ));
 
   });
 
@@ -121,68 +120,78 @@ describe('custom modeling', function() {
     }));
 
 
-    it('should export custom connection', inject(function(bpmnjs, elementRegistry, modeling) {
+    it('should export custom connection', inject(
+      function(bpmnjs, elementRegistry, modeling) {
 
-      // given
-      var customShape = elementRegistry.get('CustomTriangle_1'),
-          taskShape = elementRegistry.get('Task_1');
+        // given
+        var customShape = elementRegistry.get('CustomTriangle_1'),
+            taskShape = elementRegistry.get('Task_1');
 
-      modeling.connect(customShape, taskShape, { type: 'custom:connection', id: 'CustomConnection_1' });
+        modeling.connect(customShape, taskShape, {
+          type: 'custom:connection',
+          id: 'CustomConnection_1'
+        });
 
-      // when
-      var customElements = bpmnjs.getCustomElements();
+        // when
+        var customElements = bpmnjs.getCustomElements();
 
-      // then
-      var ids = customElements.map(function(element) {
-        return element.id;
-      });
+        // then
+        var ids = customElements.map(function(element) {
+          return element.id;
+        });
 
-      expect(ids).to.include('CustomConnection_1');
-    }));
-
-
-    it('should connect custom shape to task', inject(function(bpmnjs, elementRegistry, modeling, rules) {
-
-      // given
-      var customShape = elementRegistry.get('CustomTriangle_1'),
-          taskShape = elementRegistry.get('Task_1');
-
-      // when
-      var allowed = rules.allowed('connection.create', {
-        source: customShape,
-        target: taskShape
-      });
-
-      modeling.connect(customShape, taskShape, rules.allowed('connection.create', {
-        source: customShape,
-        target: taskShape
-      }));
-
-      // then
-      expect(allowed).to.eql({ type: 'custom:connection' });
-
-      expect(customShape.outgoing.length).to.equal(1);
-      expect(taskShape.outgoing.length).to.equal(1);
-
-      expect(bpmnjs.getCustomElements().length).to.equal(2);
-    }));
+        expect(ids).to.include('CustomConnection_1');
+      }
+    ));
 
 
-    it('should not connect custom shape to start event', inject(function(elementRegistry, rules) {
+    it('should connect custom shape to task', inject(
+      function(bpmnjs, elementRegistry, modeling, rules) {
 
-      // given
-      var customShape = elementRegistry.get('CustomTriangle_1'),
-          startEventShape = elementRegistry.get('StartEvent_1');
+        // given
+        var customShape = elementRegistry.get('CustomTriangle_1'),
+            taskShape = elementRegistry.get('Task_1');
 
-      // when
-      var allowed = rules.allowed('connection.create', {
-        source: customShape,
-        target: startEventShape
-      });
+        // when
+        var allowedConnection = rules.allowed('connection.create', {
+          source: customShape,
+          target: taskShape
+        });
 
-      // then
-      expect(allowed).to.be.false;
-    }));
+        modeling.connect(
+          customShape,
+          taskShape,
+          allowedConnection
+        );
+
+        // then
+        expect(allowedConnection).to.eql({ type: 'custom:connection' });
+
+        expect(customShape.outgoing.length).to.equal(1);
+        expect(taskShape.outgoing.length).to.equal(1);
+
+        expect(bpmnjs.getCustomElements().length).to.equal(2);
+      }
+    ));
+
+
+    it('should not connect custom shape to start event', inject(
+      function(elementRegistry, rules) {
+
+        // given
+        var customShape = elementRegistry.get('CustomTriangle_1'),
+            startEventShape = elementRegistry.get('StartEvent_1');
+
+        // when
+        var allowed = rules.allowed('connection.create', {
+          source: customShape,
+          target: startEventShape
+        });
+
+        // then
+        expect(allowed).to.be.false;
+      }
+    ));
 
 
     it('should reconnect start', inject(function(bpmnjs, elementRegistry, modeling) {
@@ -191,7 +200,9 @@ describe('custom modeling', function() {
       var customShape = elementRegistry.get('CustomTriangle_1'),
           taskShape = elementRegistry.get('Task_1');
 
-      var customConnection = modeling.connect(customShape, taskShape, { type: 'custom:connection' });
+      var customConnection = modeling.connect(customShape, taskShape, {
+        type: 'custom:connection'
+      });
 
       bpmnjs.addCustomElements([{
         type: 'custom:circle',
@@ -205,8 +216,8 @@ describe('custom modeling', function() {
       // when
       modeling.reconnectStart(customConnection, customCircle, {
         x: customCircle.x + customCircle.width / 2,
-        y: customCircle.y + customCircle.height / 2}
-      );
+        y: customCircle.y + customCircle.height / 2
+      });
 
       // then
       expect(customConnection.source).to.equal(customCircle);
@@ -221,13 +232,15 @@ describe('custom modeling', function() {
           taskShape1 = elementRegistry.get('Task_1'),
           taskShape2 = elementRegistry.get('Task_2');
 
-      var customConnection = modeling.connect(customShape, taskShape1, { type: 'custom:connection' });
+      var customConnection = modeling.connect(customShape, taskShape1, {
+        type: 'custom:connection'
+      });
 
       // when
       modeling.reconnectEnd(customConnection, taskShape2, {
         x: taskShape2.x + taskShape2.width / 2,
-        y: taskShape2.y + taskShape2.height / 2}
-      );
+        y: taskShape2.y + taskShape2.height / 2
+      });
 
       // then
       expect(customConnection.source).to.equal(customShape);
@@ -241,7 +254,9 @@ describe('custom modeling', function() {
       var customElement = elementRegistry.get('CustomTriangle_1'),
           taskShape = elementRegistry.get('Task_1');
 
-      var customConnection = modeling.connect(customElement, taskShape, { type: 'custom:connection' });
+      var customConnection = modeling.connect(customElement, taskShape, {
+        type: 'custom:connection'
+      });
 
       // when
       modeling.moveShape(customElement, { x: 200, y: 50 }, customElement.parent);
@@ -254,21 +269,25 @@ describe('custom modeling', function() {
     }));
 
 
-    it('should remove deleted connection from _customElements', inject(function(bpmnjs, elementRegistry, modeling) {
+    it('should remove deleted connection from _customElements', inject(
+      function(bpmnjs, elementRegistry, modeling) {
 
-      // given
-      var customShape = elementRegistry.get('CustomTriangle_1'),
-          taskShape = elementRegistry.get('Task_1'),
-          customElements = bpmnjs.getCustomElements();
+        // given
+        var customShape = elementRegistry.get('CustomTriangle_1'),
+            taskShape = elementRegistry.get('Task_1'),
+            customElements = bpmnjs.getCustomElements();
 
-      var customConnection = modeling.connect(customShape, taskShape, { type: 'custom:connection' });
+        var customConnection = modeling.connect(customShape, taskShape, {
+          type: 'custom:connection'
+        });
 
-      // when
-      modeling.removeConnection(customConnection);
+        // when
+        modeling.removeConnection(customConnection);
 
-      // then
-      expect(customElements.length).to.equal(1);
-    }));
+        // then
+        expect(customElements.length).to.equal(1);
+      }
+    ));
 
   });
 

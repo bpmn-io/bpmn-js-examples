@@ -27,15 +27,6 @@ module.exports = function(grunt) {
       dist: 'dist'
     },
 
-    jshint: {
-      src: [
-        ['<%=config.sources %>']
-      ],
-      options: {
-        jshintrc: true
-      }
-    },
-
     browserify: {
       options: {
         browserifyOptions: {
@@ -44,11 +35,11 @@ module.exports = function(grunt) {
           builtins: [ 'events' ],
           // make sure we do not include Node stubs unnecessarily
           insertGlobalVars: {
-            process: function () {
-                return 'undefined';
+            process: function() {
+              return 'undefined';
             },
-            Buffer: function () {
-                return 'undefined';
+            Buffer: function() {
+              return 'undefined';
             }
           }
         },
@@ -102,7 +93,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      
+
       samples: {
         files: [ '<%= config.sources %>/**/*.*' ],
         tasks: [ 'copy:app' ]
@@ -153,5 +144,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-test', [ 'karma:unit' ]);
 
-  grunt.registerTask('default', [ 'jshint', 'test', 'build' ]);
+  grunt.registerTask('default', [ 'test', 'build' ]);
 };

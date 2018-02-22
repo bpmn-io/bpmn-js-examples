@@ -37,7 +37,7 @@ CustomModeler.prototype._addCustomShape = function(customElement) {
   var customAttrs = assign({ businessObject: customElement }, customElement);
 
   var customShape = elementFactory.create('shape', customAttrs);
-  
+
   return canvas.addShape(customShape);
 
 };
@@ -105,5 +105,5 @@ module.exports = CustomModeler;
 
 
 function isCustomConnection(element) {
-   return element.type === 'custom:connection';
+  return element.type === 'custom:connection';
 }

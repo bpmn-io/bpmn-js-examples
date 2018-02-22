@@ -1,5 +1,7 @@
 'use strict';
 
+/* global window, document */
+
 // inlined diagram; load it from somewhere else if you like
 var pizzaDiagram = require('../resources/pizza-collaboration.bpmn');
 
@@ -10,8 +12,12 @@ var customElements = require('./custom-elements.json');
 // our custom modeler
 var CustomModeler = require('./custom-modeler');
 
-
-var modeler = new CustomModeler({ container: '#canvas', keyboard: { bindTo: document } });
+var modeler = new CustomModeler({
+  container: '#canvas',
+  keyboard: {
+    bindTo: document
+  }
+});
 
 modeler.importXML(pizzaDiagram, function(err) {
 

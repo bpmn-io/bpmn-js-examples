@@ -31,13 +31,13 @@ function CustomElementFactory(bpmnFactory, moddle) {
     }
 
     // add type to businessObject if custom
-    if (/^custom\:/.test(type)) {
+    if (/^custom:/.test(type)) {
       if (!attrs.businessObject) {
         attrs.businessObject = {
           type: type,
         };
 
-        if(attrs.id) {
+        if (attrs.id) {
           assign(attrs.businessObject, {
             id: attrs.id
           });
@@ -45,7 +45,7 @@ function CustomElementFactory(bpmnFactory, moddle) {
       }
 
       // add width and height if shape
-      if (!/\:connection$/.test(type)) {
+      if (!/:connection$/.test(type)) {
         assign(attrs, self._getCustomElementSize(type));
       }
 
@@ -83,7 +83,7 @@ CustomElementFactory.$inject = [ 'bpmnFactory', 'moddle' ];
  *
  * @return {Dimensions} a {width, height} object representing the size of the element
  */
-CustomElementFactory.prototype._getCustomElementSize = function (type) {
+CustomElementFactory.prototype._getCustomElementSize = function(type) {
   var shapes = {
     __default: { width: 100, height: 80 },
     'custom:triangle': { width: 40, height: 40 },
