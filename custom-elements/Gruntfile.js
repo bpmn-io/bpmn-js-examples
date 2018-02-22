@@ -14,10 +14,6 @@ module.exports = function(grunt) {
     return path.join(path.dirname(require.resolve(project)), file);
   }
 
-  // configures browsers to run test against
-  // any of [ 'PhantomJS', 'Chrome', 'Firefox', 'IE']
-  var TEST_BROWSERS = ((process.env.TEST_BROWSERS || '').replace(/^\s+|\s+$/, '') || 'PhantomJS').split(/\s*,\s*/g);
-
   // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -112,20 +108,6 @@ module.exports = function(grunt) {
           ]
         }
       }
-    },
-    karma: {
-      options: {
-        configFile: 'test/config/karma.unit.js'
-      },
-      single: {
-        singleRun: true,
-        autoWatch: false,
-
-        browsers: TEST_BROWSERS
-      },
-      unit: {
-        browsers: TEST_BROWSERS
-      }
     }
   });
 
@@ -140,9 +122,5 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('test', [ 'karma:single' ]);
-
-  grunt.registerTask('auto-test', [ 'karma:unit' ]);
-
-  grunt.registerTask('default', [ 'test', 'build' ]);
+  grunt.registerTask('default', [ 'build' ]);
 };
