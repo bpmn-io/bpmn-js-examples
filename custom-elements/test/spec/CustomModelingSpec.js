@@ -165,7 +165,7 @@ describe('custom modeling', function() {
         );
 
         // then
-        expect(allowedConnection).to.eql({ type: 'custom:connection' });
+        expect(allowedConnection.type).to.eql('custom:connection');
 
         expect(customShape.outgoing.length).to.equal(1);
         expect(taskShape.outgoing.length).to.equal(1);
@@ -264,7 +264,7 @@ describe('custom modeling', function() {
       // then
       expect(customConnection.businessObject.waypoints).to.eql([
         { x: 613, y: 364 },
-        { x: 351, y: 156 }
+        { x: 354, y: 157 }
       ]);
     }));
 
