@@ -9,11 +9,9 @@ var isAny = require('bpmn-js/lib/features/modeling/util/ModelingUtil').isAny;
 var assign = require('lodash/object/assign'),
     bind = require('lodash/function/bind');
 
-function CustomContextPadProvider(eventBus, contextPad, modeling, elementFactory, connect,
-                                  create, popupMenu, canvas, rules, translate) {
+function CustomContextPadProvider(injector, connect, translate) {
 
-  ContextPadProvider.call(this, eventBus, contextPad, modeling, elementFactory, connect, create,
-                    popupMenu, canvas, rules, translate);
+  injector.invoke(ContextPadProvider, this);
 
   var cached = bind(this.getContextPadEntries, this);
 
@@ -47,15 +45,8 @@ function CustomContextPadProvider(eventBus, contextPad, modeling, elementFactory
 inherits(CustomContextPadProvider, ContextPadProvider);
 
 CustomContextPadProvider.$inject = [
-  'eventBus',
-  'contextPad',
-  'modeling',
-  'elementFactory',
+  'injector',
   'connect',
-  'create',
-  'popupMenu',
-  'canvas',
-  'rules',
   'translate'
 ];
 
