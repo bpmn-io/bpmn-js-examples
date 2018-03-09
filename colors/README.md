@@ -35,7 +35,7 @@ var viewer = new BpmnJS({ container: '#diagram' });
 
 ## Adding Colors
 
-#### Option 1: Color via Overlay
+### Option 1: Color via Overlay
 
 > This example assumes you have [jQuery](http://jquery.com/) installed.
 
@@ -77,7 +77,7 @@ viewer.importXML(diagramXML, function() {
 ```
 
 
-#### Option 2: Color via BPMN 2.0 Extension
+### Option 2: Color via BPMN 2.0 Extension
 
 If you would like colors to be part of your BPMN 2.0 diagrams you may use our built-in BPMN 2.0 color extension.
 
@@ -100,7 +100,7 @@ The colors are persisted in the BPMN 2.0 diagram and shown by the BPMN viewer, t
 Read [this blog post](https://bpmn.io/blog/posts/2016-colors-bpmn-js.html) for more details on this feature.
 
 
-#### Option 3: Color via Marker + CSS Styling
+### Option 3: Color via Marker + CSS Styling
 
 Add a CSS snippet like the following to your HTML file:
 
@@ -124,7 +124,7 @@ viewer.importXML(diagramXML, function() {
 ```
 
 
-#### Option 4: Color via Custom Renderer
+### Option 4: Color via Custom Renderer
 
 Checkout [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) for an example that provides a [custom renderer](https://github.com/bpmn-io/bpmn-js-task-priorities/blob/master/lib/priorities/ColorRenderer.js) to color shapes and connections dynamically.
 
