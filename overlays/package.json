@@ -36,7 +36,7 @@
     "load-grunt-tasks": "~3.5.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.28.0",
+    "bpmn-js": "^0.28.1",
     "lodash": "^3.0.0"
   }
 }
