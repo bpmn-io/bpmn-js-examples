@@ -33,7 +33,7 @@
     "load-grunt-tasks": "~3.5.0"
   },
   "dependencies": {
-    "bpmn-js": "^0.28.3",
+    "bpmn-js": "^0.31.0",
     "bpmn-js-transaction-boundaries": "^0.1.1",
     "diagram-js": "^0.27.2",
     "jquery": "^3.3.1",
