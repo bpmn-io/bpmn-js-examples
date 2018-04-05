@@ -16,10 +16,9 @@ npm install --save bpmn-js-transaction-boundaries
 Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with the transaction boundaries module (cf. [`app/index.js`](app/index.js#L14) for details).
 
 ```javascript
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var BpmnModeler = require('bpmn-js/lib/Modeler');
-
-var transactionBoundariesModule = require('bpmn-js-transaction-boundaries');
+import transactionBoundariesModule from 'bpmn-js-transaction-boundaries';
 
 var canvas = $('#js-canvas');
 
@@ -46,7 +45,7 @@ bpmnModeler.importXML(xml, function(err) {
 
 ## Building the Example
 
-You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) and [grunt](http://gruntjs.com) installed to build the project.
+You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) installed to build the project.
 
 To install all project dependencies execute
 
@@ -57,13 +56,13 @@ npm install
 Build the example using [browserify](http://browserify.org) via
 
 ```
-grunt
+npm run all
 ```
 
 You may also spawn a development setup by executing
 
 ```
-grunt auto-build
+npm run dev
 ```
 
 Both tasks generate the distribution ready client-side modeler application into the `dist` folder.

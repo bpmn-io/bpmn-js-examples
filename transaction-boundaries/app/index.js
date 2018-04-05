@@ -1,11 +1,14 @@
-'use strict';
+import $ from 'jquery';
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var fs = require('fs');
+import {
+  debounce
+} from 'min-dash';
 
-var $ = require('jquery'),
-    BpmnModeler = require('bpmn-js/lib/Modeler');
+import transactionBoundariesModule from 'bpmn-js-transaction-boundaries';
 
-var transactionBoundariesModule = require('bpmn-js-transaction-boundaries');
+import diagramXML from '../resources/transaction-boundaries.bpmn';
+
 
 var container = $('#js-drop-zone');
 
@@ -18,10 +21,8 @@ var bpmnModeler = new BpmnModeler({
   ]
 });
 
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/transaction-boundaries.bpmn', 'utf-8');
-
 function createNewDiagram() {
-  openDiagram(newDiagramXML);
+  openDiagram(diagramXML);
 }
 
 function openDiagram(xml) {
@@ -132,8 +133,6 @@ $(function() {
       link.removeClass('active');
     }
   }
-
-  var debounce = require('lodash/function/debounce');
 
   var exportArtifacts = debounce(function() {
 

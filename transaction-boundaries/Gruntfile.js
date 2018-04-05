@@ -1,10 +1,8 @@
-'use strict';
+var path = require('path');
 
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
-
-  var path = require('path');
 
   /**
    * Resolve external project resource as file path
@@ -13,52 +11,32 @@ module.exports = function(grunt) {
     return path.join(path.dirname(require.resolve(project)), file);
   }
 
-  // project configuration
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-
-    config: {
-      sources: 'app',
-      dist: 'dist'
-    },
-
-    jshint: {
-      src: [
-        ['<%=config.sources %>']
-      ],
-      options: {
-        jshintrc: true
-      }
-    },
-
     browserify: {
       options: {
         browserifyOptions: {
-          debug: true,
-          list: true,
-          // make sure we do not include browser shims unnecessarily
-          insertGlobalVars: {
-            process: function () {
-              return 'undefined';
-            },
-            Buffer: function () {
-              return 'undefined';
-            }
-          }
+          debug: true
         },
-        transform: [ 'brfs' ]
+        transform: [
+          [ 'stringify', {
+            extensions: [ '.bpmn' ]
+          } ],
+          [ 'babelify', {
+            global: true
+          } ]
+        ]
       },
       watch: {
         options: {
           watch: true
         },
         files: {
-          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js' ]
+          'dist/index.js': [ 'app/**/*.js' ]
         }
       },
       app: {
         files: {
-          '<%= config.dist %>/index.js': [ '<%= config.sources %>/**/*.js' ]
+          'dist/index.js': [ 'app/**/*.js' ]
         }
       }
     },
@@ -68,7 +46,7 @@ module.exports = function(grunt) {
         files: [
           {
             src: resolvePath('diagram-js', 'assets/diagram-js.css'),
-            dest: '<%= config.dist %>/css/diagram-js.css'
+            dest: 'dist/css/diagram-js.css'
           }
         ]
       },
@@ -76,9 +54,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: resolvePath('bpmn-js', 'assets'),
+            cwd: resolvePath('bpmn-js', 'dist/assets'),
             src: ['**/*.*', '!**/*.js'],
-            dest: '<%= config.dist %>/vendor'
+            dest: 'dist/vendor'
           }
         ]
       },
@@ -86,9 +64,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= config.sources %>/',
+            cwd: 'app/',
             src: ['**/*.*', '!**/*.js'],
-            dest: '<%= config.dist %>'
+            dest: 'dist'
           }
         ]
       }
@@ -115,7 +93,7 @@ module.exports = function(grunt) {
       },
 
       samples: {
-        files: [ '<%= config.sources %>/**/*.*' ],
+        files: [ 'app/**/*.*' ],
         tasks: [ 'copy:app' ]
       },
 
@@ -137,7 +115,7 @@ module.exports = function(grunt) {
           hostname: 'localhost',
           open: true,
           base: [
-            '<%= config.dist %>'
+            'dist'
           ]
         }
       }
