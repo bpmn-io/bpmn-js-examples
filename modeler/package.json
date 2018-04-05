@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "A simple modeler built with bpmn-js",
   "main": "app/index.js",
+  "scripts": {
+    "all": "grunt",
+    "dev": "grunt auto-build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-js-examples"
@@ -22,19 +26,22 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "brfs": "^1.2.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
     "grunt": "~1.0.1",
     "grunt-browserify": "^5.0.0",
-    "grunt-contrib-watch": "~1.0.0",
     "grunt-contrib-connect": "~1.0.2",
-    "grunt-contrib-jshint": "~1.0.0",
     "grunt-contrib-copy": "~1.0.0",
-    "load-grunt-tasks": "~3.5.0"
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "load-grunt-tasks": "~3.5.0",
+    "stringify": "^3.1.0"
   },
   "dependencies": {
     "bpmn-js": "^1.0.2",
-    "diagram-js": "^0.27.2",
+    "diagram-js": "^1.0.0",
     "jquery": "^3.3.1",
-    "lodash": "^3.0.0"
+    "min-dash": "^3.0.0"
   }
 }

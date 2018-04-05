@@ -1,20 +1,22 @@
-'use strict';
+import $ from 'jquery';
 
-var fs = require('fs');
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var $ = require('jquery'),
-    BpmnModeler = require('bpmn-js/lib/Modeler');
+import {
+  debounce
+} from 'min-dash';
+
+import diagramXML from '../resources/newDiagram.bpmn';
+
 
 var container = $('#js-drop-zone');
 
-var canvas = $('#js-canvas');
-
-var modeler = new BpmnModeler({ container: canvas });
-
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
+var modeler = new BpmnModeler({
+  container: '#js-canvas'
+});
 
 function createNewDiagram() {
-  openDiagram(newDiagramXML);
+  openDiagram(diagramXML);
 }
 
 function openDiagram(xml) {
@@ -129,9 +131,7 @@ $(function() {
     }
   }
 
-  var _ = require('lodash');
-
-  var exportArtifacts = _.debounce(function() {
+  var exportArtifacts = debounce(function() {
 
     saveSVG(function(err, svg) {
       setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
