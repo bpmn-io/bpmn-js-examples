@@ -1,16 +1,19 @@
-'use strict';
+import {
+  assign
+} from 'min-dash';
 
-var assign = require('lodash/object/assign'),
-    inherits = require('inherits');
+import inherits from 'inherits';
 
-var BpmnElementFactory = require('bpmn-js/lib/features/modeling/ElementFactory'),
-    LabelUtil = require('bpmn-js/lib/util/LabelUtil');
+import BpmnElementFactory from 'bpmn-js/lib/features/modeling/ElementFactory';
+import {
+  DEFAULT_LABEL_SIZE
+} from 'bpmn-js/lib/util/LabelUtil';
 
 
 /**
  * A custom factory that knows how to create BPMN _and_ custom elements.
  */
-function CustomElementFactory(bpmnFactory, moddle) {
+export default function CustomElementFactory(bpmnFactory, moddle) {
   BpmnElementFactory.call(this, bpmnFactory, moddle);
 
   var self = this;
@@ -27,7 +30,7 @@ function CustomElementFactory(bpmnFactory, moddle) {
     var type = attrs.type;
 
     if (elementType === 'label') {
-      return self.baseCreate(elementType, assign({ type: 'label' }, LabelUtil.DEFAULT_LABEL_SIZE, attrs));
+      return self.baseCreate(elementType, assign({ type: 'label' }, DEFAULT_LABEL_SIZE, attrs));
     }
 
     // add type to businessObject if custom
@@ -58,9 +61,10 @@ function CustomElementFactory(bpmnFactory, moddle) {
 
 inherits(CustomElementFactory, BpmnElementFactory);
 
-module.exports = CustomElementFactory;
-
-CustomElementFactory.$inject = [ 'bpmnFactory', 'moddle' ];
+CustomElementFactory.$inject = [
+  'bpmnFactory',
+  'moddle'
+];
 
 
 /**

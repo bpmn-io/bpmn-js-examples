@@ -1,15 +1,18 @@
-'use strict';
+import inherits from 'inherits';
 
-var inherits = require('inherits');
+import ContextPadProvider from 'bpmn-js/lib/features/context-pad/ContextPadProvider';
 
-var ContextPadProvider = require('bpmn-js/lib/features/context-pad/ContextPadProvider');
+import {
+  isAny
+} from 'bpmn-js/lib/features/modeling/util/ModelingUtil';
 
-var isAny = require('bpmn-js/lib/features/modeling/util/ModelingUtil').isAny;
+import {
+  assign,
+  bind
+} from 'min-dash';
 
-var assign = require('lodash/object/assign'),
-    bind = require('lodash/function/bind');
 
-function CustomContextPadProvider(injector, connect, translate) {
+export default function CustomContextPadProvider(injector, connect, translate) {
 
   injector.invoke(ContextPadProvider, this);
 
@@ -49,5 +52,3 @@ CustomContextPadProvider.$inject = [
   'connect',
   'translate'
 ];
-
-module.exports = CustomContextPadProvider;

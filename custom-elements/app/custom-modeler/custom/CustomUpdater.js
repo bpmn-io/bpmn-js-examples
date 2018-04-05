@@ -1,20 +1,23 @@
-'use strict';
+import inherits from 'inherits';
 
-var inherits = require('inherits');
+import {
+  pick,
+  assign
+} from 'min-dash';
 
-var pick = require('lodash/object/pick'),
-    assign = require('lodash/object/assign');
+import CommandInterceptor from 'diagram-js/lib/command/CommandInterceptor';
 
-var CommandInterceptor = require('diagram-js/lib/command/CommandInterceptor');
-
-var Collections = require('diagram-js/lib/util/Collections');
+import {
+  add as collectionAdd,
+  remove as collectionRemove
+} from 'diagram-js/lib/util/Collections';
 
 
 /**
  * A handler responsible for updating the custom element's businessObject
  * once changes on the diagram happen.
  */
-function CustomUpdater(eventBus, bpmnjs) {
+export default function CustomUpdater(eventBus, bpmnjs) {
 
   CommandInterceptor.call(this, eventBus);
 
@@ -33,9 +36,9 @@ function CustomUpdater(eventBus, bpmnjs) {
 
     // make sure element is added / removed from bpmnjs.customElements
     if (!parent) {
-      Collections.remove(customElements, businessObject);
+      collectionRemove(customElements, businessObject);
     } else {
-      Collections.add(customElements, businessObject);
+      collectionAdd(customElements, businessObject);
     }
 
     // save custom element position
@@ -56,9 +59,9 @@ function CustomUpdater(eventBus, bpmnjs) {
 
     // make sure element is added / removed from bpmnjs.customElements
     if (!parent) {
-      Collections.remove(customElements, businessObject);
+      collectionRemove(customElements, businessObject);
     } else {
-      Collections.add(customElements, businessObject);
+      collectionAdd(customElements, businessObject);
     }
 
     // update waypoints
@@ -110,8 +113,6 @@ function CustomUpdater(eventBus, bpmnjs) {
 }
 
 inherits(CustomUpdater, CommandInterceptor);
-
-module.exports = CustomUpdater;
 
 CustomUpdater.$inject = [ 'eventBus', 'bpmnjs' ];
 

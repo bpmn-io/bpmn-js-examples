@@ -1,13 +1,16 @@
-'use strict';
+import Modeler from 'bpmn-js/lib/Modeler';
 
-var Modeler = require('bpmn-js/lib/Modeler');
+import {
+  assign,
+  isArray
+} from 'min-dash';
 
-var assign = require('lodash/object/assign'),
-    isArray = require('lodash/lang/isArray');
+import inherits from 'inherits';
 
-var inherits = require('inherits');
+import CustomModule from './custom';
 
-function CustomModeler(options) {
+
+export default function CustomModeler(options) {
   Modeler.call(this, options);
 
   this._customElements = [];
@@ -18,7 +21,7 @@ inherits(CustomModeler, Modeler);
 CustomModeler.prototype._modules = [].concat(
   CustomModeler.prototype._modules,
   [
-    require('./custom')
+    CustomModule
   ]
 );
 
@@ -99,9 +102,6 @@ CustomModeler.prototype.addCustomElements = function(customElements) {
 CustomModeler.prototype.getCustomElements = function() {
   return this._customElements;
 };
-
-module.exports = CustomModeler;
-
 
 
 function isCustomConnection(element) {

@@ -1,10 +1,8 @@
-'use strict';
+import '../TestHelper';
 
-require('../TestHelper');
+import TestContainer from 'mocha-test-container-support';
 
-var TestContainer = require('mocha-test-container-support');
-
-var CustomModeler = require('../../app/custom-modeler');
+import CustomModeler from '../../app/custom-modeler';
 
 
 describe('custom modeler', function() {

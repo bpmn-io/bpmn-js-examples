@@ -62,15 +62,16 @@ Fetch dependencies:
 npm install
 ```
 
-Build example:
+Build example and open in your browser:
+
 ```
-grunt auto-build
+npm run dev
 ```
 
 Run tests:
 
 ```
-grunt auto-test
+npm test
 ```
 
 ## License

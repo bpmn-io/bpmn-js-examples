@@ -1,21 +1,23 @@
-'use strict';
+import inherits from 'inherits';
 
-var inherits = require('inherits');
+import BaseRenderer from 'diagram-js/lib/draw/BaseRenderer';
 
-var BaseRenderer = require('diagram-js/lib/draw/BaseRenderer');
+import {
+  componentsToPath,
+  createLine
+} from 'diagram-js/lib/util/RenderUtil';
 
-var componentsToPath = require('diagram-js/lib/util/RenderUtil').componentsToPath,
-    createLine = require('diagram-js/lib/util/RenderUtil').createLine;
-
-var svgAppend = require('tiny-svg/lib/append'),
-    svgAttr = require('tiny-svg/lib/attr'),
-    svgCreate = require('tiny-svg/lib/create');
+import {
+  append as svgAppend,
+  attr as svgAttr,
+  create as svgCreate
+} from 'tiny-svg';
 
 
 /**
  * A renderer that knows how to render custom elements.
  */
-function CustomRenderer(eventBus, styles) {
+export default function CustomRenderer(eventBus, styles) {
 
   BaseRenderer.call(this, eventBus, 2000);
 
@@ -133,8 +135,6 @@ function CustomRenderer(eventBus, styles) {
 }
 
 inherits(CustomRenderer, BaseRenderer);
-
-module.exports = CustomRenderer;
 
 CustomRenderer.$inject = [ 'eventBus', 'styles' ];
 

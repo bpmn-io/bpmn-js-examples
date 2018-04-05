@@ -1,10 +1,13 @@
-'use strict';
+import {
+  bootstrapBpmnJS,
+  inject
+} from '../TestHelper';
 
-var assign = require('lodash/object/assign');
+import {
+  assign
+} from 'min-dash';
 
-/* global bootstrapBpmnJS, inject */
-
-var CustomModeler = require('../../app/custom-modeler');
+import CustomModeler from '../../app/custom-modeler';
 
 
 describe('custom modeling', function() {
@@ -26,7 +29,6 @@ describe('custom modeling', function() {
       };
 
       bpmnjs.addCustomElements([ customShape ]);
-
     }));
 
 
@@ -55,7 +57,6 @@ describe('custom modeling', function() {
 
         // then
         expect(customElements).to.contain(customElement);
-
       }
     ));
 

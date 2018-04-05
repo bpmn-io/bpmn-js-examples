@@ -1,5 +1,3 @@
-'use strict';
-
 /* global process */
 
 // configures browsers to run test against
@@ -52,9 +50,11 @@ module.exports = function(karma) {
           global: true,
           extensions: [
             '.bpmn',
-            '.xml',
             '.css'
           ]
+        } ],
+        [ 'babelify', {
+          global: true
         } ]
       ]
     }

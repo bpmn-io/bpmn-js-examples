@@ -1,16 +1,8 @@
-'use strict';
+import pizzaDiagram from '../resources/pizza-collaboration.bpmn';
 
-/* global window, document */
+import customElements from './custom-elements.json';
 
-// inlined diagram; load it from somewhere else if you like
-var pizzaDiagram = require('../resources/pizza-collaboration.bpmn');
-
-// custom elements JSON; load it from somewhere else if you like
-var customElements = require('./custom-elements.json');
-
-
-// our custom modeler
-var CustomModeler = require('./custom-modeler');
+import CustomModeler from './custom-modeler';
 
 var modeler = new CustomModeler({
   container: '#canvas',

@@ -1,11 +1,14 @@
-'use strict';
+import {
+  reduce
+} from 'min-dash';
 
-var reduce = require('lodash/collection/reduce'),
-    inherits = require('inherits');
+import inherits from 'inherits';
 
-var is = require('bpmn-js/lib/util/ModelUtil').is;
+import {
+  is
+} from 'bpmn-js/lib/util/ModelUtil';
 
-var RuleProvider = require('diagram-js/lib/features/rules/RuleProvider');
+import RuleProvider from 'diagram-js/lib/features/rules/RuleProvider';
 
 var HIGH_PRIORITY = 1500;
 
@@ -17,15 +20,13 @@ function isCustom(element) {
 /**
  * Specific rules for custom elements
  */
-function CustomRules(eventBus) {
+export default function CustomRules(eventBus) {
   RuleProvider.call(this, eventBus);
 }
 
 inherits(CustomRules, RuleProvider);
 
 CustomRules.$inject = [ 'eventBus' ];
-
-module.exports = CustomRules;
 
 
 CustomRules.prototype.init = function() {

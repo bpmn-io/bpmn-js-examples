@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
@@ -14,15 +12,7 @@ module.exports = function(grunt) {
     return path.join(path.dirname(require.resolve(project)), file);
   }
 
-  // project configuration
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-
-    config: {
-      sources: 'app',
-      dist: 'dist'
-    },
-
     browserify: {
       options: {
         browserifyOptions: {
@@ -30,11 +20,10 @@ module.exports = function(grunt) {
         },
         transform: [
           [ 'stringify', {
-            extensions: [
-              '.bpmn',
-              '.xml',
-              '.css'
-            ]
+            extensions: [ '.bpmn' ]
+          } ],
+          [ 'babelify', {
+            global: true
           } ]
         ]
       },
@@ -43,12 +32,12 @@ module.exports = function(grunt) {
           watch: true
         },
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/app.js' ]
+          'dist/app.js': [ 'app/app.js' ]
         }
       },
       app: {
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/app.js' ]
+          'dist/app.js': [ 'app/app.js' ]
         }
       }
     },
@@ -59,7 +48,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: resolvePath('bpmn-js', 'dist'),
             src: ['**/*.*', '!**/*.js'],
-            dest: '<%= config.dist %>/vendor/bpmn-js'
+            dest: 'dist/vendor/bpmn-js'
           }
         ]
       },
@@ -67,9 +56,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= config.sources %>/',
+            cwd: 'app/',
             src: ['**/*.*', '!**/*.js'],
-            dest: '<%= config.dist %>'
+            dest: 'dist'
           }
         ]
       }
@@ -80,7 +69,7 @@ module.exports = function(grunt) {
       },
 
       samples: {
-        files: [ '<%= config.sources %>/**/*.*' ],
+        files: [ 'app/**/*.*' ],
         tasks: [ 'copy:app' ]
       },
     },
@@ -93,7 +82,7 @@ module.exports = function(grunt) {
           hostname: 'localhost',
           open: true,
           base: [
-            '<%= config.dist %>'
+            'dist'
           ]
         }
       }

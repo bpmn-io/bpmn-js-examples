@@ -1,11 +1,12 @@
-'use strict';
+import {
+  assign
+} from 'min-dash';
 
-var assign = require('lodash/object/assign');
 
 /**
  * A palette that allows you to create BPMN _and_ custom elements.
  */
-function PaletteProvider(palette, create, elementFactory, spaceTool, lassoTool) {
+export default function PaletteProvider(palette, create, elementFactory, spaceTool, lassoTool) {
 
   this._create = create;
   this._elementFactory = elementFactory;
@@ -15,9 +16,13 @@ function PaletteProvider(palette, create, elementFactory, spaceTool, lassoTool) 
   palette.registerProvider(this);
 }
 
-module.exports = PaletteProvider;
-
-PaletteProvider.$inject = [ 'palette', 'create', 'elementFactory', 'spaceTool', 'lassoTool' ];
+PaletteProvider.$inject = [
+  'palette',
+  'create',
+  'elementFactory',
+  'spaceTool',
+  'lassoTool'
+];
 
 
 PaletteProvider.prototype.getPaletteEntries = function(element) {
