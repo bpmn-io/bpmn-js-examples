@@ -1,55 +1,30 @@
-'use strict';
-
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-
-  // project configuration
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-
-    config: {
-      sources: 'app',
-      dist: 'dist'
-    },
-
-    jshint: {
-      src: [
-        ['<%=config.sources %>']
-      ],
-      options: {
-        jshintrc: true
-      }
-    },
-
     browserify: {
       options: {
-        browserifyOptions: {
-          // strip unnecessary built-ins
-          builtins: [ 'events' ],
-          insertGlobalVars: {
-            process: function () {
-                return 'undefined';
-            },
-            Buffer: function () {
-                return 'undefined';
-            }
-          }
-        },
-        transform: [ 'brfs' ]
+        transform: [
+          [ 'stringify', {
+            extensions: [ '.bpmn' ]
+          } ],
+          [ 'babelify', {
+            global: true
+          } ]
+        ]
       },
       watch: {
         options: {
           watch: true
         },
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/**/*.js' ]
+          'dist/app.js': [ 'app/**/*.js' ]
         }
       },
       app: {
         files: {
-          '<%= config.dist %>/app.js': [ '<%= config.sources %>/**/*.js' ]
+          'dist/app.js': [ 'app/**/*.js' ]
         }
       }
     },
@@ -58,9 +33,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= config.sources %>/',
+            cwd: 'app/',
             src: ['**/*.*', '!**/*.js'],
-            dest: '<%= config.dist %>'
+            dest: 'dist'
           }
         ]
       }
@@ -71,7 +46,7 @@ module.exports = function(grunt) {
       },
 
       app: {
-        files: [ '<%= config.sources %>/**/*.*' ],
+        files: [ 'app/**/*.*' ],
         tasks: [ 'copy:app' ]
       },
     },
@@ -84,7 +59,7 @@ module.exports = function(grunt) {
           hostname: 'localhost',
           open: true,
           base: [
-            '<%= config.dist %>'
+            'dist'
           ]
         }
       }
@@ -102,5 +77,5 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('default', [ 'jshint', 'build' ]);
+  grunt.registerTask('default', [ 'build' ]);
 };

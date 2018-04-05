@@ -1,16 +1,8 @@
-'use strict';
+// we use stringify to inline an example XML document.
+import qrDiagram from '../resources/qr-code.bpmn';
 
-// we use fs + brfs to inline an example XML document.
-// exclude fs in package.json#browser + use the brfs transform
-// to generate a clean browserified bundle
-var fs = require('fs');
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
 
-// inlined in result file via brfs
-var qrDiagram = fs.readFileSync(__dirname + '/../resources/qr-code.bpmn', 'utf-8');
-
-
-
-var BpmnViewer = require('bpmn-js/lib/NavigatedViewer');
 
 var bpmnViewer = new BpmnViewer({
   container: '#canvas',
