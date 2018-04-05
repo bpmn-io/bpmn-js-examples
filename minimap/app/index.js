@@ -1,11 +1,15 @@
-'use strict';
+import $ from 'jquery';
 
-var fs = require('fs');
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var $ = require('jquery'),
-    BpmnModeler = require('bpmn-js/lib/Modeler');
+import {
+  debounce
+} from 'min-dash';
 
-var minimapModule = require('diagram-js-minimap');
+import minimapModule from 'diagram-js-minimap';
+
+import diagramXML from '../resources/pizza-collaboration.bpmn';
+
 
 var container = $('#js-drop-zone');
 
@@ -18,10 +22,8 @@ var bpmnModeler = new BpmnModeler({
   ]
 });
 
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/pizza-collaboration.bpmn', 'utf-8');
-
 function createNewDiagram() {
-  openDiagram(newDiagramXML);
+  openDiagram(diagramXML);
 }
 
 function openDiagram(xml) {
@@ -133,8 +135,6 @@ $(function() {
       link.removeClass('active');
     }
   }
-
-  var debounce = require('lodash/function/debounce');
 
   var exportArtifacts = debounce(function() {
 
