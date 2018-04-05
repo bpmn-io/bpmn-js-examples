@@ -26,7 +26,7 @@ npm install
 Building the app into the `dist` directory and opening it in a browser:
 
 ```
-grunt auto-build
+npm run dev
 ```
 
 

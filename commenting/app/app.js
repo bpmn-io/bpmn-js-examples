@@ -1,26 +1,18 @@
-/* global alert */
-
-'use strict';
-
-var $ = require('jquery');
+import $ from 'jquery';
 
 
 // require the viewer, make sure you added it to your project
 // dependencies via npm install --save-dev bpmn-js
-var BpmnViewer = require('bpmn-js'),
-    EmbeddedComments = require('bpmn-js-embedded-comments'),
-    ZoomScroll = require('diagram-js/lib/navigation/zoomscroll'),
-    MoveCanvas = require('diagram-js/lib/navigation/movecanvas');
+import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
 
+import EmbeddedComments from 'bpmn-js-embedded-comments';
 
 var viewer = new BpmnViewer({
-               container: '#canvas',
-               additionalModules: [
-                 EmbeddedComments,
-                 ZoomScroll,
-                 MoveCanvas
-               ]
-             });
+  container: '#canvas',
+  additionalModules: [
+    EmbeddedComments
+  ]
+});
 
 
 function openDiagram(diagram) {
@@ -99,21 +91,13 @@ $file.on('change', function() {
 });
 
 
-
-// we use fs + brfs to inline an example XML document.
-// exclude fs in package.json#browser + use the brfs transform
-// to generate a clean browserified bundle
-var fs = require('fs');
-
-// inlined in result file via brfs
-var pizzaDiagram = fs.readFileSync(__dirname + '/../resources/pizza-collaboration-annotated.bpmn', 'utf-8');
+// we use stringify to inline a simple BPMN diagram
+import pizzaDiagram from '../resources/pizza-collaboration-annotated.bpmn';
 
 openDiagram(pizzaDiagram);
 
 
-
-
-////// file drag / drop ///////////////////////
+// file drag / drop ///////////////////////
 
 function openFile(file, callback) {
 
