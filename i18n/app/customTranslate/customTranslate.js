@@ -1,8 +1,7 @@
-'use strict';
+import translations from './translationsGerman';
 
-var translations = require('./translationsGerman');
 
-module.exports = function customTranslate(template, replacements) {
+export default function customTranslate(template, replacements) {
   replacements = replacements || {};
 
   // Translate
@@ -12,4 +11,4 @@ module.exports = function customTranslate(template, replacements) {
   return template.replace(/{([^}]+)}/g, function(_, key) {
     return replacements[key] || '{' + key + '}';
   });
-};
+}

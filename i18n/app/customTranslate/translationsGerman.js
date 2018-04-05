@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = {
+export default {
 
   // Labels
   'Activate the global connect tool' : 'Globales Verbindungswerkzeug aktivieren',

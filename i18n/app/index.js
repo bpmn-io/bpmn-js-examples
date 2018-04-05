@@ -1,30 +1,27 @@
-'use strict';
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var fs = require('fs');
-var BpmnModeler = require('bpmn-js/lib/Modeler');
+import customTranslate from './customTranslate/customTranslate';
+
+import diagramXML from '../resources/newDiagram.bpmn';
+
 
 // Our custom translation module
 // We need to use the array syntax that is used by bpmn-js internally
 // 'value' tells bmpn-js to use the function instead of trying to instanciate it
-var customTranslate = {
-  translate: [ 'value', require('./customTranslate/customTranslate') ]
+var customTranslateModule = {
+  translate: [ 'value', customTranslate ]
 };
-
-// Require our diagram
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
-
-var container = document.getElementById('canvas');
 
 // Spin up an instance of the modeler that uses our custom translation module
 var modeler = new BpmnModeler({
-  container: container,
+  container: '#canvas',
   additionalModules: [
-    customTranslate
+    customTranslateModule
   ]
 });
 
 // Import our diagram
-modeler.importXML(newDiagramXML, function(err) {
+modeler.importXML(diagramXML, function(err) {
   if (err) {
     console.error(err);
   } else {
