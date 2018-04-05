@@ -1,4 +1,6 @@
-module.exports = {
+import MagicPropertiesProvider from './MagicPropertiesProvider';
+
+export default {
   __init__: [ 'propertiesProvider' ],
-  propertiesProvider: [ 'type', require('./MagicPropertiesProvider') ]
+  propertiesProvider: [ 'type', MagicPropertiesProvider ]
 };

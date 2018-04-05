@@ -1,20 +1,21 @@
-'use strict';
+import $ from 'jquery';
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var fs = require('fs');
+import propertiesPanelModule from 'bpmn-js-properties-panel';
+import propertiesProviderModule from './provider/magic';
+import magicModdleDescriptor from './descriptors/magic';
 
-var $ = require('jquery'),
-    BpmnModeler = require('bpmn-js/lib/Modeler');
+import {
+  debounce
+} from 'min-dash';
 
-var propertiesPanelModule = require('bpmn-js-properties-panel'),
-    propertiesProviderModule = require('./provider/magic'),
-    magicModdleDescriptor = require('./descriptors/magic');
+import diagramXML from '../resources/newDiagram.bpmn';
+
 
 var container = $('#js-drop-zone');
 
-var canvas = $('#js-canvas');
-
 var bpmnModeler = new BpmnModeler({
-  container: canvas,
+  container: '#js-canvas',
   propertiesPanel: {
     parent: '#js-properties-panel'
   },
@@ -27,10 +28,8 @@ var bpmnModeler = new BpmnModeler({
   }
 });
 
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
-
 function createNewDiagram() {
-  openDiagram(newDiagramXML);
+  openDiagram(diagramXML);
 }
 
 function openDiagram(xml) {
@@ -144,8 +143,6 @@ $(function() {
       link.removeClass('active');
     }
   }
-
-  var debounce = require('lodash/function/debounce');
 
   var exportArtifacts = debounce(function() {
 

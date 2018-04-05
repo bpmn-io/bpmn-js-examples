@@ -1,10 +1,11 @@
-'use strict';
+import entryFactory from 'bpmn-js-properties-panel/lib/factory/EntryFactory';
 
-var entryFactory = require('bpmn-js-properties-panel/lib/factory/EntryFactory');
+import {
+  is
+} from 'bpmn-js/lib/util/ModelUtil';
 
-var is = require('bpmn-js/lib/util/ModelUtil').is;
 
-module.exports = function(group, element) {
+export default function(group, element) {
 
   // Only return an entry, if the currently selected
   // element is a start event.
@@ -17,4 +18,4 @@ module.exports = function(group, element) {
       modelProperty : 'spell'
     }));
   }
-};
+}

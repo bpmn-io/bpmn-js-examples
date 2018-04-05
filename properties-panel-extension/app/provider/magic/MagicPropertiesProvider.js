@@ -1,22 +1,20 @@
-'use strict';
+import inherits from 'inherits';
 
-
-var inherits = require('inherits');
-
-var PropertiesActivator = require('bpmn-js-properties-panel/lib/PropertiesActivator');
+import PropertiesActivator from 'bpmn-js-properties-panel/lib/PropertiesActivator';
 
 // Require all properties you need from existing providers.
 // In this case all available bpmn relevant properties without camunda extensions.
-var processProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/ProcessProps'),
-    eventProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/EventProps'),
-    linkProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/LinkProps'),
-    documentationProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/DocumentationProps'),
-    idProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/IdProps'),
-    nameProps = require('bpmn-js-properties-panel/lib/provider/bpmn/parts/NameProps');
+import processProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/ProcessProps';
+import eventProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/EventProps';
+import linkProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/LinkProps';
+import documentationProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/DocumentationProps';
+import idProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/IdProps';
+import nameProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/NameProps';
 
 
 // Require your custom property entries.
-var spellProps = require('./parts/SpellProps');
+import spellProps from './parts/SpellProps';
+
 
 // The general tab contains all bpmn relevant properties.
 // The properties are organized in groups.
@@ -72,7 +70,9 @@ function createMagicTabGroups(element, elementRegistry) {
   ];
 }
 
-function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry, translate) {
+export default function MagicPropertiesProvider(
+    eventBus, bpmnFactory, elementRegistry,
+    translate) {
 
   PropertiesActivator.call(this, eventBus);
 
@@ -100,5 +100,3 @@ function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry, transla
 }
 
 inherits(MagicPropertiesProvider, PropertiesActivator);
-
-module.exports = MagicPropertiesProvider;
