@@ -4,16 +4,19 @@
   "description": "Bundle a custom version of bpmn-js",
   "scripts": {
     "all": "run-s bundle open",
-    "bundle": "browserify src/custom-viewer.js -o dist/custom-viewer.bundled.js --standalone=CustomBpmnJS",
+    "bundle": "rollup -c",
     "open": "opn ./index.html"
   },
   "dependencies": {
     "bpmn-js": "^1.0.2",
-    "diagram-js": "^0.27.2"
+    "diagram-js": "^1.0.0"
   },
   "devDependencies": {
-    "browserify": "^15.2.0",
     "npm-run-all": "^4.1.2",
-    "opn-cli": "^3.1.0"
+    "opn-cli": "^3.1.0",
+    "rollup": "^0.57.1",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.3.0"
   }
 }

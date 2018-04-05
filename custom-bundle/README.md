@@ -6,7 +6,7 @@ __Note:__ This is an __advanced__ topic.
 
 ## About
 
-This example extends the [bpmn-js](https://github.com/bpmn-io/bpmn-js) viewer via custom modules and shows how [browserify](https://browserify.org) can be used to generate a UMD bundle of that custom viewer.
+This example extends the [bpmn-js](https://github.com/bpmn-io/bpmn-js) viewer via custom modules and shows how [Rollup](https://rollupjs.org) can be used to generate a UMD bundle of that custom viewer.
 
 
 ## In a Nutshell
@@ -15,9 +15,14 @@ Create a sub-class of `Viewer` or `Modeler`, depending on which variant you
 would like to extend:
 
 ```javascript
-var inherits = require('inherits');
+import inherits from 'inherits';
 
-var Viewer = require('bpmn-js/lib/Viewer');
+import Viewer from 'bpmn-js/lib/Viewer';
+
+import ZoomScrollModule from 'diagram-js/lib/navigation/zoomscroll';
+import MoveCanvasModule from 'diagram-js/lib/navigation/movecanvas';
+
+import CustomLoggingModule from './features/logging';
 
 
 /**
@@ -39,9 +44,9 @@ Add additional modules to your custom bpmn-js prototype:
 ```javascript
 
 CustomViewer.prototype._customModules = [
-  require('diagram-js/lib/navigation/zoomscroll'),
-  require('diagram-js/lib/navigation/movecanvas'),
-  require('./features/logging')
+  ZoomScrollModule,
+  MoveCanvasModule,
+  CustomLoggingModule
 ];
 
 CustomViewer.prototype._modules = [].concat(
@@ -50,11 +55,12 @@ CustomViewer.prototype._modules = [].concat(
 );
 ```
 
-Package the file as UMD for the browser, using you favourite module bundled
-(e.g. [browserify](https://browserify.org) or Webpack).
+Package the file as UMD for the browser, using a module bundler such as [Rollup](https://rollupjs.org/), [Browserify](https://browserify.org) or Webpack.
+
+We're using rollup to bundle the files based on [this configuration](./rollup.config.js):
 
 ```
-browserify src/custom-viewer.js -o dist/custom-viewer.bundled.js --standalone=CustomBpmnJS
+rollup -c
 ```
 
 Include the bundle in your webpage, as you would include our [pre-package distributions](../pre-packaged):

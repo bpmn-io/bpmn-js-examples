@@ -1,4 +1,6 @@
-module.exports = {
+import InteractionLogger from './InteractionLogger';
+
+export default {
   __init__: [ 'interactionLogger' ],
-  interactionLogger: [ 'type', require('./InteractionLogger') ]
+  interactionLogger: [ 'type', InteractionLogger ]
 };

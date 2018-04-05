@@ -1,8 +1,11 @@
-'use strict';
+import inherits from 'inherits';
 
-var inherits = require('inherits');
+import Viewer from 'bpmn-js/lib/Viewer';
 
-var Viewer = require('bpmn-js/lib/Viewer');
+import ZoomScrollModule from 'diagram-js/lib/navigation/zoomscroll';
+import MoveCanvasModule from 'diagram-js/lib/navigation/movecanvas';
+
+import CustomLoggingModule from './features/logging';
 
 
 /**
@@ -10,18 +13,16 @@ var Viewer = require('bpmn-js/lib/Viewer');
  *
  * @param {Object} options
  */
-function CustomViewer(options) {
+export default function CustomViewer(options) {
   Viewer.call(this, options);
 }
 
 inherits(CustomViewer, Viewer);
 
-module.exports = CustomViewer;
-
 CustomViewer.prototype._customModules = [
-  require('diagram-js/lib/navigation/zoomscroll'),
-  require('diagram-js/lib/navigation/movecanvas'),
-  require('./features/logging')
+  ZoomScrollModule,
+  MoveCanvasModule,
+  CustomLoggingModule
 ];
 
 CustomViewer.prototype._modules = [].concat(
