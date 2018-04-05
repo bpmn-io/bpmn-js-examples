@@ -1,12 +1,10 @@
-'use strict';
+import {
+  bootstrapModeler,
+  inject
+} from '../TestHelper';
 
-require('../TestHelper');
-
-/* global bootstrapModeler, inject */
-
-
-var coreModule = require('bpmn-js/lib/core'),
-    modelingModule = require('bpmn-js/lib/features/modeling');
+import coreModule from 'bpmn-js/lib/core';
+import modelingModule from 'bpmn-js/lib/features/modeling';
 
 
 describe('bpmn properties', function() {

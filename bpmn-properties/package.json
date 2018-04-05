@@ -27,10 +27,13 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
     "browserify": "^16.0.0",
     "chai": "^4.1.2",
     "eslint": "^4.17.0",
-    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-bpmn-io": "^0.5.2",
     "karma": "^1.7.1",
     "karma-browserify": "^5.2.0",
     "karma-chai": "^0.1.0",
@@ -48,7 +51,6 @@
   },
   "dependencies": {
     "inherits": "^2.0.1",
-    "bpmn-js": "^1.0.2",
-    "diagram-js": "^0.27.2"
+    "bpmn-js": "^1.0.2"
   }
 }

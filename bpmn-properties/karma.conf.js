@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function(karma) {
   karma.set({
 
@@ -37,7 +35,10 @@ module.exports = function(karma) {
             '.xml',
             '.css'
           ]
-        } ]
+        } ],
+        [ 'babelify', {
+          global: true
+        } ],
       ]
     }
   });
