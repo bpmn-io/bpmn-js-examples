@@ -1,15 +1,10 @@
-'use strict';
-
-// we use fs + brfs to inline an example XML document
-var fs = require('fs');
-
-// inlined in result file via brfs
-var pizzaDiagram = fs.readFileSync(require.resolve('../resources/pizza-collaboration.bpmn'), 'utf-8');
+// we use stringify to inline an example XML document
+import pizzaDiagram from '../resources/pizza-collaboration.bpmn';
 
 
-// require the viewer, make sure you added it to your project
+// make sure you added bpmn-js to your your project
 // dependencies via npm install --save bpmn-js
-var BpmnViewer = require('bpmn-js');
+import BpmnViewer from 'bpmn-js';
 
 var viewer = new BpmnViewer({
   container: '#canvas'
