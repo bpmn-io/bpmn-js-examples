@@ -1,15 +1,13 @@
-'use strict';
+import {
+  bootstrapModeler,
+  inject
+} from '../TestHelper';
 
-var TestHelper = require('../TestHelper');
+import coreModule from 'bpmn-js/lib/core';
+import bpmnPaletteModule from 'bpmn-js/lib/features/palette';
+import modelingModule from 'bpmn-js/lib/features/modeling';
 
-/* global bootstrapModeler, inject */
-
-
-var coreModule = require('bpmn-js/lib/core'),
-    bpmnPaletteModule = require('bpmn-js/lib/features/palette'),
-    modelingModule = require('bpmn-js/lib/features/modeling'),
-    customRulesModule = require('../../lib/custom-rules');
-
+import customRulesModule from '../../lib/custom-rules';
 
 
 describe('custom-rules', function() {
@@ -36,57 +34,61 @@ describe('custom-rules', function() {
 
   describe('shape.create', function() {
 
-    it('should reject per default', inject(function(rules, elementRegistry, elementFactory) {
+    it('should reject per default', inject(
+      function(rules, elementRegistry, elementFactory) {
 
-      // given
-      var newEventShape = elementFactory.create('shape', { type: 'bpmn:StartEvent' });
-      var targetElement = elementRegistry.get('Process_1');
+        // given
+        var newEventShape = elementFactory.create('shape', { type: 'bpmn:StartEvent' });
+        var targetElement = elementRegistry.get('Process_1');
 
-      // when
-      var canCreate = rules.allowed('shape.create', {
-        shape: newEventShape,
-        target: targetElement
-      });
+        // when
+        var canCreate = rules.allowed('shape.create', {
+          shape: newEventShape,
+          target: targetElement
+        });
 
-      // then
-      expect(canCreate).to.be.false;
-    }));
-
-
-    it('should reject drop non bpmn:Task on special flow', inject(function(rules, elementRegistry, elementFactory) {
-
-      // given
-      var newEventShape = elementFactory.create('shape', { type: 'bpmn:StartEvent' });
-      var specialFlowElement = elementRegistry.get('SequenceFlow_1');
-
-      // when
-      var canCreate = rules.allowed('shape.create', {
-        shape: newEventShape,
-        target: specialFlowElement
-      });
-
-      // then
-      expect(canCreate).to.be.false;
-
-    }));
+        // then
+        expect(canCreate).to.be.false;
+      }
+    ));
 
 
-    it('should allow drop bpmn:Task on special flow', inject(function(rules, elementRegistry, elementFactory) {
+    it('should reject drop non bpmn:Task on special flow', inject(
+      function(rules, elementRegistry, elementFactory) {
 
-      // given
-      var newTaskShape = elementFactory.create('shape', { type: 'bpmn:Task' });
-      var specialFlowElement = elementRegistry.get('SequenceFlow_1');
+        // given
+        var newEventShape = elementFactory.create('shape', { type: 'bpmn:StartEvent' });
+        var specialFlowElement = elementRegistry.get('SequenceFlow_1');
 
-      // when
-      var canCreate = rules.allowed('shape.create', {
-        shape: newTaskShape,
-        target: specialFlowElement
-      });
+        // when
+        var canCreate = rules.allowed('shape.create', {
+          shape: newEventShape,
+          target: specialFlowElement
+        });
 
-      // then
-      expect(canCreate).to.be.true;
+        // then
+        expect(canCreate).to.be.false;
+      }
+    ));
 
-    }));
+
+    it('should allow drop bpmn:Task on special flow', inject(
+      function(rules, elementRegistry, elementFactory) {
+
+        // given
+        var newTaskShape = elementFactory.create('shape', { type: 'bpmn:Task' });
+        var specialFlowElement = elementRegistry.get('SequenceFlow_1');
+
+        // when
+        var canCreate = rules.allowed('shape.create', {
+          shape: newTaskShape,
+          target: specialFlowElement
+        });
+
+        // then
+        expect(canCreate).to.be.true;
+      }
+    ));
 
   });
 
