@@ -1,20 +1,17 @@
-'use strict';
+import BpmnViewer from 'bpmn-js';
 
-var fs = require('fs');
+import sampleProcess from '../resources/sample.bpmn';
 
-var BpmnJS = require('bpmn-js');
+import qaPackage from '../resources/qa';
 
-var sampleProcess = fs.readFileSync(__dirname + '/../resources/sample.bpmn', 'utf8');
-
-var qaPackage = require('../resources/qa');
-
-var viewer = new BpmnJS({
+var viewer = new BpmnViewer({
+  container: '#canvas',
   moddleExtensions: {
     qa: qaPackage
   }
 });
 
-viewer.importXML(sampleProcess, function() {});
+viewer.importXML(sampleProcess);
 
 function getExtension(element, type) {
   if (!element.extensionElements) {
