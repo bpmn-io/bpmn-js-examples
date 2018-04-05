@@ -1,13 +1,16 @@
-'use strict';
+import $ from 'jquery';
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var fs = require('fs');
+import propertiesPanelModule from 'bpmn-js-properties-panel';
+import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
+import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda';
 
-var $ = require('jquery'),
-    BpmnModeler = require('bpmn-js/lib/Modeler');
+import {
+  debounce
+} from 'min-dash';
 
-var propertiesPanelModule = require('bpmn-js-properties-panel'),
-    propertiesProviderModule = require('bpmn-js-properties-panel/lib/provider/camunda'),
-    camundaModdleDescriptor = require('camunda-bpmn-moddle/resources/camunda');
+import diagramXML from '../resources/newDiagram.bpmn';
+
 
 var container = $('#js-drop-zone');
 
@@ -27,10 +30,8 @@ var bpmnModeler = new BpmnModeler({
   }
 });
 
-var newDiagramXML = fs.readFileSync(__dirname + '/../resources/newDiagram.bpmn', 'utf-8');
-
 function createNewDiagram() {
-  openDiagram(newDiagramXML);
+  openDiagram(diagramXML);
 }
 
 function openDiagram(xml) {
@@ -144,8 +145,6 @@ $(function() {
       link.removeClass('active');
     }
   }
-
-  var debounce = require('lodash/function/debounce');
 
   var exportArtifacts = debounce(function() {
 
