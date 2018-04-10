@@ -37,7 +37,7 @@ export default function CustomElementFactory(bpmnFactory, moddle) {
     if (/^custom:/.test(type)) {
       if (!attrs.businessObject) {
         attrs.businessObject = {
-          type: type,
+          type: type
         };
 
         if (attrs.id) {
@@ -50,6 +50,15 @@ export default function CustomElementFactory(bpmnFactory, moddle) {
       // add width and height if shape
       if (!/:connection$/.test(type)) {
         assign(attrs, self._getCustomElementSize(type));
+      }
+
+      if (!('$instanceOf' in attrs.businessObject)) {
+        // ensure we can use ModelUtil#is for type checks
+        Object.defineProperty(attrs.businessObject, '$instanceOf', {
+          value: function(type) {
+            return this.type === type;
+          }
+        });
       }
 
       return self.baseCreate(elementType, attrs);

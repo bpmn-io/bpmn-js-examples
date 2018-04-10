@@ -4,6 +4,10 @@ import TestContainer from 'mocha-test-container-support';
 
 import CustomModeler from '../../app/custom-modeler';
 
+import {
+  is
+} from 'bpmn-js/lib/util/ModelUtil';
+
 
 describe('custom modeler', function() {
 
@@ -52,6 +56,8 @@ describe('custom modeler', function() {
       var customTriangle = elementRegistry.get('CustomTriangle_1');
 
       // then
+      expect(is(customTriangle, 'custom:triangle')).to.be.true;
+
       expect(customTriangle).to.exist;
       expect(customElements).to.contain(customElement);
 
