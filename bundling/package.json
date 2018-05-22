@@ -39,6 +39,6 @@
     "watchify": "^3.10.0"
   },
   "dependencies": {
-    "bpmn-js": "^1.3.3"
+    "bpmn-js": "^2.0.0"
   }
 }
