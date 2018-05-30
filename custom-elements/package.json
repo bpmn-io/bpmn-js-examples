@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "bpmn-js": "^2.1.0",
-    "diagram-js": "^1.0.0",
+    "diagram-js": "^2.0.0",
     "inherits": "^2.0.1",
     "min-dash": "^3.0.0",
     "tiny-svg": "^2.0.0"
