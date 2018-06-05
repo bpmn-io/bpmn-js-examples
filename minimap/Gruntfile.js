@@ -50,6 +50,14 @@ module.exports = function(grunt) {
           }
         ]
       },
+      diagram_js_minimap: {
+        files: [
+          {
+            src: resolvePath('diagram-js-minimap', 'assets/diagram-js-minimap.css'),
+            dest: 'dist/css/diagram-js-minimap.css'
+          }
+        ]
+      },
       bpmn_js: {
         files: [
           {
@@ -95,6 +103,11 @@ module.exports = function(grunt) {
       samples: {
         files: [ 'app/**/*.*' ],
         tasks: [ 'copy:app' ]
+      },
+
+      diagram_js_minimap: {
+        files: [ resolvePath('diagram-js-minimap', 'assets/diagram-js-minimap.css') ],
+        tasks: [ 'copy:diagram_js_minimap']
       },
 
       less: {
