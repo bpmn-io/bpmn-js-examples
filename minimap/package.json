@@ -41,7 +41,7 @@
   "dependencies": {
     "bpmn-js": "^2.1.0",
     "diagram-js": "^1.0.0",
-    "diagram-js-minimap": "^0.5.5",
+    "diagram-js-minimap": "^1.0.0",
     "jquery": "^3.3.1",
     "min-dash": "^3.0.0"
   }
