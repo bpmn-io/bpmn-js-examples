@@ -4,6 +4,7 @@ This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [diagram-js-
 
 ![demo application screenshot](docs/screenshot.png)
 
+
 ## Usage
 
 Add [diagram-js-minimap](https://github.com/bpmn-io/diagram-js-minimap) to your project:
@@ -12,18 +13,15 @@ Add [diagram-js-minimap](https://github.com/bpmn-io/diagram-js-minimap) to your 
 npm install --save diagram-js-minimap
 ```
 
-Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with the transaction boundaries module (cf. [`app/index.js`](app/index.js#L14) for details).
+Now load the minimap module along with the [bpmn-js](https://github.com/bpmm-io/bpmn-js) instance:
 
 ```javascript
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var BpmnModeler = require('bpmn-js/lib/Modeler');
-
-var minimapModule = require('diagram-js-minimap');
-
-var canvas = $('#js-canvas');
+import minimapModule from 'diagram-js-minimap';
 
 var bpmnModeler = new BpmnModeler({
-  container: canvas,
+  container: '#canvas',
   additionalModules: [
     minimapModule
   ]
@@ -32,18 +30,20 @@ var bpmnModeler = new BpmnModeler({
 bpmnModeler.importXML(xml, function(err) {
 
   if (err) {
-      console.error(err);
-    } else {
-      console.log('Awesome! Ready to navigate!');
-    }
-  });
+    console.error(err);
+  } else {
+    console.log('Awesome! Ready to navigate!');
+  }
+});
 
 ```
+
+Checkout [`app/index.js`](app/index.js#L14) for details.
 
 
 ## Building the Example
 
-You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) and [grunt](http://gruntjs.com) installed to build the project.
+You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) installed to build the project.
 
 To install all project dependencies execute
 
@@ -51,16 +51,16 @@ To install all project dependencies execute
 npm install
 ```
 
-Build the example using [browserify](http://browserify.org) via
+Build the example execute
 
 ```
-grunt
+npm run all
 ```
 
 You may also spawn a development setup by executing
 
 ```
-grunt auto-build
+npm run dev
 ```
 
 Both tasks generate the distribution ready client-side modeler application into the `dist` folder.
