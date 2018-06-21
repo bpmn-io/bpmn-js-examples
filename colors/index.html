@@ -18,6 +18,7 @@
       background-color: green; /* color elements as green */
       opacity: 0.4;
       pointer-events: none; /* no pointer events, allows clicking through onto the element */
+      border-radius: 10px;
     }
   </style>
 
@@ -33,8 +34,12 @@
 
   <div id="diagram"></div>
 
-  <!-- viewer -->
-  <script src="https://unpkg.com/bpmn-js@2.2.1/dist/bpmn-viewer.development.js"></script>
+  <!-- required modeler styles -->
+  <link rel="stylesheet" href="https://unpkg.com/bpmn-js@2.2.0/dist/assets/diagram-js.css">
+  <link rel="stylesheet" href="https://unpkg.com/bpmn-js@2.2.0/dist/assets/bpmn-font/css/bpmn.css">
+
+  <!-- modeler distro -->
+  <script src="https://unpkg.com/bpmn-js@2.2.0/dist/bpmn-modeler.development.js"></script>
 
   <!-- jquery (required for example only) -->
   <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
@@ -52,14 +57,10 @@
 
         var overlays = viewer.get('overlays'),
             canvas = viewer.get('canvas'),
-            elementRegistry = viewer.get('elementRegistry');
+            elementRegistry = viewer.get('elementRegistry'),
+            modeling = viewer.get('modeling');
 
-        // option 1: highlight via CSS class
-        canvas.addMarker('OrderReceivedEvent', 'highlight');
-
-
-        // option 2: highlight via overlay
-
+        // Option 1: Color via Overlay
         var shape = elementRegistry.get('CalmCustomerTask');
 
         var $overlayHtml = $('<div class="highlight-overlay">')
@@ -75,11 +76,22 @@
           },
           html: $overlayHtml
         });
+
+        // Option 2: Color via BPMN 2.0 Extension
+        var elementToColor = elementRegistry.get('SelectAPizzaTask');
+
+        modeling.setColor([ elementToColor ], {
+          stroke: 'green',
+          fill: 'rgba(0, 80, 0, 0.4)'
+        });
+
+        // Option 3: Color via Marker + CSS Styling
+        canvas.addMarker('OrderReceivedEvent', 'highlight');
       });
     }
 
     // load + show diagram
-    $.get('https://cdn.rawgit.com/bpmn-io/bpmn-js-examples/dfceecba/colors/resources/pizza-collaboration.bpmn', showDiagram);
+    $.get('https://cdn.rawgit.com/bpmn-io/bpmn-js-examples/master/colors/resources/pizza-collaboration.bpmn', showDiagram);
   </script>
 </body>
 </html>
