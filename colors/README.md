@@ -14,7 +14,7 @@ The example shows a number of different approaches how to add colors to your BPM
 The following options exist:
 
 * [Color via Overlays](#option-1-color-via-overlay)
-* [Color via BPMN 2.0 Extension](#option-2-color-via-bpmn-2.0-extension)
+* [Color via BPMN 2.0 Extension](#option-2-color-via-bpmn-20-extension)
 * [Color via Markiers + CSS classes](#option-3-color-via-marker--css-styling)
 * [Color via Custom Renderer](#option-4-color-via-custom-renderer)
 
