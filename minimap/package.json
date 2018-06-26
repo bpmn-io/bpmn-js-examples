@@ -39,7 +39,7 @@
     "stringify": "^5.2.0"
   },
   "dependencies": {
-    "bpmn-js": "^2.2.1",
+    "bpmn-js": "^2.3.0",
     "diagram-js": "^1.0.0",
     "diagram-js-minimap": "^1.0.0",
     "jquery": "^3.3.1",
