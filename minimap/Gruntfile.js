@@ -12,6 +12,12 @@ module.exports = function(grunt) {
   }
 
   grunt.initConfig({
+    jshint: {
+      all: ['app/**/*.js'],
+	  options: {
+		  esversion: 6
+	  }
+    },
     browserify: {
       options: {
         browserifyOptions: {
@@ -147,5 +153,6 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.registerTask('default', [ 'jshint', 'build' ]);
 };
