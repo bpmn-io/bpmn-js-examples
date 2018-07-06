@@ -132,26 +132,32 @@ $(function() {
     }
   }
 
-  var exportArtifacts = (function() {
+  var exportArtifacts = debounce(function() {
+    saveSVG(function(err, svg) {
+      setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
+    });
 
-    var timeout;
-
-    return function() {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-
-      timeout = setTimeout(function() {
-        saveSVG(function(err, svg) {
-          setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
-        });
-
-        saveDiagram(function(err, xml) {
-          setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
-        });
-      }, 500);
-    };
-  })();
+    saveDiagram(function(err, xml) {
+      setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
+    });
+  }, 500);
 
   bpmnModeler.on('commandStack.changed', exportArtifacts);
 });
+
+
+
+// helpers //////////////////////
+
+function debounce(fn, timeout) {
+
+  var timer;
+
+  return function() {
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout(fn, timeout);
+  };
+}
