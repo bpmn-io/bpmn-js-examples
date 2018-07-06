@@ -2,10 +2,14 @@
   "name": "bpmn-js-example-modeler",
   "version": "0.0.0",
   "description": "A simple modeler built with bpmn-js",
-  "main": "app/index.js",
   "scripts": {
-    "all": "grunt",
-    "dev": "grunt auto-build"
+    "all": "run-s lint copy:* build",
+    "build": "webpack",
+    "copy:bpmn": "cpx 'node_modules/bpmn-js/dist/assets/**' 'public/vendor/bpmn-js/assets'",
+    "copy:minimap": "cpx 'node_modules/diagram-js-minimap/assets/**' 'public/vendor/diagram-js-minimap/assets'",
+    "dev": "run-s all serve",
+    "lint": "eslint .",
+    "serve": "serve public"
   },
   "repository": {
     "type": "git",
@@ -26,22 +30,18 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babelify": "^8.0.0",
-    "grunt": "~1.0.1",
-    "grunt-browserify": "^5.0.0",
-    "grunt-contrib-connect": "~1.0.2",
-    "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-less": "^1.0.1",
-    "grunt-contrib-watch": "~1.0.0",
-    "load-grunt-tasks": "~3.5.0",
-    "stringify": "^3.1.0"
+    "cpx": "^1.5.0",
+    "eslint": "^5.0.1",
+    "eslint-plugin-bpmn-io": "^0.5.3",
+    "npm-run-all": "^4.1.3",
+    "raw-loader": "^0.5.1",
+    "serve": "^9.2.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
   },
   "dependencies": {
     "bpmn-js": "^2.3.0",
-    "diagram-js": "^2.0.0",
-    "jquery": "^3.3.1",
-    "min-dash": "^3.0.0"
+    "diagram-js": "^1.0.0",
+    "jquery": "^3.3.1"
   }
 }

@@ -2,10 +2,6 @@ import $ from 'jquery';
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-import {
-  debounce
-} from 'min-dash';
-
 import diagramXML from '../resources/newDiagram.bpmn';
 
 
@@ -86,7 +82,7 @@ function registerFileDrop(container, callback) {
 }
 
 
-////// file drag / drop ///////////////////////
+// file drag / drop ///////////////////////
 
 // check file api availability
 if (!window.FileList || !window.FileReader) {
@@ -144,3 +140,20 @@ $(function() {
 
   modeler.on('commandStack.changed', exportArtifacts);
 });
+
+
+
+// helpers //////////////////////
+
+function debounce(fn, timeout) {
+
+  var timer;
+
+  return function() {
+    if (timer) {
+      clearTimeout(timer);
+    }
+
+    timer = setTimeout(fn, timeout);
+  };
+}
