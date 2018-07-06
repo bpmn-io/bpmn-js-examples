@@ -2,7 +2,6 @@
   "name": "bpmn-js-example-minimap",
   "version": "0.0.0",
   "description": "Use the diagram-js minimap with the bpmn-js modeler",
-  "main": "app/index.js",
   "scripts": {
     "all": "run-s lint copy:* build",
     "build": "webpack",
