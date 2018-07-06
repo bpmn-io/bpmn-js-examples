@@ -1,3 +1,5 @@
 node_modules/
-dist/
+public/app.bundled.js
+public/app.bundled.js.map
+public/vendor/
 tmp/

@@ -2,10 +2,6 @@ import $ from 'jquery';
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-import {
-  debounce
-} from 'min-dash';
-
 import minimapModule from 'diagram-js-minimap';
 
 import diagramXML from '../resources/pizza-collaboration.bpmn';
@@ -96,7 +92,7 @@ function registerFileDrop(container, callback) {
 }
 
 
-////// file drag / drop ///////////////////////
+// file drag / drop ///////////////////////
 
 // check file api availability
 if (!window.FileList || !window.FileReader) {
@@ -136,16 +132,26 @@ $(function() {
     }
   }
 
-  var exportArtifacts = debounce(function() {
+  var exportArtifacts = (function() {
 
-    saveSVG(function(err, svg) {
-      setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
-    });
+    var timeout;
 
-    saveDiagram(function(err, xml) {
-      setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
-    });
-  }, 500);
+    return function() {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+
+      timeout = setTimeout(function() {
+        saveSVG(function(err, svg) {
+          setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
+        });
+
+        saveDiagram(function(err, xml) {
+          setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
+        });
+      }, 500);
+    };
+  })();
 
   bpmnModeler.on('commandStack.changed', exportArtifacts);
 });

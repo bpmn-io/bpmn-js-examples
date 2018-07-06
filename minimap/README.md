@@ -38,7 +38,7 @@ bpmnModeler.importXML(xml, function(err) {
 
 ```
 
-Checkout [`app/index.js`](app/index.js#L14) for details.
+Checkout [`public/app.js`](public/app.js) for details.
 
 
 ## Building the Example
@@ -62,7 +62,5 @@ You may also spawn a development setup by executing
 ```
 npm run dev
 ```
-
-Both tasks generate the distribution ready client-side modeler application into the `dist` folder.
 
 Serve the application locally or via a web server (nginx, apache, embedded).
