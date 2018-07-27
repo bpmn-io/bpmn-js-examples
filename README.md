@@ -8,6 +8,7 @@ This repository contains a number of examples showing how use and integrate
 
 * [starter](./starter) - Getting started with [bpmn-js](https://github.com/bpmn-io/bpmn-js) using our [pre-packaged distribution](./pre-packaged).
 
+
 ## Basic
 
 * [bundling](./bundling) - an example how to install bpmn-js via [npm](http://npmjs.org), use it in a node-style application and package it and the application code for the browser with [Browserify](http://browserify.org).
@@ -15,6 +16,7 @@ This repository contains a number of examples showing how use and integrate
 * [interaction](./interaction) - Listen to diagram events and react to them.
 * [overlays](./overlays) - Attach overlays to BPMN 2.0 diagrams to provide custom buttons or showing additional information.
 * [url-viewer](./url-viewer) - A simple url viewer for BPMN 2.0 process diagrams.
+
 
 ## Intermediate
 
@@ -24,6 +26,7 @@ This repository contains a number of examples showing how use and integrate
 * [i18n](./i18n) - Use a custom translation module with bpmn-js.
 * [properties-panel](./properties-panel) - Add a properties panel and edit execution related BPMN 2.0 properties.
 * [theming](./theming) - an example that showcases the different aspects of theming bpmn-js.
+
 
 ## Advanced
 
@@ -37,6 +40,11 @@ This repository contains a number of examples showing how use and integrate
 * [minimap](./minimap) - Adding a minimap to bpmn-js.
 * [properties-panel-extension](./properties-panel-extension) - An example showing how to extend the properties panel with custom controls.
 * [transaction-boundaries](./transaction-boundaries) - Visualizing transaction boundaries in bpmn-js.
+
+
+## Additional Resources
+
+* [bpmn-js Walkthrough](https://bpmn.io/toolkit/bpmn-js/walkthrough/) - A full guide through the library and its underlying foundation. 
 
 
 ## License
