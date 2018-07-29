@@ -1,12 +1,12 @@
 {
   "name": "bpmn-js-example-commonjs",
   "version": "0.0.0",
-  "description": "An example how to use bpmn-js with CommonJS + npm + browserify",
-  "main": "app/app.js",
+  "description": "An example how to bundle an app using bpmn-js for the browser",
+  "main": "src/app.js",
   "scripts": {
     "all": "run-s bundle open",
-    "bundle": "browserify src/app.js -t [ stringify --extensions [ .bpmn ] ] -g babelify -o public/app.bundled.js",
-    "bundle:watch": "watchify src/app.js -t [ stringify --extensions [ .bpmn ] ] -g babelify -o public/app.bundled.js -v",
+    "bundle": "webpack",
+    "bundle:watch": "webpack -w",
     "open": "opn ./public/index.html",
     "dev": "npm run bundle:watch"
   },
@@ -29,14 +29,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babelify": "^8.0.0",
-    "browserify": "^15.2.0",
     "npm-run-all": "^4.1.2",
     "opn-cli": "^3.1.0",
-    "stringify": "^3.1.0",
-    "watchify": "^3.10.0"
+    "raw-loader": "^0.5.1",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
   },
   "dependencies": {
     "bpmn-js": "^2.4.1"

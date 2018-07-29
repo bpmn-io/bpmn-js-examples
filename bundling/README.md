@@ -1,8 +1,7 @@
 # bpmn-js bundling example
 
-This example showcases how add [bpmn-js](https://github.com/bpmn-io/bpmn-js)
-into a node-style application and bundle it for the browser using
-[Browserify](http://browserify.org) and [babelify](https://github.com/babel/babelify).
+This example showcases how add and bundle [bpmn-js](https://github.com/bpmn-io/bpmn-js)
+along with a node-style web application using [Webpack](https://webpack.js.org).
 
 
 ## About
@@ -40,18 +39,14 @@ viewer.importXML(pizzaDiagram, function(err) {
 });
 ```
 
-Bundle the `src/app.js` file for the browser with browserify and babelify configured as a global transform:
+Bundle the `src/app.js` file for the browser with Webpack:
 
 ```
-browserify src/app.js \
-  -t [ stringify --extensions [ .bpmn ] ] \
-  -g babelify \
-  -o public/app.bundled.js
+webpack --entry ./src/app.js --output public/app.bundled.js
 ```
 
-__Note:__ You may use another module bundler such as [Webpack](https://webpack.js.org/),
-too. You must use a ES module aware bundler though, as [bpmn-js](https://github.com/bpmn-io/bpmn-js)
-ships with ES modules.
+__Note:__ You may use another ES module aware bundler such as [Rollup](https://rollupjs.org), too.
+Browserify may also be used but must be properly configured via a global babelify transform.
 
 
 ## Building the Example
