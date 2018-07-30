@@ -42,8 +42,10 @@ viewer.importXML(pizzaDiagram, function(err) {
 Bundle the `src/app.js` file for the browser with Webpack:
 
 ```
-webpack ./src/app.js -o public/app.bundled.js
+webpack ./src/app.js -o public/app.bundled.js --mode development
 ```
+
+To learn about more bundling options, checkout the [webpack-cli documentation](https://webpack.js.org/api/cli/).
 
 __Note:__ You may use another ES module aware bundler such as [Rollup](https://rollupjs.org), too.
 Browserify may also be used but must be properly configured via a global babelify transform.
