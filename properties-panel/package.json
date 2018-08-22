@@ -44,7 +44,6 @@
     "camunda-bpmn-moddle": "^3.0.0",
     "diagram-js": "^2.0.0",
     "jquery": "^3.3.1",
-    "lodash": "^3.0.0",
     "min-dash": "^3.0.0"
   }
 }
