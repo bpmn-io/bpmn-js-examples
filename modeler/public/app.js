@@ -4,6 +4,8 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import diagramXML from '../resources/newDiagram.bpmn';
 
+import style from 'bpmn-js/dist/assets/diagram-js.css'; // eslint-disable-line no-unused-vars
+import icons from 'bpmn-font/dist/css/bpmn-embedded.css'; // eslint-disable-line no-unused-vars
 
 var container = $('#js-drop-zone');
 
