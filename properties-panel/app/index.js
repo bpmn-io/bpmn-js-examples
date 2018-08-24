@@ -29,6 +29,7 @@ var bpmnModeler = new BpmnModeler({
     camunda: camundaModdleDescriptor
   }
 });
+container.removeClass('with-diagram');
 
 function createNewDiagram() {
   openDiagram(diagramXML);
