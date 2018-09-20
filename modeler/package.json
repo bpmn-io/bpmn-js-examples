@@ -43,7 +43,7 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
-    "bpmn-js": "^2.5.1",
+    "bpmn-js": "^2.5.2",
     "diagram-js": "^1.0.0",
     "jquery": "^3.3.1"
   }
