@@ -82,7 +82,7 @@
           // add marker
           canvas.addMarker('SCAN_OK', 'needs-discussion');
           
-          var modeling = bpmnViewer.get('modeling');
+          var modeling = bpmnViewer.get('bpmnRenderer');
           var elementToColor = elementRegistry.get('_6-127');
           modeling.setColor(elementToColor, {
             stroke: 'green',
