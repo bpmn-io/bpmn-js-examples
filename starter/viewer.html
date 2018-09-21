@@ -81,6 +81,13 @@
 
           // add marker
           canvas.addMarker('SCAN_OK', 'needs-discussion');
+          
+          var modeling = bpmnViewer.get('bpmnRenderer');
+          var elementToColor = elementRegistry.get('_6-127');
+          modeling.setColor(elementToColor, {
+            stroke: 'green',
+            fill: 'rgba(0, 80, 0, 0.4)'
+          });
         });
       }
 
