@@ -13,7 +13,7 @@ This example uses bpmn-js to embed the [pizza collaboration](http://demo.bpmn.io
 
 ## Usage Summary
 
-Install bpmn-js via [npm](http://npmjs.org)
+Install bpmn-js via [npm](https://www.npmjs.com/package/bpmn-js)
 
 ```
 npm install --save bpmn-js
