@@ -52,14 +52,42 @@ export default function CustomElementFactory(bpmnFactory, moddle) {
         assign(attrs, self._getCustomElementSize(type));
       }
 
+
+      // we mimic the ModdleElement API to allow interoperability with
+      // other components, i.e. the Modeler and Properties Panel
+
+      if (!('$model' in attrs.businessObject)) {
+        Object.defineProperty(attrs.businessObject, '$model', {
+          value: moddle
+        });
+      }
+
       if (!('$instanceOf' in attrs.businessObject)) {
-        // ensure we can use ModelUtil#is for type checks
+        // ensures we can use ModelUtil#is for type checks
         Object.defineProperty(attrs.businessObject, '$instanceOf', {
           value: function(type) {
             return this.type === type;
           }
         });
       }
+
+      if (!('get' in attrs.businessObject)) {
+        Object.defineProperty(attrs.businessObject, 'get', {
+          value: function(key) {
+            return this[key];
+          }
+        });
+      }
+
+      if (!('set' in attrs.businessObject)) {
+        Object.defineProperty(attrs.businessObject, 'set', {
+          value: function(key, value) {
+            return this[key] = value;
+          }
+        });
+      }
+
+      // END minic ModdleElement API
 
       return self.baseCreate(elementType, attrs);
     }
