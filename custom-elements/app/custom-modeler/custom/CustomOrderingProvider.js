@@ -14,12 +14,12 @@ export default function CustomOrderingProvider(eventBus, canvas) {
   this.getOrdering = function(element, newParent) {
 
     if (element.type === 'custom:connection') {
-      var parent = canvas.getRootElement();
-      var index = parent.children.length - 1;
 
+      // always move to end of root element
+      // to display always on top
       return {
-        parent: parent,
-        index: index
+        parent: canvas.getRootElement(),
+        index: -1
       };
     }
   };
