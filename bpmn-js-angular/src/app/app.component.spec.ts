@@ -1,31 +1,35 @@
-import { TestBed, async } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ModelerService } from './modeler.service';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let appComponentInstance;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      imports: [HttpClientTestingModule],
+      declarations: [AppComponent],
+      providers: [ModelerService]
     }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
+    appComponentInstance = fixture.componentInstance;
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  afterEach(() => {
+    fixture.destroy();
+  });
+
+  it('creates the app', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'bpmn-js-angular'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('bpmn-js-angular');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('calls ngAfterContentInit', () => {
+    const app = fixture.componentInstance;
+    spyOn(app, 'ngAfterContentInit').and.callThrough();
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to bpmn-js-angular!');
+    expect(appComponentInstance.ngAfterContentInit).toHaveBeenCalled();
   });
 });

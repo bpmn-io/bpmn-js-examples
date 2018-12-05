@@ -2,9 +2,6 @@ import { ModelerService } from './modeler.service';
 import { AfterContentInit, OnDestroy, Component } from '@angular/core';
 
 import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development.js';
-import 'bpmn-js/dist/assets/diagram-js.css';
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
