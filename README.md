@@ -42,9 +42,14 @@ This repository contains a number of examples showing how use and integrate
 * [transaction-boundaries](./transaction-boundaries) - Visualizing transaction boundaries in bpmn-js.
 
 
+## Integrations
+
+* [bpmn-js-example-angular](https://github.com/bpmn-io/bpmn-js-example-angular) - Showing a possible integration of the toolkit into an [Angular](https://angular.io/) application.
+
+
 ## Additional Resources
 
-* [bpmn-js Walkthrough](https://bpmn.io/toolkit/bpmn-js/walkthrough/) - A full guide through the library and its underlying foundation. 
+* [bpmn-js Walkthrough](https://bpmn.io/toolkit/bpmn-js/walkthrough/) - A full guide through the library and its underlying foundation.
 
 
 ## License
