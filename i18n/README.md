@@ -8,7 +8,7 @@ This example shows how to easily translate the strings displayed in [bpmn-js](ht
 
 The custom translation function is provided as an additional module when [bpmn-js](https://github.com/bpmn-io/bpmn-js) is instantiated. The default translation implementation is thereby overwritten.
 
-```
+```javascript
 var customTranslate = {
   translate: [ 'value', require('./custom-translate/custom-translate') ]
 };
@@ -25,7 +25,7 @@ You can use your own implementation for translation. The function has two argume
 
 Translating a string:
 
-```
+```javascript
 var translations = {
   'Append': 'Anhängen'
 };
@@ -37,7 +37,7 @@ translate('Append'); // Returns 'Anhängen'
 
 Translating a template string:
 
-```
+```javascript
 var translations = {
   'Append {element}': '{element} anhängen'
 };
@@ -56,19 +56,19 @@ You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmj
 
 To install all project dependencies execute
 
-```
+```sh
 npm install
 ```
 
 Build the application (including [bpmn-js](https://github.com/bpmn-io/bpmn-js)) using [browserify](http://browserify.org) via
 
-```
+```sh
 npm run all
 ```
 
 You may also spawn a development setup by executing
 
-```
+```sh
 npm run dev
 ```
 
