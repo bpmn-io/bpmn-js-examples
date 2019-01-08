@@ -9,7 +9,7 @@ This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [diagram-js-
 
 Add [diagram-js-minimap](https://github.com/bpmn-io/diagram-js-minimap) to your project:
 
-```
+```sh
 npm install --save diagram-js-minimap
 ```
 
@@ -35,7 +35,6 @@ bpmnModeler.importXML(xml, function(err) {
     console.log('Awesome! Ready to navigate!');
   }
 });
-
 ```
 
 Checkout [`public/app.js`](public/app.js) for details.
@@ -47,7 +46,7 @@ You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmj
 
 To install all project dependencies execute
 
-```
+```sh
 npm install
 ```
 
@@ -59,6 +58,6 @@ npm start
 
 To build the example into the `public` folder execute
 
-```
+```sh
 npm run all
 ```
