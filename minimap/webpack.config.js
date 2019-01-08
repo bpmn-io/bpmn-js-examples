@@ -18,8 +18,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'node_modules/bpmn-js/dist/assets/**', to: 'public/vendor/bpmn-js/assets' },
-      { from: 'node_modules/diagram-js-minimap/assets/**', to: 'public/vendor/diagram-js-minimap/assets' }
+      { from: 'assets/**', to: 'vendor/bpmn-js', context: 'node_modules/bpmn-js/dist/' },
+      { from: 'assets/**', to: 'vendor/diagram-js-minimap', context: 'node_modules/diagram-js-minimap/' }
     ])
   ],
   mode: 'development',
