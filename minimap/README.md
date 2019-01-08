@@ -41,7 +41,7 @@ bpmnModeler.importXML(xml, function(err) {
 Checkout [`public/app.js`](public/app.js) for details.
 
 
-## Building the Example
+## Run the Example
 
 You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) installed to build the project.
 
@@ -51,18 +51,14 @@ To install all project dependencies execute
 npm install
 ```
 
-Build the example execute
+To start the example execute
+
+```sh
+npm start
+```
+
+To build the example into the `public` folder execute
 
 ```
 npm run all
 ```
-
-You may also spawn a development setup by executing
-
-```
-npm run dev
-```
-
-Both tasks generate the distribution ready client-side modeler application into the `public` folder.
-
-Serve the application locally or via a web server (nginx, apache, embedded).
