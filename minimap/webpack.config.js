@@ -1,3 +1,5 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   entry: {
     bundle: ['./public/app.js']
@@ -14,6 +16,12 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: '../node_modules/bpmn-js/dist/assets/**', to: 'pubblic/vendor/bpmn-js/assets' },
+      { from: '../node_modules/diagram-js-minimap/assets/**', to: 'public/vendor/diagram-js-minimap/assets' }
+    ])
+  ],
   mode: 'development',
   devtool: 'source-map'
 };
