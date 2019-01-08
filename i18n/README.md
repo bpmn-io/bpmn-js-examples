@@ -50,7 +50,7 @@ translate('Append {element}', {element: 'Gateway'}); // Returns 'Gateway anhäng
 A list of all available template strings of [bpmn-js](https://github.com/bpmn-io/bpmn-js) as well as existing translations can be found in the [bpmn-js-i18n repository](https://github.com/bpmn-io/bpmn-js-i18n).
 
 
-## Building the Project
+## Run the Example
 
 You need a [NodeJS](http://nodejs.org) development stack with [npm](https://npmjs.org) installed to build the project.
 
@@ -60,18 +60,14 @@ To install all project dependencies execute
 npm install
 ```
 
-Build the application (including [bpmn-js](https://github.com/bpmn-io/bpmn-js)) using [browserify](http://browserify.org) via
+To start the example execute
+
+```sh
+npm start
+```
+
+To build the example into the `public` folder execute
 
 ```sh
 npm run all
 ```
-
-You may also spawn a development setup by executing
-
-```sh
-npm run dev
-```
-
-Both tasks generate the distribution ready client-side modeler application with internationalization into the `dist` folder.
-
-Serve the application locally or via a web server (nginx, apache, embedded).
