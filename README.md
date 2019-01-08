@@ -11,7 +11,7 @@ This repository contains a number of examples showing how use and integrate
 
 ## Basic
 
-* [bundling](./bundling) - an example how to install bpmn-js via [npm](http://npmjs.org), use it in a node-style application and package it and the application code for the browser with [Browserify](http://browserify.org).
+* [bundling](./bundling) - an example how to install bpmn-js via [npm](http://npmjs.org), use it in a node-style application and package it and the application code for the browser with [Webpack](https://webpack.js.org/).
 * [colors](./colors) - Showcases different ways to add colors to your BPMN diagram.
 * [interaction](./interaction) - Listen to diagram events and react to them.
 * [overlays](./overlays) - Attach overlays to BPMN 2.0 diagrams to provide custom buttons or showing additional information.
