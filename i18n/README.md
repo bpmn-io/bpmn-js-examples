@@ -47,7 +47,7 @@ var translations = {
 translate('Append {element}', {element: 'Gateway'}); // Returns 'Gateway anhängen'
 ```
 
-A list of all available template strings of [bpmn-js](https://github.com/bpmn-io/bpmn-js) can be found [here](app/customTranslate/translationsGerman.js).
+A list of all available template strings of [bpmn-js](https://github.com/bpmn-io/bpmn-js) as well as existing translations can be found in the [bpmn-js-i18n repository](https://github.com/bpmn-io/bpmn-js-i18n).
 
 
 ## Building the Project

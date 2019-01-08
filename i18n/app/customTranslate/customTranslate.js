@@ -1,4 +1,4 @@
-import translations from './translationsGerman';
+import translations from './translations';
 
 
 export default function customTranslate(template, replacements) {
