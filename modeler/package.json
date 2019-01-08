@@ -3,13 +3,11 @@
   "version": "0.0.0",
   "description": "A simple modeler built with bpmn-js",
   "scripts": {
-    "all": "run-s lint copy:* build",
-    "build": "webpack",
-    "copy:bpmn": "cpx 'node_modules/bpmn-js/dist/assets/**' 'public/vendor/bpmn-js/assets'",
-    "copy:minimap": "cpx 'node_modules/diagram-js-minimap/assets/**' 'public/vendor/diagram-js-minimap/assets'",
-    "dev": "run-s all serve",
+    "all": "run-s lint build",
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --content-base=public --open",
     "lint": "eslint .",
-    "serve": "serve public"
+    "start": "run-s dev"
   },
   "repository": {
     "type": "git",
@@ -30,21 +28,18 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "cpx": "^1.5.0",
-    "css-loader": "^1.0.0",
+    "copy-webpack-plugin": "^4.6.0",
     "eslint": "^5.0.1",
     "eslint-plugin-bpmn-io": "^0.5.3",
-    "file-loader": "^2.0.0",
     "npm-run-all": "^4.1.3",
     "raw-loader": "^0.5.1",
-    "serve": "^9.2.0",
-    "style-loader": "^0.22.1",
     "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "bpmn-js": "^3.0.4",
-    "diagram-js": "^1.0.0",
+    "diagram-js": "^3.0.1",
     "jquery": "^3.3.1"
   }
 }

@@ -1,7 +1,2 @@
 node_modules/
-public/app.bundled.js
-public/app.bundled.js.map
-public/*.eot
-public/*.svg
-public/vendor/
-tmp/
+public/
