@@ -2,11 +2,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    bundle: ['./public/app.js']
+    bundle: ['./app/app.js']
   },
   output: {
     path: __dirname + '/public',
-    filename: 'app.bundled.js'
+    filename: 'app.js'
   },
   module: {
     rules: [
@@ -18,7 +18,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'assets/**', to: 'vendor/bpmn-js', context: 'node_modules/bpmn-js/dist/' }
+      { from: 'assets/**', to: 'vendor/bpmn-js', context: 'node_modules/bpmn-js/dist/' },
+      { from: '**/*.{html,css}', context: 'app/' }
     ])
   ],
   mode: 'development',
