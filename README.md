@@ -35,7 +35,7 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-in-color](https://github.com/bpmn-io/bpmn-js-in-color) - Adding color support for BPMN based on the [BPMN in Color](https://github.com/bpmn-miwg/bpmn-in-color) proposal.
 * [custom-bundle](./custom-bundle) - How to build a custom version of bpmn-js
 * [custom-elements](./custom-elements) - A modeler that allows you to create custom elements on a bpmn diagram.
-* [custom-meta-model](./custom-meta-model) - An example showing how the BPMN meta-model can be extended to recognized BPMN extension elements and attributes.
+* [custom-meta-model](./custom-meta-model) - An example showing how extend the BPMN meta-model to recognize BPMN extension elements and attributes.
 * [custom-modeling-rules](./custom-modeling-rules) - Add custom rules to the bpmn-js modeler.
 * [minimap](./minimap) - Adding a minimap to bpmn-js.
 * [properties-panel-extension](./properties-panel-extension) - An example showing how to extend the properties panel with custom controls.
