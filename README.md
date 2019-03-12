@@ -33,6 +33,7 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-nyan](https://github.com/nikku/bpmn-js-nyan) - Model nyan cats instead of service tasks, resize elements and assign custom element colors.
 * [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) - persistent task colors, diagram interaction and custom extension elements demo.
 * [bpmn-js-in-color](https://github.com/bpmn-io/bpmn-js-in-color) - Adding color support for BPMN based on the [BPMN in Color](https://github.com/bpmn-miwg/bpmn-in-color) proposal.
+* [bpmn-js-example-react-properties-panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - An example how to build a simple properties panel for bpmn-js using React. 
 * [custom-bundle](./custom-bundle) - How to build a custom version of bpmn-js
 * [custom-elements](./custom-elements) - A modeler that allows you to create custom elements on a bpmn diagram.
 * [custom-meta-model](./custom-meta-model) - An example showing how extend the BPMN meta-model to recognize BPMN extension elements and attributes.
