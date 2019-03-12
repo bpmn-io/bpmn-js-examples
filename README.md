@@ -22,7 +22,7 @@ This repository contains a number of examples showing how use and integrate
 
 * [modeler](./modeler) - A simple BPMN 2.0 modeler. Gains more features as time passes by.
 * [commenting](./commenting) - A simple commenting application build on top of BPMN 2.0 diagrams
-* [bpmn-properties](./bpmn-properties) - Read and write BPMN properties with bpmn-js!
+* [bpmn-properties](./bpmn-properties) - Read and write BPMN properties with bpmn-js.
 * [i18n](./i18n) - Use a custom translation module with bpmn-js.
 * [properties-panel](./properties-panel) - Add a properties panel and edit execution related BPMN 2.0 properties.
 * [theming](./theming) - an example that showcases the different aspects of theming bpmn-js.
