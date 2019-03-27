@@ -57,7 +57,7 @@ This repository contains a number of examples showing how use and integrate
 ## Additional Resources
 
 * [bpmn-js Walkthrough](https://bpmn.io/toolkit/bpmn-js/walkthrough/) - A full guide through the library and its underlying foundation.
-* [bpmn.js Awesome List](https://github.com/bpmn-io/awesome-bpmn-io) - Links to great libraries and additional learning resources
+* [bpmn.io Awesome List](https://github.com/bpmn-io/awesome-bpmn-io) - Links to great libraries and additional learning resources
 
 ## License
 
