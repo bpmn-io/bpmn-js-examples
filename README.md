@@ -1,7 +1,7 @@
 # bpmn-js Examples
 
 This repository contains a number of examples showing how use and integrate
-[bpmn-js](https://github.com/bpmn-io/bpmn-js) it into your applications.
+[bpmn-js](https://github.com/bpmn-io/bpmn-js) into your applications.
 
 
 ## Starter
@@ -35,8 +35,10 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-in-color](https://github.com/bpmn-io/bpmn-js-in-color) - Adding color support for BPMN based on the [BPMN in Color](https://github.com/bpmn-miwg/bpmn-in-color) proposal.
 * [bpmn-js-example-react-properties-panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - An example how to build a simple properties panel for bpmn-js using React.
 * [custom-bundle](./custom-bundle) - How to build a custom version of bpmn-js
-* [custom-elements](./custom-elements) - A modeler that allows you to create custom elements on a bpmn diagram.
-* [custom-meta-model](./custom-meta-model) - An example showing how extend the BPMN meta-model to recognize BPMN extension elements and attributes.
+* [bpmn-js-example-model-extension](https://github.com/bpmn-io/bpmn-js-example-model-extension) - An example of creating a model extension for bpmn-js.
+* [bpmn-js-example-custom-rendering](https://github.com/bpmn-io/bpmn-js-example-custom-rendering) - An example of creating custom rendering for bpmn-js.
+* [bpmn-js-example-custom-controls](https://github.com/bpmn-io/bpmn-js-example-custom-controls) - An example of creating custom controls for bpmn-js.
+* [custom-elements](./custom-elements) - An introduction to custom elements, their use cases and implementation approaches.
 * [custom-modeling-rules](./custom-modeling-rules) - Add custom rules to the bpmn-js modeler.
 * [properties-panel-extension](./properties-panel-extension) - An example showing how to extend the properties panel with custom controls.
 

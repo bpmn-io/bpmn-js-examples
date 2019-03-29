@@ -1,80 +1,76 @@
-# Custom Elements
+# Custom Elements in bpmn-js
 
-This example shows how to add support for custom shapes and connections to [bpmn-js](https://github.com/bpmn-io/bpmn-js).
+An introduction to custom elements in [bpmn-js](https://github.com/bpmn-io/bpmn-js), their use cases and implementation approaches.
 
+## Use Cases
 
-## About
+You can use custom elements (meaning elements with extension attributes and elements) to add data to a diagram or diagram elements that is closely related to them or has a similar life cycle. Let's look at some examples:
 
-This example creates a custom BPMN modeler that can display and add custom shapes and connections to BPMN 2.0 diagrams.
+* adding additional requirements to activities
+* adding data related to performance analytics such as KPI targets
+* adding notes
+* adding technical information related to process execution
 
-The renderer ships with custom rules that define which modeling operations are possible on custom shapes and connections.
-It can import custom shapes and connections from a [JSON](http://json.org/) descriptor and updates their properties during modeling.
+:notebook: If your data is not closely related to the diagram or diagram elements, has a different life cycle (e.g. runtime data) or is stored externally you wouldn't use custom elements. The same is true, if you want to access your data outside of the context of BPMN 2.0.
 
-![demo application screenshot](docs/screenshot.png "bpmn-js custom elements example")
+# Implementation Approaches
 
+If you decide to use custom elements there are a couple of different approaches:
 
-## Usage Summary
+## Simple Approach: Using the `bpmn:Documentation` Element
 
-The example provides a [custom modeler](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/index.js). After instantiation, the modeler allows you to add and get custom shapes and connections.
+A simple approach that doesn't require any changes in bpmn-js is using the `bpmn:Documentation` element to add your data to the diagram or diagram elements.
 
-```javascript
-// add custom elements
-var customElements = [
-  {
-    type: "custom:triangle",
-    id: "CustomTriangle_1",
-    x: 300,
-    y: 300
-  },
-  {
-    type: "custom:connection",
-    id: "CustomConnection_1",
-    source: "CustomTriangle_1",
-    target: "Task_1",
-    waypoints: [
-      // ...
-    ]
- }
-];
+You can find an example of this approach in our [commenting example](https://github.com/bpmn-io/bpmn-js-examples/tree/master/commenting). An element's XML looks similar to this:
 
-customModeler.addCustomElements(customElements);
-
-
-// get them after modeling
-customModeler.getCustomElements(); // all currently existing custom elements
+```xml
+<bpmn:task id="task" name="Task">
+    <bpmn:documentation textFormat="text/x-comments">
+      author:comment;
+      author:comment
+    </bpmn:documentation>
+    ...
+</bpmn:task>
 ```
 
-The modeler ships with a [module](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/index.js) that provides the following [bpmn-js](https://github.com/bpmn-io/bpmn-js) extensions:
+## Creating a Model Extension
 
-* [`CustomContextPadProvider`](app/custom-modeler/custom/CustomContextPadProvider.js): A custom context pad that allows you to connect custom elements to BPMN elements
-* [`CustomElementFactory`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomElementFactory.js): A factory that knows about how to create BPMN and custom shapes
-* [`CustomOrderingProvider`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomOrderingProvider.js): A provider that ensures custom connections are always rendered on top
-* [`CustomPalette`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomPalette.js): A custom palette that allows you to create custom elements
-* [`CustomRenderer`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomRenderer.js): A renderer that knows how to draw custom elements
-* [`CustomRules`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomRules.js): A rule provider that defines the allowed interaction with custom elements
-* [`CustomUpdater`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomUpdater.js): An updater that updates business data while the user interacts with the diagram
+If using the `bpmn:Documentation` element is not sufficient, you can use the BPMN 2.0 extension mechanism which allows you to add extension attributes and elements while staying BPMN 2.0 compatible.
 
+You can find an example of this approach in our [model extension example](https://github.com/bpmn-io/bpmn-js-example-model-extension). It creates model extension that allows you to read, modify and write BPMN 2.0 diagrams that contain extension attributes and elements.
 
-## Run this Example
+![Screenshot model extension](docs/screenshot-model-extension.png)
 
-Fetch dependencies:
+## Creating Custom Rendering
 
-```
-npm install
-```
+If you want to render BPMN 2.0 elements differently you can create custom rendering. Usually, you'd want to do this in order to be able to distinct custom elements from other elements.
 
-Build example and open in your browser:
+There's an example in our [custom rendering example](https://github.com/bpmn-io/bpmn-js-example-custom-rendering). It renders `bpmn:Task` and `bpmn:Event` elements differently.
 
-```
-npm run dev
-```
+![Screenshot custom rendering](docs/screenshot-custom-rendering.png)
 
-Run tests:
+## Creating Custom Editor Conrols
 
-```
-npm test
-```
+You can add custom controls to bpmn-js that allow you to create your custom elements through the palette and the context pad.
 
-## License
+You can find an example in our [custom controls example](https://github.com/bpmn-io/bpmn-js-example-custom-controls). It adds controls that allow you to create `bpmn:ServiceTask` elements through the palette and the context pad.
+
+![Screenshot custom editor controls](docs/screenshot-custom-editor-controls.png)
+
+## Creating Custom Elements
+
+Finally, the [custom elements example](https://github.com/bpmn-io/bpmn-js-example-custom-elements) combines all the things we already mentioned. It creates a model extension, custom rendering and custom controls.
+
+![Screenshot custom elements](docs/screenshot-custom-elements.png)
+
+## There's More...
+
+Of course, you can go even further. Have a look at the following examples:
+
+* [bpmn-js-example-custom-shapes](https://github.com/bpmn-io/bpmn-js-example-custom-shapes) - Create new shapes that are not part of BPMN 2.0.
+* [custom-modeling-rules](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-modeling-rules) - Create custom rules for modeling in bpmn-js.
+* [properties-panel-extension](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension) - Create a properties panel extension to edit custom element properties.
+
+# License
 
 MIT
