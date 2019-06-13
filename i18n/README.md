@@ -21,7 +21,7 @@ var modeler = new BpmnModeler({
 });
 ```
 
-You can use your own implementation for translation. The function has two arguments (a template string and an optional object with replacements) and must return the translated string. The example provides two main functionalities: translating and replacing template strings.
+You can use your own implementation for translation. The function has three arguments (a template string, an optional object with replacements and `safe` flag) and must return the translated string. The example provides two main functionalities: translating and replacing template strings. Per default, the translation will be escaped. Pass `safe=true` if the passed translation is already escaped.
 
 Translating a string:
 
