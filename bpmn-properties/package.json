@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "inherits": "^2.0.1",
-    "bpmn-js": "^3.4.3"
+    "bpmn-js": "^2.5.4"
   }
 }
