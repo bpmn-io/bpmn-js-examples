@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "inherits": "^2.0.1",
-    "bpmn-js": "^2.5.3",
+    "bpmn-js": "^3.4.3",
     "diagram-js": "^3.0.0"
   }
 }
