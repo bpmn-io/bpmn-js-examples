@@ -21,10 +21,10 @@ module.exports = function(grunt) {
         transform: [
           [ 'stringify', {
             extensions: [ '.bpmn' ]
-          } ],
-          [ 'babelify', {
-            global: true
           } ]
+        ],
+        plugin: [
+          'esmify'
         ]
       },
       watch: {
