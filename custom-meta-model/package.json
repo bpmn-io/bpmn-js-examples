@@ -34,7 +34,7 @@
     "stringify": "^3.1.0"
   },
   "dependencies": {
-    "bpmn-js": "^4.0.0-beta.6",
+    "bpmn-js": "^4.0.0-beta.7",
     "diagram-js": "^3.0.0",
     "jquery": "^3.3.1"
   }
