@@ -13,9 +13,9 @@ The example shows a number of different approaches how to add colors to your BPM
 
 The following options exist:
 
-* [Color via Overlays](#option-1-color-via-overlay)
+* [Color via Overlay](#option-1-color-via-overlay)
 * [Color via BPMN 2.0 Extension](#option-2-color-via-bpmn-20-extension)
-* [Color via Markiers + CSS classes](#option-3-color-via-marker--css-styling)
+* [Color via Marker + CSS Styling](#option-3-color-via-marker--css-styling)
 * [Color via Custom Renderer](#option-4-color-via-custom-renderer)
 
 See below for details on each of the approaches.
@@ -112,7 +112,7 @@ Add a CSS snippet like the following to your HTML file:
 
 The snippet ensures that elements with the `highlight` class get a SVG fill of `green`.
 
-After import, add the `highlight` class as a element marker to the every element you would like to see colored in green:
+After import, add the `highlight` class as an element marker to the every element you would like to see colored in green:
 
 ```javascript
 viewer.importXML(diagramXML, function() {
