@@ -18,7 +18,7 @@ import spellProps from './parts/SpellProps';
 
 // The general tab contains all bpmn relevant properties.
 // The properties are organized in groups.
-function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate) {
+function createGeneralTabGroups(element, bpmnFactory, canvas, elementRegistry, translate) {
 
   var generalGroup = {
     id: 'general',
@@ -26,7 +26,7 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate
     entries: []
   };
   idProps(generalGroup, element, translate);
-  nameProps(generalGroup, element, translate);
+  nameProps(generalGroup, element, bpmnFactory, canvas, translate);
   processProps(generalGroup, element, translate);
 
   var detailsGroup = {
@@ -53,7 +53,7 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate
 }
 
 // Create the custom magic tab
-function createMagicTabGroups(element, elementRegistry) {
+function createMagicTabGroups(element) {
 
   // Create a group called "Black Magic".
   var blackMagicGroup = {
@@ -71,8 +71,8 @@ function createMagicTabGroups(element, elementRegistry) {
 }
 
 export default function MagicPropertiesProvider(
-    eventBus, bpmnFactory, elementRegistry,
-    translate) {
+    eventBus, bpmnFactory, canvas,
+    elementRegistry, translate) {
 
   PropertiesActivator.call(this, eventBus);
 
@@ -81,14 +81,14 @@ export default function MagicPropertiesProvider(
     var generalTab = {
       id: 'general',
       label: 'General',
-      groups: createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate)
+      groups: createGeneralTabGroups(element, bpmnFactory, canvas, elementRegistry, translate)
     };
 
     // The "magic" tab
     var magicTab = {
       id: 'magic',
       label: 'Magic',
-      groups: createMagicTabGroups(element, elementRegistry)
+      groups: createMagicTabGroups(element)
     };
 
     // Show general + "magic" tab
