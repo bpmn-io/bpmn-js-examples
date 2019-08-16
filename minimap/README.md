@@ -37,7 +37,7 @@ bpmnModeler.importXML(xml, function(err) {
 });
 ```
 
-Checkout [`public/app.js`](public/app.js) for details.
+Checkout [`app/app.js`](app/app.js) for details.
 
 
 ## Run the Example
