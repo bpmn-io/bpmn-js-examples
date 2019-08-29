@@ -3,7 +3,7 @@
 An example that showcases the different ways to enable user interaction with
 BPMN diagrams using [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
-[__Try out__](https://rawgit.com/bpmn-io/bpmn-js-examples/master/interaction/index.html).
+[__Try out__](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/master/interaction/index.html).
 
 
 ## About
@@ -88,4 +88,4 @@ handle it accordingly.
 
 ## Run this Example
 
-Download and open the [example HTML page](https://rawgit.com/bpmn-io/bpmn-js-examples/master/interaction/index.html).
+Download and open the [example HTML page](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/master/interaction/index.html).
