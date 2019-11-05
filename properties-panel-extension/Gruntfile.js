@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 
       samples: {
         files: [ 'app/**/*.*' ],
-        tasks: [ 'copy:app' ]
+        tasks: [ 'copy:app','less']
       },
 
       less: {
