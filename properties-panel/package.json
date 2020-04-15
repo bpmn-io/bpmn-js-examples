@@ -37,7 +37,7 @@
     "stringify": "^5.2.0"
   },
   "dependencies": {
-    "bpmn-js": "^6.4.1",
+    "bpmn-js": "^6.4.2",
     "bpmn-js-properties-panel": "^0.32.0",
     "camunda-bpmn-moddle": "^4.0.1",
     "diagram-js": "^5.0.0",
