@@ -1,3 +1,4 @@
+
 # bpmn-js bundling example
 
 This example showcases how add and bundle [bpmn-js](https://github.com/bpmn-io/bpmn-js)
@@ -28,14 +29,19 @@ var viewer = new BpmnViewer({
   container: '#canvas'
 });
 
-viewer.importXML(pizzaDiagram, function(err) {
 
-  if (!err) {
-    console.log('success!');
-    viewer.get('canvas').zoom('fit-viewport');
-  } else {
-    console.log('something went wrong:', err);
-  }
+viewer.importXML(pizzaDiagram).then(function(result) {
+
+  const { warnings } = result;
+
+  console.log('success !', warnings);
+
+  viewer.get('canvas').zoom('fit-viewport');
+}).catch(function(err) {
+
+  const { warnings, message } = err;
+
+  console.log('something went wrong:', warnings, message);
 });
 ```
 
