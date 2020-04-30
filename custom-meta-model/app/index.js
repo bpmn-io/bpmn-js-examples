@@ -77,15 +77,16 @@ viewer.on('element.click', function(event) {
 });
 
 
-document.querySelector('#export-to-console').addEventListener('click', function(e) {
+document.querySelector('#export-to-console').addEventListener('click', async function(e) {
 
-  viewer.saveXML({ format: true }, function(err, xml) {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(xml);
-    }
-  });
+  try {
+    
+    const { xml } = await viewer.saveXML({ format: true });
+
+    console.log(xml);
+  } catch (err) {
+    console.error(err);
+  }
 
   e.preventDefault();
 });
