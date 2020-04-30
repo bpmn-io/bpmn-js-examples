@@ -15,18 +15,18 @@ var viewer = new BpmnViewer({
 });
 
 
-function openDiagram(diagram) {
+async function openDiagram(diagram) {
 
-  viewer.importXML(diagram, function(err) {
-    if (err) {
-
-      alert('could not import BPMN 2.0 XML, see console');
-      return console.log('could not import BPMN 2.0 XML', err);
-    }
+  try {
+    await viewer.importXML(diagram);
 
     console.log('success!');
     viewer.get('canvas').zoom('fit-viewport');
-  });
+  } catch(err) {
+
+    alert('could not import BPMN 2.0 XML, see console');
+    return console.log('could not import BPMN 2.0 XML', err);
+  }
 }
 
 
@@ -34,20 +34,20 @@ function openDiagram(diagram) {
 
 var $download = $('[data-download]');
 
-function serialize() {
+async function serialize() {
 
-  viewer.saveXML(function(err, xml) {
+  try {
+    const { xml } = await viewer.saveXML();
 
-    var encodedData = err ? '' : encodeURIComponent(xml);
+    var encodedData = encodeURIComponent(xml);
 
     $download.attr({
-      'href': encodedData ? 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData : '',
+      'href': 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData
     });
+  } catch (err) {
 
-    if (err) {
-      console.log('failed to serialize BPMN 2.0 xml', err);
-    }
-  });
+    console.log('failed to serialize BPMN 2.0 xml', err);
+  }
 }
 
 viewer.on('comments.updated', serialize);
