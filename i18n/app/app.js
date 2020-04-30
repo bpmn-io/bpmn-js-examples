@@ -21,10 +21,10 @@ var modeler = new BpmnModeler({
 });
 
 // Import our diagram
-modeler.importXML(diagramXML, function(err) {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('Success!');
-  }
+modeler.importXML(diagramXML).then(function() {
+
+  console.log('Success!');
+}).catch(function(err) {
+
+  console.error('Error', err);
 });
