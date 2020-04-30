@@ -68,14 +68,7 @@
       height: 400
     });
 
-    viewer.importXML(diagramXML, function(err) {
-      if (err) {
-        console.error('failed to load diagram');
-        console.error(err);
-
-        return log('failed to load diagram', err);
-      }
-
+    viewer.importXML(diagramXML).then(function(){
 
       // diagram is loaded, add interaction to it
 
@@ -117,6 +110,12 @@
         alert('clicked the end event!');
       });
 
+    }).catch(function(err) {
+
+      console.error('failed to load diagram');
+      console.error(err);
+
+      return log('failed to load diagram', err);
     });
   </script>
 </html>
