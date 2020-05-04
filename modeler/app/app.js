@@ -14,37 +14,25 @@ function createNewDiagram() {
   openDiagram(diagramXML);
 }
 
-function openDiagram(xml) {
+async function openDiagram(xml) {
 
-  modeler.importXML(xml, function(err) {
+  try {
 
-    if (err) {
-      container
-        .removeClass('with-diagram')
-        .addClass('with-error');
+    await modeler.importXML(xml);
 
-      container.find('.error pre').text(err.message);
+    container
+      .removeClass('with-error')
+      .addClass('with-diagram');
+  } catch (err) {
 
-      console.error(err);
-    } else {
-      container
-        .removeClass('with-error')
-        .addClass('with-diagram');
-    }
+    container
+      .removeClass('with-diagram')
+      .addClass('with-error');
 
+    container.find('.error pre').text(err.message);
 
-  });
-}
-
-function saveSVG(done) {
-  modeler.saveSVG(done);
-}
-
-function saveDiagram(done) {
-
-  modeler.saveXML({ format: true }, function(err, xml) {
-    done(err, xml);
-  });
+    console.error(err);
+  }
 }
 
 function registerFileDrop(container, callback) {
@@ -126,15 +114,28 @@ $(function() {
     }
   }
 
-  var exportArtifacts = debounce(function() {
+  var exportArtifacts = debounce(async function() {
 
-    saveSVG(function(err, svg) {
-      setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
-    });
+    try {
 
-    saveDiagram(function(err, xml) {
-      setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
-    });
+      const { svg } = await modeler.saveSVG();
+
+      setEncoded(downloadSvgLink, 'diagram.svg', svg);
+    } catch (err) {
+
+      console.error('Error happened saving svg: ', err);
+      setEncoded(downloadSvgLink, 'diagram.svg', null);
+    }
+
+    try {
+
+      const { xml } = await modeler.saveXML({ format: true });
+      setEncoded(downloadLink, 'diagram.bpmn', xml);
+    } catch (err) {
+
+      console.error('Error happened saving XML: ', err);
+      setEncoded(downloadLink, 'diagram.bpmn', null);
+    }
   }, 500);
 
   modeler.on('commandStack.changed', exportArtifacts);
