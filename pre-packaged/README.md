@@ -1,3 +1,4 @@
+
 # bpmn-js pre-packaged example
 
 This example showcases how to use the pre-packaged version(s) of [bpmn-js](https://github.com/bpmn-io/bpmn-js).
@@ -46,15 +47,16 @@ var bpmnJS = new BpmnJS({
   container: '#canvas'
 });
 
-bpmnJS.importXML(someDiagram, function(err) {
+try {
 
-  if (!err) {
-    console.log('success!');
-    viewer.get('canvas').zoom('fit-viewport');
-  } else {
-    console.log('something went wrong:', err);
-  }
-});
+  await bpmnJS.importXML(someDiagram);
+
+  console.log('success!');
+  viewer.get('canvas').zoom('fit-viewport');
+} catch (err) {
+
+  console.error('something went wrong:', err);
+}
 ```
 
 ## License
