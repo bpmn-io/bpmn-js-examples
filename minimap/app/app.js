@@ -22,41 +22,31 @@ function createNewDiagram() {
   openDiagram(diagramXML);
 }
 
-function openDiagram(xml) {
+async function openDiagram(xml) {
 
-  bpmnModeler.importXML(xml, function(err) {
+  try {
+    await bpmnModeler.importXML(xml);
 
-    if (err) {
-      container
-        .removeClass('with-diagram')
-        .addClass('with-error');
+    container
+      .removeClass('with-error')
+      .addClass('with-diagram');
 
-      container.find('.error pre').text(err.message);
+    bpmnModeler.get('minimap').open();
 
-      console.error(err);
-    } else {
-      container
-        .removeClass('with-error')
-        .addClass('with-diagram');
+    console.log('Awesome! Ready to navigate!');
 
-      bpmnModeler.get('minimap').open();
+  } catch (err) {
 
-      console.log('Awesome! Ready to navigate!');
-    }
+    container
+      .removeClass('with-diagram')
+      .addClass('with-error');
 
-  });
+    container.find('.error pre').text(err.message);
+
+    console.error(err);
+  }
 }
 
-function saveSVG(done) {
-  bpmnModeler.saveSVG(done);
-}
-
-function saveDiagram(done) {
-
-  bpmnModeler.saveXML({ format: true }, function(err, xml) {
-    done(err, xml);
-  });
-}
 
 function registerFileDrop(container, callback) {
 
@@ -132,14 +122,26 @@ $(function() {
     }
   }
 
-  var exportArtifacts = debounce(function() {
-    saveSVG(function(err, svg) {
-      setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
-    });
+  var exportArtifacts = debounce(async function() {
+    try {
 
-    saveDiagram(function(err, xml) {
-      setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
-    });
+      const { svg } = await bpmnModeler.saveSVG();
+      setEncoded(downloadSvgLink, 'diagram.svg', svg);
+    } catch (err) {
+
+      console.error('Error happened saving SVG: ', err);
+      setEncoded(downloadSvgLink, 'diagram.svg', null);
+    }
+
+    try {
+
+      const { xml } = await bpmnModeler.saveXML({ format: true });
+      setEncoded(downloadLink, 'diagram.bpmn', xml);
+    } catch (err) {
+
+      console.error('Error happened saving diagram: ', err);
+      setEncoded(downloadLink, 'diagram.bpmn', null);
+    }
   }, 500);
 
   bpmnModeler.on('commandStack.changed', exportArtifacts);

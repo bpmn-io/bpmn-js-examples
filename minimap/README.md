@@ -1,3 +1,4 @@
+
 # bpmn-js Minimap Example
 
 This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [diagram-js-minimap](https://github.com/bpmn-io/diagram-js-minimap). It implements a BPMN 2.0 modeler with a minimap that lets you navigate the diagram.
@@ -27,14 +28,9 @@ var bpmnModeler = new BpmnModeler({
   ]
 });
 
-bpmnModeler.importXML(xml, function(err) {
+await bpmnModeler.importXML(xml);
 
-  if (err) {
-    console.error(err);
-  } else {
-    console.log('Awesome! Ready to navigate!');
-  }
-});
+console.log('Awesome! Ready to navigate!');
 ```
 
 Checkout [`app/app.js`](app/app.js) for details.
