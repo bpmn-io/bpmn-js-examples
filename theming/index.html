@@ -68,21 +68,22 @@
        *
        * @param {String} bpmnXML diagram to display
        */
-      function openDiagram(bpmnXML) {
+      async function openDiagram(bpmnXML) {
 
         // import diagram
-        bpmnViewer.importXML(bpmnXML, function(err) {
+        try {
 
-          if (err) {
-            return console.error('could not import BPMN 2.0 diagram', err);
-          }
+          await bpmnViewer.importXML(bpmnXML);
 
           // access viewer components
           var canvas = bpmnViewer.get('canvas');
 
           // zoom to fit full viewport
           canvas.zoom('fit-viewport');
-        });
+        } catch (err) {
+
+          console.error('could not import BPMN 2.0 diagram', err);
+        }
       }
 
 
