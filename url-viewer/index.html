@@ -68,18 +68,19 @@
 
       log('attempting to open <' + url + '>');
 
-      $.ajax(url, { dataType : 'text' }).done(function(xml) {
+      $.ajax(url, { dataType : 'text' }).done(async function(xml) {
 
-        viewer.importXML(xml, function(err) {
+        try {
 
-          if (err) {
-            log('error: ' + err.message);
-            console.error(err);
-          } else {
-            viewer.get('canvas').zoom('fit-viewport');
-            log('success');
-          }
-        });
+          await viewer.importXML(xml);
+
+          viewer.get('canvas').zoom('fit-viewport');
+          log('success');
+        } catch (err) {
+
+          log('error: ' + err.message);
+          console.error(err);
+        }
       });
     }
 
