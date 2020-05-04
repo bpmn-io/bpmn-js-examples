@@ -65,18 +65,19 @@
       /**
        * Save diagram contents and print them to the console.
        */
-      function exportDiagram() {
+      async function exportDiagram() {
 
-        bpmnModeler.saveXML({ format: true }, function(err, xml) {
+        try {
 
-          if (err) {
-            return console.error('could not save BPMN 2.0 diagram', err);
-          }
+          var result = await bpmnModeler.saveXML({ format: true });
 
           alert('Diagram exported. Check the developer tools!');
 
-          console.log('DIAGRAM', xml);
-        });
+          console.log('DIAGRAM', result.xml);
+        } catch (err) {
+
+          console.error('could not save BPMN 2.0 diagram', err);
+        }
       }
 
       /**
@@ -84,14 +85,12 @@
        *
        * @param {String} bpmnXML diagram to display
        */
-      function openDiagram(bpmnXML) {
+      async function openDiagram(bpmnXML) {
 
         // import diagram
-        bpmnModeler.importXML(bpmnXML, function(err) {
+        try {
 
-          if (err) {
-            return console.error('could not import BPMN 2.0 diagram', err);
-          }
+          await bpmnModeler.importXML(bpmnXML);
 
           // access modeler components
           var canvas = bpmnModeler.get('canvas');
@@ -112,7 +111,10 @@
 
           // add marker
           canvas.addMarker('SCAN_OK', 'needs-discussion');
-        });
+        } catch (err) {
+
+          console.error('could not import BPMN 2.0 diagram', err);
+        }
       }
 
 
