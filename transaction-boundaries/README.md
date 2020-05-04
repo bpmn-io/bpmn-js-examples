@@ -1,3 +1,4 @@
+
 # bpmn-js Transaction Boundaries Example
 
 This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [bpmn-js-transaction-boundaries](https://github.com/bpmn-io/bpmn-js-transaction-boundaries). It implements a BPMN 2.0 modeler that allows you to visualize transaction boundaries in the diagram.
@@ -29,16 +30,10 @@ var bpmnModeler = new BpmnModeler({
   ]
 });
 
-bpmnModeler.importXML(xml, function(err) {
+await bpmnModeler.importXML(xml);
 
-  if (err) {
-      console.error(err);
-    } else {
-      var transactionBoundaries = bpmnModeler.get('transactionBoundaries');
-
-      transactionBoundaries.show();
-    }
-  });
+var transactionBoundaries = bpmnModeler.get('transactionBoundaries');
+transactionBoundaries.show();
 
 ```
 
