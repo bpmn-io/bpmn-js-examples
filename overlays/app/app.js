@@ -19,11 +19,7 @@ var bpmnViewer = new BpmnViewer({
 
 // import qr diagram
 
-bpmnViewer.importXML(qrDiagram, function(err) {
-
-  if (err) {
-    return console.error('could not import BPMN 2.0 diagram', err);
-  }
+bpmnViewer.importXML(qrDiagram).then(function() {
 
   var canvas = bpmnViewer.get('canvas'),
       overlays = bpmnViewer.get('overlays');
@@ -76,4 +72,7 @@ bpmnViewer.importXML(qrDiagram, function(err) {
     html: '<div class="diagram-note">I hide at low zoom levels</div>'
   });
 
+}).catch(function(err) {
+
+  console.error('could not import BPMN 2.0 diagram', err);
 });
