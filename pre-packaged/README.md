@@ -1,4 +1,3 @@
-
 # bpmn-js pre-packaged example
 
 This example showcases how to use the pre-packaged version(s) of [bpmn-js](https://github.com/bpmn-io/bpmn-js).
