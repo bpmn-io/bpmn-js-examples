@@ -1,4 +1,3 @@
-
 # bpmn-js interaction example
 
 An example that showcases the different ways to enable user interaction with
