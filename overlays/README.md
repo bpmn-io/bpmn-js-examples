@@ -1,4 +1,3 @@
-
 # bpmn-js overlays example
 
 This example shows how to use the [overlays API](https://github.com/bpmn-io/diagram-js/blob/master/lib/features/overlays/Overlays.js) of [bpmn-js](https://github.com/bpmn-io/bpmn-js) to attach HTML overlays to a BPMN 2.0 diagram.
