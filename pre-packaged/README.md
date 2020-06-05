@@ -18,7 +18,7 @@ Download or simply include the relevant dependencies into your website:
 #### Viewer
 
 ```html
-<script src="https://unpkg.com/bpmn-js@7.0.0/dist/bpmn-viewer.development.js"></script>
+<script src="https://unpkg.com/bpmn-js@7.0.1/dist/bpmn-viewer.development.js"></script>
 ```
 
 Download the complete [viewer example](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/master/starter/viewer.html).
@@ -27,10 +27,10 @@ Download the complete [viewer example](https://cdn.staticaly.com/gh/bpmn-io/bpmn
 
 ```html
 <!-- necessary stylesheets -->
-<link rel="stylesheet" href="https://unpkg.com/bpmn-js@7.0.0/dist/assets/diagram-js.css" />
-<link rel="stylesheet" href="https://unpkg.com/bpmn-js@7.0.0/dist/assets/bpmn-font/css/bpmn.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@7.0.1/dist/assets/diagram-js.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@7.0.1/dist/assets/bpmn-font/css/bpmn.css" />
 
-<script src="https://unpkg.com/bpmn-js@7.0.0/dist/bpmn-modeler.development.js"></script>
+<script src="https://unpkg.com/bpmn-js@7.0.1/dist/bpmn-modeler.development.js"></script>
 ```
 
 Download the complete [modeler example](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/master/starter/modeler.html).
