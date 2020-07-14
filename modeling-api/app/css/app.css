@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+#menue {
+  float: left;
+  width: 15%;
+  height: 100%;
+  border-right: 1px solid darkgray;
+}
+
+#code-pre {
+  float:left;
+  width: 40%;
+  height: 100%;
+  border-right: 1px solid darkgray;
+  overflow-y: auto;
+  overflow-x: auto;
+  font-size: 0px;
+}
+
+#code-payload {
+  height: 100%;
+  font-size: 12px;
+}
+
+.content,
+.content > div {
+  height: 100%;
+  overflow: hidden;
+}
+
+.content > .message {
+  text-align: center;
+  display: table;
+
+  font-size: 16px;
+  color: #111;
+}
+
+.content > .message .note {
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+.content .error .details {
+  max-width: 500px;
+  font-size: 12px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.content .error pre {
+  border: solid 1px #CCC;
+  background: #EEE;
+  padding: 10px;
+}
+
+.content:not(.with-error) .error,
+.content.with-error .intro,
+.content.with-diagram .intro {
+  display: none;
+}
+
+
+.content .canvas,
+.content.with-error .canvas {
+  visibility: hidden;
+}
+
+.content.with-diagram .canvas {
+  visibility: visible;
+}
+
+#menue > button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  text-align: left;
+  padding: 5px;
+  background: transparent;
+  border: 0px;
+  border-bottom: 1px solid #666666;
+  font-size: 16px;
+  font-size: calc(12px + 0.1vw);
+}
+
+#menue > button:hover{
+  border-bottom: 1px solid #10D070;
+  color: #10D070;
+}
+
+#menue > button:focus{
+  outline:none;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Modeling bpmn-js using the API example</title>
+
+  <link rel="stylesheet" href="vendor/bpmn-js/assets/diagram-js.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js/assets/bpmn-font/css/bpmn-embedded.css" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/ocean.css">
+</head>
+
+<body>
+
+  <div id="menue">
+    <button class="menue-button" id="add-shapes-btn"><b>First shape:</b> learn about <code>elementRegistry</code> and
+      <code>modeling.append</code></button>
+    <button class="menue-button" id="bpmn-groups-btn"><b>Groups:</b> learn about <code>elementFactory</code>and
+      <code>modeling.createShape</code></button>
+    <button class="menue-button" id="add-shape-busObj-btn"><b>Shape names:</b> learn about
+      <code>businessObject</code></button>
+    <button class="menue-button" id="add-gateway-btn"><b>Gateways and Connections:</b> learn about
+      <code>createConnection</code> and <code>businessObject</code></button>
+    <button class="menue-button" id="bpmn-factory-btn"><b>EventDefinitions:</b> learn about the
+      <code>bpmnFactory</code></button>
+    <button class="menue-button" id="bpmn-default-flow-btn"><b>Default flows:</b> another use case for
+      <code>businessObject</code></button>
+    <button class="menue-button" id="bpmn-collab-btn"><b>Participants:</b> learn about <code>participants</code>,
+      <code>collaboration</code> and <code>$parent</code></button>
+    <button class="menue-button" id="bpmn-collab-lanes-btn"><b>Lanes:</b> learn about <code>lanes</code> as part of
+      <code>collaborations</code></button>
+  </div>
+  <pre id="code-pre">
+        <code id="code-payload" class="language-js">// Select a sample from the menue
+        </code>
+      </pre>
+
+  <div class="content" id="js-drop-zone">
+
+    <div class="message error">
+      <div class="note">
+        <p>Ooops, we could not display the BPMN 2.0 diagram.</p>
+
+        <div class="details">
+          <span>Cause of the problem</span>
+          <pre></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas" id="js-canvas"></div>
+  </div>
+
+</body>
+
+<script src="app.js"></script>
+
+</html>
