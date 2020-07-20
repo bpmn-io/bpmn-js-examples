@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -63,5 +62,11 @@ export default function loadSample(modeler) {
     type: 'bpmn:SequenceFlow'
   },
   root);
+}
 
+export default {
+  id: 'parallelGateway',
+  name: 'Parallel Gateway',
+  description: 'An example of creating parallel gateways using the API.',
+  fn
 }

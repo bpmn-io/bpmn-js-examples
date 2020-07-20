@@ -1,113 +1,159 @@
+:root {
+  --blue-base-65: #4d90ff;
+
+  --silver-base-97: #f8f8f8;
+  --silver-darken-94: #efefef;
+
+  --grey-lighten-56: #909090;
+  --grey-darken-23: #3b3b3b;
+
+  --orange-base-60: #ffa533;
+  --orange-lighten-85: #ffddb3;
+}
+
 * {
   box-sizing: border-box;
 }
 
-body, html {
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+html, body {
+  font-family: Arial, sans-serif;
 
   font-size: 12px;
 
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: hidden;
+  color: var(--grey-darken-23);
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 a:link {
   text-decoration: none;
 }
 
-#menue {
-  float: left;
-  width: 15%;
-  height: 100%;
-  border-right: 1px solid darkgray;
-}
-
-#code-pre {
-  float:left;
-  width: 40%;
-  height: 100%;
-  border-right: 1px solid darkgray;
+.snippets {
+  width: 20%;
   overflow-y: auto;
-  overflow-x: auto;
-  font-size: 0px;
 }
 
-#code-payload {
-  height: 100%;
-  font-size: 12px;
+.snippets__list {
+  margin: 0;
+  padding: 0;
 }
 
-.content,
-.content > div {
-  height: 100%;
-  overflow: hidden;
+.snippets__list-item {
+  list-style: none;
+  padding: 10px;
+  user-select: none;
+  cursor: default;
 }
 
-.content > .message {
-  text-align: center;
-  display: table;
-
+.snippets__list-item-name {
+  margin: 0;
   font-size: 16px;
-  color: #111;
 }
 
-.content > .message .note {
-  vertical-align: middle;
-  text-align: center;
-  display: table-cell;
+.snippets__list-item-description {
+  margin-bottom: 0;
+  font-size: 14px;
 }
 
-.content .error .details {
-  max-width: 500px;
-  font-size: 12px;
-  margin: 20px auto;
-  text-align: left;
+.snippets__list-item:not(.snippets__list-item--active) .snippets__list-item-description {
+  /* display: none; */
 }
 
-.content .error pre {
-  border: solid 1px #CCC;
-  background: #EEE;
+.snippets__list-item:hover,
+.snippets__list-item--active {
+  background-color: var(--blue-base-65);
+  color: var(--silver-base-97);
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  color: var(--grey-darken-23);
+  background-color: var(--silver-darken-94);
   padding: 10px;
 }
 
-.content:not(.with-error) .error,
-.content.with-error .intro,
-.content.with-diagram .intro {
-  display: none;
+.hljs-comment,
+.hljs-quote {
+  color: var(--grey-lighten-56);
 }
 
-
-.content .canvas,
-.content.with-error .canvas {
-  visibility: hidden;
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: var(--blue-base-65);
 }
 
-.content.with-diagram .canvas {
-  visibility: visible;
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: var(--blue-base-65);
 }
 
-#menue > button {
-  display: block;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 90%;
-  text-align: left;
-  padding: 5px;
-  background: transparent;
-  border: 0px;
-  border-bottom: 1px solid #666666;
-  font-size: 16px;
-  font-size: calc(12px + 0.1vw);
+.hljs-attribute {
+  color: var(--blue-base-65);
 }
 
-#menue > button:hover{
-  border-bottom: 1px solid #10D070;
-  color: #10D070;
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: var(--blue-base-65);
 }
 
-#menue > button:focus{
-  outline:none;
+.hljs-title,
+.hljs-section {
+  color: var(--blue-base-65);
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: var(--blue-base-65);
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.snippet {
+  width: 40%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  font-size: 0;
+}
+
+.snippet__code {
+  height: 100%;
+  padding: 20px;
+  font-size: 12px;
+}
+
+.modeler {
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
 }

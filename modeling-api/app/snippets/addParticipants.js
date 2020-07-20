@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -54,5 +53,11 @@ export default function loadSample(modeler) {
   console.info(''
     .concat('Notice that a collaboration was automatically added, so to create a vaid BPMN 2.0: ',
       participant1.businessObject.$parent.$type));
+}
 
+export default {
+  id: 'participants',
+  name: 'Participants',
+  description: 'An example of creating participants using the API.',
+  fn
 }
