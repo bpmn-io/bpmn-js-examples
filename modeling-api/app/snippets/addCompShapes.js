@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -72,5 +71,11 @@ export default function loadSample(modeler) {
   * (since we modified the businessObject of that connection
   */
   modeling.connect(boundaryEvent, compensationTask, association, root);
+}
 
+export default {
+  id: 'compensation',
+  name: 'Compensation',
+  description: 'An example of modeling compensation using the API.',
+  fn
 }

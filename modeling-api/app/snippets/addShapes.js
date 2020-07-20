@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementRegistry: a registry that keeps track of all shapes in the diagram
@@ -37,5 +36,11 @@ export default function loadSample(modeler) {
   // As we can see, the root has now 3 children: the startEvent, the connection and the task
   console.info(`The root element has ${root.children.length} children, which are: `);
   console.info(root.children);
+}
 
+export default {
+  id: 'shapes',
+  name: 'Shapes',
+  description: 'An example of creating shapes using the API.',
+  fn
 }

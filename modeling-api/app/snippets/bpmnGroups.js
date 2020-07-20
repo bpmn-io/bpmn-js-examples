@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -53,5 +52,11 @@ export default function loadSample(modeler) {
   * relation to the tasks (which it groups only visually)
   */
   modeling.createShape(group, { x: task1.x + 125, y: task1.y + task1.height / 2 }, root);
+}
 
+export default {
+  id: 'groups',
+  name: 'Groups',
+  description: 'An example of creating groups using the API.',
+  fn
 }

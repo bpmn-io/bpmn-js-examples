@@ -1,103 +1,112 @@
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-import emptyDiagram from '../resources/newDiagram.bpmn';
-
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 
-import * as samples from './samples/samples';
-import { stripSampleCode } from './samples/samples';
+import emptyDiagram from '../resources/newDiagram.bpmn';
 
+import { domify } from 'min-dom';
 
-// Initialize js syntax highlighting for all <pre><code>...
+import snippets from './snippets';
+
 hljs.registerLanguage('javascript', javascript);
 hljs.initHighlightingOnLoad();
 
-// Initialize the modeler ///////////////////////
-const container = document.getElementById('js-canvas');
+const container = document.querySelector('.modeler');
 
 const modeler = new BpmnModeler({
   container
 });
 
-function createNewDiagram() {
-  return openDiagram(emptyDiagram);
-}
-
 async function openDiagram(xml) {
-  const output = document.getElementById('js-drop-zone');
-
   try {
     await modeler.importXML(xml);
-
-    output.classList.remove('with-error');
-    output.classList.add('with-diagram');
-
   } catch (err) {
-
     console.error(err);
-
-    output.classList.remove('with-diagram');
-    output.classList.add('with-error');
-
-    document.querySelector('#js-drop-zone pre').textContent = err.message;
   }
 }
 
+function createDiagram() {
+  return openDiagram(emptyDiagram);
+}
+
 /**
- * Load the sample, display its code in the '#code-payload' element and log the BPMN 2.0 XML
+ * Load snippet, display code and show resulting diagram.
  *
- * @param {function(modeler)} f - Function to call with the modeler as argument.
+ * @param {Function} fn
  */
-function loadSample(f) {
-  createNewDiagram().then(() => {
-    // Load the sample
-    f(modeler);
+function loadSnippet(fn) {
+  createDiagram().then(() => {
 
-    // get the stripped sample code
-    let code = stripSampleCode(f.toString());
+    // (1) Execute snippet
+    fn(modeler);
 
-    // highlight the code
-    document.getElementById('code-payload').textContent = code;
-    hljs.highlightBlock(document.getElementById('code-payload'));
+    // (2) Display snippet code
+    let code = formatSnippetCode(fn.toString());
 
-    // Log the resulting BPMN 2.0 XML to console
+    document.querySelector('.snippet__code').textContent = code;
+
+    hljs.highlightBlock(document.querySelector('.snippet__code'));
+
+    // (3) Export to console
     modeler.saveXML({ format: true }).then(({ xml }) => console.info(xml));
   });
 }
 
-// Register the button eventListener
-createNewDiagram().then(() => {
-  document.getElementById('add-shapes-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleOne);
+/**
+ * Set up snippets.
+ *
+ * @param {Array<Object>} snippets
+ */
+function setUpSnippets(snippets) {
+  const snippetsList = document.getElementsByClassName('snippets__list')[ 0 ];
+
+  function handleSnippetClick(snippetsListItem, snippet) {
+    snippetsListItems.forEach(({ classList })=> classList.remove('snippets__list-item--active'));
+  
+    snippetsListItem.classList.add('snippets__list-item--active');
+  
+    loadSnippet(snippet.fn);
+  }
+
+  const snippetsListItems = snippets.map(snippet => {
+    const snippetsListItem = domify(
+      `<li id="${ snippet.id }" class="snippets__list-item"><h3 class="snippets__list-item-name">${ snippet.name }</h3><p class="snippets__list-item-description">${ snippet.description }</p></li>`);
+
+    snippetsListItem.addEventListener('click', () => {
+      handleSnippetClick(snippetsListItem, snippet);
+    });
+
+    snippetsList.appendChild(snippetsListItem);
+
+    return snippetsListItem;
   });
 
-  document.getElementById('add-shape-busObj-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleTwo);
-  });
+  handleSnippetClick(snippetsListItems[ 0 ], snippets[ 0 ]);
+}
 
-  document.getElementById('add-gateway-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleThree);
-  });
+/**
+ * Format snippet code by removing first and last line and
+ * removing unnecessary indentation.
+ *
+ * @param {string} snippetCode
+ *
+ * @return {string}
+ */
+function formatSnippetCode(snippetCode) {
+  let lines = snippetCode.split('\n');
 
-  document.getElementById('bpmn-factory-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleFour);
-  });
+  // (1) Remove surrounding function block
+  lines = lines.slice(1, lines.length - 1);
 
-  document.getElementById('bpmn-groups-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleFive);
-  });
+  // (2) Remove unnecessary indentation
+  const indentation = lines.reduce((indentation, line) => {
+    line = line.search(/\S/);
 
-  document.getElementById('bpmn-default-flow-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleSix);
-  });
+    return (line != -1 && line < indentation) ? line : indentation;
+  }, Infinity);
+  
+  return lines.map(line => line.substring(indentation)).join('\n');
+}
 
-  document.getElementById('bpmn-collab-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleSeven);
-  });
-
-  document.getElementById('bpmn-collab-lanes-btn').addEventListener('click', (e) => {
-    loadSample(samples.loadSampleEight);
-  });
-
-});
+createDiagram().then(() => setUpSnippets(snippets));

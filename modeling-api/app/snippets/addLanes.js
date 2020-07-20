@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -43,5 +42,11 @@ export default function loadSample(modeler) {
 
   // By splitting, we create two nested lanes in the upper lane
   modeling.splitLane(lanes[0], 2);
+}
 
+export default {
+  id: 'lanes',
+  name: 'Lanes',
+  description: 'An example of creating lanes using the API.',
+  fn
 }

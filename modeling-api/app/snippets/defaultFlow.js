@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -69,5 +68,11 @@ export default function loadSample(modeler) {
   */
   modeling.createConnection(exclusiveGateway, task2, flow1, root);
   modeling.createConnection(exclusiveGateway, task3, flow2, root);
+}
 
+export default {
+  id: 'defaultFlow',
+  name: 'Default Flow',
+  description: 'An example of setting default flows using the API.',
+  fn
 }

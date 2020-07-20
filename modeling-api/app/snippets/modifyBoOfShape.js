@@ -1,5 +1,4 @@
-export default function loadSample(modeler) {
-
+function fn(modeler) {
   /*
   * Retrieve APIs from the modeler instance
   * - elementFactory: a factory for diagram-js shapes
@@ -47,5 +46,11 @@ export default function loadSample(modeler) {
       y: Number(startEvent.y) + Number(startEvent.height) / 2
     },
     root);
+}
 
+export default {
+  id: 'businessObjects',
+  name: 'Business Objects',
+  description: 'An example of creating business objects using the API.',
+  fn
 }
