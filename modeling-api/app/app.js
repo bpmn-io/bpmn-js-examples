@@ -3,7 +3,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 
-import emptyDiagram from '../resources/newDiagram.bpmn';
+import diagram from '../resources/diagram.bpmn';
 
 import { domify } from 'min-dom';
 
@@ -19,36 +19,34 @@ const modeler = new BpmnModeler({
 });
 
 async function openDiagram(xml) {
-  try {
-    await modeler.importXML(xml);
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-function createDiagram() {
-  return openDiagram(emptyDiagram);
+  return modeler.importXML(xml).catch(err => {
+    console.log(err);
+  });
 }
 
 /**
  * Load snippet, display code and show resulting diagram.
  *
  * @param {Function} fn
+ * @param {String} diagram
  */
-function loadSnippet(fn) {
-  createDiagram().then(() => {
+function loadSnippet(fn, diagram) {
+  openDiagram(diagram).then(() => {
 
-    // (1) Execute snippet
+    // (1) Reset zoom
+    modeler.get('canvas').zoom('fit-viewport');
+
+    // (2) Execute snippet
     fn(modeler);
 
-    // (2) Display snippet code
+    // (3) Display snippet code
     let code = formatSnippetCode(fn.toString());
 
     document.querySelector('.snippet__code').textContent = code;
 
     hljs.highlightBlock(document.querySelector('.snippet__code'));
 
-    // (3) Export to console
+    // (4) Export to console
     modeler.saveXML({ format: true }).then(({ xml }) => console.info(xml));
   });
 }
@@ -63,10 +61,10 @@ function setUpSnippets(snippets) {
 
   function handleSnippetClick(snippetsListItem, snippet) {
     snippetsListItems.forEach(({ classList })=> classList.remove('snippets__list-item--active'));
-  
+
     snippetsListItem.classList.add('snippets__list-item--active');
-  
-    loadSnippet(snippet.fn);
+
+    loadSnippet(snippet.fn, snippet.diagram || diagram);
   }
 
   const snippetsListItems = snippets.map(snippet => {
@@ -105,8 +103,8 @@ function formatSnippetCode(snippetCode) {
 
     return (line != -1 && line < indentation) ? line : indentation;
   }, Infinity);
-  
+
   return lines.map(line => line.substring(indentation)).join('\n');
 }
 
-createDiagram().then(() => setUpSnippets(snippets));
+setUpSnippets(snippets);

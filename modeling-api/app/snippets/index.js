@@ -1,19 +1,15 @@
-import addCompShapes from './addCompShapes.js';
-import addLanes from './addLanes.js';
-import addParticipants from './addParticipants.js';
-import addShapes from './addShapes.js';
-import bpmnGroups from './bpmnGroups.js';
-import defaultFlow from './defaultFlow.js';
-import modifyBoOfShape from './modifyBoOfShape.js';
-import parallelGateway from './parallelGateway.js';
+import introduction from './introduction.js';
+import businessObjects from './businessObjects.js';
+import creatingShapes from './creatingShapes.js';
+import connectingShapes from './connectingShapes.js';
+import collaborations from './collaborations.js';
+import editingElements from './editingElements.js';
 
 export default [
-  addShapes,
-  parallelGateway,
-  addCompShapes,
-  bpmnGroups,
-  addParticipants,
-  addLanes,
-  defaultFlow,
-  modifyBoOfShape
+  introduction,
+  businessObjects,
+  creatingShapes,
+  connectingShapes,
+  collaborations,
+  editingElements
 ];
