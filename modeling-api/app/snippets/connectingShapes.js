@@ -7,6 +7,8 @@ function fn(modeler) {
    * * ElementFactory: Creates new shapes and connections.
    * * ElementRegistry: A registry of all shapes and connections of the diagram.
    * * Modeling: The main module for modeling.
+   *
+   * We will use these modules to create shapes and connect them on two different ways.
    */
 
   // (1) Get the modules
@@ -27,13 +29,13 @@ function fn(modeler) {
   // (5) Connect the existing start event to new task using `connect`
   modeling.connect(startEvent, task);
 
-  // (3) Create a end event shape
+  // (6) Create a end event shape
   const endEvent = elementFactory.createShape({ type: 'bpmn:EndEvent' });
 
-  // (4) Add the new end event shape to the diagram
+  // (7) Add the new end event shape to the diagram
   modeling.createShape(endEvent, { x: 600, y: 100 }, process);
 
-  // (5) Create a new sequence flow connection that connects the task to the end event
+  // (8) Create a new sequence flow connection that connects the task to the end event
   modeling.createConnection(task, endEvent, { type: 'bpmn:SequenceFlow' }, process);
 }
 
@@ -42,4 +44,4 @@ export default {
   name: 'Connecting Shapes',
   description: 'Various ways of connecting shapes.',
   fn
-}
+};
