@@ -8,8 +8,9 @@ function fn(modeler) {
    * * ElementRegistry: A registry of all shapes and connections of the diagram.
    * * Modeling: The main module for modeling.
    *
-   * We will use these modules to create a new shape and add it to the diagram, connect it to an
-   * existing shape.
+   * We will use these modules to create Participants, add them to the diagram (thereby
+   * turning the process into a collaboration), create lanes and connect participants
+   * using Message Flows.
    */
 
   // (1) Get the modules
@@ -30,19 +31,20 @@ function fn(modeler) {
   // The existing start event is now a child of the participant
   console.log(startEvent.parent); // Shape { "type": "bpmn:Participant", ... }
 
-  // (4) Create a lane
+  // (5) Create a lane
   const lane = modeling.addLane(participant, 'bottom');
 
-  // (5) Create two nested lanes
+  // (6) Create two nested lanes
   modeling.splitLane(lane, 2);
 
-  // (6) Create another participant shape that is collapsed
-  const collapsedParticipant = elementFactory.createParticipantShape({ type: 'bpmn:Participant', isExpanded: false });
+  // (7) Create another participant shape that is collapsed
+  const collapsedParticipant = elementFactory
+    .createParticipantShape({ type: 'bpmn:Participant', isExpanded: false });
 
-  // (7) Add the participant to the diagram
+  // (8) Add the participant to the diagram
   modeling.createShape(collapsedParticipant, { x: 300, y: 500 }, process);
 
-  // (8) Connect the two participants through a message flow
+  // (9) Connect the two participants through a message flow
   modeling.connect(collapsedParticipant, participant);
 }
 

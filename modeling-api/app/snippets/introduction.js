@@ -9,10 +9,10 @@ function fn(modeler) {
    * * ElementRegistry: A registry of all shapes and connections of the diagram.
    * * Modeling: The main module for modeling.
    *
-   * We will use these modules to create a new shape and add it to the diagram, connect it to an
-   * existing shape.
+   * We will use these modules to create a new shape, add it to the diagram, and
+   * connect it to an existing shape.
    */
-  
+
   // (1) Get the modules
   const elementFactory = modeler.get('elementFactory'),
         elementRegistry = modeler.get('elementRegistry'),
@@ -40,4 +40,4 @@ export default {
   name: 'Introduction',
   description: 'An introduction to the modules of bpmn-js that can be used to create and connect shapes.',
   fn
-}
+};

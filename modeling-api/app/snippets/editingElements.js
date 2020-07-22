@@ -10,10 +10,9 @@ function fn(modeler) {
    * * ElementRegistry: A registry of all shapes and connections of the diagram.
    * * Modeling: The main module for modeling.
    *
-   * We will use these modules to create a new shape and add it to the diagram, connect it to an
-   * existing shape.
+   * We will use these modules to update the properties of two existing shapes.
    */
-  
+
   // (1) Get the modules
   const bpmnFactory = modeler.get('bpmnFactory'),
         elementRegistry = modeler.get('elementRegistry'),
@@ -33,7 +32,7 @@ function fn(modeler) {
     default: sequenceFlow.businessObject
   });
 
-  // (5) Make a task multi-instance
+  // (5) Change a task to be multi-instance
   const multiInstanceLoopCharacteristics = bpmnFactory.create('bpmn:MultiInstanceLoopCharacteristics');
 
   modeling.updateProperties(task, {
@@ -47,4 +46,4 @@ export default {
   description: 'How to edit existing elements.',
   diagram,
   fn
-}
+};

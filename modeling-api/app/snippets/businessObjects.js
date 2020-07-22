@@ -14,8 +14,8 @@ function fn(modeler) {
    * * ElementRegistry: A registry of all shapes and connections of the diagram.
    * * Modeling: The main module for modeling.
    *
-   * We will use these modules to create a new shape and add it to the diagram, connect it to an
-   * existing shape.
+   * We will use these modules to create a new business object representing a shape,
+   * add it to the diagram, and connect it to an existing shape.
    */
 
   // (1) Get the modules
@@ -38,7 +38,7 @@ function fn(modeler) {
   // (4) Create a new diagram shape using the business object you just created
   const task = elementFactory.createShape({ type: 'bpmn:Task', businessObject: taskBusinessObject });
 
-  // (4) Add the new task to the diagram
+  // (5) Add the new task to the diagram
   modeling.createShape(task, { x: 400, y: 100 }, process);
 
   // Using the `id` property we specified you can now access the new task through the element registry
