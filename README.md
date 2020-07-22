@@ -26,6 +26,7 @@ This repository contains a number of examples showing how use and integrate
 * [i18n](./i18n) - Use a custom translation module with bpmn-js.
 * [properties-panel](./properties-panel) - Add a properties panel and edit execution related BPMN 2.0 properties.
 * [theming](./theming) - an example that showcases the different aspects of theming bpmn-js.
+* [modeling-api](./modeling-api) - How to create, connect and edit elements using the API.
 
 
 ## Advanced
