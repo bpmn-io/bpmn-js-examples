@@ -1,6 +1,6 @@
 # bpmn-js Examples
 
-This repository contains a number of examples showing how use and integrate
+This repository contains a number of examples showing how to use and integrate
 [bpmn-js](https://github.com/bpmn-io/bpmn-js) into your applications.
 
 
@@ -11,10 +11,10 @@ This repository contains a number of examples showing how use and integrate
 
 ## Basic
 
-* [bundling](./bundling) - an example how to install bpmn-js via [npm](http://npmjs.org), use it in a node-style application and package it and the application code for the browser with [Webpack](https://webpack.js.org/).
+* [bundling](./bundling) - an example of how to install bpmn-js via [npm](http://npmjs.org), use it in a node-style application, package it and the application code for the browser with [Webpack](https://webpack.js.org/).
 * [colors](./colors) - Showcases different ways to add colors to your BPMN diagram.
 * [interaction](./interaction) - Listen to diagram events and react to them.
-* [overlays](./overlays) - Attach overlays to BPMN 2.0 diagrams to provide custom buttons or showing additional information.
+* [overlays](./overlays) - Attach overlays to BPMN 2.0 diagrams to provide custom buttons or show additional information.
 * [url-viewer](./url-viewer) - A simple url viewer for BPMN 2.0 process diagrams.
 
 
@@ -34,7 +34,7 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-nyan](https://github.com/nikku/bpmn-js-nyan) - Model nyan cats instead of service tasks, resize elements and assign custom element colors.
 * [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) - persistent task colors, diagram interaction and custom extension elements demo.
 * [bpmn-js-in-color](https://github.com/bpmn-io/bpmn-js-in-color) - Adding color support for BPMN based on the [BPMN in Color](https://github.com/bpmn-miwg/bpmn-in-color) proposal.
-* [bpmn-js-example-react-properties-panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - An example how to build a simple properties panel for bpmn-js using React.
+* [bpmn-js-example-react-properties-panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - An example of how to build a simple properties panel for bpmn-js using React.
 * [custom-bundle](./custom-bundle) - How to build a custom version of bpmn-js
 * [bpmn-js-example-model-extension](https://github.com/bpmn-io/bpmn-js-example-model-extension) - An example of creating a model extension for bpmn-js.
 * [bpmn-js-example-custom-rendering](https://github.com/bpmn-io/bpmn-js-example-custom-rendering) - An example of creating custom rendering for bpmn-js.
@@ -60,7 +60,7 @@ This repository contains a number of examples showing how use and integrate
 ## Additional Resources
 
 * [bpmn-js Walkthrough](https://bpmn.io/toolkit/bpmn-js/walkthrough/) - A full guide through the library and its underlying foundation.
-* [bpmn.io Awesome List](https://github.com/bpmn-io/awesome-bpmn-io) - Links to great libraries and additional learning resources
+* [bpmn.io Awesome List](https://github.com/bpmn-io/awesome-bpmn-io) - Links to great libraries and additional learning resources.
 
 ## License
 
