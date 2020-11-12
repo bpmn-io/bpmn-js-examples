@@ -89,10 +89,14 @@ var modeling = bpmnModeler.get('modeling');
 
 var elementsToColor = [ element1, element2 ];
 
+// setting colors
 modeling.setColor(elementsToColor, {
   stroke: 'green',
   fill: 'yellow'
 });
+
+// removing previously set colors
+modeling.setColor(elementsToColor, null);
 ```
 
 The colors are persisted in the BPMN 2.0 diagram and shown by the BPMN viewer, too.
