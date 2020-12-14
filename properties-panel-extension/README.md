@@ -40,7 +40,9 @@ The provider defines which properties are available and how they are organized i
 We created the [`MagicPropertiesProvider`](app/provider/magic/MagicPropertiesProvider.js) which exposes all basic BPMN properties (via a "general" tab) as well as the "magic" tab.
 
 ```javascript
-function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry) {
+function MagicPropertiesProvider(
+    eventBus, bpmnFactory, canvas,
+    elementRegistry, translate) {
 
   ...
 
@@ -52,7 +54,7 @@ function MagicPropertiesProvider(eventBus, bpmnFactory, elementRegistry) {
     var magicTab = {
       id: 'magic',
       label: 'Magic',
-      groups: createMagicTabGroups(element, elementRegistry)
+      groups: createMagicTabGroups(element, translate)
     };
 
     // All avaliable tabs
@@ -76,7 +78,7 @@ As part of the properties provider we define the groups for the magic tab, too:
 var spellProps = require('./parts/SpellProps');
 
 // Create the custom magic tab
-function createMagicTabGroups(element, elementRegistry) {
+function createMagicTabGroups(element, translate) {
 
   // Create a group called "Black Magic".
   var blackMagicGroup = {
@@ -86,7 +88,7 @@ function createMagicTabGroups(element, elementRegistry) {
   };
 
   // Add the spell props to the black magic group.
-  spellProps(blackMagicGroup, element);
+  spellProps(blackMagicGroup, element, translate);
 
   return [
     blackMagicGroup
@@ -104,10 +106,10 @@ var entryFactory = require('bpmn-js-properties-panel/lib/factory/EntryFactory');
 
 var is = require('bpmn-js/lib/util/ModelUtil').is;
 
-module.exports = function(group, element) {
+module.exports = function(group, element, translate) {
   // only return an entry, if the currently selected element is a start event
   if (is(element, 'bpmn:StartEvent')) {
-    group.entries.push(entryFactory.textField({
+    group.entries.push(entryFactory.textField(translate, {
       id : 'spell',
       description : 'Apply a black magic spell',
       label : 'Spell',
