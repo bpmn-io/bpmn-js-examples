@@ -42,7 +42,7 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "dependencies": {
-    "bpmn-js": "^8.0.0",
+    "bpmn-js": "^8.0.1",
     "bpmn-js-properties-panel": "^0.37.6",
     "camunda-bpmn-moddle": "^4.5.0",
     "diagram-js": "^6.8.2",
