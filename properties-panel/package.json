@@ -4,15 +4,23 @@
   "description": "A bpmn-js modeler + properties panel example",
   "main": "app/index.js",
   "scripts": {
-    "all": "grunt",
-    "dev": "grunt auto-build"
+    "all": "run-s bundle",
+    "dev": "run-s bundle:less watch:js",
+    "start": "run-s bundle serve",
+    "serve": "sirv public --dev",
+    "bundle": "run-s bundle:*",
+    "bundle:less": "lessc src/app.less public/app.css",
+    "bundle:js": "webpack -c webpack.config.js",
+    "watch:js": "run-s \"bundle:js -- --watch\""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+    "url": "https://github.com/bpmn-io/bpmn-js-examples",
+    "directory": "properties-panel"
   },
   "keywords": [
-    "bpmnjs-example"
+    "bpmnjs-example",
+    "bpmn-js-properties-panel"
   ],
   "author": {
     "name": "Nico Rehwaldt",
@@ -25,23 +33,20 @@
     }
   ],
   "license": "MIT",
-  "devDependencies": {
-    "esmify": "^2.1.1",
-    "grunt": "^1.0.4",
-    "grunt-browserify": "^5.3.0",
-    "grunt-contrib-connect": "^2.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-less": "^2.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "load-grunt-tasks": "^5.0.0",
-    "stringify": "^5.2.0"
-  },
   "dependencies": {
     "bpmn-js": "^8.1.0",
-    "bpmn-js-properties-panel": "^0.37.0",
+    "bpmn-js-properties-panel": "^0.38.1",
     "camunda-bpmn-moddle": "^4.0.1",
-    "diagram-js": "^5.0.0",
-    "jquery": "^3.4.1",
-    "min-dash": "^3.5.0"
+    "jquery": "^3.5.1",
+    "min-dash": "^3.5.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^7.0.0",
+    "less": "^4.1.0",
+    "npm-run-all": "^4.1.5",
+    "raw-loader": "^4.0.2",
+    "sirv-cli": "^1.0.10",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0"
   }
 }
