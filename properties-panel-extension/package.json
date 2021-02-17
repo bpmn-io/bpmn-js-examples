@@ -27,7 +27,10 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babelify": "^8.0.0",
     "grunt": "~1.0.1",
     "grunt-browserify": "^5.0.0",
@@ -36,16 +39,13 @@
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "~1.0.0",
     "load-grunt-tasks": "~3.5.0",
-    "stringify": "^3.1.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "stringify": "^3.1.0"
   },
   "dependencies": {
     "bpmn-js": "^8.2.0",
-    "bpmn-js-properties-panel": "^0.37.6",
+    "bpmn-js-properties-panel": "^0.40.0",
     "camunda-bpmn-moddle": "^4.5.0",
-    "diagram-js": "^6.8.2",
+    "diagram-js": "^7.2.0",
     "jquery": "^3.5.1",
     "min-dash": "^3.5.2"
   }
