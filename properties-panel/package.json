@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "bpmn-js": "^8.2.0",
+    "bpmn-js": "^8.2.1",
     "bpmn-js-properties-panel": "^0.38.1",
     "camunda-bpmn-moddle": "^4.0.1",
     "jquery": "^3.5.1",
