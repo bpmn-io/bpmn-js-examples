@@ -2,7 +2,8 @@ import $ from 'jquery';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import propertiesPanelModule from 'bpmn-js-properties-panel';
-import propertiesProviderModule from './provider/magic';
+import bpmnPropertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/bpmn';
+import magicPropertiesProviderModule from './provider/magic';
 import magicModdleDescriptor from './descriptors/magic';
 
 import {
@@ -21,7 +22,8 @@ var bpmnModeler = new BpmnModeler({
   },
   additionalModules: [
     propertiesPanelModule,
-    propertiesProviderModule
+    bpmnPropertiesProviderModule,
+    magicPropertiesProviderModule
   ],
   moddleExtensions: {
     magic: magicModdleDescriptor
