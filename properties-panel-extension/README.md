@@ -37,12 +37,10 @@ Let us look into all the necessary steps in detail.
 The first step to a custom property is to create your own `PropertiesProvider`.
 The provider defines which properties are available and how they are organized in the panel using tabs, groups and input elements.
 
-We created the [`MagicPropertiesProvider`](app/provider/magic/MagicPropertiesProvider.js) which exposes all basic BPMN properties (via a "general" tab) as well as the "magic" tab.
+We created the [`MagicPropertiesProvider`](app/provider/magic/MagicPropertiesProvider.js) which exposes the "magic" tab on top of the existing BPMN properties.
 
 ```javascript
-function MagicPropertiesProvider(
-    eventBus, bpmnFactory, canvas,
-    elementRegistry, translate) {
+function MagicPropertiesProvider(propertiesPanel, translate) {
 
   ...
 
@@ -50,18 +48,20 @@ function MagicPropertiesProvider(
 
     ...
 
-    // The "magic" tab
-    var magicTab = {
-      id: 'magic',
-      label: 'Magic',
-      groups: createMagicTabGroups(element, translate)
-    };
+    return function(entries) {
+    
+      // Add the "magic" tab
+      var magicTab = {
+        id: 'magic',
+        label: 'Magic',
+        groups: createMagicTabGroups(element, translate)
+      };
 
-    // All avaliable tabs
-    return [
-      generalTab,
-      magicTab
-    ];
+      entries.push(magicTab);
+    
+      // Show general + "magic" tab
+      return entries;
+    }
   };
 }
 ```
@@ -179,7 +179,8 @@ To ship our custom extension with the properties panel we have to wire both the 
 
 ```javascript
 var propertiesPanelModule = require('bpmn-js-properties-panel'),
-    propertiesProviderModule = require('./provider/magic'),
+    bpmnPropertiesProviderModule = require('bpmn-js-properties-panel/lib/provider/bpmn'),
+    magicPropertiesProviderModule = require('./provider/magic'),
     magicModdleDescriptor = require('./descriptors/magic');
 
 var canvas = $('#js-canvas');
@@ -191,7 +192,8 @@ var bpmnModeler = new BpmnModeler({
   },
   additionalModules: [
     propertiesPanelModule,
-    propertiesProviderModule
+    bpmnPropertiesProviderModule,
+    magicPropertiesProviderModule
   ],
   moddleExtensions: {
     magic: magicModdleDescriptor
