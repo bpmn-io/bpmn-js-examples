@@ -42,6 +42,10 @@ We created the [`MagicPropertiesProvider`](app/provider/magic/MagicPropertiesPro
 ```javascript
 function MagicPropertiesProvider(propertiesPanel, translate) {
 
+  // Register our custom magic properties provider.
+  // Use a lower priority to ensure it is loaded after the basic BPMN properties.
+  propertiesPanel.registerProvider(LOW_PRIORITY, this);
+
   ...
 
   this.getTabs = function(element) {
