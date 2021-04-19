@@ -17,5 +17,18 @@ export default function(group, element, translate) {
       label : 'Spell',
       modelProperty : 'spell'
     }));
+    
+    group.entries.push({
+      html: '<input type="file" id="fileUploaded"><br><br>',
+      description : 'File Upload',
+      label : 'File Upload',
+      id : 'fileUploader',
+      modelProperty : 'fileUploader',
+      set: function(element, values){
+        console.log(values.fileUploader);
+        //element.businessObject.$attrs.fileUploader = values.fileUploader;
+        return;
+      }
+    });
   }
 }
