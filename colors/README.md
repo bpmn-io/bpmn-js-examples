@@ -91,8 +91,8 @@ var elementsToColor = [ element1, element2 ];
 
 // setting colors
 modeling.setColor(elementsToColor, {
-  stroke: 'green',
-  fill: 'yellow'
+  stroke: '#00ff00',
+  fill: '#ffff00'
 });
 
 // removing previously set colors
