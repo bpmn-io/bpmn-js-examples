@@ -7,7 +7,7 @@ import {
 
 export default function(group, element, translate) {
 
-  // Only return an entry, if the currently selected
+  // only return an entry, if the currently selected
   // element is a start event.
 
   if (is(element, 'bpmn:StartEvent')) {
