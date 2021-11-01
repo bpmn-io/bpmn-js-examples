@@ -5,6 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "all": "grunt",
+    "start": "npm run dev",
     "dev": "grunt auto-build"
   },
   "repository": {
