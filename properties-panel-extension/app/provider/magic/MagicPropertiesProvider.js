@@ -1,21 +1,21 @@
-// Require your custom property entries.
+// require your custom property entries.
 import spellProps from './parts/SpellProps';
 
 var LOW_PRIORITY = 500;
 
 
-// Create the custom magic tab.
-// The properties are organized in groups.
+// create the custom magic tab
+// the properties are organized in groups
 function createMagicTabGroups(element, translate) {
 
-  // Create a group called "Black Magic".
+  // create a group called "Black Magic".
   var blackMagicGroup = {
     id: 'black-magic',
     label: 'Black Magic',
     entries: []
   };
 
-  // Add the spell props to the black magic group.
+  // add the spell props to the black magic group
   spellProps(blackMagicGroup, element, translate);
 
   return [
@@ -53,7 +53,7 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
      */
     return function(entries) {
 
-      // Add the "magic" tab
+      // add the "magic" tab
       var magicTab = {
         id: 'magic',
         label: 'Magic',
@@ -62,7 +62,7 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
 
       entries.push(magicTab);
   
-      // Show general + "magic" tab
+      // show general + "magic" tab
       return entries;
     }
   };
@@ -70,8 +70,9 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
 
   // registration ////////
 
-  // Register our custom magic properties provider.
-  // use a lower priority to ensure it is loaded after the basic BPMN properties.
+  // register our custom magic properties provider
+  // use a lower priority to ensure it is loaded after
+  // the basic BPMN properties
   propertiesPanel.registerProvider(LOW_PRIORITY, this);
 }
 
