@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "bpmn-js": "^8.8.2",
-    "bpmn-js-properties-panel": "^0.42.0",
-    "camunda-bpmn-moddle": "^5.1.0",
+    "bpmn-js-properties-panel": "^0.46.0",
+    "camunda-bpmn-moddle": "^6.1.1",
     "diagram-js": "^7.2.3",
     "jquery": "^3.5.1",
     "min-dash": "^3.7.0"
