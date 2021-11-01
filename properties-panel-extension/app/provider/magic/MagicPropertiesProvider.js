@@ -23,14 +23,34 @@ function createMagicTabGroups(element, translate) {
   ];
 }
 
+/**
+ * A provider with a `#getTabs(element)` method
+ * that exposes tabs for a diagram element.
+ *
+ * @param {PropertiesPanel} propertiesPanel
+ * @param {Function} translate
+ */
 export default function MagicPropertiesProvider(propertiesPanel, translate) {
 
-  // Register our custom magic properties provider.
-  // Use a lower priority to ensure it is loaded after the basic BPMN properties.
-  propertiesPanel.registerProvider(LOW_PRIORITY, this);
+  // API ////////
 
+  /**
+   * Return the tabs provided for the given element.
+   *
+   * @param {DiagramElement} element
+   *
+   * @return {(Object[]) => (Object[])} tab entry middleware
+   */
   this.getTabs = function(element) {
 
+    /**
+     * We return a middleware that modifies
+     * the existing tabs.
+     *
+     * @param {Object[]} entries
+     *
+     * @return {Object[]} modified entries
+     */
     return function(entries) {
 
       // Add the "magic" tab
@@ -46,6 +66,13 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
       return entries;
     }
   };
+
+
+  // registration ////////
+
+  // Register our custom magic properties provider.
+  // use a lower priority to ensure it is loaded after the basic BPMN properties.
+  propertiesPanel.registerProvider(LOW_PRIORITY, this);
 }
 
 MagicPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ]
