@@ -55,6 +55,7 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-example-angular](https://github.com/bpmn-io/bpmn-js-example-angular) - Showing a possible integration of the toolkit into an [Angular](https://angular.io/) application.
 * [vue-bpmn](https://github.com/bpmn-io/vue-bpmn) - Showing a possible integration of the toolkit into a [Vue.js](https://vuejs.org) application.
 * [react-bpmn](https://github.com/bpmn-io/react-bpmn) - Showing a possible integration of the toolkit into a [React](https://reactjs.org/) application.
+* [svelte-bpmn](https://github.com/bpmn-io/svelte-bpmn) - Showing a possible integration of the toolkit into a [Svelte](https://svelte.dev/) application.
 
 
 ## Additional Resources
