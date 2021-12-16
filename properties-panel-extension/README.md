@@ -2,17 +2,16 @@
 
 This example shows how to extend the [bpmn-js-properties-panel](https://github.com/bpmn-io/bpmn-js-properties-panel) with custom properties.
 
-![properties panel extension screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/properties-panel-extension/docs/screenshot.png "Screenshot of the properties panel extension example")
+![properties panel extension screenshot](./docs/screenshot.png "Screenshot of the properties panel extension example")
 
 
 ## About
 
-> If you need more information about setting up take look at the [basic properties example](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel) first.
+> If you need more information about setting up take look at the [basic properties example](../properties-panel) first.
 
 In this example we extend the properties panel to allow editing a `magic:spell` property on all start events. To achieve that we will walk through the following steps:
 
-* Add a tab called "Magic" to contain the property
-* Add a group called "Black Magic" to this tab
+* Add a group called "Black Magic" to contain the property
 * Add a "spell" text input field to this group
 * Create a new moddle extension
 
@@ -37,7 +36,7 @@ Let us look into all the necessary steps in detail.
 The first step to a custom property is to create your own `PropertiesProvider`.
 The provider defines which properties are available and how they are organized in the panel using tabs, groups and input elements.
 
-We created the [`MagicPropertiesProvider`](app/provider/magic/MagicPropertiesProvider.js) which exposes the "magic" tab on top of the existing BPMN properties.
+We created the [`MagicPropertiesProvider`](app/provider/magic/MagicPropertiesProvider.js) which exposes the "magic" group on top of the existing BPMN properties. Note that we make sure that the group is shown only if a start event is selected.
 
 ```javascript
 function MagicPropertiesProvider(propertiesPanel, translate) {
@@ -48,23 +47,18 @@ function MagicPropertiesProvider(propertiesPanel, translate) {
 
   ...
 
-  this.getTabs = function(element) {
+  this.getGroups = function(element) {
 
     ...
 
-    return function(entries) {
-    
-      // Add the "magic" tab
-      var magicTab = {
-        id: 'magic',
-        label: 'Magic',
-        groups: createMagicTabGroups(element, translate)
-      };
+    return function(groups) {
 
-      entries.push(magicTab);
-    
-      // Show general + "magic" tab
-      return entries;
+      // Add the "magic" group
+      if(is(element, 'bpmn:StartEvent')) {
+        groups.push(createMagicGroup(element, translate));
+      }
+
+      return groups;
     }
   };
 }
@@ -73,60 +67,77 @@ function MagicPropertiesProvider(propertiesPanel, translate) {
 
 ### Define a Group
 
-As part of the properties provider we define the groups for the magic tab, too:
+As part of the properties provider we define the magic group:
 
 ```javascript
 // Require your custom property entries.
 // The entry is a text input field with logic attached to create,
 // update and delete the "spell" property.
-var spellProps = require('./parts/SpellProps');
+import spellProps from './parts/SpellProps';
 
-// Create the custom magic tab
-function createMagicTabGroups(element, translate) {
+// Create the custom magic group
+function createMagicGroup(element, translate) {
 
-  // Create a group called "Black Magic".
-  var blackMagicGroup = {
-    id: 'black-magic',
-    label: 'Black Magic',
-    entries: []
+  // create a group called "Magic properties".
+  var magicGroup = {
+    id: 'magic',
+    label: translate('Magic properties'),
+    entries: spellProps(element, translate)
   };
 
-  // Add the spell props to the black magic group.
-  spellProps(blackMagicGroup, element, translate);
-
-  return [
-    blackMagicGroup
-  ];
+  return magicGroup
 }
 ```
 
 
 ### Define an Entry
 
-The "spell" entry is defined in [`SpellProps`](app/provider/magic/parts/SpellProps.js). We reuse [`EntryFactory#textField`](https://github.com/bpmn-io/bpmn-js-properties-panel/blob/master/lib/factory/EntryFactory.js#L79) to create a text field for the property. Note that we make sure that the entry is shown if a start event is selected:
+The "spell" entry is defined in [`SpellProps`](app/provider/magic/parts/SpellProps.js). We reuse [`TextFieldEntry`](https://github.com/bpmn-io/properties-panel/blob/main/src/components/entries/TextField.js) to create a text field for the property.
 
 ```javascript
-var entryFactory = require('bpmn-js-properties-panel/lib/factory/EntryFactory');
+import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
+import { useService } from 'bpmn-js-properties-panel'
 
-var is = require('bpmn-js/lib/util/ModelUtil').is;
+export default function(element, translate) {
 
-module.exports = function(group, element, translate) {
-  // only return an entry, if the currently selected element is a start event
-  if (is(element, 'bpmn:StartEvent')) {
-    group.entries.push(entryFactory.textField(translate, {
-      id : 'spell',
-      description : 'Apply a black magic spell',
-      label : 'Spell',
-      modelProperty : 'spell'
-    }));
+  return [
+    {
+      id: 'spell',
+      component: <Spell element={ element } translate={ translate } />,
+      isEdited: isTextFieldEntryEdited
+    }
+  ];
+}
+
+function Spell(props) {
+  const { element } = props;
+
+  const modeling = useService('modeling');
+  const translate = useService('translate');
+  const debounce = useService('debounceInput');
+
+  const getValue = () => {
+    return element.businessObject.spell || '';
   }
-};
+
+  const setValue = value => {
+    return modeling.updateProperties(element, {
+      spell: value
+    });
+  }
+
+  return <TextFieldEntry
+    element={ element }
+    description={ translate('Apply a black magic spell') }
+    label={ translate('Spell') }
+    getValue={ getValue }
+    setValue={ setValue }
+    debounce={ debounce }
+  />;
+}
 ```
 
-You can look into the [`EntryFactory`](https://github.com/bpmn-io/bpmn-js-properties-panel/blob/master/lib/factory/EntryFactory.js) to find many other useful reusable form input components. You can also go further and define what happens if you enter text in an input field and what is shown in it if the element is selected. To do so you can override `entry#set` and `entry#get` methods. A good example for this is [`DocumentationProps`](https://github.com/bpmn-io/bpmn-js-properties-panel/blob/master/lib/provider/bpmn/parts/DocumentationProps.js).
-
-To get a better understand of the lifecycle of updating elements and the properties panel [this forum post](https://forum.bpmn.io/t/integrating-bpmn-js-properties-panel-with-the-bpmn-js-modeler/261/20) may be helpful.
-
+You can look into the [`entries`](https://github.com/bpmn-io/properties-panel/blob/main/src/components/entries/index.js) to find many other useful reusable form input components.
 
 ### Create a Moddle Extension
 
@@ -182,21 +193,23 @@ In this file we define the new type `BewitchesStartEvent` which extends the type
 To ship our custom extension with the properties panel we have to wire both the moddle extension and the properties provider when creating the modeler.
 
 ```javascript
-var propertiesPanelModule = require('bpmn-js-properties-panel'),
-    bpmnPropertiesProviderModule = require('bpmn-js-properties-panel/lib/provider/bpmn'),
-    magicPropertiesProviderModule = require('./provider/magic'),
-    magicModdleDescriptor = require('./descriptors/magic');
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-var canvas = $('#js-canvas');
+import {
+  BpmnPropertiesPanelModule,
+  BpmnPropertiesProviderModule
+} from 'bpmn-js-properties-panel';
+import magicPropertiesProviderModule from './provider/magic';
+import magicModdleDescriptor from './descriptors/magic';
 
 var bpmnModeler = new BpmnModeler({
-  container: canvas,
+  container: '#js-canvas',
   propertiesPanel: {
     parent: '#js-properties-panel'
   },
   additionalModules: [
-    propertiesPanelModule,
-    bpmnPropertiesProviderModule,
+    BpmnPropertiesPanelModule,
+    BpmnPropertiesProviderModule,
     magicPropertiesProviderModule
   ],
   moddleExtensions: {
@@ -212,13 +225,12 @@ Install all required dependencies:
 
 ```
 npm install
-npm install -g grunt-cli
 ```
 
 Build and run the project
 
 ```
-grunt auto-build
+npm start
 ```
 
 

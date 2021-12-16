@@ -1,8 +1,10 @@
 import $ from 'jquery';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-import propertiesPanelModule from 'bpmn-js-properties-panel';
-import bpmnPropertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/bpmn';
+import {
+  BpmnPropertiesPanelModule,
+  BpmnPropertiesProviderModule
+} from 'bpmn-js-properties-panel';
 import magicPropertiesProviderModule from './provider/magic';
 import magicModdleDescriptor from './descriptors/magic';
 
@@ -12,6 +14,7 @@ import {
 
 import diagramXML from '../resources/newDiagram.bpmn';
 
+import '../styles/app.less';
 
 var container = $('#js-drop-zone');
 
@@ -21,8 +24,8 @@ var bpmnModeler = new BpmnModeler({
     parent: '#js-properties-panel'
   },
   additionalModules: [
-    propertiesPanelModule,
-    bpmnPropertiesProviderModule,
+    BpmnPropertiesPanelModule,
+    BpmnPropertiesProviderModule,
     magicPropertiesProviderModule
   ],
   moddleExtensions: {

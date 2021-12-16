@@ -1,11 +1,8 @@
 {
-  "presets": [
-    [
-      "env", {
-        "targets": {
-          "node": "current"
-        }
-      }
-    ]
+  "plugins": [
+    [ "@babel/plugin-transform-react-jsx", {
+      "importSource": "@bpmn-io/properties-panel/preact",
+      "runtime": "automatic"
+    } ]
   ]
 }

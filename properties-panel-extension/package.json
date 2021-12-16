@@ -4,16 +4,20 @@
   "description": "A properties panel extension example",
   "main": "app/index.js",
   "scripts": {
-    "all": "grunt",
-    "start": "npm run dev",
-    "dev": "grunt auto-build"
+    "all": "run-s build",
+    "build": "webpack",
+    "start": "run-s build serve",
+    "dev": "run-p \"build -- --watch\" serve",
+    "serve": "sirv public --dev"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+    "url": "https://github.com/bpmn-io/bpmn-js-examples",
+    "directory": "properties-panel-extension"
   },
   "keywords": [
-    "bpmnjs-example"
+    "bpmnjs-example",
+    "bpmn-js-properties-panel"
   ],
   "author": {
     "name": "Patrick Dehn",
@@ -27,26 +31,24 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babelify": "^8.0.0",
-    "grunt": "~1.0.1",
-    "grunt-browserify": "^5.0.0",
-    "grunt-contrib-connect": "~1.0.2",
-    "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-less": "^1.0.1",
-    "grunt-contrib-watch": "~1.0.0",
-    "load-grunt-tasks": "~3.5.0",
-    "stringify": "^3.1.0"
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-react-jsx": "^7.16.5",
+    "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^10.1.0",
+    "css-loader": "^6.5.1",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "npm-run-all": "^4.1.5",
+    "raw-loader": "^4.0.2",
+    "sirv-cli": "^1.0.14",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
+    "@bpmn-io/properties-panel": "^0.10.0",
     "bpmn-js": "^8.8.3",
-    "bpmn-js-properties-panel": "^0.46.0",
-    "camunda-bpmn-moddle": "^6.1.1",
-    "diagram-js": "^7.2.3",
+    "bpmn-js-properties-panel": "^1.0.0-alpha.0",
     "jquery": "^3.5.1",
     "min-dash": "^3.7.0"
   }

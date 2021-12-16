@@ -1,31 +1,16 @@
-// require your custom property entries.
+// Require your custom property entries.
+// The entry is a text input field with logic attached to create,
+// update and delete the "spell" property.
 import spellProps from './parts/SpellProps';
+
+import { is } from 'bpmn-js/lib/util/ModelUtil';
 
 var LOW_PRIORITY = 500;
 
 
-// create the custom magic tab
-// the properties are organized in groups
-function createMagicTabGroups(element, translate) {
-
-  // create a group called "Black Magic".
-  var blackMagicGroup = {
-    id: 'black-magic',
-    label: 'Black Magic',
-    entries: []
-  };
-
-  // add the spell props to the black magic group
-  spellProps(blackMagicGroup, element, translate);
-
-  return [
-    blackMagicGroup
-  ];
-}
-
 /**
- * A provider with a `#getTabs(element)` method
- * that exposes tabs for a diagram element.
+ * A provider with a `#getGroups(element)` method
+ * that exposes groups for a diagram element.
  *
  * @param {PropertiesPanel} propertiesPanel
  * @param {Function} translate
@@ -35,45 +20,53 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
   // API ////////
 
   /**
-   * Return the tabs provided for the given element.
+   * Return the groups provided for the given element.
    *
    * @param {DiagramElement} element
    *
-   * @return {(Object[]) => (Object[])} tab entry middleware
+   * @return {(Object[]) => (Object[])} groups middleware
    */
-  this.getTabs = function(element) {
+  this.getGroups = function(element) {
 
     /**
      * We return a middleware that modifies
-     * the existing tabs.
+     * the existing groups.
      *
-     * @param {Object[]} entries
+     * @param {Object[]} groups
      *
-     * @return {Object[]} modified entries
+     * @return {Object[]} modified groups
      */
-    return function(entries) {
+    return function(groups) {
 
-      // add the "magic" tab
-      var magicTab = {
-        id: 'magic',
-        label: 'Magic',
-        groups: createMagicTabGroups(element, translate)
-      };
+      // Add the "magic" group
+      if(is(element, 'bpmn:StartEvent')) {
+        groups.push(createMagicGroup(element, translate));
+      }
 
-      entries.push(magicTab);
-  
-      // show general + "magic" tab
-      return entries;
+      return groups;
     }
   };
 
 
   // registration ////////
 
-  // register our custom magic properties provider
-  // use a lower priority to ensure it is loaded after
-  // the basic BPMN properties
+  // Register our custom magic properties provider.
+  // Use a lower priority to ensure it is loaded after
+  // the basic BPMN properties.
   propertiesPanel.registerProvider(LOW_PRIORITY, this);
 }
 
-MagicPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ]
+MagicPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];
+
+// Create the custom magic group
+function createMagicGroup(element, translate) {
+
+  // create a group called "Magic properties".
+  var magicGroup = {
+    id: 'magic',
+    label: translate('Magic properties'),
+    entries: spellProps(element)
+  };
+
+  return magicGroup
+}
