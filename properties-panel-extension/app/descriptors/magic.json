@@ -17,8 +17,8 @@
           "name": "spell",
           "isAttr": true,
           "type": "String"
-        },
+        }
       ]
-    },
+    }
   ]
 }
