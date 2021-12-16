@@ -1,21 +1,40 @@
-import entryFactory from 'bpmn-js-properties-panel/lib/factory/EntryFactory';
+import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
+import { useService } from 'bpmn-js-properties-panel'
 
-import {
-  is
-} from 'bpmn-js/lib/util/ModelUtil';
+export default function(element) {
 
+  return [
+    {
+      id: 'spell',
+      component: <Spell element={ element } />,
+      isEdited: isTextFieldEntryEdited
+    }
+  ];
+}
 
-export default function(group, element, translate) {
+function Spell(props) {
+  const { element } = props;
 
-  // only return an entry, if the currently selected
-  // element is a start event.
+  const modeling = useService('modeling');
+  const translate = useService('translate');
+  const debounce = useService('debounceInput');
 
-  if (is(element, 'bpmn:StartEvent')) {
-    group.entries.push(entryFactory.textField(translate, {
-      id : 'spell',
-      description : 'Apply a black magic spell',
-      label : 'Spell',
-      modelProperty : 'spell'
-    }));
+  const getValue = () => {
+    return element.businessObject.spell || '';
   }
+
+  const setValue = value => {
+    return modeling.updateProperties(element, {
+      spell: value
+    });
+  }
+
+  return <TextFieldEntry
+    element={ element }
+    description={ translate('Apply a black magic spell') }
+    label={ translate('Spell') }
+    getValue={ getValue }
+    setValue={ setValue }
+    debounce={ debounce }
+  />
 }
