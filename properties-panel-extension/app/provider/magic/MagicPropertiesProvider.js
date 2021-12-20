@@ -1,11 +1,11 @@
-// Require your custom property entries.
+// Import your custom property entries.
 // The entry is a text input field with logic attached to create,
 // update and delete the "spell" property.
 import spellProps from './parts/SpellProps';
 
 import { is } from 'bpmn-js/lib/util/ModelUtil';
 
-var LOW_PRIORITY = 500;
+const LOW_PRIORITY = 500;
 
 
 /**
@@ -62,7 +62,7 @@ MagicPropertiesProvider.$inject = [ 'propertiesPanel', 'translate' ];
 function createMagicGroup(element, translate) {
 
   // create a group called "Magic properties".
-  var magicGroup = {
+  const magicGroup = {
     id: 'magic',
     label: translate('Magic properties'),
     entries: spellProps(element)

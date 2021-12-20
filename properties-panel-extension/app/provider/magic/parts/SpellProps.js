@@ -6,14 +6,14 @@ export default function(element) {
   return [
     {
       id: 'spell',
-      component: <Spell element={ element } />,
+      component: <Spell id="spell" element={ element } />,
       isEdited: isTextFieldEntryEdited
     }
   ];
 }
 
 function Spell(props) {
-  const { element } = props;
+  const { element, id } = props;
 
   const modeling = useService('modeling');
   const translate = useService('translate');
@@ -30,6 +30,7 @@ function Spell(props) {
   }
 
   return <TextFieldEntry
+    id={ id }
     element={ element }
     description={ translate('Apply a black magic spell') }
     label={ translate('Spell') }
