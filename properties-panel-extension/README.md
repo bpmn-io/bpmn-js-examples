@@ -1,5 +1,7 @@
 # Properties Panel Extension Example
 
+> For `bpmn-js-properties-panel@0.x`, go to [the old version of this example](https://github.com/bpmn-io/bpmn-js-examples/tree/b20919ac2231abf3df45b9dc9a2561010009b4a2/properties-panel-extension).
+
 This example shows how to extend the [bpmn-js-properties-panel](https://github.com/bpmn-io/bpmn-js-properties-panel) with custom properties.
 
 ![properties panel extension screenshot](./docs/screenshot.png "Screenshot of the properties panel extension example")
