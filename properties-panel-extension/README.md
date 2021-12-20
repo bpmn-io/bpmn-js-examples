@@ -70,7 +70,7 @@ function MagicPropertiesProvider(propertiesPanel, translate) {
 As part of the properties provider we define the magic group:
 
 ```javascript
-// Require your custom property entries.
+// Import your custom property entries.
 // The entry is a text input field with logic attached to create,
 // update and delete the "spell" property.
 import spellProps from './parts/SpellProps';
