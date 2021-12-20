@@ -3,9 +3,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import { debounce } from 'min-dash';
 
-import propertiesPanelModule from 'bpmn-js-properties-panel';
-import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
-import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda.json';
+import { BpmnPropertiesPanelModule, BpmnPropertiesProviderModule } from 'bpmn-js-properties-panel';
 
 import diagramXML from '../resources/newDiagram.bpmn';
 
@@ -20,12 +18,9 @@ var bpmnModeler = new BpmnModeler({
     parent: '#js-properties-panel'
   },
   additionalModules: [
-    propertiesPanelModule,
-    propertiesProviderModule
-  ],
-  moddleExtensions: {
-    camunda: camundaModdleDescriptor
-  }
+    BpmnPropertiesPanelModule,
+    BpmnPropertiesProviderModule
+  ]
 });
 container.removeClass('with-diagram');
 
