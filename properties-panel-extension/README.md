@@ -1,6 +1,7 @@
-# Properties Panel Extension Example
+> Extending the properties panel changed significantly with `bpmn-js-properties-panel>=1`. For the `0.x` version of the library, check out [the old version of this example](https://github.com/bpmn-io/bpmn-js-examples/tree/b20919ac2231abf3df45b9dc9a2561010009b4a2/properties-panel-extension).
 
-> For `bpmn-js-properties-panel@0.x`, go to [the old version of this example](https://github.com/bpmn-io/bpmn-js-examples/tree/b20919ac2231abf3df45b9dc9a2561010009b4a2/properties-panel-extension).
+
+# Properties Panel Extension Example
 
 This example shows how to extend the [bpmn-js-properties-panel](https://github.com/bpmn-io/bpmn-js-properties-panel) with custom properties.
 
@@ -201,6 +202,7 @@ import {
   BpmnPropertiesPanelModule,
   BpmnPropertiesProviderModule
 } from 'bpmn-js-properties-panel';
+
 import magicPropertiesProviderModule from './provider/magic';
 import magicModdleDescriptor from './descriptors/magic';
 
