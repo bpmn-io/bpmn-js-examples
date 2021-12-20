@@ -79,7 +79,7 @@ import spellProps from './parts/SpellProps';
 function createMagicGroup(element, translate) {
 
   // create a group called "Magic properties".
-  var magicGroup = {
+  const magicGroup = {
     id: 'magic',
     label: translate('Magic properties'),
     entries: spellProps(element, translate)
@@ -202,7 +202,7 @@ import {
 import magicPropertiesProviderModule from './provider/magic';
 import magicModdleDescriptor from './descriptors/magic';
 
-var bpmnModeler = new BpmnModeler({
+const bpmnModeler = new BpmnModeler({
   container: '#js-canvas',
   propertiesPanel: {
     parent: '#js-properties-panel'
