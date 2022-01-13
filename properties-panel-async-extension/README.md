@@ -49,6 +49,12 @@ const getOptions = () => {
 }
 ```
 
+Note that the hooks need to be imported from preact vendored in [@bpmn-io/properties-panel](https://github.com/bpmn-io/properties-panel):
+
+```javascript
+import { useEffect, useState } from '@bpmn-io/properties-panel/preact/hooks';
+```
+
 ## Running the Example
 
 Install all required dependencies:
