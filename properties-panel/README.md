@@ -87,7 +87,7 @@ import {
   CamundaPlatformPropertiesProviderModule
 } from 'bpmn-js-properties-panel';
 
-import CamundaBpmnModdle from 'camunda-bpmn-moddle/resources/zeebe.json'
+import CamundaBpmnModdle from 'camunda-bpmn-moddle/resources/camunda.json'
 
 const bpmnModeler = new BpmnModeler({
   container: '#js-canvas',
