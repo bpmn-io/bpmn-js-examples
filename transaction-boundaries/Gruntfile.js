@@ -42,14 +42,6 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      diagram_js: {
-        files: [
-          {
-            src: resolvePath('diagram-js', 'assets/diagram-js.css'),
-            dest: 'dist/css/diagram-js.css'
-          }
-        ]
-      },
       bpmn_js: {
         files: [
           {

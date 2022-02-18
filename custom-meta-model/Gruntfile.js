@@ -36,6 +36,12 @@ module.exports = function(grunt) {
           dest: 'dist/css/diagram-js.css'
         } ]
       },
+      bpmn_js: {
+        files: [ {
+          src: require.resolve('bpmn-js/assets/bpmn-js.css'),
+          dest: 'dist/css/bpmn-js.css'
+        } ]
+      },
       app: {
         files: [
           {

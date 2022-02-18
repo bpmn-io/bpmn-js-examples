@@ -18,6 +18,9 @@ Download or simply include the relevant dependencies into your website:
 #### Viewer
 
 ```html
+<!-- required viewer styles -->
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@9.0.1/dist/assets/bpmn-js.css" />
+
 <script src="https://unpkg.com/bpmn-js@9.0.1/dist/bpmn-viewer.development.js"></script>
 ```
 
@@ -26,8 +29,9 @@ Download the complete [viewer example](https://cdn.staticaly.com/gh/bpmn-io/bpmn
 #### Modeler
 
 ```html
-<!-- necessary stylesheets -->
+<!-- required modeler styles -->
 <link rel="stylesheet" href="https://unpkg.com/bpmn-js@9.0.1/dist/assets/diagram-js.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@9.0.1/dist/assets/bpmn-js.css" />
 <link rel="stylesheet" href="https://unpkg.com/bpmn-js@9.0.1/dist/assets/bpmn-font/css/bpmn.css" />
 
 <script src="https://unpkg.com/bpmn-js@9.0.1/dist/bpmn-modeler.development.js"></script>
