@@ -8,7 +8,8 @@
     "bundle": "webpack",
     "bundle:watch": "webpack -w",
     "open": "opn ./public/index.html",
-    "dev": "npm run bundle:watch"
+    "dev": "npm run bundle:watch",
+    "start": "npm run dev"
   },
   "repository": {
     "type": "git",
