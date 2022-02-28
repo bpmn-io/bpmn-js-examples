@@ -41,6 +41,8 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-example-custom-controls](https://github.com/bpmn-io/bpmn-js-example-custom-controls) - An example of creating custom controls for bpmn-js.
 * [custom-elements](./custom-elements) - An introduction to custom elements, their use cases and implementation approaches.
 * [custom-modeling-rules](./custom-modeling-rules) - Add custom rules to the bpmn-js modeler.
+* [deep-linking](./deep-linking) - An example of how to switch between different diagram layers.
+* [properties-panel-async-extension](./properties-panel-async-extension) - An example showing how to handle asynchronous data loading inside the properties panel.
 * [properties-panel-extension](./properties-panel-extension) - An example showing how to extend the properties panel with custom controls.
 
 
