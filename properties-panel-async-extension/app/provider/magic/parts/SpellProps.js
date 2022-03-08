@@ -9,7 +9,8 @@ export default function(element) {
   return [
     {
       id: 'spell',
-      component: <Spell id="spell" element={ element } />,
+      element,
+      component: Spell,
       isEdited: isSelectEntryEdited
     }
   ];
