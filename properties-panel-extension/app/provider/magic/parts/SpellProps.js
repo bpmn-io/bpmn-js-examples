@@ -1,12 +1,13 @@
 import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
-import { useService } from 'bpmn-js-properties-panel'
+import { useService } from 'bpmn-js-properties-panel';
 
 export default function(element) {
 
   return [
     {
       id: 'spell',
-      component: <Spell id="spell" element={ element } />,
+      element,
+      component: Spell,
       isEdited: isTextFieldEntryEdited
     }
   ];

@@ -85,7 +85,7 @@ function createMagicGroup(element, translate) {
   const magicGroup = {
     id: 'magic',
     label: translate('Magic properties'),
-    entries: spellProps(element, translate)
+    entries: spellProps(element)
   };
 
   return magicGroup
@@ -101,19 +101,20 @@ The "spell" entry is defined in [`SpellProps`](app/provider/magic/parts/SpellPro
 import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
 import { useService } from 'bpmn-js-properties-panel'
 
-export default function(element, translate) {
+export default function(element) {
 
   return [
     {
       id: 'spell',
-      component: <Spell element={ element } translate={ translate } />,
+      element,
+      component: Spell,
       isEdited: isTextFieldEntryEdited
     }
   ];
 }
 
 function Spell(props) {
-  const { element } = props;
+  const { element, id } = props;
 
   const modeling = useService('modeling');
   const translate = useService('translate');
@@ -130,6 +131,7 @@ function Spell(props) {
   }
 
   return <TextFieldEntry
+    id={ id }
     element={ element }
     description={ translate('Apply a black magic spell') }
     label={ translate('Spell') }
