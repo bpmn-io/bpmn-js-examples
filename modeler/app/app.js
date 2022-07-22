@@ -7,7 +7,10 @@ import diagramXML from '../resources/newDiagram.bpmn';
 var container = $('#js-drop-zone');
 
 var modeler = new BpmnModeler({
-  container: '#js-canvas'
+  container: '#js-canvas',
+  keyboard: {
+    bindTo: window
+  }
 });
 
 function createNewDiagram() {
