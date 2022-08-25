@@ -44,6 +44,7 @@ This repository contains a number of examples showing how use and integrate
 * [deep-linking](./deep-linking) - An example of how to switch between different diagram layers.
 * [properties-panel-async-extension](./properties-panel-async-extension) - An example showing how to handle asynchronous data loading inside the properties panel.
 * [properties-panel-extension](./properties-panel-extension) - An example showing how to extend the properties panel with custom controls.
+* [properties-panel-list-extension](./properties-panel-list-extension) - An example showing how to extend the properties panel with lists.
 
 
 ## Featuring Libraries
