@@ -1,0 +1,36 @@
+{
+  "name": "bpmn-js-example-esbuild",
+  "version": "0.0.0",
+  "description": "A bpmn-js modeler esbuild example",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+  },
+  "keywords": [
+    "bpmnjs-example",
+    "esbuild"
+  ],
+  "author": {
+    "name": "Marc Henry Schultz",
+    "url": "https://github.com/mhsdesign"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bpmn-js": "^9.4.0",
+    "diagram-js": "^8.9.0",
+    "file-saver": "^2.0.5",
+    "lodash.debounce": "^4.0.8"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.6"
+  }
+}

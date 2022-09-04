@@ -1,0 +1,47 @@
+@import url("bpmn-js/dist/assets/diagram-js.css");
+@import url("bpmn-js/dist/assets/bpmn-js.css");
+@import url("bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.content,
+.content > div {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.buttons > li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.buttons > li > a {
+  background: #ddd;
+  border: solid 1px #666;
+  display: inline-block;
+  padding: 5px;
+}
