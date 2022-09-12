@@ -11,9 +11,7 @@ module.exports = {
     rules: [
       {
         test: /\.bpmn$/,
-        use: {
-          loader: 'raw-loader'
-        }
+        type: 'asset/source'
       }
     ]
   }
