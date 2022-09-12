@@ -56,6 +56,24 @@ To learn about more bundling options, checkout the [webpack-cli documentation](h
 __Note:__ You may use another ES module aware bundler such as [Rollup](https://rollupjs.org), too.
 Browserify may also be used but must be properly configured via a global babelify transform.
 
+### Bundling to ES5
+
+If your application needs to support old browsers, you need to transpile the code to ES5.
+This can be achieved via
+
+```
+npm run bundle:es5
+```
+
+After the operation finishes, run
+
+```
+npm run open
+```
+
+to open the application in the browser.
+
+Inspect [webpack.es5.config.js](webpack.es5.config.js) to check how webpack can be configured to transpile your application with [babel](https://babeljs.io/).
 
 ## Building the Example
 

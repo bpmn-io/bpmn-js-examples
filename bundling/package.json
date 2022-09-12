@@ -6,6 +6,7 @@
   "scripts": {
     "all": "run-s bundle open",
     "bundle": "webpack",
+    "bundle:es5": "webpack --config webpack.es5.config.js",
     "bundle:watch": "webpack -w",
     "open": "opn ./public/index.html",
     "dev": "npm run bundle:watch"
@@ -29,6 +30,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "babel-loader": "^8.2.5",
     "npm-run-all": "^4.1.2",
     "opn-cli": "^3.1.0",
     "webpack": "^5.74.0",
