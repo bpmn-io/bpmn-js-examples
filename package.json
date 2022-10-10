@@ -1,0 +1,26 @@
+{
+  "name": "bpmn-js-examples",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+  },
+  "keywords": [
+    "bpmnjs-example"
+  ],
+  "scripts": {
+    "postinstall": "lerna bootstrap --ignore bpmn-js-example-bpmn-properties --ignore theming",
+    "build:examples": "lerna run build --stream"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^5.6.2"
+  }
+}
