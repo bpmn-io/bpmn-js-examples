@@ -62,7 +62,7 @@ If your application needs to support old browsers, you need to transpile the cod
 This can be achieved via
 
 ```
-npm run bundle:es5
+npm run build:es5
 ```
 
 After the operation finishes, run

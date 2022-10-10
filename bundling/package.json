@@ -5,9 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "all": "run-s bundle open",
-    "bundle": "webpack",
-    "bundle:es5": "webpack --config webpack.es5.config.js",
-    "bundle:watch": "webpack -w",
+    "build": "webpack",
+    "build:es5": "webpack --config webpack.es5.config.js",
+    "build:watch": "webpack -w",
     "open": "opn ./public/index.html",
     "dev": "npm run bundle:watch"
   },

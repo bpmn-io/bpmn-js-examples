@@ -4,14 +4,14 @@
   "description": "A bpmn-js modeler + properties panel example",
   "main": "app/index.js",
   "scripts": {
-    "all": "run-s bundle",
-    "dev": "run-s bundle:less watch:js",
-    "start": "run-s bundle serve",
+    "all": "run-s build",
+    "dev": "run-s build:less watch:js",
+    "start": "run-s build serve",
     "serve": "sirv public --dev",
-    "bundle": "run-s bundle:*",
-    "bundle:less": "lessc src/app.less public/app.css",
-    "bundle:js": "webpack -c webpack.config.js",
-    "watch:js": "run-s \"bundle:js -- --watch\""
+    "build": "run-s build:*",
+    "build:less": "lessc src/app.less public/app.css",
+    "build:js": "webpack -c webpack.config.js",
+    "watch:js": "run-s \"build:js -- --watch\""
   },
   "repository": {
     "type": "git",
