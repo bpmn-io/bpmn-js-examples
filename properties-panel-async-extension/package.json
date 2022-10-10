@@ -46,9 +46,9 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@bpmn-io/properties-panel": "^0.11.0",
+    "@bpmn-io/properties-panel": "^0.23.0",
     "bpmn-js": "^10.2.0",
-    "bpmn-js-properties-panel": "^1.0.0-alpha.5",
+    "bpmn-js-properties-panel": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "jquery": "^3.5.1",
