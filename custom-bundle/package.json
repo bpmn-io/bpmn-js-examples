@@ -4,7 +4,7 @@
   "description": "Bundle a custom version of bpmn-js",
   "scripts": {
     "all": "run-s bundle open",
-    "bundle": "rollup -c",
+    "build": "rollup -c",
     "open": "opn ./index.html"
   },
   "dependencies": {
