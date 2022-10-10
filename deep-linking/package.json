@@ -1,5 +1,5 @@
 {
-  "name": "bpmn-js-example-commonjs",
+  "name": "bpmn-js-example-deep-linking",
   "version": "0.0.0",
   "description": "An example how to bundle an app using bpmn-js for the browser",
   "main": "src/app.js",
