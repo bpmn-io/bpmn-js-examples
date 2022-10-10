@@ -1,5 +1,5 @@
 {
-  "name": "bpmn-js-example-commenting",
+  "name": "bpmn-js-example-custom-modeling-rules",
   "version": "0.0.0",
   "description": "An example how to read and write custom BPMN 2.0 extensions",
   "scripts": {
