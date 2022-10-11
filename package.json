@@ -10,7 +10,7 @@
     "bpmnjs-example"
   ],
   "scripts": {
-    "postinstall": "lerna bootstrap --ignore bpmn-js-example-bpmn-properties --ignore theming",
+    "postinstall": "lerna bootstrap --ignore bpmn-js-example-bpmn-properties",
     "build:examples": "lerna run build --stream"
   },
   "contributors": [

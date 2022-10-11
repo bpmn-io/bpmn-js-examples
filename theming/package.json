@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "description": "bpmn-js theming",
   "scripts": {
-    "all": "run-s bundle open",
-    "bundle": "rollup -c",
+    "all": "run-s build open",
+    "build": "rollup -c",
     "open": "opn ./index.html"
   },
   "dependencies": {
     "bpmn-js": "^10.2.0",
-    "bpmn-js-sketchy": "^0.2.0",
-    "diagram-js": "^5.0.0"
+    "bpmn-js-sketchy": "^0.6.0",
+    "diagram-js": "^9.1.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.2",
