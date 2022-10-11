@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>bpmn-io/renovate-config:recommended"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "bpmn-js.*"
+      ],
+      "groupName": "bpmn-js dependencies",
+      "groupSlug": "bpmn-js"
+    },
+    {
+      "matchPackagePatterns": [
+        "properties-panel.*",
+        "@bpmn-io/properties-panel.*",
+        "bpmn-js-properties-panel.*"
+      ],
+      "groupName": "bpmn-properties-panel dependencies",
+      "groupSlug": "bpmn-js-properties-panel"
+    }
+  ]
+}
