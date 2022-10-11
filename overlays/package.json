@@ -39,6 +39,6 @@
   },
   "dependencies": {
     "bpmn-js": "^10.2.0",
-    "min-dash": "^3.0.0"
+    "min-dash": "^4.0.0"
   }
 }
