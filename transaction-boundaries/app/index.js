@@ -5,7 +5,7 @@ import {
   debounce
 } from 'min-dash';
 
-import transactionBoundariesModule from 'bpmn-js-transaction-boundaries';
+import transactionBoundariesModule from 'camunda-transaction-boundaries';
 
 import diagramXML from '../resources/transaction-boundaries.bpmn';
 
