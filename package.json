@@ -7,11 +7,12 @@
     "url": "https://github.com/bpmn-io/bpmn-js-examples"
   },
   "keywords": [
-    "bpmnjs-example"
+    "bpmn-js-example"
   ],
   "scripts": {
     "postinstall": "lerna bootstrap --ignore bpmn-js-example-bpmn-properties",
-    "build:examples": "lerna run build --stream"
+    "build:examples": "lerna run build --stream",
+    "lint:examples": "lerna run lint --stream --ignore bpmn-js-example-bpmn-properties"
   },
   "contributors": [
     {

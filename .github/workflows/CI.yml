@@ -28,3 +28,5 @@ jobs:
       run: npm ci
     - name: Build examples
       run: npm run build:examples
+    - name: Lint examples
+      run: npm run lint:examples
