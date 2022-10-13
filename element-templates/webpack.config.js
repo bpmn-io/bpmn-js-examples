@@ -16,6 +16,10 @@ module.exports = {
         use: {
           loader: 'raw-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        use: ["css-loader"]
       }
     ]
   },
@@ -24,7 +28,8 @@ module.exports = {
       patterns: [
         { from: 'src/index.html', to: '.' },
         { from: 'node_modules/bpmn-js/dist/assets', to: 'vendor/bpmn-js/assets' },
-        { from: 'node_modules/bpmn-js-properties-panel/dist/assets', to: 'vendor/bpmn-js-properties-panel/assets' }
+        { from: 'node_modules/bpmn-js-properties-panel/dist/assets', to: 'vendor/bpmn-js-properties-panel/assets' },
+        { from: 'node_modules/@bpmn-io/element-template-chooser/dist', to: 'vendor/@bpmn-io/element-template-chooser/assets' }
       ]
     })
   ]
