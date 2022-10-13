@@ -1,6 +1,6 @@
 {
-  "extends": "plugin:bpmn-io/es6",
-  "env": {
-    "browser": true
-  }
+  "extends": [
+    "plugin:bpmn-io/node",
+    "plugin:bpmn-io/browser"
+  ]
 }

@@ -1,4 +1,5 @@
 function fn(modeler) {
+
   /**
    * So far we've worked with processes. Let's have a look at collaborations.
    *

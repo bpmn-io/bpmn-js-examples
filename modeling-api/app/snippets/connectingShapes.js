@@ -1,4 +1,5 @@
 function fn(modeler) {
+
   /**
    * Now let's look at the different ways of connecting shapes to each other.
    *

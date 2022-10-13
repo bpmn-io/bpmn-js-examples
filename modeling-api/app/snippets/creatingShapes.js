@@ -1,4 +1,5 @@
 function fn(modeler) {
+
   /**
    * Now that we have created our first shapes let's create some more complex shapes.
    *

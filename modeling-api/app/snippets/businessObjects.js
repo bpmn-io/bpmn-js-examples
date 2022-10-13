@@ -1,4 +1,5 @@
 function fn(modeler) {
+
   /**
    * Business objects are the model objects that hold all the BPMN-related properties of a shape or
    * connection. They can be accessed through an element's `businessObject` property. Not all model
