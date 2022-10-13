@@ -32,7 +32,7 @@
     "babelify": "^8.0.0",
     "browserify": "^16.0.0",
     "chai": "^4.1.2",
-    "eslint": "^4.17.0",
+    "eslint": "^8.25.0",
     "eslint-plugin-bpmn-io": "^0.16.0",
     "karma": "^1.7.1",
     "karma-browserify": "^5.2.0",

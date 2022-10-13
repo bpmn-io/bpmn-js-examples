@@ -1,6 +1,7 @@
 import diagram from '../../resources/editingElements.bpmn';
 
 function fn(modeler) {
+
   /**
    * Now, let's have a look at how you can edit existing elements.
    *

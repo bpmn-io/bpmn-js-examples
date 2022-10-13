@@ -1,4 +1,5 @@
 function fn(modeler) {
+
   /**
    * After creating a new instance of bpmn-js you can access any module of bpmn-js using
    * modeler#get.
