@@ -10,7 +10,7 @@
   "dependencies": {
     "bpmn-js": "^10.2.1",
     "bpmn-js-sketchy": "^0.6.0",
-    "diagram-js": "^9.1.0"
+    "diagram-js": "^10.0.0"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.2",
