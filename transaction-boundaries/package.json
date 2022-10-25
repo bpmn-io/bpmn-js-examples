@@ -42,7 +42,7 @@
   "dependencies": {
     "bpmn-js": "^10.2.1",
     "camunda-transaction-boundaries": "^1.1.2",
-    "diagram-js": "^9.1.0",
+    "diagram-js": "^10.0.0",
     "jquery": "^3.6.1",
     "min-dash": "^4.0.0"
   }
