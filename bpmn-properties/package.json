@@ -30,7 +30,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babelify": "^10.0.0",
-    "browserify": "^16.0.0",
+    "browserify": "^17.0.0",
     "chai": "^4.1.2",
     "eslint": "^8.25.0",
     "eslint-plugin-bpmn-io": "^0.16.0",
