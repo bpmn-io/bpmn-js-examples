@@ -1,14 +1,36 @@
 :root {
-  --blue-base-65: #4d90ff;
+  --color-grey-225-10-15: hsl(225, 10%, 15%);
+  --color-grey-225-10-35: hsl(225, 10%, 35%);
+  --color-grey-225-10-55: hsl(225, 10%, 55%);
+  --color-grey-225-10-75: hsl(225, 10%, 75%);
+  --color-grey-225-10-80: hsl(225, 10%, 80%);
+  --color-grey-225-10-85: hsl(225, 10%, 85%);
+  --color-grey-225-10-90: hsl(225, 10%, 90%);
+  --color-grey-225-10-95: hsl(225, 10%, 95%);
+  --color-grey-225-10-97: hsl(225, 10%, 97%);
 
-  --silver-base-97: #f8f8f8;
-  --silver-darken-94: #efefef;
+  --color-blue-205-100-40: hsl(205, 100%, 40%);
+  --color-blue-205-100-45: hsl(205, 100%, 45%);
+  --color-blue-205-100-50: hsl(205, 100%, 50%);
+  --color-blue-205-100-95: hsl(205, 100%, 95%);
 
-  --grey-lighten-56: #909090;
-  --grey-darken-23: #3b3b3b;
+  --color-green-150-86-44: hsl(150, 86%, 44%);
 
-  --orange-base-60: #ffa533;
-  --orange-lighten-85: #ffddb3;
+  --color-red-360-100-40: hsl(360, 100%, 40%);
+  --color-red-360-100-45: hsl(360, 100%, 45%);
+  --color-red-360-100-92: hsl(360, 100%, 92%);
+  --color-red-360-100-97: hsl(360, 100%, 97%);
+
+  --color-yellow-47-88-53: hsl(47, 88%, 53%);
+  --color-yellow-47-86-91: hsl(47, 86%, 91%);
+
+  --color-orange-20-98-52: hsl(20, 98%, 52%);
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-white-opacity-80: hsla(0, 0%, 100%, 80%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-black-opacity-10: hsla(0, 0%, 0%, 10%);
+  --color-black-opacity-30: hsla(0, 0%, 0%, 30%);
 }
 
 * {
@@ -24,7 +46,7 @@ html, body {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  color: var(--grey-darken-23);
+  color: var(--color-grey-225-10-15);
 }
 
 body {
@@ -38,7 +60,7 @@ a:link {
 }
 
 .snippets {
-  width: 20%;
+  width: 15%;
   overflow-y: auto;
 }
 
@@ -51,7 +73,7 @@ a:link {
   list-style: none;
   padding: 10px;
   user-select: none;
-  cursor: default;
+  cursor: pointer;
 }
 
 .snippets__list-item-name {
@@ -64,27 +86,23 @@ a:link {
   font-size: 14px;
 }
 
-.snippets__list-item:not(.snippets__list-item--active) .snippets__list-item-description {
-  /* display: none; */
-}
-
 .snippets__list-item:hover,
 .snippets__list-item--active {
-  background-color: var(--blue-base-65);
-  color: var(--silver-base-97);
+  border-right: solid 3px var(--color-blue-205-100-45);
+  padding-right: calc(10px - 3px)
 }
 
 .hljs {
   display: block;
   overflow-x: auto;
-  color: var(--grey-darken-23);
-  background-color: var(--silver-darken-94);
+  color: var(--color-grey-225-10-15);
+  background-color: var(--color-grey-225-10-97);
   padding: 10px;
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: var(--grey-lighten-56);
+  color: var(--color-grey-225-10-55);
 }
 
 .hljs-variable,
@@ -95,7 +113,7 @@ a:link {
 .hljs-selector-class,
 .hljs-regexp,
 .hljs-deletion {
-  color: var(--blue-base-65);
+  color: var(--color-blue-205-100-45);
 }
 
 .hljs-number,
@@ -106,28 +124,28 @@ a:link {
 .hljs-params,
 .hljs-meta,
 .hljs-link {
-  color: var(--blue-base-65);
+  color: var(--color-blue-205-100-45);
 }
 
 .hljs-attribute {
-  color: var(--blue-base-65);
+  color: var(--color-blue-205-100-45);
 }
 
 .hljs-string,
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: var(--blue-base-65);
+  color: var(--color-blue-205-100-45);
 }
 
 .hljs-title,
 .hljs-section {
-  color: var(--blue-base-65);
+  color: var(--color-blue-205-100-45);
 }
 
 .hljs-keyword,
 .hljs-selector-tag {
-  color: var(--blue-base-65);
+  color: var(--color-blue-205-100-45);
 }
 
 .hljs-emphasis {
@@ -153,7 +171,7 @@ a:link {
 }
 
 .modeler {
-  width: 40%;
+  width: 50%;
   height: 100%;
   overflow: hidden;
 }
