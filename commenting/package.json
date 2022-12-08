@@ -39,7 +39,7 @@
     "stringify": "^3.1.0"
   },
   "dependencies": {
-    "bpmn-js": "^11.0.4",
+    "bpmn-js": "^11.0.5",
     "bpmn-js-embedded-comments": "^0.7.0",
     "diagram-js": "^11.0.0",
     "jquery": "^3.3.1"
