@@ -47,7 +47,7 @@
     "mocha-test-container-support": "^0.1.0",
     "npm-run-all": "^4.1.2",
     "stringify": "^5.0.0",
-    "watchify": "^3.10.0"
+    "watchify": "^4.0.0"
   },
   "dependencies": {
     "inherits": "^2.0.1",
