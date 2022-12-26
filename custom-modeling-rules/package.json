@@ -39,7 +39,7 @@
     "mocha": "^4.1.0",
     "mocha-test-container-support": "^0.1.0",
     "puppeteer": "^1.2.0",
-    "stringify": "^3.1.0"
+    "stringify": "^5.0.0"
   },
   "dependencies": {
     "inherits": "^2.0.1",
