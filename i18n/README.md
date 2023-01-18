@@ -1,6 +1,6 @@
 # bpmn-js i18n Example
 
-This example shows how to easily translate the strings displayed in [bpmn-js](https://github.com/bpmn-io/bpmn-js) to another language.
+This example shows how to translate the strings displayed in [bpmn-js](https://github.com/bpmn-io/bpmn-js) to another language or domain.
 
 ![Screenshot](resources/screenshot.png)
 
