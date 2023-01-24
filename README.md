@@ -24,7 +24,7 @@ This repository contains a number of examples showing how use and integrate
 * [commenting](./commenting) - A simple commenting application build on top of BPMN 2.0 diagrams
 * [bpmn-properties](./bpmn-properties) - Read and write BPMN properties with bpmn-js.
 * [i18n](./i18n) - Use a custom translation module with bpmn-js.
-* [properties-panel](./properties-panel) - Add a properties panel and edit execution related BPMN 2.0 properties.
+* [properties-panel](./properties-panel) - Add a properties panel and edit execution related BPMN 2.0 properties. 
 * [theming](./theming) - an example that showcases the different aspects of theming bpmn-js.
 * [modeling-api](./modeling-api) - How to create, connect and edit elements using the API.
 
@@ -34,7 +34,6 @@ This repository contains a number of examples showing how use and integrate
 * [bpmn-js-nyan](https://github.com/nikku/bpmn-js-nyan) - Model nyan cats instead of service tasks, resize elements and assign custom element colors.
 * [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) - persistent task colors, diagram interaction and custom extension elements demo.
 * [bpmn-js-in-color](https://github.com/bpmn-io/bpmn-js-in-color) - Adding color support for BPMN based on the [BPMN in Color](https://github.com/bpmn-miwg/bpmn-in-color) proposal.
-* [bpmn-js-example-react-properties-panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - An example how to build a simple properties panel for bpmn-js using React.
 * [custom-bundle](./custom-bundle) - How to build a custom version of bpmn-js
 * [bpmn-js-example-model-extension](https://github.com/bpmn-io/bpmn-js-example-model-extension) - An example of creating a model extension for bpmn-js.
 * [bpmn-js-example-custom-rendering](https://github.com/bpmn-io/bpmn-js-example-custom-rendering) - An example of creating custom rendering for bpmn-js.
@@ -42,9 +41,14 @@ This repository contains a number of examples showing how use and integrate
 * [custom-elements](./custom-elements) - An introduction to custom elements, their use cases and implementation approaches.
 * [custom-modeling-rules](./custom-modeling-rules) - Add custom rules to the bpmn-js modeler.
 * [deep-linking](./deep-linking) - An example of how to switch between different diagram layers.
-* [properties-panel-async-extension](./properties-panel-async-extension) - An example showing how to handle asynchronous data loading inside the properties panel.
+
+
+### Properties Panel
+
 * [properties-panel-extension](./properties-panel-extension) - An example showing how to extend the properties panel with custom controls.
+* [properties-panel-async-extension](./properties-panel-async-extension) - An example showing how to handle asynchronous data loading inside the properties panel.
 * [properties-panel-list-extension](./properties-panel-list-extension) - An example showing how to extend the properties panel with lists.
+* [bpmn-js-example-react-properties-panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - An example how to build a simple properties panel for bpmn-js using React.
 
 
 ## Featuring Libraries
