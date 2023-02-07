@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@bpmn-io/properties-panel": "^1.0.0",
-    "bpmn-js": "^11.2.0",
+    "bpmn-js": "^11.3.0",
     "bpmn-js-properties-panel": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
