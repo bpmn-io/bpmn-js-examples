@@ -21,7 +21,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "bpmn-js": "^11.4.1",
+    "bpmn-js": "^11.5.0",
     "diagram-js": "^11.0.0",
     "highlight.js": "^10.1.1",
     "min-dom": "^4.0.0"

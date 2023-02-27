@@ -8,7 +8,7 @@
     "open": "opn ./index.html"
   },
   "dependencies": {
-    "bpmn-js": "^11.4.1",
+    "bpmn-js": "^11.5.0",
     "bpmn-js-sketchy": "^0.6.0",
     "diagram-js": "^11.0.0"
   },
