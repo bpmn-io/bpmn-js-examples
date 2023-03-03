@@ -1,6 +1,6 @@
 # bpmn-js Examples
 
-This repository contains a number of examples showing how use and integrate
+This repository contains a number of examples showing how to use and integrate
 [bpmn-js](https://github.com/bpmn-io/bpmn-js) into your applications.
 
 
