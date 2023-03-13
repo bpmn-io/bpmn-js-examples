@@ -53,6 +53,6 @@
     "ids": "^1.0.0",
     "jquery": "^3.5.1",
     "min-dash": "^4.0.0",
-    "zeebe-bpmn-moddle": "^0.17.0"
+    "zeebe-bpmn-moddle": "^0.18.0"
   }
 }
