@@ -29,7 +29,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babelify": "^10.0.0",
-    "grunt": "~1.5.0",
+    "grunt": "~1.6.0",
     "grunt-browserify": "^6.0.0",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-contrib-connect": "~3.0.0",
