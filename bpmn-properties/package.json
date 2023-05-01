@@ -44,7 +44,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-safari-launcher": "^1.0.0",
     "mocha": "^10.0.0",
-    "mocha-test-container-support": "^0.1.0",
+    "mocha-test-container-support": "^0.2.0",
     "npm-run-all": "^4.1.2",
     "stringify": "^5.0.0",
     "watchify": "^3.10.0"
