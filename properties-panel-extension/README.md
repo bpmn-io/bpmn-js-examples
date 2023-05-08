@@ -95,9 +95,11 @@ function createMagicGroup(element, translate) {
 
 ### Define an Entry
 
-The "spell" entry is defined in [`SpellProps`](app/provider/magic/parts/SpellProps.js). We reuse [`TextFieldEntry`](https://github.com/bpmn-io/properties-panel/blob/main/src/components/entries/TextField.js) to create a text field for the property.
+The "spell" entry is defined in [`SpellProps`](app/provider/magic/parts/SpellProps.js). We reuse [`TextFieldEntry`](https://github.com/bpmn-io/properties-panel/blob/main/src/components/entries/TextField.js) to create a text field for the property. The `component` needs to be a Preact component. We use [`htm`](https://github.com/developit/htm) to create a Preact component from a tagged template.
 
 ```javascript
+import { html } from 'htm/preact';
+
 import { TextFieldEntry, isTextFieldEntryEdited } from '@bpmn-io/properties-panel';
 import { useService } from 'bpmn-js-properties-panel'
 
@@ -130,15 +132,15 @@ function Spell(props) {
     });
   }
 
-  return <TextFieldEntry
-    id={ id }
-    element={ element }
-    description={ translate('Apply a black magic spell') }
-    label={ translate('Spell') }
-    getValue={ getValue }
-    setValue={ setValue }
-    debounce={ debounce }
-  />;
+  return html`<${TextFieldEntry}
+    id=${ id }
+    element=${ element }
+    description=${ translate('Apply a black magic spell') }
+    label=${ translate('Spell') }
+    getValue=${ getValue }
+    setValue=${ setValue }
+    debounce=${ debounce }
+  />`
 }
 ```
 
