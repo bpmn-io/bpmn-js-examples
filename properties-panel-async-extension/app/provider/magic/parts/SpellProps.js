@@ -1,3 +1,5 @@
+import { html } from 'htm/preact';
+
 import { SelectEntry, isSelectEntryEdited } from '@bpmn-io/properties-panel';
 import { useService } from 'bpmn-js-properties-panel'
 
@@ -57,14 +59,14 @@ function Spell(props) {
     ];
   }
 
-  return <SelectEntry
-    id={ id }
-    element={ element }
-    description={ translate('Apply a black magic spell') }
-    label={ translate('Spell') }
-    getValue={ getValue }
-    setValue={ setValue }
-    getOptions={ getOptions }
-    debounce={ debounce }
-  />
+  return html`<${SelectEntry}
+    id=${ id }
+    element=${ element }
+    description=${ translate('Apply a black magic spell') }
+    label=${ translate('Spell') }
+    getValue=${ getValue }
+    setValue=${ setValue }
+    getOptions=${ getOptions }
+    debounce=${ debounce }
+  />`
 }
