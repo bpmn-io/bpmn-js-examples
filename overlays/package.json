@@ -38,7 +38,7 @@
     "stringify": "^5.0.0"
   },
   "dependencies": {
-    "bpmn-js": "^13.0.5",
+    "bpmn-js": "^13.0.6",
     "min-dash": "^4.0.0"
   }
 }
