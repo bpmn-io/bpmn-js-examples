@@ -31,16 +31,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "copy-webpack-plugin": "^10.1.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.5.1",
     "less": "^4.1.2",
-    "less-loader": "^10.2.0",
+    "less-loader": "^11.0.0",
     "npm-run-all": "^4.1.5",
     "raw-loader": "^4.0.2",
     "sirv-cli": "^2.0.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^5.0.0"
   },
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.0.0",
