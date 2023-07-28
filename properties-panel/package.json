@@ -36,7 +36,7 @@
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.0.0",
     "bpmn-js": "^13.2.2",
-    "bpmn-js-properties-panel": "^3.0.0",
+    "bpmn-js-properties-panel": "^4.0.0",
     "jquery": "^3.5.1",
     "min-dash": "^4.0.0"
   },
