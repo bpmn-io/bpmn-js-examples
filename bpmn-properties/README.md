@@ -27,7 +27,7 @@ sequenceFlow.conditionExpression; // ModdleElement { $type: 'bpmn:FormalExpressi
 
 To write a BPMN property, simply set it on the business object.
 
-> Check out the [`bpmn.json` meta-model descriptor](https://github.com/bpmn-io/bpmn-moddle/blob/master/resources/bpmn/json/bpmn.json) to learn about BPMN types, their properties and relationships.
+> Check out the [`bpmn.json` meta-model descriptor](https://github.com/bpmn-io/bpmn-moddle/blob/main/resources/bpmn/json/bpmn.json) to learn about BPMN types, their properties and relationships.
 
 ```javascript
 var moddle = bpmnJS.get('moddle');
