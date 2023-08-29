@@ -6,7 +6,7 @@ function fn(modeler) {
    * objects are visible as shapes or connections. An event definition for example is a model object
    * that is part of an event shape's business object.
    *
-   * The entire BPMN model can be found here: https://github.com/bpmn-io/bpmn-moddle/blob/master/resources/bpmn/json/bpmn.json
+   * The entire BPMN model can be found here: https://github.com/bpmn-io/bpmn-moddle/blob/main/resources/bpmn/json/bpmn.json
    *
    * The modules used in this example are:
    *

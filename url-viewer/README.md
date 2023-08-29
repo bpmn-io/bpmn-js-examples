@@ -3,7 +3,7 @@
 This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) to implement a
 simple viewer for BPMN 2.0 process diagrams that can be loaded via their URL.
 
-[__Try out__](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/master/url-viewer/index.html).
+[__Try out__](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/main/url-viewer/index.html).
 
 
 ## About
@@ -18,4 +18,4 @@ Make sure you serve the application via a web server (nginx, apache, embedded) a
 
 ## Run the Example
 
-Download and open the [example HTML page](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/master/url-viewer/index.html).
+Download and open the [example HTML page](https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/main/url-viewer/index.html).

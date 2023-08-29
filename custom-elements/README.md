@@ -8,7 +8,7 @@ A powerful feature provided by [bpmn-js](https://github.com/bpmn-io/bpmn-js) is 
 * display hidden details directly on the diagram
 * attach technical information related to model execution
 
-:warning: If your data has a different life-cycle (for example runtime data) or is stored outside the BPMN 2.0 diagram you should consider alternative extension mechanisms such as [:notebook: overlays](https://github.com/bpmn-io/bpmn-js-examples/tree/master/overlays).
+:warning: If your data has a different life-cycle (for example runtime data) or is stored outside the BPMN 2.0 diagram you should consider alternative extension mechanisms such as [:notebook: overlays](https://github.com/bpmn-io/bpmn-js-examples/tree/main/overlays).
 
 
 ## Implementation Techniques
@@ -63,9 +63,9 @@ The [custom elements example](https://github.com/bpmn-io/bpmn-js-example-custom-
 
 Of course, you can go even further. Have a look at the following examples:
 
-* [Custom rules](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-modeling-rules) - Customize diagram modeling rules.
+* [Custom rules](https://github.com/bpmn-io/bpmn-js-examples/tree/main/custom-modeling-rules) - Customize diagram modeling rules.
 * [Custom properties panel](https://github.com/bpmn-io/bpmn-js-example-react-properties-panel) - Create a properties panel to allow editing of custom data
-* [bpmn-js-properties-panel extension](https://github.com/bpmn-io/bpmn-js-examples/tree/master/properties-panel-extension) - Extend our [properties panel](https://github.com/bpmn-io/bpmn-js-properties-panel) to edit custom element properties.
+* [bpmn-js-properties-panel extension](https://github.com/bpmn-io/bpmn-js-examples/tree/main/properties-panel-extension) - Extend our [properties panel](https://github.com/bpmn-io/bpmn-js-properties-panel) to edit custom element properties.
 * [Custom shapes](https://github.com/bpmn-io/bpmn-js-example-custom-shapes) - Add any shape to a BPMN 2.0 diagram.
 
 

@@ -7,7 +7,7 @@ This example shows how to implement custom modeling rules in [bpmn-js](https://g
 
 This example extends the [bpmn-js](https://github.com/bpmn-io/bpmn-js) modeler with custom modeling rules.
 
-The rules are added via a [custom rules provider](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-modeling-rules/lib/custom-rules/CustomRules.js). The provider hooks into the rule evaluation for `shape.create` and restricts it to elements annotated with a `vendor:allowDrop` extension attribute.
+The rules are added via a [custom rules provider](https://github.com/bpmn-io/bpmn-js-examples/blob/main/custom-modeling-rules/lib/custom-rules/CustomRules.js). The provider hooks into the rule evaluation for `shape.create` and restricts it to elements annotated with a `vendor:allowDrop` extension attribute.
 
 ```javascript
 this.addRule('shape.create', function(context) {
@@ -38,7 +38,7 @@ They would not be able to insert anything if the `allowDrop` annotation is missi
 <bpmn:sequenceFlow id="SequenceFlow_1"/>
 ```
 
-To learn more, check out [an example diagram](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-modeling-rules/test/spec/diagram.bpmn) and the accompanying [test cases](https://github.com/bpmn-io/bpmn-js-examples/blob/custom-rules/custom-modeling-rules/test/spec/CustomRulesSpec.js).
+To learn more, check out [an example diagram](https://github.com/bpmn-io/bpmn-js-examples/blob/main/custom-modeling-rules/test/spec/diagram.bpmn) and the accompanying [test cases](https://github.com/bpmn-io/bpmn-js-examples/blob/custom-rules/custom-modeling-rules/test/spec/CustomRulesSpec.js).
 
 
 ## Building

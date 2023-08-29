@@ -1,4 +1,4 @@
-> :information_source: Checkout our [additional examples](https://github.com/bpmn-io/bpmn-js-examples/blob/master/README.md#properties-panel) if you are interested in extending the properties panel or rolling your own.
+> :information_source: Checkout our [additional examples](https://github.com/bpmn-io/bpmn-js-examples/blob/main/README.md#properties-panel) if you are interested in extending the properties panel or rolling your own.
 
 # bpmn-js Modeler + Properties Panel Example
 
@@ -19,7 +19,7 @@ Add the [properties panel](https://github.com/bpmn-io/bpmn-js-properties-panel) 
 npm install --save bpmn-js-properties-panel @bpmn-io/properties-panel
 ```
 
-Now extend the [bpmn-js](https://github.com/bpmn-io/bpmn-js) modeler with two properties panel related modules, the panel itself and a provider module that controls which properties are visible for each element. Additionally you must pass an element via `propertiesPanel.parent` into which the properties panel will be rendered (cf. [`app/index.js`](https://github.com/bpmn-io/bpmn-js-examples/blob/master/properties-panel/app/index.js#L16) for details).
+Now extend the [bpmn-js](https://github.com/bpmn-io/bpmn-js) modeler with two properties panel related modules, the panel itself and a provider module that controls which properties are visible for each element. Additionally you must pass an element via `propertiesPanel.parent` into which the properties panel will be rendered (cf. [`app/index.js`](https://github.com/bpmn-io/bpmn-js-examples/blob/main/properties-panel/app/index.js#L16) for details).
 
 ```javascript
 import { 
