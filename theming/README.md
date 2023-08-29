@@ -8,7 +8,7 @@ This example showcases the different aspects of theming bpmn-js.
 
 ### Custom Renderer
 
-This example uses [bpmn-js-sketchy](https://github.com/bpmn-io/bpmn-js-sketchy) to replace the default renderer. You can also roll your own renderer as shown in the [custom elements example](https://github.com/bpmn-io/bpmn-js-examples/blob/master/custom-elements/app/custom-modeler/custom/CustomRenderer.js) or [bpmn-js-nyan](https://github.com/bpmn-io/bpmn-js-nyan/blob/master/lib/nyan/draw/NyanRenderer.js).
+This example uses [bpmn-js-sketchy](https://github.com/bpmn-io/bpmn-js-sketchy) to replace the default renderer. You can also roll your own renderer as shown in the [custom elements example](https://github.com/bpmn-io/bpmn-js-examples/blob/main/custom-elements/app/custom-modeler/custom/CustomRenderer.js) or [bpmn-js-nyan](https://github.com/bpmn-io/bpmn-js-nyan/blob/main/lib/nyan/draw/NyanRenderer.js).
 
 ### Custom Font
 

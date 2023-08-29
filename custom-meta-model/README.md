@@ -10,7 +10,7 @@ This allows a BPMN viewer / modeler instance to read, create and write domain sp
 This example allows bpmn-js to attach review data in form of `<qa:analysis />` tags to BPMN 2.0 diagrams.
 It captures the suitability of process elements according to current requirements and can be edited through a BPMN 2.0 viewer.
 
-![edit suitability score](https://github.com/bpmn-io/bpmn-js-examples/raw/master/custom-meta-model/resources/screenshot.png)
+![edit suitability score](https://github.com/bpmn-io/bpmn-js-examples/raw/main/custom-meta-model/resources/screenshot.png)
 
 An example diagram containing the custom data is shown below.
 
@@ -46,7 +46,7 @@ An example diagram containing the custom data is shown below.
 </bpmn2:definitions>
 ```
 
-See [the complete diagram](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-meta-model/resources/sample.bpmn).
+See [the complete diagram](https://github.com/bpmn-io/bpmn-js-examples/tree/main/custom-meta-model/resources/sample.bpmn).
 
 
 ## Usage
@@ -56,7 +56,7 @@ This section leads you through the necessary steps to extend bpmn-js with a cust
 
 ### Building a meta-model extension
 
-An extension to BPMN 2.0 must be defined in a JSON file, as shown [here](https://github.com/bpmn-io/bpmn-js-examples/tree/master/custom-meta-model/resources/qa.json).
+An extension to BPMN 2.0 must be defined in a JSON file, as shown [here](https://github.com/bpmn-io/bpmn-js-examples/tree/main/custom-meta-model/resources/qa.json).
 
 ```json
 {

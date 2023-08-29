@@ -9,7 +9,7 @@ This example showcases how to build a simple discussion app based on [bpmn-js](h
 
 This example uses bpmn-js to embed the [pizza collaboration](http://demo.bpmn.io/s/pizza-collaboration) diagram into a web application and add the ability to put comments on individual tasks.
 
-![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/commenting/docs/screenshot.png "Screenshot of the example application")
+![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/main/commenting/docs/screenshot.png "Screenshot of the example application")
 
 The comments are added to an elements `<bpmn:documentation>` tag and may be downloaded along with the element.
 

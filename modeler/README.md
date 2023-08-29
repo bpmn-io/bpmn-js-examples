@@ -6,7 +6,7 @@ This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) to implement a m
 
 This example is a node-style web application that builds a user interface around the bpmn-js BPMN 2.0 modeler.
 
-![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/master/modeler/docs/screenshot.png "Screenshot of the example application")
+![demo application screenshot](https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/main/modeler/docs/screenshot.png "Screenshot of the example application")
 
 
 ## Building
