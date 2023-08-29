@@ -49,7 +49,7 @@ module.exports = {
       patterns: [
         { from: 'app/index.html', to: '.' },
         { from: 'node_modules/bpmn-js/dist/assets', to: 'vendor/bpmn-js/assets' },
-        { from: 'node_modules/bpmn-js-properties-panel/dist/assets', to: 'vendor/bpmn-js-properties-panel/assets' },
+        { from: 'node_modules/@bpmn-io/properties-panel/assets', to: 'vendor/@bpmn-io/properties-panel/assets' },
       ]
     })
   ]
