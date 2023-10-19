@@ -17,10 +17,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
+    new CopyWebpackPlugin({ patterns: [
       { from: 'assets/**', to: 'vendor/bpmn-js', context: 'node_modules/bpmn-js/dist/' },
       { from: '**/*.{html,css}', context: 'app/' }
-    ])
+    ] })
   ],
   mode: 'development',
   devtool: 'source-map'
