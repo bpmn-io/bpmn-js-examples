@@ -35,7 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.4.0",
-    "bpmn-js": "^14.1.3",
+    "bpmn-js": "^14.2.0",
     "bpmn-js-properties-panel": "^5.0.0",
     "jquery": "^3.5.1",
     "min-dash": "^4.0.0"
