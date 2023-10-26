@@ -1,3 +1,5 @@
+import { html } from 'htm/preact';
+
 import { without } from 'min-dash';
 
 import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
@@ -90,15 +92,15 @@ export default function ExtensionList(props) {
     });
   }
 
-  return <ListEntry
-    element={ element }
-    autoFocusEntry={ `[data-entry-id="${id}-extension-${extensionsList.length - 1}"] input` }
-    id={ id }
-    label={ translate('Extensions') }
-    items={ extensionsList }
-    component={ Extension }
-    onAdd={ addExtension }
-    onRemove={ removeExtension } />;
+  return html`<${ListEntry}
+    element=${ element }
+    autoFocusEntry=${ `[data-entry-id="${id}-extension-${extensionsList.length - 1}"] input` }
+    id=${ id }
+    label=${ translate('Extensions') }
+    items=${ extensionsList }
+    component=${ Extension }
+    onAdd=${ addExtension }
+    onRemove=${ removeExtension } />`;
 }
 
 function Extension(props) {
@@ -114,17 +116,16 @@ function Extension(props) {
 
   const id = `${ idPrefix }-extension-${ index }`;
 
-  return (
-    <CollapsibleEntry
-      id={ id }
-      element={ element }
-      entries={ ExtensionProps({
+  return html`
+    <${CollapsibleEntry}
+      id=${ id }
+      element=${ element }
+      entries=${ ExtensionProps({
         extension,
         element,
         idPrefix: id
       }) }
-      label={ extension.get('key') || translate('<empty>') }
-      open={ open }
-    />
-  );
+      label=${ extension.get('key') || translate('<empty>') }
+      open=${ open }
+    />`;
 }
