@@ -24,13 +24,13 @@ function Spell(props) {
 
   const getValue = () => {
     return element.businessObject.spell || '';
-  }
+  };
 
   const setValue = value => {
     return modeling.updateProperties(element, {
       spell: value
     });
-  }
+  };
 
   return html`<${TextFieldEntry}
     id=${ id }
@@ -40,5 +40,6 @@ function Spell(props) {
     getValue=${ getValue }
     setValue=${ setValue }
     debounce=${ debounce }
-  />`
+    tooltip=${ translate('Check available spells in the spellbook.') }
+  />`;
 }

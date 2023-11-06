@@ -85,7 +85,8 @@ function createMagicGroup(element, translate) {
   const magicGroup = {
     id: 'magic',
     label: translate('Magic properties'),
-    entries: spellProps(element)
+    entries: spellProps(element),
+    tooltip: translate('Make sure you know what you are doing!')
   };
 
   return magicGroup
@@ -140,6 +141,7 @@ function Spell(props) {
     getValue=${ getValue }
     setValue=${ setValue }
     debounce=${ debounce }
+    tooltip=${ translate('Check available spells in the spellbook.') }
   />`
 }
 ```
