@@ -10,7 +10,6 @@
     "bpmn-js-example"
   ],
   "scripts": {
-    "postinstall": "lerna bootstrap --ignore bpmn-js-example-bpmn-properties",
     "build:examples": "lerna run build --stream",
     "lint:examples": "lerna run lint --stream --ignore bpmn-js-example-bpmn-properties"
   },
@@ -23,6 +22,6 @@
   "license": "MIT",
   "devDependencies": {
     "eslint-plugin-bpmn-io": "^1.0.0",
-    "lerna": "^6.0.0"
+    "lerna": "^8.0.0"
   }
 }
