@@ -39,12 +39,12 @@ export default function MagicPropertiesProvider(propertiesPanel, injector, trans
      */
     return function(groups) {
 
-      if(is(element, 'bpmn:StartEvent')) {
+      if (is(element, 'bpmn:StartEvent')) {
         groups.push(createParametersGroup(element, injector, translate));
       }
 
       return groups;
-    }
+    };
   };
 
 

@@ -6,6 +6,7 @@ import BpmnViewer from 'bpmn-js/lib/NavigatedViewer';
 
 var bpmnViewer = new BpmnViewer({
   container: '#canvas',
+
   /* uncomment to configure defaults for all overlays
   overlays: {
     defaults: {

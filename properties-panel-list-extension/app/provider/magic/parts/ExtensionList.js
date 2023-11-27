@@ -4,17 +4,17 @@ import { without } from 'min-dash';
 
 import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
 
-import { 
+import {
   CollapsibleEntry,
-  ListEntry 
+  ListEntry
 } from '@bpmn-io/properties-panel';
 
 import { useService } from 'bpmn-js-properties-panel';
 
 import ExtensionProps from './ExtensionProps';
 
-import { 
-  createElement 
+import {
+  createElement
 } from '../util';
 
 
@@ -121,10 +121,10 @@ function Extension(props) {
       id=${ id }
       element=${ element }
       entries=${ ExtensionProps({
-        extension,
-        element,
-        idPrefix: id
-      }) }
+    extension,
+    element,
+    idPrefix: id
+  }) }
       label=${ extension.get('key') || translate('<empty>') }
       open=${ open }
     />`;

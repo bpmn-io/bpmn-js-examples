@@ -92,7 +92,7 @@ function registerFileDrop(container, callback) {
 }
 
 
-////// file drag / drop ///////////////////////
+// file drag / drop ///////////////////////
 
 // check file api availability
 if (!window.FileList || !window.FileReader) {

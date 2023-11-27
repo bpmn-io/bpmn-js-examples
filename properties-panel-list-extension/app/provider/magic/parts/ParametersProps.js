@@ -2,7 +2,7 @@ import {
   getBusinessObject
 } from 'bpmn-js/lib/util/ModelUtil';
 
-import { 
+import {
   createElement,
   createParameters,
   getParameters,

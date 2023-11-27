@@ -50,7 +50,7 @@
     "watchify": "^3.10.0"
   },
   "dependencies": {
-    "inherits": "^2.0.1",
-    "bpmn-js": "^15.2.2"
+    "bpmn-js": "^15.2.2",
+    "inherits": "^2.0.1"
   }
 }

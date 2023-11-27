@@ -13,6 +13,7 @@ import customRulesModule from '../../lib/custom-rules';
 describe('custom-rules', function() {
 
   var testModules = [
+
     // prepend our custom rules to hook into the
     // rule evaluation before the default rules
     // get applied
