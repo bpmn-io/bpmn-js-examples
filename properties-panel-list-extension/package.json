@@ -46,10 +46,10 @@
     "webpack-cli": "^5.0.0"
   },
   "dependencies": {
-    "@bpmn-io/properties-panel": "^3.4.0",
+    "@bpmn-io/properties-panel": "^3.13.0",
     "bpmn-js": "^15.2.2",
-    "bpmn-js-properties-panel": "^5.0.0",
-    "camunda-bpmn-js-behaviors": "^1.0.0",
+    "bpmn-js-properties-panel": "^5.6.1",
+    "camunda-bpmn-js-behaviors": "^1.2.2",
     "htm": "^3.1.1",
     "ids": "^1.0.0",
     "jquery": "^3.5.1",

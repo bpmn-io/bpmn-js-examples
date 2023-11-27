@@ -23,5 +23,25 @@
   "devDependencies": {
     "eslint-plugin-bpmn-io": "^1.0.0",
     "lerna": "^8.0.0"
-  }
+  },
+  "workspaces": [
+    "bpmn-properties",
+    "bundling",
+    "commenting",
+    "custom-bundle",
+    "custom-meta-model",
+    "custom-modeling-rules",
+    "deep-linking",
+    "i18n",
+    "minimap",
+    "modeler",
+    "modeling-api",
+    "overlays",
+    "properties-panel",
+    "properties-panel-async-extension",
+    "properties-panel-extension",
+    "properties-panel-list-extension",
+    "theming",
+    "transaction-boundaries"
+  ]
 }
