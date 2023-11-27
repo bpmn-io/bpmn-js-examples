@@ -19,6 +19,6 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Build examples
-      run: npm run build:examples
+      run: npm run build
     - name: Lint examples
-      run: npm run lint:examples
+      run: npm run lint

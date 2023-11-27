@@ -1,3 +1,8 @@
+import 'bpmn-js/dist/assets/diagram-js.css';
+import 'bpmn-js/dist/assets/bpmn-js.css';
+
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
+
 // we use stringify to inline an example XML document
 import nestedDiagram from '../resources/nested-subprocesses.bpmn';
 

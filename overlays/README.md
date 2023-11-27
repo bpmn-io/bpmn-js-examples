@@ -34,7 +34,7 @@ The method `Overlays#add` receives two important parameters:
 
 The overlay descriptor must contain a `html` element you want to attach as the overlay as well as a `position` that indicates where you want the overlay to be added on the element. Use `top`, `left`, `bottom`, `right` to control the attachment.
 
-Checkout [the example](https://github.com/bpmn-io/bpmn-js-examples/blob/main/overlays/app/app.js) for additional configuration options such as conditional scaling and showing of overlays.
+Checkout [the example](https://github.com/bpmn-io/bpmn-js-examples/blob/main/overlays/src/app.js) for additional configuration options such as conditional scaling and showing of overlays.
 
 
 ### Interacting with Overlays
@@ -104,7 +104,7 @@ Initialize the project dependencies via
 npm install
 ```
 
-To create the sample distribution in the `dist` folder run
+To create the sample distribution in the `public` folder run
 
 ```
 npm run all

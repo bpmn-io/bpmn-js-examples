@@ -10,8 +10,9 @@
     "bpmn-js-example"
   ],
   "scripts": {
-    "build:examples": "lerna run build --stream",
-    "lint:examples": "lerna run lint --stream --ignore bpmn-js-example-bpmn-properties"
+    "all": "run-s lint build",
+    "build": "lerna run all --stream",
+    "lint": "eslint ."
   },
   "contributors": [
     {
@@ -21,8 +22,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^8.54.0",
     "eslint-plugin-bpmn-io": "^1.0.0",
-    "lerna": "^8.0.0"
+    "eslint-plugin-mocha": "^10.2.0",
+    "lerna": "^8.0.0",
+    "npm-run-all": "^4.1.5"
   },
   "workspaces": [
     "bpmn-properties",

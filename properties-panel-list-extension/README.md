@@ -73,7 +73,7 @@ function createParametersGroup(element, injector, translate) {
 }
 ```
 
-The [`ParametersProps`](app/provider/magic/parts/ParametersProps.js) component provides all the entries and the handlers to add and remove new list elements. 
+The [`ParametersProps`](src/provider/magic/parts/ParametersProps.js) component provides all the entries and the handlers to add and remove new list elements.
 
 We can provide the focussed input field after creation via `autoFocusEntry` configuration. If not given, the auto-focus behavior is disabled.
 
@@ -168,11 +168,11 @@ function ExtensionList(props) {
 }
 ```
 
-In comparison to a list group, a list entry is not configurable on runtime. As an example, each item's entries will be rendered directly in the [`Extension`](app/provider/magic/parts/ExtensionList.js#L104) component and can't be updated via another properties provider. 
+In comparison to a list group, a list entry is not configurable on runtime. As an example, each item's entries will be rendered directly in the [`Extension`](src/provider/magic/parts/ExtensionList.js#L104) component and can't be updated via another properties provider.
 
 ### Create a Moddle Extension
 
-Similar to [the basic extension example](../properties-panel-extension), we need to create a moddle extension so that moddle is aware of our new list properties. The extension is a JSON descriptor file [magic.json](app/descriptors/magic.json) containing the necessary definitions:
+Similar to [the basic extension example](../properties-panel-extension), we need to create a moddle extension so that moddle is aware of our new list properties. The extension is a JSON descriptor file [magic.json](src/descriptors/magic.json) containing the necessary definitions:
 
 ```javascript
 {

@@ -1,12 +1,15 @@
+// use puppeteer provided Chrome for testing
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 // configures browsers to run test against
 // any of [ 'ChromeHeadless', 'Chrome', 'Firefox', 'Safari' ]
-var browsers = (process.env.TEST_BROWSERS || 'ChromeHeadless').split(',');
+const browsers = (process.env.TEST_BROWSERS || 'ChromeHeadless').split(',');
 
 module.exports = function(karma) {
   karma.set({
 
     frameworks: [
-      'browserify',
+      'webpack',
       'mocha',
       'chai'
     ],
@@ -18,31 +21,25 @@ module.exports = function(karma) {
     reporters: [ 'dots' ],
 
     preprocessors: {
-      'test/spec/**/*Spec.js': [ 'browserify' ]
+      'test/spec/**/*Spec.js': [ 'webpack' ]
     },
 
     browsers: browsers,
 
-    browserNoActivityTimeout: 30000,
-
     singleRun: true,
     autoWatch: false,
 
-    // browserify configuration
-    browserify: {
-      debug: true,
-      transform: [
-        [ 'stringify', {
-          global: true,
-          extensions: [
-            '.bpmn',
-            '.css'
-          ]
-        } ],
-        [ 'babelify', {
-          global: true
-        } ]
-      ]
+    webpack: {
+      mode: 'development',
+      module: {
+        rules: [
+          {
+            test: /\.css|\.bpmn$/,
+            type: 'asset/source'
+          }
+        ]
+      },
+      devtool: 'eval-source-map'
     }
   });
 };

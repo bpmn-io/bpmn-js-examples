@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "description": "A simple modeler built with bpmn-js",
   "scripts": {
-    "all": "run-s lint build",
+    "all": "run-s build",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --static=public --open",
-    "lint": "eslint .",
     "start": "run-s dev"
   },
   "repository": {

@@ -32,7 +32,7 @@ await bpmnModeler.importXML(xml);
 console.log('Awesome! Ready to navigate!');
 ```
 
-Checkout [`app/app.js`](app/app.js) for details.
+Checkout [`src/app.js`](src/app.js) for details.
 
 
 ## Run the Example
