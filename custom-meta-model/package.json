@@ -2,10 +2,9 @@
   "name": "custom-meta-model",
   "version": "0.0.0",
   "description": "An bpmn-js modeler extended with a custom meta-model",
-  "main": "app/index.js",
   "scripts": {
-    "all": "grunt",
-    "dev": "grunt auto-build"
+    "all": "webpack",
+    "dev": "webpack-dev-server"
   },
   "keywords": [
     "bpmnjs-example"
@@ -22,16 +21,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babelify": "^10.0.0",
-    "grunt": "^1.0.1",
-    "grunt-browserify": "^6.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-contrib-connect": "^4.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "load-grunt-tasks": "^5.0.0",
-    "stringify": "^5.0.0"
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "bpmn-js": "^15.2.2",

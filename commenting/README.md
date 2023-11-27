@@ -23,7 +23,7 @@ npm install
 ```
 
 
-Building the app into the `dist` directory and opening it in a browser:
+Building the app into the `public` directory and opening it in a browser:
 
 ```
 npm run dev

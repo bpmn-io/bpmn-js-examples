@@ -1,4 +1,4 @@
-var CopyPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var path = require('path');
 
@@ -12,6 +12,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.less/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
+      {
         test: /\.bpmn$/,
         use: {
           loader: 'raw-loader'
@@ -20,11 +35,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/index.html', to: '.' },
-        { from: 'node_modules/bpmn-js/dist/assets', to: 'vendor/bpmn-js/assets' },
-        { from: 'node_modules/@bpmn-io/properties-panel/dist/assets', to: 'vendor/@bpmn-io/properties-panel/assets' },
+        { from: 'src/index.html', to: '.' }
       ]
     })
   ]

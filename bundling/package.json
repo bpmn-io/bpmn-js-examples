@@ -2,14 +2,13 @@
   "name": "bpmn-js-example-commonjs",
   "version": "0.0.0",
   "description": "An example how to bundle an app using bpmn-js for the browser",
-  "main": "src/app.js",
   "scripts": {
-    "all": "run-s bundle open",
+    "all": "run-s build build:es5",
     "build": "webpack",
     "build:es5": "webpack --config webpack.es5.config.js",
     "build:watch": "webpack -w",
     "open": "opn ./public/index.html",
-    "dev": "npm run bundle:watch"
+    "dev": "run-p bundle:watch open"
   },
   "repository": {
     "type": "git",

@@ -2,16 +2,11 @@
   "name": "bpmn-js-example-properties-panel",
   "version": "0.0.0",
   "description": "A bpmn-js modeler + properties panel example",
-  "main": "app/index.js",
   "scripts": {
     "all": "run-s build",
-    "dev": "run-s build:less watch:js",
-    "start": "run-s build serve",
-    "serve": "sirv public --dev",
-    "build": "run-s build:*",
-    "build:less": "lessc src/app.less public/app.css",
-    "build:js": "webpack -c webpack.config.js",
-    "watch:js": "run-s \"build:js -- --watch\""
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --static=public --open",
+    "start": "run-s dev"
   },
   "repository": {
     "type": "git",
@@ -42,11 +37,14 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
     "less": "^4.1.0",
     "npm-run-all": "^4.1.5",
     "raw-loader": "^4.0.2",
     "sirv-cli": "^2.0.0",
+    "style-loader": "^3.3.3",
     "webpack": "^5.16.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.15.1"
   }
 }

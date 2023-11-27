@@ -223,7 +223,7 @@ First time setup:
 npm install
 ```
 
-Building the application into the `dist` directory:
+Building the application into the `public` directory:
 
 ```
 grunt

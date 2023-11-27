@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "bpmn-js theming",
   "scripts": {
-    "all": "run-s build open",
+    "all": "run-s build",
+    "dev": "run-s build open",
     "build": "rollup -c --bundleConfigAsCjs",
     "open": "opn ./index.html"
   },

@@ -1,41 +1,27 @@
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path');
 
-const basePath = '.';
-
-const absoluteBasePath = path.resolve(path.join(__dirname, basePath));
-
 module.exports = {
   mode: 'development',
-  entry: './app/index.js',
+  entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: 'index.js'
+    filename: 'app.js'
   },
   devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            plugins: [
-              [ '@babel/plugin-transform-react-jsx', {
-                'importSource': '@bpmn-io/properties-panel/preact',
-                'runtime': 'automatic'
-              } ]
-            ]
-          }
-        }
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ],
       },
       {
         test: /\.less$/i,
         use: [
-
-          // compiles Less to CSS
           'style-loader',
           'css-loader',
           'less-loader',
@@ -57,18 +43,12 @@ module.exports = {
     ],
     alias: {
       'react': '@bpmn-io/properties-panel/preact/compat'
-    },
-    modules: [
-      'node_modules',
-      absoluteBasePath
-    ]
+    }
   },
   plugins: [
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [
-        { from: 'app/index.html', to: '.' },
-        { from: 'node_modules/bpmn-js/dist/assets', to: 'vendor/bpmn-js/assets' },
-        { from: 'node_modules/@bpmn-io/properties-panel/dist/assets', to: 'vendor/@bpmn-io/properties-panel/assets' },
+        { from: 'src/index.html', to: '.' }
       ]
     })
   ]

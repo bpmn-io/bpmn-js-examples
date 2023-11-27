@@ -1,3 +1,11 @@
+import 'bpmn-js/dist/assets/diagram-js.css';
+import 'bpmn-js/dist/assets/bpmn-js.css';
+
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
+import '@bpmn-io/properties-panel/assets/properties-panel.css';
+
+import './style.less';
+
 import $ from 'jquery';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 

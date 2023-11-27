@@ -2,13 +2,13 @@
   "name": "bpmn-js-example-properties-panel-async-extension",
   "version": "0.0.0",
   "description": "A properties panel async extension example",
-  "main": "app/index.js",
   "scripts": {
     "all": "run-s build",
-    "build": "webpack",
-    "start": "run-s build serve",
-    "dev": "run-p \"build -- --watch\" serve",
-    "serve": "sirv public --dev & node server.js"
+    "build": "webpack --mode production",
+    "build:watch": "webpack-dev-server --static=public --open",
+    "dev": "run-p build:watch serve",
+    "start": "npm run dev",
+    "serve": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -32,15 +32,15 @@
   "license": "MIT",
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.5.1",
+    "css-loader": "^6.8.1",
     "less": "^4.1.2",
     "less-loader": "^11.0.0",
     "npm-run-all": "^4.1.5",
     "raw-loader": "^4.0.2",
-    "sirv-cli": "^2.0.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.65.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.13.0",
