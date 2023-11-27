@@ -80,7 +80,7 @@ viewer.on('element.click', function(event) {
 document.querySelector('#export-to-console').addEventListener('click', async function(e) {
 
   try {
-    
+
     const { xml } = await viewer.saveXML({ format: true });
 
     console.log(xml);

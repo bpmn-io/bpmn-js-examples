@@ -22,7 +22,7 @@ async function openDiagram(diagram) {
 
     console.log('success!');
     viewer.get('canvas').zoom('fit-viewport');
-  } catch(err) {
+  } catch (err) {
 
     alert('could not import BPMN 2.0 XML, see console');
     return console.log('could not import BPMN 2.0 XML', err);

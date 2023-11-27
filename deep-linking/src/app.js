@@ -12,28 +12,28 @@ var viewer = new BpmnViewer({
 var canvas = viewer.get('canvas');
 var eventBus = viewer.get('eventBus');
 
-var search = new URLSearchParams(window.location.search); 
+var search = new URLSearchParams(window.location.search);
 var browserNavigationInProgress;
 
-// update the URL and browser history when switching to another root element 
+// update the URL and browser history when switching to another root element
 eventBus.on('root.set', function(event) {
-  
+
   // location is already updated through the browser history API
-  if(browserNavigationInProgress){
+  if (browserNavigationInProgress) {
     return;
   }
 
   var rootElement = event.element;
 
   search.set('rootElement', rootElement.id);
-  window.history.pushState({element: rootElement.id}, null, 'index.html?' + search.toString());
+  window.history.pushState({ element: rootElement.id }, null, 'index.html?' + search.toString());
 });
 
 // listen to browser navigation and change the root element accordingly
 window.addEventListener('popstate', (event) => {
   var rootElement = event.state && event.state.element;
 
-  if(!rootElement){
+  if (!rootElement) {
     return;
   }
 

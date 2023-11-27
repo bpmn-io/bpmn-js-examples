@@ -12,7 +12,7 @@ export default function ParameterProps(props) {
     parameter
   } = props;
 
-  const entries = [ 
+  const entries = [
     {
       id: idPrefix + '-name',
       component: Name,

@@ -1,7 +1,7 @@
 import { html } from 'htm/preact';
 
 import { SelectEntry, isSelectEntryEdited } from '@bpmn-io/properties-panel';
-import { useService } from 'bpmn-js-properties-panel'
+import { useService } from 'bpmn-js-properties-panel';
 
 // import hooks from the vendored preact package
 import { useEffect, useState } from '@bpmn-io/properties-panel/preact/hooks';
@@ -28,13 +28,13 @@ function Spell(props) {
 
   const getValue = () => {
     return element.businessObject.spell || '';
-  }
+  };
 
   const setValue = value => {
     return modeling.updateProperties(element, {
       spell: value
     });
-  }
+  };
 
   const [ spells, setSpells ] = useState([]);
 
@@ -57,7 +57,7 @@ function Spell(props) {
         value: spell
       }))
     ];
-  }
+  };
 
   return html`<${SelectEntry}
     id=${ id }
@@ -68,5 +68,5 @@ function Spell(props) {
     setValue=${ setValue }
     getOptions=${ getOptions }
     debounce=${ debounce }
-  />`
+  />`;
 }

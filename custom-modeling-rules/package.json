@@ -42,8 +42,8 @@
     "stringify": "^5.0.0"
   },
   "dependencies": {
-    "inherits": "^2.0.1",
     "bpmn-js": "^15.2.2",
-    "diagram-js": "^12.0.0"
+    "diagram-js": "^12.0.0",
+    "inherits-browser": "^0.1.0"
   }
 }

@@ -10,7 +10,8 @@
   "dependencies": {
     "bpmn-js": "^15.2.2",
     "bpmn-js-sketchy": "^0.7.0",
-    "diagram-js": "^12.0.0"
+    "diagram-js": "^12.0.0",
+    "inherits-browser": "^0.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",

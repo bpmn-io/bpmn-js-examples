@@ -39,12 +39,12 @@ export default function MagicPropertiesProvider(propertiesPanel, translate) {
     return function(groups) {
 
       // Add the "magic" group
-      if(is(element, 'bpmn:StartEvent')) {
+      if (is(element, 'bpmn:StartEvent')) {
         groups.push(createMagicGroup(element, translate));
       }
 
       return groups;
-    }
+    };
   };
 
 
@@ -68,5 +68,5 @@ function createMagicGroup(element, translate) {
     entries: spellProps(element)
   };
 
-  return magicGroup
+  return magicGroup;
 }
