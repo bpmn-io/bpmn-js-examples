@@ -41,7 +41,7 @@
     "webpack-cli": "^5.0.0"
   },
   "dependencies": {
-    "bpmn-js": "^16.0.0",
+    "bpmn-js": "^16.1.0",
     "camunda-transaction-boundaries": "^1.1.2",
     "diagram-js": "^13.0.0",
     "jquery": "^3.6.1",
