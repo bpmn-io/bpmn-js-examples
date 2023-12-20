@@ -51,7 +51,7 @@ modeling.updateProperties(sequenceFlowElement, {
 });
 ```
 
-> Implement your own [`CommandHandler`](https://github.com/bpmn-io/diagram-js/blob/master/lib/command/CommandHandler.js) to perform more advanced atomic updates.
+> Implement your own [`CommandHandler`](https://github.com/bpmn-io/diagram-js/blob/main/lib/command/CommandHandler.js) to perform more advanced atomic updates.
 
 Both ways will eventually serialize the condition to XML.
 

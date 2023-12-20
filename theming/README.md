@@ -43,7 +43,7 @@ var bpmnViewer = new CustomBpmnJS({
 
 ### Custom CSS
 
-bpmn-js comes with a [default stylesheet](https://github.com/bpmn-io/diagram-js/blob/master/assets/diagram-js.css). Of course you can override any of these styles.
+bpmn-js comes with a [default stylesheet](https://github.com/bpmn-io/diagram-js/blob/main/assets/diagram-js.css). Of course you can override any of these styles.
 
 ## Run this example
 
