@@ -129,7 +129,7 @@ canvas.addMarker('UserTask_1', 'highlight');
 
 ### Option 4: Color via Custom Renderer
 
-Checkout [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) for an example that provides a [custom renderer](https://github.com/bpmn-io/bpmn-js-task-priorities/blob/master/lib/priorities/ColorRenderer.js) to color shapes and connections dynamically.
+Checkout [bpmn-js-task-priorities](https://github.com/bpmn-io/bpmn-js-task-priorities) for an example that provides a [custom renderer](https://github.com/bpmn-io/bpmn-js-task-priorities/blob/main/lib/priorities/ColorRenderer.js) to color shapes and connections dynamically.
 
 
 ## Run this Example

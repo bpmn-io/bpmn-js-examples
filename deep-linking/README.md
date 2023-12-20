@@ -1,6 +1,6 @@
 # bpmn-js deep-linking example
 
-This example shows how to use the [rootElements API](https://github.com/bpmn-io/diagram-js/blob/master/lib/core/Canvas.js) of [bpmn-js](https://github.com/bpmn-io/bpmn-js) to switch between different diagram layers.
+This example shows how to use the [rootElements API](https://github.com/bpmn-io/diagram-js/blob/main/lib/core/Canvas.js) of [bpmn-js](https://github.com/bpmn-io/bpmn-js) to switch between different diagram layers.
 
 ![Screenshot](resources/screenshot.png)
 
@@ -12,7 +12,7 @@ Opening the generated link will take you to the selected subprocess view directl
 
 ## Usage summary
 
-Access the [`Canvas`](https://github.com/bpmn-io/diagram-js/blob/master/lib/core/Canvas.js) service via `bpmnViewer.get('canvas')` and set root elements by id using the `Canvas#setRootElement` method. For collapsed subprocesses, the root element is suffixed with `_plane`.
+Access the [`Canvas`](https://github.com/bpmn-io/diagram-js/blob/main/lib/core/Canvas.js) service via `bpmnViewer.get('canvas')` and set root elements by id using the `Canvas#setRootElement` method. For collapsed subprocesses, the root element is suffixed with `_plane`.
 
 ```javascript
 var canvas = bpmnViewer.get('canvas');
