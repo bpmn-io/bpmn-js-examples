@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.13.0",
-    "bpmn-js": "^16.1.0",
+    "bpmn-js": "^16.3.0",
     "bpmn-js-properties-panel": "^5.6.1",
     "htm": "^3.1.1",
     "jquery": "^3.5.1",

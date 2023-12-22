@@ -30,7 +30,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "bpmn-js": "^16.1.0",
+    "bpmn-js": "^16.3.0",
     "bpmn-js-embedded-comments": "^0.7.0",
     "diagram-js": "^13.0.0",
     "jquery": "^3.3.1"
