@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "ES2018"
+    ],
+    "checkJs": true,
+    "strict": true
+  },
+  "include": [
+    "./src/*.js",
+    "./src/*.ts"
+  ]
+}

@@ -46,6 +46,7 @@
     "properties-panel-extension",
     "properties-panel-list-extension",
     "theming",
-    "transaction-boundaries"
+    "transaction-boundaries",
+    "types"
   ]
 }

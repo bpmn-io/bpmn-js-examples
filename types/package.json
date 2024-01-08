@@ -1,0 +1,16 @@
+{
+  "name": "types",
+  "version": "0.0.0",
+  "description": "Example how to use typings provided with bpmn-js",
+  "license": "MIT",
+  "scripts": {
+    "all": "npm run lint",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "bpmn-js": "^16.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
