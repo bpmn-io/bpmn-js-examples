@@ -16,6 +16,7 @@ This repository contains a number of examples showing how to use and integrate
 * [interaction](./interaction) - Listen to diagram events and react to them.
 * [overlays](./overlays) - Attach overlays to BPMN 2.0 diagrams to provide custom buttons or showing additional information.
 * [url-viewer](./url-viewer) - A simple url viewer for BPMN 2.0 process diagrams.
+* [types](./types) - How to use the types shipped with bpmn-js.
 
 
 ## Intermediate
