@@ -15,6 +15,9 @@ import BpmnViewer from 'bpmn-js/lib/Viewer';
  * @typedef { import('diagram-js/lib/core/ElementRegistry').default } ElementRegistry
  */
 
+/**
+ * @type { HTMLElement }
+ */
 const container = document.querySelector('#canvas');
 
 const viewer = new BpmnViewer({
@@ -22,9 +25,11 @@ const viewer = new BpmnViewer({
 });
 
 // type-safe access to components
-const elementRegistry = /** @type { ElementRegistry } */ (
-  viewer.get('elementRegistry')
-);
+
+/**
+ * @type { ElementRegistry }
+ */
+const elementRegistry =  viewer.get('elementRegistry');
 
 const element = elementRegistry.get('MY_TASK');
 
