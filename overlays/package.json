@@ -32,7 +32,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bpmn-js": "^16.3.2",
+    "bpmn-js": "^16.4.0",
     "min-dash": "^4.0.0"
   }
 }
