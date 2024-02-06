@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "bpmn-js": "^17.0.0",
-    "diagram-js": "^13.0.0",
+    "diagram-js": "^14.0.0",
     "inherits-browser": "^0.1.0"
   }
 }
