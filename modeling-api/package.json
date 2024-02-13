@@ -16,7 +16,7 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.0.0",
     "webpack-cli": "^5.0.0",
-    "webpack-dev-server": "^4.0.0"
+    "webpack-dev-server": "^5.0.0"
   },
   "dependencies": {
     "bpmn-js": "^17.0.0",
