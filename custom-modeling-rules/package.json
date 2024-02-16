@@ -39,7 +39,7 @@
     "webpack": "^5.89.0"
   },
   "dependencies": {
-    "bpmn-js": "^17.0.1",
+    "bpmn-js": "^17.0.2",
     "diagram-js": "^14.0.0",
     "inherits-browser": "^0.1.0"
   }
