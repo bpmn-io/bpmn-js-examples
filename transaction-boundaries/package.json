@@ -33,10 +33,10 @@
     "babel-loader": "^9.0.0",
     "babel-preset-env": "^1.7.0",
     "copy-webpack-plugin": "^12.0.0",
-    "css-loader": "^6.8.1",
+    "css-loader": "^6.10.0",
     "npm-run-all2": "^6.0.0",
     "sirv-cli": "^2.0.2",
-    "style-loader": "^3.3.3",
+    "style-loader": "^3.3.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^5.0.0"
   },
