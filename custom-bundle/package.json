@@ -6,7 +6,7 @@
     "all": "run-s build",
     "dev": "run-s build open",
     "build": "rollup -c --bundleConfigAsCjs",
-    "open": "opn ./index.html"
+    "open": "open-cli ./index.html"
   },
   "dependencies": {
     "bpmn-js": "^17.0.2",
@@ -18,7 +18,7 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "npm-run-all2": "^6.0.0",
-    "opn-cli": "^4.0.0",
+    "open-cli": "^8.0.0",
     "rollup": "^3.0.0"
   }
 }
