@@ -7,7 +7,7 @@
     "build": "webpack",
     "build:es5": "webpack --config webpack.es5.config.js",
     "build:watch": "webpack -w",
-    "open": "opn ./public/index.html",
+    "open": "open-cli ./public/index.html",
     "dev": "run-p bundle:watch open"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "@babel/preset-env": "^7.19.0",
     "babel-loader": "^9.0.0",
     "npm-run-all2": "^6.0.0",
-    "opn-cli": "^4.0.0",
+    "open-cli": "^8.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^5.0.0"
   },
