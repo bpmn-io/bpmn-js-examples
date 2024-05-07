@@ -9,7 +9,7 @@
     "open": "open-cli ./index.html"
   },
   "dependencies": {
-    "bpmn-js": "^17.6.0",
+    "bpmn-js": "^17.6.1",
     "diagram-js": "^14.0.0",
     "inherits-browser": "^0.1.0"
   },
