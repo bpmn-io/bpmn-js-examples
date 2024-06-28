@@ -19,7 +19,7 @@
     "webpack-dev-server": "^5.0.0"
   },
   "dependencies": {
-    "bpmn-js": "^17.8.2",
+    "bpmn-js": "^17.9.0",
     "diagram-js": "^14.0.0",
     "highlight.js": "^11.0.0",
     "min-dom": "^4.0.0"
