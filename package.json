@@ -22,11 +22,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.54.0",
-    "eslint-plugin-bpmn-io": "^1.0.0",
-    "eslint-plugin-mocha": "^10.2.0",
-    "lerna": "^8.0.0",
-    "npm-run-all2": "^6.0.0"
+    "eslint": "^8.57.0",
+    "eslint-plugin-bpmn-io": "^1.0.1",
+    "eslint-plugin-mocha": "^10.5.0",
+    "lerna": "^8.1.8",
+    "npm-run-all2": "^6.2.2"
   },
   "workspaces": [
     "bpmn-properties",
