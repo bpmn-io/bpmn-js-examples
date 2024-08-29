@@ -43,9 +43,9 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "@bpmn-io/properties-panel": "^3.13.0",
-    "bpmn-js": "^17.9.0",
-    "bpmn-js-properties-panel": "^5.6.1",
+    "@bpmn-io/properties-panel": "^3.23.0",
+    "bpmn-js": "^17.9.2",
+    "bpmn-js-properties-panel": "^5.23.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "htm": "^3.1.1",
