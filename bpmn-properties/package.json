@@ -41,6 +41,6 @@
     "webpack": "^5.94.0"
   },
   "dependencies": {
-    "bpmn-js": "^17.11.1"
+    "bpmn-js": "^18.0.0"
   }
 }

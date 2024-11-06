@@ -39,6 +39,6 @@
     "webpack-cli": "^5.0.0"
   },
   "dependencies": {
-    "bpmn-js": "^17.11.1"
+    "bpmn-js": "^18.0.0"
   }
 }
