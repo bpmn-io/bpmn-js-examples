@@ -34,7 +34,7 @@
   "dependencies": {
     "bpmn-js": "^18.0.0",
     "bpmn-js-embedded-comments": "^0.7.0",
-    "diagram-js": "^15.0.0",
+    "diagram-js": "^15.1.0",
     "jquery": "^3.3.1"
   }
 }

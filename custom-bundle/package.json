@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "bpmn-js": "^18.0.0",
-    "diagram-js": "^15.0.0",
+    "diagram-js": "^15.1.0",
     "inherits-browser": "^0.1.0"
   },
   "devDependencies": {
