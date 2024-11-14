@@ -16,9 +16,6 @@ var container = $('#js-drop-zone');
 
 var modeler = new BpmnModeler({
   container: '#js-canvas',
-  keyboard: {
-    bindTo: window
-  }
 });
 
 function createNewDiagram() {
