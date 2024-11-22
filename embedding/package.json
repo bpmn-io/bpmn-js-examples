@@ -1,0 +1,44 @@
+{
+  "name": "bpmn-js-example-implicit-keyboard-bind",
+  "version": "0.0.0",
+  "description": "Demo of implicit keyboard binding in bpmn-js",
+  "scripts": {
+    "all": "run-s build",
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server --static=public --open",
+    "start": "run-s dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/bpmn-js-examples"
+  },
+  "keywords": [
+    "bpmnjs-example"
+  ],
+  "author": {
+    "name": "Jarek Danielak",
+    "url": "https://github.com/jarekdanielak"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "copy-webpack-plugin": "^12.0.0",
+    "css-loader": "^7.1.2",
+    "npm-run-all2": "^7.0.0",
+    "raw-loader": "^4.0.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "dependencies": {
+    "bpmn-js": "^18.1.1",
+    "diagram-js": "^15.2.3",
+    "jquery": "^3.3.1"
+  }
+}
