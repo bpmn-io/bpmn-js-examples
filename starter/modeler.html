@@ -1,143 +1,104 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello World</title>
-
-    <!-- required modeler styles -->
-    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.1/dist/assets/bpmn-js.css">
-    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.1/dist/assets/diagram-js.css">
-    <link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.1/dist/assets/bpmn-font/css/bpmn.css">
-
-    <!-- modeler distro -->
-    <script src="https://unpkg.com/bpmn-js@18.1.1/dist/bpmn-modeler.development.js"></script>
-
-    <!-- needed for this example only -->
-    <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.js"></script>
-
-    <!-- example styles -->
-    <style>
-      html, body, #canvas {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
-
-      .diagram-note {
-        background-color: rgba(66, 180, 21, 0.7);
-        color: White;
-        border-radius: 5px;
-        font-family: Arial;
-        font-size: 12px;
-        padding: 5px;
-        min-height: 16px;
-        width: 50px;
-        text-align: center;
-      }
-
-      .needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {
-        stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */
-      }
-
-      #save-button {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="canvas"></div>
-
-    <button id="save-button">print to console</button>
-
-    <script>
-
-      var diagramUrl = 'https://cdn.statically.io/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
-
-      // modeler instance
-      var bpmnModeler = new BpmnJS({
-        container: '#canvas',
-      });
-
-      /**
-       * Save diagram contents and print them to the console.
-       */
-      async function exportDiagram() {
-
-        try {
-
-          var result = await bpmnModeler.saveXML({ format: true });
-
-          alert('Diagram exported. Check the developer tools!');
-
-          console.log('DIAGRAM', result.xml);
-        } catch (err) {
-
-          console.error('could not save BPMN 2.0 diagram', err);
-        }
-      }
-
-      /**
-       * Open diagram in our modeler instance.
-       *
-       * @param {String} bpmnXML diagram to display
-       */
-      async function openDiagram(bpmnXML) {
-
-        // import diagram
-        try {
-
-          await bpmnModeler.importXML(bpmnXML);
-
-          // access modeler components
-          var canvas = bpmnModeler.get('canvas');
-          var overlays = bpmnModeler.get('overlays');
-
-
-          // zoom to fit full viewport
-          canvas.zoom('fit-viewport');
-
-          // attach an overlay to a node
-          overlays.add('SCAN_OK', 'note', {
-            position: {
-              bottom: 0,
-              right: 0
-            },
-            html: '<div class="diagram-note">Mixed up the labels?</div>'
-          });
-
-          // add marker
-          canvas.addMarker('SCAN_OK', 'needs-discussion');
-        } catch (err) {
-
-          console.error('could not import BPMN 2.0 diagram', err);
-        }
-      }
-
-
-      // load external diagram file via AJAX and open it
-      $.get(diagramUrl, openDiagram, 'text');
-
-      // wire save button
-      $('#save-button').click(exportDiagram);
-    </script>
-    <!--
-      Thanks for trying out our BPMN toolkit!
-
-      This example uses the pre-built distribution of the bpmn-js modeler.
-      Consider rolling your own distribution to have more flexibility
-      regarding which features to include.
-
-      Checkout our advanced examples section to learn more:
-      * https://github.com/bpmn-io/bpmn-js-examples#advanced
-
-      To get a bit broader overview over how bpmn-js works,
-      follow our walkthrough:
-      * https://bpmn.io/toolkit/bpmn-js/walkthrough/
-
-      Related starters:
-      * https://raw.githubusercontent.com/bpmn-io/bpmn-js-examples/starter/viewer.html
-    -->
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama BPMN</title>
+</head>
+<body>
+    <pre>
+        &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+        &lt;bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                          xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                          xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                          xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                          id="Definitions_1"
+                          targetNamespace="http://bpmn.io/schema/bpmn"&gt;
+          &lt;bpmn:process id="Processo_Avaliacao_Contrato" isExecutable="true"&gt;
+            &lt;bpmn:startEvent id="StartEvent_PedidoPropostaRecebido" name="Pedido de Proposta Recebido"&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_StartToAnalise&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:startEvent&gt;
+            &lt;bpmn:task id="Task_AnaliseTecnicaLegal" name="Análise Técnica e Legal"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_StartToAnalise&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_AnaliseToQualificado&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:exclusiveGateway id="Gateway_PedidoQualificado" name="Pedido Qualificado?"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_AnaliseToQualificado&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_QualificadoNao&lt;/bpmn:outgoing&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_QualificadoSim&lt;/bpmn:outgoing&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_MaisElementos&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:exclusiveGateway&gt;
+            &lt;bpmn:endEvent id="EndEvent_NaoQualificado" name="Termina"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_QualificadoNao&lt;/bpmn:incoming&gt;
+            &lt;/bpmn:endEvent&gt;
+            &lt;bpmn:task id="Task_ForneceElementos" name="Fornece Elementos?"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_MaisElementos&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_ElementosPrazo&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:exclusiveGateway id="Gateway_PrazoVencido" name="Prazo Vencido?"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_ElementosPrazo&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_PrazoVencidoSim&lt;/bpmn:outgoing&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_PrazoVencidoNao&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:exclusiveGateway&gt;
+            &lt;bpmn:endEvent id="EndEvent_PrazoVencido" name="Termina"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_PrazoVencidoSim&lt;/bpmn:incoming&gt;
+            &lt;/bpmn:endEvent&gt;
+            &lt;bpmn:task id="Task_ProduzirRelatorio" name="Produzir Relatório Consolidado"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_PrazoVencidoNao&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_RelatorioToPlano&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:task id="Task_PlanoTecnico" name="Plano Técnico"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_RelatorioToPlano&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_PlanoToAprovado&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:exclusiveGateway id="Gateway_PlanoAprovado" name="Plano Técnico Aprovado?"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_PlanoToAprovado&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_AprovadoSim&lt;/bpmn:outgoing&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_AprovadoNao&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:exclusiveGateway&gt;
+            &lt;bpmn:task id="Task_Revisao" name="Revisão"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_AprovadoNao&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_RevisaoToAprovado&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:task id="Task_Contrato" name="Elaboração do Contrato"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_AprovadoSim&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_ContratoToClienteAceita&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:exclusiveGateway id="Gateway_ClienteAceita" name="Cliente Aceita Contrato?"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_ContratoToClienteAceita&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_ClienteAceitaNao&lt;/bpmn:outgoing&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_ClienteAceitaSim&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:exclusiveGateway&gt;
+            &lt;bpmn:endEvent id="EndEvent_ClienteRejeita" name="Termina"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_ClienteAceitaNao&lt;/bpmn:incoming&gt;
+            &lt;/bpmn:endEvent&gt;
+            &lt;bpmn:task id="Task_AssinarContrato" name="Assinar Contrato"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_ClienteAceitaSim&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_ContratoToInstalacao&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:task id="Task_Instalacao" name="Instalação do BioBox"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_ContratoToInstalacao&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_InstalacaoToTeste&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:task id="Task_TesteInstalacao" name="Testar Instalação"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_InstalacaoToTeste&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_TesteToAprovacao&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:exclusiveGateway id="Gateway_InstalacaoAprovada" name="Instalação Aprovada?"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_TesteToAprovacao&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_AprovacaoSim&lt;/bpmn:outgoing&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_AprovacaoNao&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:exclusiveGateway&gt;
+            &lt;bpmn:task id="Task_Corrigir" name="Corrigir"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_AprovacaoNao&lt;/bpmn:incoming&gt;
+              &lt;bpmn:outgoing&gt;SequenceFlow_CorrigirToTeste&lt;/bpmn:outgoing&gt;
+            &lt;/bpmn:task&gt;
+            &lt;bpmn:endEvent id="EndEvent_InformarCliente" name="Informar Cliente e Terminar"&gt;
+              &lt;bpmn:incoming&gt;SequenceFlow_AprovacaoSim&lt;/bpmn:incoming&gt;
+            &lt;/bpmn:endEvent&gt;
+          &lt;/bpmn:process&gt;
+        &lt;/bpmn:definitions&gt;
+    </pre>
+</body>
 </html>
+
