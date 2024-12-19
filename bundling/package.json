@@ -36,7 +36,7 @@
     "npm-run-all2": "^7.0.0",
     "open-cli": "^8.0.0",
     "webpack": "^5.94.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^6.0.0"
   },
   "dependencies": {
     "bpmn-js": "^18.1.1"
