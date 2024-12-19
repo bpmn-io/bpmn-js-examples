@@ -26,7 +26,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/index.html', to: '.' }
+        { from: 'src/index.html', to: '.' },
+        { context: 'src', from: 'diagrams/*.bpmn', to: '.' }
       ]
     })
   ],
