@@ -35,7 +35,7 @@
     "karma-webpack": "^5.0.1",
     "mocha": "^10.7.3",
     "mocha-test-container-support": "^0.2.0",
-    "puppeteer": "^23.2.0",
+    "puppeteer": "^23.11.1",
     "webpack": "^5.97.1"
   },
   "dependencies": {
