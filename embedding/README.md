@@ -2,7 +2,8 @@
 
 This example shows how different versions of the toolkit can be embedded easily into a HTML page.
 
-Keyboard binding and focus handling is done natively, as you expect from other elements on the canvas. For more information see [pull request](https://github.com/bpmn-io/diagram-js/pull/662) and [changelog](https://github.com/bpmn-io/diagram-js/blob/develop/CHANGELOG.md#1500) for `diagram-js` v15.0.0.
+> [!NOTE]
+> Starting with [bpmn-js@18](https://github.com/bpmn-io/bpmn-js/blob/develop/CHANGELOG.md#1800) diagram containers are focusable elements that play nicely with others.
 
 ## About
 
