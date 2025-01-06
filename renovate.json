@@ -6,7 +6,8 @@
   "packageRules": [
     {
       "matchPackagePatterns": [
-        "bpmn-js.*"
+        "bpmn-js.*",
+        "diagram-js.*"
       ],
       "groupName": "bpmn-js dependencies",
       "groupSlug": "bpmn-js"
