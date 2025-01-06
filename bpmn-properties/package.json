@@ -38,7 +38,7 @@
     "mocha-test-container-support": "^0.2.0",
     "npm-run-all2": "^7.0.0",
     "puppeteer": "^23.2.0",
-    "webpack": "^5.94.0"
+    "webpack": "^5.97.1"
   },
   "dependencies": {
     "bpmn-js": "^18.1.2"
