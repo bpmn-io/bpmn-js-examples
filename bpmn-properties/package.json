@@ -36,7 +36,7 @@
     "karma-webpack": "^5.0.1",
     "mocha": "^10.7.3",
     "mocha-test-container-support": "^0.2.0",
-    "npm-run-all2": "^7.0.0",
+    "npm-run-all2": "^7.0.2",
     "puppeteer": "^23.11.1",
     "webpack": "^5.97.1"
   },
