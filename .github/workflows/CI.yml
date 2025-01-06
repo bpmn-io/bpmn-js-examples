@@ -18,6 +18,8 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm ci
+    - name: Project setup
+      uses: bpmn-io/actions/setup@latest
     - name: Build examples
       run: npm run build
     - name: Lint examples
