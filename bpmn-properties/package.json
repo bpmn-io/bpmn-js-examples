@@ -34,7 +34,7 @@
     "karma-firefox-launcher": "^2.1.3",
     "karma-mocha": "^2.0.0",
     "karma-webpack": "^5.0.1",
-    "mocha": "^10.7.3",
+    "mocha": "^10.8.2",
     "mocha-test-container-support": "^0.2.0",
     "npm-run-all2": "^7.0.2",
     "puppeteer": "^23.11.1",
