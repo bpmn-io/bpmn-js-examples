@@ -24,7 +24,7 @@
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^7.1.2",
-    "npm-run-all2": "^7.0.0",
+    "npm-run-all2": "^7.0.2",
     "raw-loader": "^4.0.0",
     "style-loader": "^4.0.0",
     "webpack": "^5.97.1",
