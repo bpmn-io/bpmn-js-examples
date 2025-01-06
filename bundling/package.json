@@ -29,9 +29,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.4",
-    "babel-loader": "^9.0.0",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^9.2.1",
     "copy-webpack-plugin": "^12.0.2",
     "npm-run-all2": "^7.0.2",
     "open-cli": "^8.0.0",
