@@ -37,7 +37,7 @@
     "mocha": "^10.8.2",
     "mocha-test-container-support": "^0.2.0",
     "npm-run-all2": "^7.0.2",
-    "puppeteer": "^23.11.1",
+    "puppeteer": "^24.0.0",
     "webpack": "^5.97.1"
   },
   "dependencies": {
