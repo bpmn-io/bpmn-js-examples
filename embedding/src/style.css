@@ -7,6 +7,15 @@ body, html {
   margin: 0;
 }
 
+figure {
+  margin: 30px 0;
+}
+
+figcaption {
+  margin-top: .85em;
+  text-align: center;
+}
+
 :focus {
   outline-color: cornflowerblue;
 }
@@ -19,7 +28,6 @@ body, html {
 }
 
 .diagram-grid {
-  margin: 30px 0;
   display: flex;
   flex-direction: row;
 }
@@ -31,12 +39,16 @@ body, html {
 
 .canvas {
   height: 400px;
-  flex: 1;
+  width: 100%;
   border-radius: 5px;
   border: solid 3px #eee;
 }
 
-.canvas + .canvas {
+.diagram-grid > * {
+  flex: 1;
+}
+
+.diagram-grid > * + * {
   margin-left: 2em;
 }
 
