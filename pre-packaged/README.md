@@ -19,9 +19,9 @@ Download or simply include the relevant dependencies into your website:
 
 ```html
 <!-- required viewer styles -->
-<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.2/dist/assets/bpmn-js.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.2.0/dist/assets/bpmn-js.css" />
 
-<script src="https://unpkg.com/bpmn-js@18.1.2/dist/bpmn-viewer.development.js"></script>
+<script src="https://unpkg.com/bpmn-js@18.2.0/dist/bpmn-viewer.development.js"></script>
 ```
 
 Download the complete [viewer example](https://cdn.statically.io/gh/bpmn-io/bpmn-js-examples/main/starter/viewer.html).
@@ -30,11 +30,11 @@ Download the complete [viewer example](https://cdn.statically.io/gh/bpmn-io/bpmn
 
 ```html
 <!-- required modeler styles -->
-<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.2/dist/assets/diagram-js.css" />
-<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.2/dist/assets/bpmn-js.css" />
-<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.1.2/dist/assets/bpmn-font/css/bpmn.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.2.0/dist/assets/diagram-js.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.2.0/dist/assets/bpmn-js.css" />
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@18.2.0/dist/assets/bpmn-font/css/bpmn.css" />
 
-<script src="https://unpkg.com/bpmn-js@18.1.2/dist/bpmn-modeler.development.js"></script>
+<script src="https://unpkg.com/bpmn-js@18.2.0/dist/bpmn-modeler.development.js"></script>
 ```
 
 Download the complete [modeler example](https://cdn.statically.io/gh/bpmn-io/bpmn-js-examples/main/starter/modeler.html).
