@@ -31,8 +31,8 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
-    "babel-loader": "^9.2.1",
-    "copy-webpack-plugin": "^12.0.2",
+    "babel-loader": "^10.0.0",
+    "copy-webpack-plugin": "^13.0.0",
     "npm-run-all2": "^7.0.2",
     "open-cli": "^8.0.0",
     "webpack": "^5.97.1",
