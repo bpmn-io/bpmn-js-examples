@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+                  id="Definitions_1"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="XYZ_Logistics_Process" isExecutable="true">
+  
+    <!-- START: Forward Logistics -->
+    <bpmn:startEvent id="Start_Forward" name="Place Order">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:task id="Task_ValidateOrder" name="Validate Order & Payment">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:exclusiveGateway id="Gateway_PaymentSuccess" name="Payment Successful?">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Cancel</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:endEvent id="End_Cancel" name="Order Cancelled">
+      <bpmn:incoming>Flow_Cancel</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:task id="Task_PackItems" name="Pack & Label Items">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:task id="Task_AssignAgent" name="Assign Delivery Agent">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:task id="Task_OptimizeRoute" name="Optimize Delivery Route">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_6</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:task id="Task_Deliver" name="Deliver Order">
+      <bpmn:incoming>Flow_6</bpmn:incoming>
+      <bpmn:outgoing>Flow_7</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:exclusiveGateway id="Gateway_Delivered" name="Delivery Successful?">
+      <bpmn:incoming>Flow_7</bpmn:incoming>
+      <bpmn:outgoing>Flow_Success</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Fail</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:endEvent id="End_Delivered" name="Order Delivered">
+      <bpmn:incoming>Flow_Success</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:task id="Task_HandleFailure" name="Notify Customer Service">
+      <bpmn:incoming>Flow_Fail</bpmn:incoming>
+      <bpmn:outgoing>Flow_EndFail</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:endEvent id="End_Failed" name="Delivery Failed">
+      <bpmn:incoming>Flow_EndFail</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- FLOW Definitions for Forward -->
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Forward" targetRef="Task_ValidateOrder"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_ValidateOrder" targetRef="Gateway_PaymentSuccess"/>
+    <bpmn:sequenceFlow id="Flow_Cancel" sourceRef="Gateway_PaymentSuccess" targetRef="End_Cancel"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Gateway_PaymentSuccess" targetRef="Task_PackItems"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_PackItems" targetRef="Task_AssignAgent"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_AssignAgent" targetRef="Task_OptimizeRoute"/>
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_OptimizeRoute" targetRef="Task_Deliver"/>
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_Deliver" targetRef="Gateway_Delivered"/>
+    <bpmn:sequenceFlow id="Flow_Success" sourceRef="Gateway_Delivered" targetRef="End_Delivered"/>
+    <bpmn:sequenceFlow id="Flow_Fail" sourceRef="Gateway_Delivered" targetRef="Task_HandleFailure"/>
+    <bpmn:sequenceFlow id="Flow_EndFail" sourceRef="Task_HandleFailure" targetRef="End_Failed"/>
+
+    <!-- START: Reverse Logistics -->
+    <bpmn:startEvent id="Start_Reverse" name="Request Return">
+      <bpmn:outgoing>R1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:task id="R_ValidateReason" name="Validate Return Reason">
+      <bpmn:incoming>R1</bpmn:incoming>
+      <bpmn:outgoing>R2</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:exclusiveGateway id="R_GatewayValid" name="Valid Reason?">
+      <bpmn:incoming>R2</bpmn:incoming>
+      <bpmn:outgoing>R3</bpmn:outgoing>
+      <bpmn:outgoing>R_Fail</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:endEvent id="R_EndRejected" name="Return Rejected">
+      <bpmn:incoming>R_Fail</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:task id="R_SchedulePickup" name="Schedule Pickup">
+      <bpmn:incoming>R3</bpmn:incoming>
+      <bpmn:outgoing>R4</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:task id="R_VerifyReturn" name="Verify QR/OTP">
+      <bpmn:incoming>R4</bpmn:incoming>
+      <bpmn:outgoing>R5</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:exclusiveGateway id="R_GatewayVerify" name="Verification Passed?">
+      <bpmn:incoming>R5</bpmn:incoming>
+      <bpmn:outgoing>R6</bpmn:outgoing>
+      <bpmn:outgoing>R7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:task id="R_InvestigateFraud" name="Investigate Fraud">
+      <bpmn:incoming>R7</bpmn:incoming>
+      <bpmn:outgoing>R_EndFraud</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:endEvent id="R_EndFraud" name="Return Flagged as Fraud">
+      <bpmn:incoming>R_EndFraud</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:task id="R_InspectItem" name="Inspect Returned Item">
+      <bpmn:incoming>R6</bpmn:incoming>
+      <bpmn:outgoing>R8</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:exclusiveGateway id="R_GatewayAccept" name="Item Acceptable?">
+      <bpmn:incoming>R8</bpmn:incoming>
+      <bpmn:outgoing>R9</bpmn:outgoing>
+      <bpmn:outgoing>R10</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:task id="R_NotifyManuf" name="Notify Manufacturer">
+      <bpmn:incoming>R10</bpmn:incoming>
+      <bpmn:outgoing>R_EndReject</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:endEvent id="R_EndReject" name="Item Rejected">
+      <bpmn:incoming>R_EndReject</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:task id="R_SendToManuf" name="Ship to Manufacturer">
+      <bpmn:incoming>R9</bpmn:incoming>
+      <bpmn:outgoing>R11</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:endEvent id="R_EndSuccess" name="Return Processed">
+      <bpmn:incoming>R11</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- FLOW Definitions for Reverse -->
+    <bpmn:sequenceFlow id="R1" sourceRef="Start_Reverse" targetRef="R_ValidateReason"/>
+    <bpmn:sequenceFlow id="R2" sourceRef="R_ValidateReason" targetRef="R_GatewayValid"/>
+    <bpmn:sequenceFlow id="R_Fail" sourceRef="R_GatewayValid" targetRef="R_EndRejected"/>
+    <bpmn:sequenceFlow id="R3" sourceRef="R_GatewayValid" targetRef="R_SchedulePickup"/>
+    <bpmn:sequenceFlow id="R4" sourceRef="R_SchedulePickup" targetRef="R_VerifyReturn"/>
+    <bpmn:sequenceFlow id="R5" sourceRef="R_VerifyReturn" targetRef="R_GatewayVerify"/>
+    <bpmn:sequenceFlow id="R6" sourceRef="R_GatewayVerify" targetRef="R_InspectItem"/>
+    <bpmn:sequenceFlow id="R7" sourceRef="R_GatewayVerify" targetRef="R_InvestigateFraud"/>
+    <bpmn:sequenceFlow id="R_EndFraud" sourceRef="R_InvestigateFraud" targetRef="R_EndFraud"/>
+    <bpmn:sequenceFlow id="R8" sourceRef="R_InspectItem" targetRef="R_GatewayAccept"/>
+    <bpmn:sequenceFlow id="R9" sourceRef="R_GatewayAccept" targetRef="R_SendToManuf"/>
+    <bpmn:sequenceFlow id="R10" sourceRef="R_GatewayAccept" targetRef="R_NotifyManuf"/>
+    <bpmn:sequenceFlow id="R_EndReject" sourceRef="R_NotifyManuf" targetRef="R_EndReject"/>
+    <bpmn:sequenceFlow id="R11" sourceRef="R_SendToManuf" targetRef="R_EndSuccess"/>
+
+  </bpmn:process>
+</bpmn:definitions>
