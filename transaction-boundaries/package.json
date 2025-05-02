@@ -34,7 +34,7 @@
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.2",
-    "npm-run-all2": "^7.0.2",
+    "npm-run-all2": "^8.0.0",
     "sirv-cli": "^3.0.0",
     "style-loader": "^4.0.0",
     "webpack": "^5.97.1",

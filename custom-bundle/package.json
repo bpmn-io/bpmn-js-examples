@@ -17,7 +17,7 @@
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
-    "npm-run-all2": "^7.0.2",
+    "npm-run-all2": "^8.0.0",
     "open-cli": "^8.0.0",
     "rollup": "^4.30.0"
   }
