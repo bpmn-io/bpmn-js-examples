@@ -1,0 +1,26 @@
+Start Event: Phát sinh sự cố
+    ↓
+Task: Giảng viên thông báo Trưởng khoa/Bộ môn
+    ↓
+Gateway: Lãnh đạo khoa/bộ môn đồng ý thay đổi ca giảng?
+    ├─> No → End Event: Kết thúc (không thay đổi)
+    └─> Yes → Task: Giảng viên gửi đề xuất thay đổi giờ giảng
+        ↓
+        Gateway: Giảng viên có thể đề xuất thời gian giảng bù ngay?
+            ├─> Yes:
+            │      Task: Đăng ký hội trường phù hợp (qua hệ thống trực tuyến)
+            │      ↓
+            │      Task: Kê khai thông tin vào mẫu thay đổi ca giảng (Google Form)
+            │      ↓
+            │      Task: Thực hiện lịch giảng bù đúng theo đề xuất (trước ít nhất 2 ngày làm việc)
+            │      ↓
+            │      End Event: Hoàn thành thay đổi ca giảng
+            │
+            └─> No:
+                   Task: Thông báo Phòng Đào tạo & Sinh viên để nghỉ giảng
+                   ↓
+                   Task: Sau 1 tuần → Đề xuất thời gian giảng bù
+                   ↓
+                   Task: Thực hiện lại các bước như nhánh “Yes” (đăng ký hội trường, kê khai biểu mẫu)
+                   ↓
+                   End Event: Hoàn thành thay đổi ca giảng
