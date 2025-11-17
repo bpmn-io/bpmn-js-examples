@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions
+  xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  id="Definitions_TDM"
+  targetNamespace="https://oumla.com/tdm/bpmn">
+
+  <bpmn2:process id="Process_TDM" name="Tokenized Debt Marketplace" isExecutable="true">
+
+    <!-- Lane Set -->
+    <bpmn2:laneSet id="LaneSet_TDM">
+      <bpmn2:lane id="Lane_FundManager" name="Fund Manager">
+        <bpmn2:flowNodeRef>task_FundUpload</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_FixFundData</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_NotifyFundOnboarded</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+
+      <bpmn2:lane id="Lane_Investor" name="Investor">
+        <bpmn2:flowNodeRef>task_InvestorRegisters</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_SubmitKYCDocs</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_InitiateWalletTopup</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_BrowseListings</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_CreateOrManageListing</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_PlaceBid</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_HandlePaymentFailure</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+
+      <bpmn2:lane id="Lane_OumlaSystem" name="Oumla System">
+        <bpmn2:flowNodeRef>startEvent_TDM</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_ValidateFundData</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_FundDataValid</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_MintTokens</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_MapTokens</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_SendKYCRequest</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_KYCResult</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_CreateWallet</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_CreatePaymentSession</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_HandlePaymentCallback</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_PaymentResult</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_UpdateWalletBalance</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_RunMatchingEngine</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>gateway_MatchFound</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_TriggerSettlement</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_UpdateOffchainRecords</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_NotifyParties</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>task_GenerateRegReport</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>endEvent_KYCFailed</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>endEvent_PaymentFailed</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>endEvent_NoMatch</bpmn2:flowNodeRef>
+        <bpmn2:flowNodeRef>endEvent_Settled</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+
+      <bpmn2:lane id="Lane_KYCProvider" name="KYC Provider">
+        <bpmn2:flowNodeRef>task_ReviewKYC</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+
+      <bpmn2:lane id="Lane_PaymentGateway" name="Payment Gateway">
+        <bpmn2:flowNodeRef>task_ProcessPayment</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+
+      <bpmn2:lane id="Lane_Blockchain" name="Blockchain Network">
+        <bpmn2:flowNodeRef>task_CallSmartContract</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+
+      <bpmn2:lane id="Lane_Regulator" name="Regulator">
+        <bpmn2:flowNodeRef>task_ReviewRegReport</bpmn2:flowNodeRef>
+      </bpmn2:lane>
+    </bpmn2:laneSet>
+
+    <!-- Flow Nodes -->
+
+    <!-- Start -->
+    <bpmn2:startEvent id="startEvent_TDM" name="Start TDM Flow">
+      <bpmn2:outgoing>sf1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+
+    <!-- Fund onboarding -->
+    <bpmn2:task id="task_FundUpload" name="Upload Fund Ownership Data">
+      <bpmn2:incoming>sf1</bpmn2:incoming>
+      <bpmn2:outgoing>sf2</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_ValidateFundData" name="Validate Fund Data">
+      <bpmn2:incoming>sf2</bpmn2:incoming>
+      <bpmn2:outgoing>sf3</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:exclusiveGateway id="gateway_FundDataValid" name="Fund Data Valid?">
+      <bpmn2:incoming>sf3</bpmn2:incoming>
+      <bpmn2:outgoing>sf4</bpmn2:outgoing>
+      <bpmn2:outgoing>sf5</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+
+    <bpmn2:task id="task_FixFundData" name="Correct Fund Data">
+      <bpmn2:incoming>sf5</bpmn2:incoming>
+      <bpmn2:outgoing>sf6</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_MintTokens" name="Mint Tokens for Ownership">
+      <bpmn2:incoming>sf4</bpmn2:incoming>
+      <bpmn2:outgoing>sf7</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_MapTokens" name="Map Tokens to Investor Wallets">
+      <bpmn2:incoming>sf7</bpmn2:incoming>
+      <bpmn2:outgoing>sf8</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_NotifyFundOnboarded" name="Notify Fund Onboarded">
+      <bpmn2:incoming>sf8</bpmn2:incoming>
+      <bpmn2:outgoing>sf9</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <!-- Investor onboarding & KYC -->
+    <bpmn2:task id="task_InvestorRegisters" name="Investor Registers">
+      <bpmn2:incoming>sf9</bpmn2:incoming>
+      <bpmn2:outgoing>sf10</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_SubmitKYCDocs" name="Submit KYC Information">
+      <bpmn2:incoming>sf10</bpmn2:incoming>
+      <bpmn2:outgoing>sf11</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_SendKYCRequest" name="Send KYC Request">
+      <bpmn2:incoming>sf11</bpmn2:incoming>
+      <bpmn2:outgoing>sf12</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_ReviewKYC" name="Review KYC Request">
+      <bpmn2:incoming>sf12</bpmn2:incoming>
+      <bpmn2:outgoing>sf13</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:exclusiveGateway id="gateway_KYCResult" name="KYC Approved?">
+      <bpmn2:incoming>sf13</bpmn2:incoming>
+      <bpmn2:outgoing>sf14</bpmn2:outgoing>
+      <bpmn2:outgoing>sf16</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+
+    <bpmn2:task id="task_NotifyKYCFailed" name="Notify KYC Rejected">
+      <bpmn2:incoming>sf14</bpmn2:incoming>
+      <bpmn2:outgoing>sf15</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:endEvent id="endEvent_KYCFailed" name="End - KYC Failed">
+      <bpmn2:incoming>sf15</bpmn2:incoming>
+    </bpmn2:endEvent>
+
+    <bpmn2:task id="task_CreateWallet" name="Create Investor Wallet">
+      <bpmn2:incoming>sf16</bpmn2:incoming>
+      <bpmn2:outgoing>sf17</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <!-- Wallet funding & payment -->
+    <bpmn2:task id="task_InitiateWalletTopup" name="Initiate Wallet Top-up">
+      <bpmn2:incoming>sf17</bpmn2:incoming>
+      <bpmn2:outgoing>sf18</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_CreatePaymentSession" name="Create Payment Session">
+      <bpmn2:incoming>sf18</bpmn2:incoming>
+      <bpmn2:outgoing>sf19</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_ProcessPayment" name="Process Payment">
+      <bpmn2:incoming>sf19</bpmn2:incoming>
+      <bpmn2:outgoing>sf20</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_HandlePaymentCallback" name="Handle Payment Callback">
+      <bpmn2:incoming>sf20</bpmn2:incoming>
+      <bpmn2:outgoing>sf21</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:exclusiveGateway id="gateway_PaymentResult" name="Payment Successful?">
+      <bpmn2:incoming>sf21</bpmn2:incoming>
+      <bpmn2:outgoing>sf22</bpmn2:outgoing>
+      <bpmn2:outgoing>sf24</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+
+    <bpmn2:task id="task_HandlePaymentFailure" name="Handle Payment Failure">
+      <bpmn2:incoming>sf22</bpmn2:incoming>
+      <bpmn2:outgoing>sf23</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:endEvent id="endEvent_PaymentFailed" name="End - Payment Failed">
+      <bpmn2:incoming>sf23</bpmn2:incoming>
+    </bpmn2:endEvent>
+
+    <bpmn2:task id="task_UpdateWalletBalance" name="Update Wallet Balance">
+      <bpmn2:incoming>sf24</bpmn2:incoming>
+      <bpmn2:outgoing>sf25</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <!-- Marketplace trading -->
+    <bpmn2:task id="task_BrowseListings" name="Browse Listings">
+      <bpmn2:incoming>sf25</bpmn2:incoming>
+      <bpmn2:outgoing>sf26</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_CreateOrManageListing" name="Create / Manage Listing">
+      <bpmn2:incoming>sf26</bpmn2:incoming>
+      <bpmn2:outgoing>sf27</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_PlaceBid" name="Place Bid / Offer">
+      <bpmn2:incoming>sf27</bpmn2:incoming>
+      <bpmn2:outgoing>sf28</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_RunMatchingEngine" name="Run Matching Engine">
+      <bpmn2:incoming>sf28</bpmn2:incoming>
+      <bpmn2:outgoing>sf29</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:exclusiveGateway id="gateway_MatchFound" name="Match Found?">
+      <bpmn2:incoming>sf29</bpmn2:incoming>
+      <bpmn2:outgoing>sf30</bpmn2:outgoing>
+      <bpmn2:outgoing>sf32</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+
+    <bpmn2:task id="task_ExpireUnmatched" name="Expire Unmatched Orders">
+      <bpmn2:incoming>sf30</bpmn2:incoming>
+      <bpmn2:outgoing>sf31</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:endEvent id="endEvent_NoMatch" name="End - No Match">
+      <bpmn2:incoming>sf31</bpmn2:incoming>
+    </bpmn2:endEvent>
+
+    <!-- Settlement -->
+    <bpmn2:task id="task_TriggerSettlement" name="Trigger Settlement">
+      <bpmn2:incoming>sf32</bpmn2:incoming>
+      <bpmn2:outgoing>sf33</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_CallSmartContract" name="Execute On-Chain Transfer">
+      <bpmn2:incoming>sf33</bpmn2:incoming>
+      <bpmn2:outgoing>sf34</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_UpdateOffchainRecords" name="Update Off-Chain Records">
+      <bpmn2:incoming>sf34</bpmn2:incoming>
+      <bpmn2:outgoing>sf35</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_NotifyParties" name="Notify Buyer & Seller">
+      <bpmn2:incoming>sf35</bpmn2:incoming>
+      <bpmn2:outgoing>sf36</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <!-- Reporting -->
+    <bpmn2:task id="task_GenerateRegReport" name="Generate Regulatory Report">
+      <bpmn2:incoming>sf36</bpmn2:incoming>
+      <bpmn2:outgoing>sf37</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:task id="task_ReviewRegReport" name="Review Regulatory Report">
+      <bpmn2:incoming>sf37</bpmn2:incoming>
+      <bpmn2:outgoing>sf38</bpmn2:outgoing>
+    </bpmn2:task>
+
+    <bpmn2:endEvent id="endEvent_Settled" name="End - Trade Settled">
+      <bpmn2:incoming>sf38</bpmn2:incoming>
+    </bpmn2:endEvent>
+
+    <!-- Sequence Flows -->
+
+    <bpmn2:sequenceFlow id="sf1" sourceRef="startEvent_TDM" targetRef="task_FundUpload"/>
+    <bpmn2:sequenceFlow id="sf2" sourceRef="task_FundUpload" targetRef="task_ValidateFundData"/>
+    <bpmn2:sequenceFlow id="sf3" sourceRef="task_ValidateFundData" targetRef="gateway_FundDataValid"/>
+    <bpmn2:sequenceFlow id="sf4" sourceRef="gateway_FundDataValid" targetRef="task_MintTokens" name="Valid"/>
+    <bpmn2:sequenceFlow id="sf5" sourceRef="gateway_FundDataValid" targetRef="task_FixFundData" name="Invalid"/>
+    <bpmn2:sequenceFlow id="sf6" sourceRef="task_FixFundData" targetRef="task_FundUpload"/>
+    <bpmn2:sequenceFlow id="sf7" sourceRef="task_MintTokens" targetRef="task_MapTokens"/>
+    <bpmn2:sequenceFlow id="sf8" sourceRef="task_MapTokens" targetRef="task_NotifyFundOnboarded"/>
+    <bpmn2:sequenceFlow id="sf9" sourceRef="task_NotifyFundOnboarded" targetRef="task_InvestorRegisters"/>
+    <bpmn2:sequenceFlow id="sf10" sourceRef="task_InvestorRegisters" targetRef="task_SubmitKYCDocs"/>
+    <bpmn2:sequenceFlow id="sf11" sourceRef="task_SubmitKYCDocs" targetRef="task_SendKYCRequest"/>
+    <bpmn2:sequenceFlow id="sf12" sourceRef="task_SendKYCRequest" targetRef="task_ReviewKYC"/>
+    <bpmn2:sequenceFlow id="sf13" sourceRef="task_ReviewKYC" targetRef="gateway_KYCResult"/>
+    <bpmn2:sequenceFlow id="sf14" sourceRef="gateway_KYCResult" targetRef="task_NotifyKYCFailed" name="Rejected"/>
+    <bpmn2:sequenceFlow id="sf15" sourceRef="task_NotifyKYCFailed" targetRef="endEvent_KYCFailed"/>
+    <bpmn2:sequenceFlow id="sf16" sourceRef="gateway_KYCResult" targetRef="task_CreateWallet" name="Approved"/>
+    <bpmn2:sequenceFlow id="sf17" sourceRef="task_CreateWallet" targetRef="task_InitiateWalletTopup"/>
+    <bpmn2:sequenceFlow id="sf18" sourceRef="task_InitiateWalletTopup" targetRef="task_CreatePaymentSession"/>
+    <bpmn2:sequenceFlow id="sf19" sourceRef="task_CreatePaymentSession" targetRef="task_ProcessPayment"/>
+    <bpmn2:sequenceFlow id="sf20" sourceRef="task_ProcessPayment" targetRef="task_HandlePaymentCallback"/>
+    <bpmn2:sequenceFlow id="sf21" sourceRef="task_HandlePaymentCallback" targetRef="gateway_PaymentResult"/>
+    <bpmn2:sequenceFlow id="sf22" sourceRef="gateway_PaymentResult" targetRef="task_HandlePaymentFailure" name="Failed"/>
+    <bpmn2:sequenceFlow id="sf23" sourceRef="task_HandlePaymentFailure" targetRef="endEvent_PaymentFailed"/>
+    <bpmn2:sequenceFlow id="sf24" sourceRef="gateway_PaymentResult" targetRef="task_UpdateWalletBalance" name="Successful"/>
+    <bpmn2:sequenceFlow id="sf25" sourceRef="task_UpdateWalletBalance" targetRef="task_BrowseListings"/>
+    <bpmn2:sequenceFlow id="sf26" sourceRef="task_BrowseListings" targetRef="task_CreateOrManageListing"/>
+    <bpmn2:sequenceFlow id="sf27" sourceRef="task_CreateOrManageListing" targetRef="task_PlaceBid"/>
+    <bpmn2:sequenceFlow id="sf28" sourceRef="task_PlaceBid" targetRef="task_RunMatchingEngine"/>
+    <bpmn2:sequenceFlow id="sf29" sourceRef="task_RunMatchingEngine" targetRef="gateway_MatchFound"/>
+    <bpmn2:sequenceFlow id="sf30" sourceRef="gateway_MatchFound" targetRef="task_ExpireUnmatched" name="No Match"/>
+    <bpmn2:sequenceFlow id="sf31" sourceRef="task_ExpireUnmatched" targetRef="endEvent_NoMatch"/>
+    <bpmn2:sequenceFlow id="sf32" sourceRef="gateway_MatchFound" targetRef="task_TriggerSettlement" name="Matched"/>
+    <bpmn2:sequenceFlow id="sf33" sourceRef="task_TriggerSettlement" targetRef="task_CallSmartContract"/>
+    <bpmn2:sequenceFlow id="sf34" sourceRef="task_CallSmartContract" targetRef="task_UpdateOffchainRecords"/>
+    <bpmn2:sequenceFlow id="sf35" sourceRef="task_UpdateOffchainRecords" targetRef="task_NotifyParties"/>
+    <bpmn2:sequenceFlow id="sf36" sourceRef="task_NotifyParties" targetRef="task_GenerateRegReport"/>
+    <bpmn2:sequenceFlow id="sf37" sourceRef="task_GenerateRegReport" targetRef="task_ReviewRegReport"/>
+    <bpmn2:sequenceFlow id="sf38" sourceRef="task_ReviewRegReport" targetRef="endEvent_Settled"/>
+
+  </bpmn2:process>
+</bpmn2:definitions>
