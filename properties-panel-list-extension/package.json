@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@bpmn-io/properties-panel": "^3.23.0",
-    "bpmn-js": "^18.9.0",
+    "bpmn-js": "^18.9.1",
     "bpmn-js-properties-panel": "^5.23.0",
     "camunda-bpmn-js-behaviors": "^1.6.1",
     "htm": "^3.1.1",
