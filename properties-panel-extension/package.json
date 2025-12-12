@@ -46,6 +46,6 @@
     "bpmn-js-properties-panel": "^5.23.0",
     "htm": "^3.1.1",
     "jquery": "^3.5.1",
-    "min-dash": "^4.1.1"
+    "min-dash": "^5.0.0"
   }
 }
