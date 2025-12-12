@@ -33,7 +33,7 @@
     "bpmn-js": "^18.9.1",
     "bpmn-js-properties-panel": "^5.23.0",
     "jquery": "^3.5.1",
-    "min-dash": "^4.1.1"
+    "min-dash": "^5.0.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^13.0.0",

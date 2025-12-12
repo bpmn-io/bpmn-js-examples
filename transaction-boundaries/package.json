@@ -45,6 +45,6 @@
     "camunda-transaction-boundaries": "^1.1.2",
     "diagram-js": "^15.1.0",
     "jquery": "^3.6.1",
-    "min-dash": "^4.0.0"
+    "min-dash": "^5.0.0"
   }
 }
