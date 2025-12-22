@@ -36,15 +36,15 @@
     "min-dash": "^5.0.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^13.0.0",
+    "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
-    "less-loader": "^12.2.0",
+    "less-loader": "^12.3.0",
     "npm-run-all2": "^8.0.0",
     "raw-loader": "^4.0.2",
     "sirv-cli": "^3.0.0",
     "style-loader": "^4.0.0",
-    "webpack": "^5.97.1",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0"
+    "webpack-dev-server": "^5.2.2"
   }
 }
