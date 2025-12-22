@@ -26,7 +26,7 @@
     "eslint-plugin-bpmn-io": "^2.0.2",
     "eslint-plugin-mocha": "^11.0.0",
     "lerna": "^9.0.3",
-    "npm-run-all2": "^8.0.0"
+    "npm-run-all2": "^8.0.4"
   },
   "workspaces": [
     "bpmn-properties",
