@@ -39,7 +39,7 @@
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
     "less-loader": "^12.3.0",
-    "npm-run-all2": "^8.0.0",
+    "npm-run-all2": "^8.0.4",
     "raw-loader": "^4.0.2",
     "sirv-cli": "^3.0.0",
     "style-loader": "^4.0.0",
