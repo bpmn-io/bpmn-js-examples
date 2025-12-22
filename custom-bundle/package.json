@@ -16,9 +16,9 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "npm-run-all2": "^8.0.4",
     "open-cli": "^8.0.0",
-    "rollup": "^4.30.0"
+    "rollup": "^4.54.0"
   }
 }
