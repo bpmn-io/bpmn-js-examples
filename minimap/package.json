@@ -37,7 +37,7 @@
     "webpack-dev-server": "^5.2.2"
   },
   "dependencies": {
-    "bpmn-js": "^18.9.1",
+    "bpmn-js": "^18.10.0",
     "diagram-js-minimap": "^5.2.0",
     "jquery": "^3.3.1"
   }
