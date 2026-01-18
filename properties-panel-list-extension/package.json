@@ -47,7 +47,7 @@
     "camunda-bpmn-js-behaviors": "^1.12.0",
     "htm": "^3.1.1",
     "ids": "^1.0.0",
-    "jquery": "^3.5.1",
+    "jquery": "^4.0.0",
     "min-dash": "^5.0.0",
     "zeebe-bpmn-moddle": "^1.12.0"
   }
