@@ -1,4 +1,4 @@
-import Ids from 'ids';
+import { Ids } from 'ids';
 
 import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
 
