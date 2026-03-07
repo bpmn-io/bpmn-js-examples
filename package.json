@@ -22,7 +22,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-plugin-bpmn-io": "^2.2.0",
     "eslint-plugin-mocha": "^11.0.0",
     "lerna": "^9.0.3",
