@@ -34,7 +34,7 @@
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^14.0.0",
     "npm-run-all2": "^8.0.4",
-    "open-cli": "^8.0.0",
+    "open-cli": "^9.0.0",
     "webpack": "^5.104.1",
     "webpack-cli": "^7.0.0"
   },
