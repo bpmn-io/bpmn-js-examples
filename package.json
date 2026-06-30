@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "all": "run-s lint build",
-    "build": "lerna run all --stream",
+    "build": "npm run build --workspaces --if-present",
     "lint": "eslint ."
   },
   "contributors": [
@@ -25,7 +25,6 @@
     "eslint": "^9.39.2",
     "eslint-plugin-bpmn-io": "^2.2.0",
     "eslint-plugin-mocha": "^11.0.0",
-    "lerna": "^9.0.3",
     "npm-run-all2": "^9.0.0"
   },
   "workspaces": [
