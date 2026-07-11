@@ -34,7 +34,7 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.104.1",
     "webpack-cli": "^7.0.0",
-    "webpack-dev-server": "^5.2.2"
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "bpmn-js": "^18.20.0"
