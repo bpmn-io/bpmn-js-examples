@@ -8,7 +8,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "bpmn-js": "^18.22.0"
+    "bpmn-js": "^18.23.0"
   },
   "devDependencies": {
     "typescript": "^7.0.0"

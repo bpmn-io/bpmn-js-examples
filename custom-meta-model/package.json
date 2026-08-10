@@ -28,7 +28,7 @@
     "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
-    "bpmn-js": "^18.22.0",
+    "bpmn-js": "^18.23.0",
     "diagram-js": "^15.1.0",
     "jquery": "^4.0.0"
   }
