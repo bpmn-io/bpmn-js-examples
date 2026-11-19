@@ -13,12 +13,14 @@ Add [camunda-transaction-boundaries](https://github.com/bpmn-io/camunda-transact
 npm install --save camunda-transaction-boundaries
 ```
 
-Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with the transaction boundaries module (cf. [`src/app.js`](src/app.js#L14) for details).
+Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with the transaction boundaries module (cf. [`src/app.js`](src/app.js#L17) for details).
 
 ```javascript
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import transactionBoundariesModule from 'camunda-transaction-boundaries';
+
+import 'camunda-transaction-boundaries/assets/transaction-boundaries.css';
 
 var canvas = $('#js-canvas');
 
