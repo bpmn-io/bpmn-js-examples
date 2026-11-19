@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "bpmn-js": "^18.31.0",
+    "camunda-bpmn-moddle": "^8.0.2",
     "camunda-transaction-boundaries": "^2.0.0",
     "diagram-js": "^15.1.0",
     "jquery": "^4.0.0",

@@ -7,13 +7,13 @@ This example uses [bpmn-js](https://github.com/bpmn-io/bpmn-js) and [camunda-tra
 
 ## Usage
 
-Add [camunda-transaction-boundaries](https://github.com/bpmn-io/camunda-transaction-boundaries) to your project:
+Add [camunda-transaction-boundaries](https://github.com/bpmn-io/camunda-transaction-boundaries) and [camunda-bpmn-moddle](https://github.com/camunda/camunda-bpmn-moddle) to your project:
 
 ```
-npm install --save camunda-transaction-boundaries
+npm install --save camunda-transaction-boundaries camunda-bpmn-moddle
 ```
 
-Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with the transaction boundaries module (cf. [`src/app.js`](src/app.js#L17) for details).
+Now extend the [bpmn-js](https://github.com/bpmm-io/bpmn-js) modeler with the transaction boundaries module and the Camunda moddle extension, which is required to detect asynchronous continuations (cf. [`src/app.js`](src/app.js#L17) for details).
 
 ```javascript
 import BpmnModeler from 'bpmn-js/lib/Modeler';
@@ -22,13 +22,18 @@ import transactionBoundariesModule from 'camunda-transaction-boundaries';
 
 import 'camunda-transaction-boundaries/assets/transaction-boundaries.css';
 
+import camundaModdle from 'camunda-bpmn-moddle/resources/camunda.json';
+
 var canvas = $('#js-canvas');
 
 var bpmnModeler = new BpmnModeler({
   container: canvas,
   additionalModules: [
     transactionBoundariesModule
-  ]
+  ],
+  moddleExtensions: {
+    camunda: camundaModdle
+  }
 });
 
 await bpmnModeler.importXML(xml);

@@ -16,6 +16,8 @@ import {
 
 import transactionBoundariesModule from 'camunda-transaction-boundaries';
 
+import camundaModdle from 'camunda-bpmn-moddle/resources/camunda.json';
+
 import diagramXML from '../resources/transaction-boundaries.bpmn';
 
 
@@ -27,7 +29,10 @@ var bpmnModeler = new BpmnModeler({
   container: canvas,
   additionalModules: [
     transactionBoundariesModule
-  ]
+  ],
+  moddleExtensions: {
+    camunda: camundaModdle
+  }
 });
 
 function createNewDiagram() {
